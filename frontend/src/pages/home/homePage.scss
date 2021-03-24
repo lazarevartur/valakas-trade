@@ -1,0 +1,64 @@
+.blue {
+  color: dodgerblue;
+}
+.main-page-slide-1 {
+  background: url('https://antares1.trade/core/templates/public/img/main_page/main_page_bg.jpg') no-repeat center top transparent;
+  background-size: auto 100%;
+  .jumbotron {
+    background: none;
+    padding-bottom: 0;
+  }
+  h1 {
+    font-size: 50px;
+    line-height: 68px;
+    color: #1D2531;
+    font-weight: 500;
+    padding: 40px 0 60px;
+  }
+  .main-page-slide-1_img {
+    display: flex;
+    justify-content: center;
+    img {
+      max-width: 60%;
+      position: relative;
+      bottom: -6px;
+    }
+  }
+}
+.main-page-slide-2 {
+  background: #F7FCFF;
+  .main-page-slide-2_text {
+    color: #555C67;
+    font-size: 20px;
+    line-height: 25px;
+    margin: 200px 0 0;
+  }
+  .main-page-slide-2_video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 110px 0 0;
+  }
+}
+.main-page-slide-3 {
+  background: #F7FCFF;
+  h1 {
+    font-size: 40px;
+    line-height: 68px;
+    color: #1D2531;
+    font-weight: 600;
+    padding: 40px 0 60px;
+  }
+  .info-block {
+    display: flex;
+    p {
+      font-size: 18px;
+      line-height: 23px;
+      color: #555C67;
+      margin-left: 10px;
+    }
+    img {
+      height: 75%;
+    }
+  }
+}

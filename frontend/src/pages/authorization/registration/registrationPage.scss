@@ -1,0 +1,18 @@
+.registration-page {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    position: relative;
+    width: auto;
+    display: block;
+    padding: 20px 15px;
+    border-bottom: 2px solid transparent;
+    font-size: 18px;
+    line-height: 18px;
+    color: #2399F1;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+}
