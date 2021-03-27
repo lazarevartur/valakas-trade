@@ -40,6 +40,11 @@ const DashboardLayout: React.FC<Layout> = ({
                       <Nav.Link>Моя команда</Nav.Link>
                     </LinkContainer>
                   </Nav.Item>
+                  <Nav.Item>
+                    <LinkContainer to={`${RoutePath.profile}`}>
+                      <Nav.Link>Личные данные</Nav.Link>
+                    </LinkContainer>
+                  </Nav.Item>
                 </Nav>
               </Tab.Container>
               <div className={"mt-3"}>

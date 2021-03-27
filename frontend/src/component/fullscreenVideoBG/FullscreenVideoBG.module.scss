@@ -1,0 +1,12 @@
+.FullscreenVideoBG {
+  position: relative;
+  .video_bg {
+    top: 0;
+    left: 0;
+    position: absolute;
+    box-sizing: border-box;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
+}

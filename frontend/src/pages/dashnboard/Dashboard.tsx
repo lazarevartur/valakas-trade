@@ -1,12 +1,31 @@
 import React from "react";
-import { Row, Col, Card, Alert } from "react-bootstrap";
+import { Row, Col, Card, Alert, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { DashboardLayout } from "../../component/сontainers/DashboardLayout";
 import { ProfitabilityTable } from "../../component/profitabilityTable";
+import { RoutePath } from "../../routes/routesConfig";
+import { LinkContainer } from "react-router-bootstrap";
 
 const Dashboard = () => {
   return (
     <DashboardLayout>
+      <Row className={"mb-3"}>
+        <Col lg={12}>
+          <Card>
+            <Nav variant="pills" defaultActiveKey={RoutePath.dashboard}>
+              <Nav.Item>
+                <Nav.Link>Опционы</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link>Инвестиционные пакеты</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link>Миракс воулт</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </Card>
+        </Col>
+      </Row>
       <Row>
         <Col lg={4}>
           <Card className={"text-center"}>
