@@ -11,7 +11,6 @@ import { errorHandler, notFound } from "./middleware/errorMiddle.js";
 dotenv.config();
 const app = express();
 app.use(express.json());
-connectDB();
 
 app.use("/api/auth", authRoutes);
 if (process.env.NODE_ENV === "production") {
