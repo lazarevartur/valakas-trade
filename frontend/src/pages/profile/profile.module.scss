@@ -1,0 +1,33 @@
+.title{
+  font-size: 14px;
+}
+.img {
+  height: 85px;
+}
+.avatar {
+  position: relative;
+  cursor: pointer;
+  max-height: 100px;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 6;
+    width: 100%;
+    height: 0;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAMAAABsDg4iAAAAZlBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+Vn2moAAAAIXRSTlMAmOwV+N/x2cWiX00HNubhy7u4sKyPe3FoZFhULA7S0ThpU1PqAAAAl0lEQVQY02XIVw7CMBRE0THPTuKS3hvw9r9JcGwho5yfGV0ERlwMEhtHGyJH1HDUEDkApHNV80+tck0QfCNQxffq+2e8FR7syRlfs2TvEaI0eGtdwsgkdtgz5mxHl8QVhZ8CaxLtqfyo0yZxwuBnwJTE3FHBXJDLk8gCOA5AcIgZX9qSqGzDz6A4kpIjhYVvFsCO4s9o8QFHaBz5km8n6wAAAABJRU5ErkJggg==) no-repeat center center rgba(53, 64, 82, 0.5);
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -ms-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+  }
+}
+.avatar_hover {
+  @extend .avatar;
+  &:after {
+    height: 30%;
+  }
+
+}

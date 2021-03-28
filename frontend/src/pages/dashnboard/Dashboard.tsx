@@ -1,10 +1,22 @@
 import React from "react";
-import { Row, Col, Card, Alert, Nav } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Card,
+  Alert,
+  Nav,
+  CardDeck,
+  CardColumns,
+  OverlayTrigger,
+  Tooltip,
+  Button,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { DashboardLayout } from "../../component/сontainers/DashboardLayout";
 import { ProfitabilityTable } from "../../component/profitabilityTable";
 import { RoutePath } from "../../routes/routesConfig";
 import { LinkContainer } from "react-router-bootstrap";
+import { Wallet } from "../../component/wallet";
 
 const Dashboard = () => {
   return (
@@ -74,6 +86,24 @@ const Dashboard = () => {
                   <strong>0 уровней</strong>
                 </Col>
               </Row>
+              <div className={"mt-3"}>
+                <OverlayTrigger
+                  placement={"top"}
+                  overlay={
+                    <Tooltip id={`tooltip-${"top"}`}>
+                      Описание Пункта. Коротое
+                    </Tooltip>
+                  }
+                >
+                  <strong>Статус менеджера</strong>
+                </OverlayTrigger>
+                <Alert
+                  variant={"secondary"}
+                  style={{ color: "#3498DB", fontSize: "18px" }}
+                >
+                  Начальный
+                </Alert>
+              </div>
               <Row className={"mb-3"}>
                 <Col lg={6}>Ваша реферальная ссылка:</Col>
               </Row>
@@ -90,6 +120,19 @@ const Dashboard = () => {
               </Row>
             </Card.Body>
           </Card>
+        </Col>
+      </Row>
+      <Row className={"mt-3"}>
+        <Col>
+          <h3>Мои счета</h3>
+          <CardColumns>
+            <Wallet />
+            <Wallet />
+            <Wallet />
+            <Wallet />
+            <Wallet />
+            <Wallet />
+          </CardColumns>
         </Col>
       </Row>
       <Row className={"mt-3"}>
