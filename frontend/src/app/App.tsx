@@ -1,9 +1,9 @@
-import React from 'react'
-import './App.css'
-import { Header } from '../component/header'
-import { Switch } from 'react-router-dom'
-import { routesConfig } from '../routes/routesConfig'
-import { PrivateRoute } from '../routes/PrivateRoute'
+import React from "react";
+import "./App.css";
+import { Header } from "../component/header";
+import { Switch } from "react-router-dom";
+import { routesConfig } from "../routes/routesConfig";
+import { PrivateRoute } from "../routes/PrivateRoute";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         ))}
       </Switch>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
