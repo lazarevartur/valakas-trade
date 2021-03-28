@@ -41,26 +41,17 @@ const DashboardLayout: React.FC<Layout> = ({
                     </LinkContainer>
                   </Nav.Item>
                   <Nav.Item>
+                    <LinkContainer to={`${RoutePath.income}`}>
+                      <Nav.Link>Доходность</Nav.Link>
+                    </LinkContainer>
+                  </Nav.Item>
+                  <Nav.Item>
                     <LinkContainer to={`${RoutePath.profile}`}>
                       <Nav.Link>Личные данные</Nav.Link>
                     </LinkContainer>
                   </Nav.Item>
                 </Nav>
               </Tab.Container>
-              <div className={"mt-3"}>
-                <OverlayTrigger
-                  placement={"top"}
-                  overlay={
-                    <Tooltip id={`tooltip-${"top"}`}>
-                      Описание Пункта. Коротое
-                    </Tooltip>
-                  }
-                >
-                  <strong>Статус менеджера</strong>
-                </OverlayTrigger>
-
-                <Alert variant={"secondary"}>Начальный</Alert>
-              </div>
               <Button variant="outline-success" className={"mt-3"}>
                 Зарегистрировать нового партнера
               </Button>

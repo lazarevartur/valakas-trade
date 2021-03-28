@@ -1,21 +1,21 @@
-import React from "react";
-import { Container, Row, Col, Tab, Tabs, Form, Button } from "react-bootstrap";
-import "./registrationPage.scss";
-import { LoginPage } from "../login";
+import React from 'react'
+import { Container, Row, Col, Tab, Tabs, Form, Button } from 'react-bootstrap'
+import styles from './registrationPage.module.scss'
+import { LoginPage } from '../login'
 
 const RegistrationPage = () => {
   return (
-    <Container className={"registration-page"}>
+    <Container className={styles.registration_page}>
       <Row>
         <Col>
           <Tabs id="controlled-tab-example">
-            <Tab eventKey="login" title="Войти" className={"mt-4"}>
+            <Tab eventKey="login" title="Войти" className={'mt-4'}>
               <LoginPage />
             </Tab>
             <Tab
               eventKey="registration"
               title="Зарегистрироваться"
-              className={"mt-4"}
+              className={'mt-4'}
             >
               <Form>
                 <Form.Group controlId="formBasicEmail">
@@ -42,7 +42,7 @@ const RegistrationPage = () => {
                 </Button>
               </Form>
             </Tab>
-            <Tab eventKey="fpassword" title="Забыли пароль?" className={"mt-4"}>
+            <Tab eventKey="fpassword" title="Забыли пароль?" className={'mt-4'}>
               <Form>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
@@ -60,9 +60,9 @@ const RegistrationPage = () => {
         </Col>
       </Row>
     </Container>
-  );
-};
+  )
+}
 
-RegistrationPage.defaultProps = {};
+RegistrationPage.defaultProps = {}
 
-export default RegistrationPage;
+export default RegistrationPage

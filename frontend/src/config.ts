@@ -1,3 +1,8 @@
 export const config = {
-  siteName: "Valakas",
-};
+  siteName: 'Valakas',
+}
+
+export enum AccessRouts {
+  all,
+  user,
+}

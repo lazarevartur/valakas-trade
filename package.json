@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/lazarevartur/valakas-trade#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.5.1",
     "@types/express": "^4.17.11",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
@@ -30,7 +31,8 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.2"
+    "mongoose": "^5.12.2",
+    "react-redux": "^7.2.3"
   },
   "devDependencies": {
     "prettier": "^2.2.1",
