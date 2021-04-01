@@ -1,9 +1,10 @@
-import React from "react";
-import "./App.css";
-import { Header } from "../component/header";
-import { Switch } from "react-router-dom";
-import { routesConfig } from "../routes/routesConfig";
-import { PrivateRoute } from "../routes/PrivateRoute";
+import React from 'react'
+import './App.css'
+import { Header } from '../component/header'
+import { Switch } from 'react-router-dom'
+import { routesConfig } from '../routes/routesConfig'
+import { ProtectedRoute } from '../routes/ProtectedRoute'
+import { Footer } from '../component/footer'
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Header />
       <Switch>
         {routesConfig.map((route) => (
-          <PrivateRoute
+          <ProtectedRoute
             key={route.path}
             path={route.path}
             exact={route.exact}
@@ -20,8 +21,9 @@ function App() {
           />
         ))}
       </Switch>
+      <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

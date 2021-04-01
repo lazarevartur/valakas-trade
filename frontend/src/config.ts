@@ -6,3 +6,7 @@ export enum AccessRouts {
   all,
   user,
 }
+
+export enum StoregeKey {
+  USER = 'user',
+}

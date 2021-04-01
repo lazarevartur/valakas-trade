@@ -5,14 +5,12 @@ import {
   Card,
   Alert,
   Nav,
-  CardDeck,
   CardColumns,
   OverlayTrigger,
   Tooltip,
-  Button,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { DashboardLayout } from "../../component/сontainers/DashboardLayout";
+import { DashboardLayout } from "../../layouts/DashboardLayout";
 import { ProfitabilityTable } from "../../component/profitabilityTable";
 import { RoutePath } from "../../routes/routesConfig";
 import { LinkContainer } from "react-router-bootstrap";

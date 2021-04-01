@@ -1,33 +1,46 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
+import { createSlice } from '@reduxjs/toolkit'
+import { StoregeKey } from '../../config'
+import { IUserState } from '../../types/types'
+import { Storage } from '../../utils/utils'
 // Define a type for the slice state
-interface CounterState {
-  value: number
-}
 
 // Define the initial state using that type
-const initialState: CounterState = {
-  value: 0,
+const initialState: IUserState = {
+  isLoading: false,
+  userData: Storage.has(StoregeKey.USER) ? Storage.get(StoregeKey.USER) : {},
+  error: {},
 }
 
-export const counterSlice = createSlice({
-  name: 'counter',
-  // `createSlice` will infer the state type from the `initialState` argument
+export const userAuthentication = createSlice({
+  name: 'authentication',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1
+    USER_REGISTER_REQUEST: (state) => {
+      state.isLoading = true
     },
-    decrement: (state) => {
-      state.value -= 1
+    USER_REGISTER_SUCCESS: (state, action) => {
+      state.isLoading = false
+      state.userData = action.payload
+      delete state.error
+    },
+    USER_REGISTER_FAIL: (state, action) => {
+      state.isLoading = false
+      state.userData = {}
+      state.error = action.payload
+    },
+    USER_LOGOUT: (state) => {
+      state.isLoading = false
+      state.userData = {}
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
-    },
   },
 })
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const {
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL,
+  USER_REGISTER_REQUEST,
+  USER_LOGOUT,
+} = userAuthentication.actions
 
-export default counterSlice.reducer
+export default userAuthentication.reducer

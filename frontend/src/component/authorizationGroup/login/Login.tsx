@@ -4,9 +4,9 @@ import { useHistory } from "react-router-dom";
 import "./loginPage.scss";
 import { RoutePath } from "../../../routes/routesConfig";
 
-const LoginPage = () => {
+const Login = () => {
   const history = useHistory();
-  const handlerForm = (e: React.SyntheticEvent) => {
+  const handlerForm = (e: React.FormEvent) => {
     e.preventDefault();
     history.push(`${RoutePath.dashboard}`);
   };
@@ -25,7 +25,7 @@ const LoginPage = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
+        <Form.Group controlId="formBasicCheckbox1">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
         <Button variant="primary" type="submit">
@@ -36,6 +36,6 @@ const LoginPage = () => {
   );
 };
 
-LoginPage.defaultProps = {};
+Login.defaultProps = {};
 
-export default LoginPage;
+export default Login;

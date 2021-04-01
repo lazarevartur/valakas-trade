@@ -2,6 +2,7 @@ import User from '../models/userModel.js'
 import asyncHandler from 'express-async-handler'
 
 import { generateToken } from '../utils/utils.js'
+import { roles } from '../config/role.js'
 
 // @desc Register new user
 // @route POST /api/users/
@@ -34,5 +35,6 @@ const getUserWithToken = (user) => {
     email: user.email,
     isAdmin: user.isAdmin,
     token: generateToken(user._id),
+    access: roles.user,
   }
 }

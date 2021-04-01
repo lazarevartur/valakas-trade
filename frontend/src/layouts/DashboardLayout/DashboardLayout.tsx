@@ -12,7 +12,7 @@ import {
   Card,
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { RoutePath } from "../../../routes/routesConfig";
+import { RoutePath } from "../../routes/routesConfig";
 import "./dashboardLayout.scss";
 
 interface Layout {
