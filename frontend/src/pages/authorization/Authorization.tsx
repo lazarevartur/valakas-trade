@@ -12,6 +12,9 @@ const Authorization = () => {
         <Col>
           <Tabs id="controlled-tab-login">
             <Tab eventKey="login" title="Войти" className={'mt-4'}>
+              <h2 className={'text-center mb-4'}>
+                <strong>Вход в личный кабинет.</strong>
+              </h2>
               <Login />
             </Tab>
             <Tab

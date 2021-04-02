@@ -1,3 +1,4 @@
+import { userLogin } from '../component/authorizationGroup/login/Login'
 import { axios } from '../core/axios'
 import { IUserRegistration } from '../types/types'
 
@@ -7,7 +8,8 @@ interface ResponseApi {
 }
 
 export const AuthApi = {
-  rootUrl: 'api/',
+  rootUrl: 'api/auth',
+
   // async register(postData: IUserRegistration): Promise<ResponseApi> {
   //   console.log(postData, "postData");
   //   const { data } = await axios.post<ResponseApi>(
@@ -29,9 +31,19 @@ export const AuthApi = {
       },
     }
 
+    const { data } = await axios.post(`${this.rootUrl}`, candidate, config)
+    return data
+  },
+  async login(userEmailAndPassword: userLogin): Promise<ResponseApi> {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+
     const { data } = await axios.post(
-      `${this.rootUrl}/auth/`,
-      candidate,
+      `${this.rootUrl}/login`,
+      userEmailAndPassword,
       config
     )
     return data

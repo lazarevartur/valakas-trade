@@ -27,7 +27,7 @@ export enum RoutePath {
   team = '/team',
 }
 
-export const routesConfig: route[] = [
+const routesConfig: route[] = [
   {
     path: RoutePath.home,
     exact: true,
@@ -77,3 +77,5 @@ export const routesConfig: route[] = [
     access: AccessRouts.all,
   },
 ]
+
+export { routesConfig }

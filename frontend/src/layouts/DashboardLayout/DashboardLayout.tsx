@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Alert,
   Button,
@@ -10,22 +10,22 @@ import {
   Tab,
   Tooltip,
   Card,
-} from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import { RoutePath } from "../../routes/routesConfig";
-import "./dashboardLayout.scss";
+} from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+import { RoutePath } from '../../routes/routesConfig'
+import './dashboardLayout.scss'
 
 interface Layout {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const DashboardLayout: React.FC<Layout> = ({
   children,
 }): React.ReactElement => {
   return (
-    <Container className={"dashboard-layout"}>
-      <Row className={"mt-3"}>
-        <Col lg={3} className={"dashboard-sidebar"}>
+    <Container className={'dashboard-layout'}>
+      <Row className={'mt-3'}>
+        <Col lg={3} className={'dashboard-sidebar'}>
           <Card>
             <Card.Body>
               <Tab.Container id="left-tabs-example" defaultActiveKey="first">
@@ -52,18 +52,37 @@ const DashboardLayout: React.FC<Layout> = ({
                   </Nav.Item>
                 </Nav>
               </Tab.Container>
-              <Button variant="outline-success" className={"mt-3"}>
+              <Button variant="outline-success" className={'mt-3'}>
                 Зарегистрировать нового партнера
               </Button>
             </Card.Body>
           </Card>
         </Col>
-        <Col lg={9}>{children}</Col>
+        <Col lg={9}>
+          <Row className={'mb-3'}>
+            <Col lg={12}>
+              <Card>
+                <Nav variant="pills" defaultActiveKey={RoutePath.dashboard}>
+                  <LinkContainer to={RoutePath.personal}>
+                    <Nav.Link>Опционы</Nav.Link>
+                  </LinkContainer>
+                  <Nav.Item>
+                    <Nav.Link>Инвестиционные пакеты</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link>Миракс воулт</Nav.Link>
+                  </Nav.Item>
+                </Nav>
+              </Card>
+            </Col>
+          </Row>
+          {children}
+        </Col>
       </Row>
     </Container>
-  );
-};
+  )
+}
 
-DashboardLayout.defaultProps = {};
+DashboardLayout.defaultProps = {}
 
-export default DashboardLayout;
+export default DashboardLayout

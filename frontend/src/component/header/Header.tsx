@@ -19,11 +19,15 @@ import { RoutePath } from '../../routes/routesConfig'
 import { useLocation } from 'react-router-dom'
 import { Avatar } from '../avatar'
 import { logout } from './../../store/action/authAction'
-import { useDispatch } from 'react-redux'
+import { useDispatchTyped, useSelectorTyped } from '../../hooks/useTypedRedux'
 
 const Header = () => {
   const location = useLocation()
-  const dispatch = useDispatch()
+  const dispatch = useDispatchTyped()
+  const {
+    userData: { token: isAuth },
+  } = useSelectorTyped((state) => state.authentication)
+
   return (
     <header>
       <Navbar collapseOnSelect expand="lg">
@@ -38,7 +42,7 @@ const Header = () => {
             </LinkContainer>
             <span>ТВОЙ ПРАВИЛЬНЫЙ ВЫБОР</span>
           </div>
-          {location.pathname !== RoutePath.home ? (
+          {location.pathname !== RoutePath.home && isAuth ? (
             <>
               <Row>
                 <Col lg={6}>
@@ -68,14 +72,9 @@ const Header = () => {
                 className={'flex-grow-0'}
               >
                 <Nav className="ml-auto" activeKey>
-                  <LinkContainer to={`${RoutePath.personal}`}>
-                    <Nav.Link>
-                      <Button variant="primary">Войти</Button>
-                    </Nav.Link>
-                  </LinkContainer>
                   <LinkContainer to={`${RoutePath.auth}`}>
                     <Nav.Link>
-                      <Button variant="primary">Регистрация</Button>
+                      <Button variant="primary">Войти / Регистрация</Button>
                     </Nav.Link>
                   </LinkContainer>
                 </Nav>
