@@ -15,7 +15,17 @@ const userSchema = mongoose.Schema(
       // добовление поля с доп параметрами
       type: String, // тип
       required: true, // опция обезательное поле
-      unique: true, // уникальное значени
+      // уникальное значени
+       unique: true,
+    },
+    referralLink: {
+      type: String,
+      default: "a111",
+    },
+    friends: {
+      firsLine: [{ id: mongoose.Schema.Types.ObjectId }],
+      secondLine: [{ id: mongoose.Schema.Types.ObjectId }],
+      thirdLine: [{ id: mongoose.Schema.Types.ObjectId }],
     },
     country: {
       // добовление поля с доп параметрами
@@ -25,12 +35,6 @@ const userSchema = mongoose.Schema(
       // добовление поля с доп параметрами
       type: String,
       required: true,
-    },
-    isAdmin: {
-      // добовление поля с доп параметрами
-      type: Boolean,
-      required: true,
-      default: false,
     },
   },
   {
