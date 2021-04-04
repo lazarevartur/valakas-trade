@@ -8,23 +8,46 @@ import { roles } from "../config/role.js";
 // @route POST /api/auth/
 // @access Public
 export const regUser = asyncHandler(async (req, res) => {
-  const { email, password, name } = req.body;
-  // ищем в базе пользователя по email
+  const { email, password, name, ref } = req.body;
+  console.log(ref, "ref");
   const userExists = await User.findOne({ email });
   if (userExists) {
     res.status(400);
     throw new Error("User already exists");
   }
-  const newUser = {
-    email,
-    password,
-    name,
-  };
-  const user = await User.create(newUser);
+
+  const user = await User.create({ email, password, name });
+  //TODO REFACTORING
+  if (ref) {
+    const firstLine = await User.findById(ref);
+    if (firstLine) {
+      firstLine.friends.firsLine.push(user._id);
+      user.invitingId = firstLine._id;
+      firstLine.save();
+      if (firstLine.invitingId) {
+        const secondLine = await User.findById(firstLine.invitingId);
+        secondLine.friends.secondLine.push(user._id);
+        secondLine.save();
+        if (secondLine.invitingId) {
+          const thirdLine = await User.findById(secondLine.invitingId);
+          thirdLine.friends.thirdLine.push(user._id);
+          thirdLine.save();
+        }
+      }
+    } else {
+      res.status(400);
+      throw new Error("no find user ref");
+    }
+  }
+
+  user.referralLink = user._id;
+
+  user.save();
   if (user) {
     res.json(getUserWithToken(user));
   } else {
-    errorThrow("Invalid user data", 400, res);
+    res.status(400);
+    throw new Error("Invalid user data");
   }
 });
 
@@ -45,12 +68,6 @@ export const login = asyncHandler(async (req, res) => {
   }
 });
 
-export const redirectWithReferral = asyncHandler(async (req, res) => {
-  console.log("test", "redirectWithReferral");
-  req.referralId = req.params.id;
-  res.redirect("/api/auth");
-});
-
 const getUserWithToken = (user) => {
   return {
     _id: user._id,
@@ -61,3 +78,36 @@ const getUserWithToken = (user) => {
     access: roles.user,
   };
 };
+
+export const repleWallet = asyncHandler(async (req, res) => {
+  const { count, _id } = req.body;
+  const user = await User.findById(_id);
+  user.deposit += Number(count);
+  user.save();
+
+  const firstLine = await User.findById(user.invitingId);
+  if (firstLine) {
+    firstLine.incomeFromPartners.depositIncome += 100;
+    firstLine.save();
+    if (firstLine.invitingId) {
+      const secondLine = await User.findById(firstLine.invitingId);
+      secondLine.incomeFromPartners.depositIncome += 10;
+      secondLine.save();
+      if (secondLine.invitingId) {
+        const thirdLine = await User.findById(secondLine.invitingId);
+        thirdLine.incomeFromPartners.depositIncome += 1;
+        thirdLine.save();
+      }
+    }
+  } else {
+    res.status(400);
+    throw new Error("no pay");
+  }
+
+  if (user) {
+    res.json("good");
+  } else {
+    res.status(400);
+    throw new Error("no good");
+  }
+});

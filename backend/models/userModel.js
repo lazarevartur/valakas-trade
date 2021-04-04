@@ -6,24 +6,19 @@ const userSchema = mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
+      //unique: true,
     },
     password: {
       type: String,
       required: true,
     },
-    passwordWithoutHash: {
-      type: String,
-      required: true,
-    },
     name: {
       type: String,
-      required: true,
     },
     country: {
       type: String,
     },
-    invitingEmail: {
+    invitingId: {
       type: String,
     },
     referralLink: {
@@ -39,6 +34,7 @@ const userSchema = mongoose.Schema(
     },
     deposit: {
       type: Number,
+      default: 0,
     },
     incomeFromPartners: {
       depositIncome: {
@@ -62,9 +58,9 @@ userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
-  this.passwordWithoutHash = this.password;
   const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
+  //TODO Убрать коментарий
+  //this.password = await bcrypt.hash(this.password, salt);
 });
 
 const User = mongoose.model("User", userSchema);
