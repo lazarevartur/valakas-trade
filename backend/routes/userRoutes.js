@@ -1,8 +1,11 @@
-import express from 'express'
-import { regUser } from '../controller/authCtrl.js'
+import express from "express";
+import { regUser, login, repleWallet } from "../controller/authCtrl.js";
 
-const router = express.Router()
+const router = express.Router();
+//auth routs and ref
+// /api/auth
+router.route("/").post(regUser);
+router.route("/login").post(login);
+router.route("/addCoast").post(repleWallet);
 
-router.route('/').post(regUser)
-
-export default router
+export default router;

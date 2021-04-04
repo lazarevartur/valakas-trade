@@ -5,16 +5,14 @@ import { Provider } from 'react-redux'
 
 import './bootstrap.min.css'
 import './index.css'
-import store from './store/store'
+import { store } from './store/store'
 import { App } from './app'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById('root')
 )

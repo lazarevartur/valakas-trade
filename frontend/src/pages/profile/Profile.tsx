@@ -2,14 +2,14 @@ import React, { useRef, useState } from "react";
 import { Card, Col, Container, Image, Row } from "react-bootstrap";
 
 import style from "./profile.module.scss";
-import { DashboardLayout } from "../../component/сontainers/DashboardLayout";
+import { DashboardLayout } from "../../layouts/DashboardLayout";
 import useHover from "../../hooks/useHover";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
 interface ProfileProps {}
 
-const Profile: React.FC<ProfileProps> = (): React.ReactElement => {
+const Profile: React.FC<ProfileProps> = () => {
   const avatarRef = useRef(null);
   const isHover = useHover(avatarRef);
   return (
