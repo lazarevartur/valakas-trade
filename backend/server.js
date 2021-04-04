@@ -15,13 +15,16 @@ app.use(cors());
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("API is runing...");
-});
-app.get("/:id", (req, res) => {
-  console.log(req.params.id);
-  res.send(req.params.id);
-});
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is runing...");
+  });
+}
 app.use("/api/auth", authRoutes);
 
 // не найден путь
