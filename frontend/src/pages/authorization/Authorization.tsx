@@ -22,7 +22,6 @@ const Authorization = () => {
     (state: rootState) => state.authentication
   );
 
-  console.log(refLink);
   const onSubmit = (data: IUserRegistration) => {
     dispatch(registerAction(data));
   };

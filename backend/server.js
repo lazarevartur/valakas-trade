@@ -11,6 +11,7 @@ import { errorHandler, notFound } from "./middleware/errorMiddle.js";
 
 dotenv.config();
 const app = express();
+connectDB();
 app.use(cors());
 
 app.use(express.json());
