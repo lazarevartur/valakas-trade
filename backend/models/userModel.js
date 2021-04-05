@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema(
     email: {
       type: String,
       required: true,
+      //TODO УБРАТЬ КОМЕНТАРИЙ
       //unique: true,
     },
     password: {
@@ -52,7 +53,10 @@ const userSchema = mongoose.Schema(
   }
 );
 userSchema.methods.matchPassword = async function (plainPassword) {
-  return await bcrypt.compare(plainPassword, this.password);
+  //TODO УБРАТЬ КОМЕНТАРИЙ
+
+  // return await bcrypt.compare(plainPassword, this.password);
+  return plainPassword === this.password;
 };
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {

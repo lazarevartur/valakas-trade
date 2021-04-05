@@ -1,26 +1,27 @@
 export interface IDefaultUserData {
-  _id: string
-  name: string
-  email: string
-  token: string
-  access?: any
+  _id: string;
+  name: string;
+  email: string;
+  token: string;
+  access?: any;
 }
 export interface IUserRegistration {
-  name: string
-  password: string
-  confirmPassword: string
-  country: string
-  email: string
+  name: string;
+  password: string;
+  confirmPassword: string;
+  country: string;
+  email: string;
 }
 export interface emptyObject {}
 export interface IUserState {
-  isLoading: boolean
-  readonly userData: IDefaultUserData | any
-  error?: {}
+  isLoading: boolean;
+  readonly userData: IDefaultUserData | any;
+  error?: {};
+  refLink?: string;
 }
 
 export interface rootState {
-  authentication: IUserState
+  authentication: IUserState;
 }
 // {
 //     "_id": "6060fa0956ce3247188ea5f2",

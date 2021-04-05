@@ -1,39 +1,49 @@
-import React, { useEffect } from 'react'
-import { Form, Button } from 'react-bootstrap'
-import { useForm } from 'react-hook-form'
-import styles from './registration.module.scss'
-import { register as registerAction } from '../../../store/action/authAction'
+import React, { ReactNode, RefObject, useEffect } from "react";
+import { Form, Button } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import styles from "./registration.module.scss";
+import { register as registerAction } from "../../../store/action/authAction";
 import {
   useDispatchTyped,
   useSelectorTyped,
-} from '../../../hooks/useTypedRedux'
-import { IUserRegistration, rootState } from '../../../types/types'
-import { useHistory } from 'react-router'
-import { RoutePath } from '../../../routes/routesConfig'
-import { Loader } from '../../loader'
+} from "../../../hooks/useTypedRedux";
+import { IUserRegistration, rootState } from "../../../types/types";
+import { useHistory } from "react-router";
+import { RoutePath } from "../../../routes/routesConfig";
+import { Loader } from "../../loader";
 
-const Registration: React.FC = () => {
-  const history = useHistory()
-  const { isLoading, userData } = useSelectorTyped(
-    (state: rootState) => state.authentication
-  )
-  const dispatch = useDispatchTyped()
-  const { register, handleSubmit, errors } = useForm()
-  const onSubmit = (data: IUserRegistration) => {
-    dispatch(registerAction(data))
-  }
-  useEffect(() => {
-    if (userData.hasOwnProperty('token')) {
-      history.push(RoutePath.dashboard)
-    }
-  }, [userData, history])
+export interface RegistrationProp {
+  isLoading?: boolean;
+  handleForm: any;
+  onSubmit: any;
+  register: any;
+  refLink?: string;
+}
 
+const Registration: React.FC<RegistrationProp> = ({
+  isLoading = false,
+  handleForm,
+  onSubmit,
+  register,
+  refLink,
+}) => {
   return (
     <>
       {isLoading ? (
         <Loader />
       ) : (
-        <Form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <Form className={styles.form} onSubmit={handleForm(onSubmit)}>
+          {!refLink && (
+            <>
+              <h5 className={"text-center"}>
+                Внимание! Вы регистрируетесь без пригласителя.
+              </h5>
+              <p className={"text-center"}>
+                Если вы хотите быть в структуре вашего партнёра, перейдите по
+                его реферальной ссылке для продолжения регистрации.
+              </p>
+            </>
+          )}
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -42,9 +52,32 @@ const Registration: React.FC = () => {
               name="email"
               ref={register}
             />
-
             <Form.Text className="text-muted"></Form.Text>
           </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              name="password"
+              ref={register}
+            />
+          </Form.Group>
+          {refLink && (
+            <Form.Group controlId="formBasicName">
+              <Form.Label>ID / email пригласителя:</Form.Label>
+              <Form.Control
+                type="text"
+                name="ref"
+                value={refLink}
+                ref={register}
+                readOnly
+              />
+
+              <Form.Text className="text-muted"></Form.Text>
+            </Form.Group>
+          )}
+
           <Form.Group controlId="formBasicName">
             <Form.Label>Name</Form.Label>
             <Form.Control
@@ -64,15 +97,6 @@ const Registration: React.FC = () => {
               <option>Беларусь</option>
             </Form.Control>
             <Form.Text className="text-muted"></Form.Text>
-          </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              name="password"
-              ref={register}
-            />
           </Form.Group>
           <Form.Group controlId="formBasicConfirmPassword">
             <Form.Label>Confirm Password</Form.Label>
@@ -103,7 +127,7 @@ const Registration: React.FC = () => {
         </Form>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Registration
+export default Registration;
