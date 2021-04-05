@@ -58,6 +58,7 @@ export const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   // ищем в базе пользователя по email
   const user = await User.findOne({ email });
+  console.log(user);
 
   // проверяем есть ли пользователь и если есть проверяем его пароль
   if (user && (await user.matchPassword(password))) {

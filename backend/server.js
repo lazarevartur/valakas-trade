@@ -19,10 +19,6 @@ connectDB();
 app.get("/", (req, res) => {
   res.send("API is runing...");
 });
-app.get("/:id", (req, res) => {
-  console.log(req.params.id);
-  res.send(req.params.id);
-});
 app.use("/api/auth", authRoutes);
 
 // не найден путь

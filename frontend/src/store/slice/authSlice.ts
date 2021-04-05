@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { StoregeKey } from '../../config'
-import { IUserState } from '../../types/types'
-import { Storage } from '../../utils/utils'
+import { createSlice } from "@reduxjs/toolkit";
+import { StoregeKey } from "../../config";
+import { IUserState } from "../../types/types";
+import { Storage } from "../../utils/utils";
 // Define a type for the slice state
 
 // Define the initial state using that type
@@ -9,45 +9,49 @@ const initialState: IUserState = {
   isLoading: false,
   userData: Storage.has(StoregeKey.USER) ? Storage.get(StoregeKey.USER) : {},
   error: {},
-}
+  refLink: "",
+};
 
 export const userAuthentication = createSlice({
-  name: 'authentication',
+  name: "authentication",
   initialState,
   reducers: {
     USER_LOGOUT: (state) => {
-      state.isLoading = false
-      state.userData = {}
+      state.isLoading = false;
+      state.userData = {};
+    },
+    USER_REGISTER_REFERRAL_LINK: (state, action) => {
+      state.refLink = action.payload;
     },
     USER_REGISTER_REQUEST: (state) => {
-      state.isLoading = true
+      state.isLoading = true;
     },
     USER_REGISTER_SUCCESS: (state, action) => {
-      state.isLoading = false
-      state.userData = action.payload
-      delete state.error
+      state.isLoading = false;
+      state.userData = action.payload;
+      delete state.error;
     },
     USER_REGISTER_FAIL: (state, action) => {
-      state.isLoading = false
-      state.userData = {}
-      state.error = action.payload
+      state.isLoading = false;
+      state.userData = {};
+      state.error = action.payload;
     },
     USER_LOGIN_REQUEST: (state) => {
-      state.isLoading = true
+      state.isLoading = true;
     },
     USER_LOGIN_SUCCESS: (state, action) => {
-      state.isLoading = false
-      state.userData = action.payload
-      delete state.error
+      state.isLoading = false;
+      state.userData = action.payload;
+      delete state.error;
     },
     USER_LOGIN_FAIL: (state, action) => {
-      state.isLoading = false
-      state.userData = {}
-      state.error = action.payload
+      state.isLoading = false;
+      state.userData = {};
+      state.error = action.payload;
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
   },
-})
+});
 
 export const {
   USER_REGISTER_SUCCESS,
@@ -57,6 +61,7 @@ export const {
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGOUT,
-} = userAuthentication.actions
+  USER_REGISTER_REFERRAL_LINK,
+} = userAuthentication.actions;
 
-export default userAuthentication.reducer
+export default userAuthentication.reducer;

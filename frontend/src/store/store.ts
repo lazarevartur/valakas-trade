@@ -4,6 +4,10 @@ import { userAuthentication } from "./slice/authSlice";
 
 export const store = configureStore({
   reducer: { authentication: userAuthentication.reducer },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
