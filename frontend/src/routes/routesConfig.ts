@@ -1,30 +1,31 @@
-import React from 'react'
-import { HomePage } from '../pages/home'
-import { PersonalPage } from '../pages/personal'
-import { Dashboard } from '../pages/dashnboard'
-import { TeamPage } from '../pages/team'
-import { Login } from '../component/authorizationGroup/login'
-import { AccessRouts } from '../config'
-import { Profile } from '../pages/profile'
-import { Income } from '../pages/income'
-import { Authorization } from '../pages/authorization'
+import React from "react";
+import { HomePage } from "../pages/home";
+import { PersonalPage } from "../pages/personal";
+import { Dashboard } from "../pages/dashnboard";
+import { TeamPage } from "../pages/team";
+import { Login } from "../component/authorizationGroup/login";
+import { AccessRouts } from "../config";
+import { Profile } from "../pages/profile";
+import { Income } from "../pages/income";
+import { Authorization } from "../pages/authorization";
 
 export interface route {
-  path: RoutePath
-  exact: boolean
-  component: React.FC
-  access: AccessRouts
+  path: RoutePath;
+  exact: boolean;
+  component: React.FC;
+  access: AccessRouts;
 }
 
 export enum RoutePath {
-  home = '/',
-  login = '/login',
-  auth = '/auth',
-  personal = '/personal',
-  income = '/income',
-  profile = '/profile',
-  dashboard = '/dashboard',
-  team = '/team',
+  home = "/",
+  login = "/login",
+  auth = "/auth",
+  authWithRef = "/r/:id",
+  personal = "/personal",
+  income = "/income",
+  profile = "/profile",
+  dashboard = "/dashboard",
+  team = "/team",
 }
 
 const routesConfig: route[] = [
@@ -76,6 +77,12 @@ const routesConfig: route[] = [
     component: Authorization,
     access: AccessRouts.all,
   },
-]
+  {
+    path: RoutePath.authWithRef,
+    exact: true,
+    component: Authorization,
+    access: AccessRouts.all,
+  },
+];
 
-export { routesConfig }
+export { routesConfig };
