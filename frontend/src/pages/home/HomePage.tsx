@@ -21,24 +21,23 @@ const HomePage = () => {
         {/*    </div>*/}
         {/*  </Container>*/}
         {/*</Jumbotron>*/}
-        <FullscreenVideoBG>
-          <>
-            <Jumbotron>
-              <Container>
-                <h1 className={"text-center"}>
-                  Лучшие высокодоходные инструменты нового времени в{" "}
-                  <span className={"blue"}>одном месте!</span>
-                </h1>
-                <div className={"main-page-slide-1_img"}>
-                  {/*<Image*/}
-                  {/*  src="https://antares1.trade/core/templates/public/img/main_page/main_slide_1ru.png?ver=1.10"*/}
-                  {/*  fluid*/}
-                  {/*/>*/}
-                </div>
-              </Container>
-            </Jumbotron>
-          </>
-        </FullscreenVideoBG>
+
+        <>
+          <Jumbotron>
+            <Container>
+              <h1 className={"text-center"}>
+                Лучшие высокодоходные инструменты нового времени в{" "}
+                <span className={"blue"}>одном месте!</span>
+              </h1>
+              <div className={"main-page-slide-1_img"}>
+                {/*<Image*/}
+                {/*  src="https://antares1.trade/core/templates/public/img/main_page/main_slide_1ru.png?ver=1.10"*/}
+                {/*  fluid*/}
+                {/*/>*/}
+              </div>
+            </Container>
+          </Jumbotron>
+        </>
       </div>
       <div className={"main-page-slide-2"}>
         <Container>
