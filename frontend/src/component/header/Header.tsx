@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./header.module.scss";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useDispatchTyped, useSelectorTyped } from "../../hooks/useTypedRedux";
 import {
   Button,
@@ -22,18 +22,18 @@ const Header = () => {
 
   return (
     <header>
-      <Container>
-        <Navbar className={styles.header_main_menu}>
-          <Navbar.Brand href="#home">
-            <SocialButtons />
-          </Navbar.Brand>
-          <Navbar.Brand href="#home">
+      <Navbar className={styles.header_main_menu}>
+        <Navbar.Brand href="#home">
+          <SocialButtons />
+        </Navbar.Brand>
+        <Navbar.Brand>
+          <Link to={"/"}>
             <LogoSvg />
-          </Navbar.Brand>
-          <Button>Вход/Регистрация</Button>
-        </Navbar>
-        <SubMenu />
-      </Container>
+          </Link>
+        </Navbar.Brand>
+        <Button>Вход/Регистрация</Button>
+      </Navbar>
+      <SubMenu />
     </header>
   );
 };

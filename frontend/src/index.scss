@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
-$mainColor: #FEC825;
+$mainColor: #F1C40F;
 $secondColor: #F39C12;
 
 body {
@@ -15,6 +15,9 @@ button {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.container {
+  max-width: 1180px;
 }
 .btn-primary {
   background: $mainColor;
@@ -37,6 +40,7 @@ code {
   min-width: 200px;
   line-height: 40px;
 }
+
 
 /*@media screen and (min-width: 500px) {!* если окно браузера больше максимальной ширины сайта *!*/
 /*  html {*/
