@@ -1,0 +1,30 @@
+.jumbotron {
+  background-color: transparent;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    min-height: 700px;
+    background-size: cover;
+    background-position: 0 -141px;
+    background-image: url("https://s3-alpha-sig.figma.com/img/5ce1/b4a8/ba33c7fcb30cd8fc06bbc763ee0052fc?Expires=1619395200&Signature=Ni4RsMSbv2oab3-8ISrl~kWOPFzO-rx2ni89jum1WbF7ht6EY2UDGGS13q~1ZD4dgVkn1VpsbwjaUvZx~luI-Rz9860YckmbeJlBiOij7T~9lL7WmGQa7nIrpuJEuAKIwrLL5DJ3JspdX2px6ZwCr7Gy17Zpf4MpCwkg881pG8NYsV5kriJ75AclCRWkvw9Q4geS147uqc6Ibvh6zP-3j1YKeAglYh3ZqKdhcory0XknSatF3eJoD08fpObWo9sLGMtUex5LMJ3SpWLpIdAkYS5tS2DxQdLEiiQj1Ob-sDO1dSuS5kTkO9gI3d9VGM~3nJoMHb25WjdKSDcxI~UAag__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA");
+    z-index: -1;
+    opacity: .6;
+  }
+}
+.title {
+  font-weight: 600;
+  font-size: 54px;
+  line-height: 64px;
+  color: #333333;
+}
+.content {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+  font-style: normal;
+  font-weight: normal;
+}

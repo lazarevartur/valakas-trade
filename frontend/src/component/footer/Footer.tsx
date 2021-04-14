@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className={"container"}>
       <Row className={styles.footer}>
         <Col lg={3}>
           <Link to={"/"}>

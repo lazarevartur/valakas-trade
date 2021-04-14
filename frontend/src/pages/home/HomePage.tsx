@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Jumbotron, Image, Row, Col } from "react-bootstrap";
 import "./homePage.scss";
 import { FullscreenVideoBG } from "../../component/fullscreenVideoBG";
+import { JumbotronMain } from "../../component/homePageLandingGroup/jumbotronMain";
 
 const HomePage = () => {
   return (
@@ -23,20 +24,7 @@ const HomePage = () => {
         {/*</Jumbotron>*/}
 
         <>
-          <Jumbotron>
-            <Container>
-              <h1 className={"text-center"}>
-                Лучшие высокодоходные инструменты нового времени в{" "}
-                <span className={"blue"}>одном месте!</span>
-              </h1>
-              <div className={"main-page-slide-1_img"}>
-                {/*<Image*/}
-                {/*  src="https://antares1.trade/core/templates/public/img/main_page/main_slide_1ru.png?ver=1.10"*/}
-                {/*  fluid*/}
-                {/*/>*/}
-              </div>
-            </Container>
-          </Jumbotron>
+          <JumbotronMain />
         </>
       </div>
       <div className={"main-page-slide-2"}>

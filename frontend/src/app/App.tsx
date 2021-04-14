@@ -9,7 +9,7 @@ import { Container } from "react-bootstrap";
 
 function App() {
   return (
-    <Container>
+    <div>
       <Header />
       <Switch>
         {routesConfig.map((route) => (
@@ -23,7 +23,7 @@ function App() {
         ))}
       </Switch>
       <Footer />
-    </Container>
+    </div>
   );
 }
 

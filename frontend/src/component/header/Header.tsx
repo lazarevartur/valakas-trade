@@ -21,7 +21,7 @@ const Header = () => {
   } = useSelectorTyped((state) => state.authentication);
 
   return (
-    <header>
+    <header className={"container"}>
       <Navbar className={styles.header_main_menu}>
         <Navbar.Brand href="#home">
           <SocialButtons />
