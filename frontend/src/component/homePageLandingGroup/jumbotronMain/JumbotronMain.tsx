@@ -1,22 +1,27 @@
 import React from "react";
 import styles from "./jumbotronMain.module.scss";
-import { Button, Col, Container, Image, Jumbotron, Row } from "react-bootstrap";
+import cn from "classnames";
+import { Button, Col, Container, Jumbotron, Row } from "react-bootstrap";
 
 interface JumbotronMainProps {
   className?: string;
 }
 
-const JumbotronMain: React.FC<JumbotronMainProps> = ({ className }) => {
+const JumbotronMain: React.FC<JumbotronMainProps> = ({ className = "" }) => {
   return (
-    <Jumbotron className={`${className} ${styles.jumbotron}`}>
-      <div>
-        <Container>
-          <Row>
-            <Col lg={6}>
-              <h1>
-                <strong>Quis veniam sed placeat porro</strong>
-              </h1>
-              <p className={styles.content}>
+    <Jumbotron className={cn(styles.jumbotron, { [className]: className })}>
+      <Container>
+        <Row className={styles.content}>
+          <Col lg={5}>
+            <h1>
+              <strong>Quis veniam sed placeat porro</strong>
+            </h1>
+          </Col>
+        </Row>
+        <Row className={styles.content}>
+          <Col lg={6}>
+            <h1>
+              <p className={styles.text}>
                 Exercitationem rerum nesciunt dicta voluptatem eligendi
                 laudantium temporibus voluptatibus pariatur. Numquam veritatis
                 dolorem et. Tenetur omnis qui omnis minus. Omnis sit eaque
@@ -24,10 +29,10 @@ const JumbotronMain: React.FC<JumbotronMainProps> = ({ className }) => {
                 recusandae.
               </p>
               <Button size={"lg"}>Вход/Регистрация</Button>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+            </h1>
+          </Col>
+        </Row>
+      </Container>
     </Jumbotron>
   );
 };

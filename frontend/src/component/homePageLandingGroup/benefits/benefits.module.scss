@@ -1,0 +1,40 @@
+.main_title {
+  padding-top: 40px;
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 64px;
+  text-align: center;
+  color: #333333;
+}
+.icon {
+  height: 110px;
+  width: 115px;
+}
+.title {
+  margin: 20px 0;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 160%;
+}
+.text {
+  font-size: 16px;
+  line-height: 160%;
+  color: #333333;
+  width: 85%;
+}
+.mt_big {
+  margin-top: 80px;
+}
+.content {
+  position: relative;
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 16px;
+    content: '';
+    width: 1px;
+    height: 105%;
+    background: #FEC825;
+    opacity: 0.8;
+  }
+}

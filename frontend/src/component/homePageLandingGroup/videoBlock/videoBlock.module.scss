@@ -1,0 +1,25 @@
+.video_block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333333;
+}
+.title {
+  margin-bottom: 50px ;
+}
+.text {
+  text-align: center;
+  font-size: 16px;
+  line-height: 160%;
+  margin-bottom: 50px ;
+}
+.bg {
+  padding-top: 80px;
+  background: #f9f9f9;
+  padding-bottom: 60px;
+}
+.bg_svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

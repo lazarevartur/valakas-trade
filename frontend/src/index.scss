@@ -41,13 +41,13 @@ code {
   line-height: 40px;
 }
 
-
-/*@media screen and (min-width: 500px) {!* если окно браузера больше максимальной ширины сайта *!*/
-/*  html {*/
-/*    margin-left: calc(100vw - 100%);*/
-/*    margin-right: 0;*/
-/*  }*/
-/*}*/
+////если окно браузера больше максимальной ширины сайта
+//@media screen and (min-width: 500px) {
+// html {
+//    margin-left: calc(100vw - 100%);
+//   margin-right: 0;
+//  }
+//}
 body {
   overflow-y: scroll;
 }

@@ -1,3 +1,12 @@
+import React from "react";
+
+export interface defaultContainerProps {
+  children?: React.ReactNode;
+  className?: string;
+}
+export interface defaultSvgProps {
+  className?: string;
+}
 export interface IDefaultUserData {
   _id: string;
   name: string;
