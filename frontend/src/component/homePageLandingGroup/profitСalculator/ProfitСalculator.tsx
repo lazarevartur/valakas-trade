@@ -25,7 +25,7 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
           </Col>
         </Row>
         <Row>
-          <Col lg={{ offset: 2, span: 4 }}>
+          <Col lg={{ offset: 2, span: 4 }} className={cn(styles.collum_select)}>
             <small>Инвест план</small>
             <Form.Control as="select">
               <option>FOURTH (1% в день)</option>
@@ -33,12 +33,9 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
               <option>FOURTH (3% в день)</option>
             </Form.Control>
           </Col>
-          <Col lg={4}>
+          <Col lg={4} className={cn(styles.collum_select)}>
             <small>Сумма</small>
             <InputGroup className="mb-3">
-              <InputGroup.Prepend>
-                <InputGroup.Text id="basic-addon1">$</InputGroup.Text>
-              </InputGroup.Prepend>
               <FormControl
                 placeholder="Сумма"
                 aria-label="Username"
@@ -48,10 +45,7 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
           </Col>
         </Row>
         <Row className={styles.output}>
-          <Col
-            lg={{ offset: 2, span: 4 }}
-            className={cn(styles.collum, styles.delimiter)}
-          >
+          <Col lg={{ offset: 2, span: 4 }} className={cn(styles.collum)}>
             <h6>НАЧИСЛЕНИЕ</h6>
             <p>50.00$</p>
             <small>Вдень</small>

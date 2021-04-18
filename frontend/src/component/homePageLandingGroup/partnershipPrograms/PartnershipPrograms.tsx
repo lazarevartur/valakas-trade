@@ -4,7 +4,7 @@ import cn from "classnames";
 import { defaultComponentProps } from "../../../types/types";
 import HomeBg from "../../../svg/HomeBg";
 import { Col, Container, ListGroup, Row, Tab } from "react-bootstrap";
-import { BackpackIcon, ExternalLinkIcon } from "@modulz/radix-icons";
+import { ExternalLinkIcon } from "@modulz/radix-icons";
 import Backpack from "../../../svg/Backpack";
 import Rocket from "../../../svg/Rocket";
 import Clock from "../../../svg/Clock";

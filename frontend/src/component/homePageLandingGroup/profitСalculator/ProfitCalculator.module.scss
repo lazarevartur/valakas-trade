@@ -1,8 +1,6 @@
 .profitCalculator {
-  margin-bottom: 50px;
   background-color: #fec825;
   padding: 70px;
-  background-position: right;
 }
 .title {
   font-weight: 600;
@@ -13,7 +11,6 @@
   margin-bottom: 50px;
 }
 .output {
-  background: #ffe187;
   h6 {
     color: #151719;
     font-size: 20px;
@@ -25,6 +22,7 @@
     font-weight: 500;
     font-size: 50px;
     text-align: center;
+    margin-bottom: 0;
   }
   small {
     color: #151719;
@@ -35,6 +33,7 @@
 .collum {
   padding: 40px;
   position: relative;
+  background: #ffe187;
   &:nth-of-type(odd) {
     &:after {
       content: "";
@@ -46,5 +45,12 @@
       right: 0;
       border-radius: 20px;
     }
+  }
+}
+.collum_select {
+  padding: 0 40px 0 0;
+  margin-bottom: 40px;
+  &:nth-of-type(even) {
+    padding: 0 0 0 40px;
   }
 }

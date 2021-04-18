@@ -54,6 +54,19 @@ code {
 .active {
   border-color: red;
 }
+.form-control {
+  background: #ffffff;
+  height: 60px;
+  border: transparent;
+  border-radius: 0;
+  option {
+    padding: 10px;
+  }
+}
+.card {
+  border-color: transparent;
+}
+
 ////если окно браузера больше максимальной ширины сайта
 //@media screen and (min-width: 500px) {
 // html {

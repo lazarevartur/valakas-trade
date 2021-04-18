@@ -8,6 +8,7 @@ import { Benefits } from "../../component/homePageLandingGroup/benefits";
 import { PartnershipPrograms } from "../../component/homePageLandingGroup/partnershipPrograms";
 import { ProfitabilityTableLanding } from "../../component/homePageLandingGroup/profitabilityTableLanding";
 import { ProfitCalculator } from "../../component/homePageLandingGroup/profitСalculator";
+import { News } from "../../component/homePageLandingGroup/news";
 
 const HomePage = () => {
   return (
@@ -29,6 +30,9 @@ const HomePage = () => {
       </MainRow>
       <FullWidthRow>
         <ProfitCalculator />
+      </FullWidthRow>
+      <FullWidthRow>
+        <News />
       </FullWidthRow>
     </>
   );
