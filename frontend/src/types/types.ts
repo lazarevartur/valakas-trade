@@ -7,6 +7,11 @@ export interface defaultContainerProps {
 export interface defaultSvgProps {
   className?: string;
 }
+
+export interface defaultComponentProps {
+  className?: string;
+}
+
 export interface IDefaultUserData {
   _id: string;
   name: string;

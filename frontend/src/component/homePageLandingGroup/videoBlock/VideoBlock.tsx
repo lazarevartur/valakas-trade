@@ -2,14 +2,15 @@ import React from "react";
 import styles from "./videoBlock.module.scss";
 import { Col, Row } from "react-bootstrap";
 import HomeBg from "../../../svg/HomeBg";
+import cn from "classnames";
 
 interface VideoBlockProps {
   className?: string;
 }
 
-const VideoBlock: React.FC<VideoBlockProps> = ({ className }) => {
+const VideoBlock: React.FC<VideoBlockProps> = ({ className = "" }) => {
   return (
-    <Row className={styles.bg}>
+    <Row className={cn(styles.bg, { [className]: className })}>
       <HomeBg className={styles.bg_svg} />
       <Col lg={{ offset: 3, span: 6 }} className={styles.video_block}>
         <h1 className={styles.title}>

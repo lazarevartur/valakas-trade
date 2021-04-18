@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import "./bootstrap.min.css";
-import "./index.scss";
+import "./assets/globalStyles/bootstrap.min.css";
+import "./assets/globalStyles/index.scss";
 import { store } from "./store/store";
 import { App } from "./app";
 

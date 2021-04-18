@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
-
-$mainColor: #F1C40F;
-$secondColor: #F39C12;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,500&display=swap");
+$mainColor: #f1c40f;
+$secondColor: #f39c12;
 
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -13,7 +12,7 @@ button {
   letter-spacing: 1px;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 .container {
@@ -26,7 +25,8 @@ code {
   color: #000;
   padding: 10px;
 }
-.btn-primary:hover,.btn-primary:focus {
+.btn-primary:hover,
+.btn-primary:focus {
   background: $secondColor;
   border-color: $secondColor;
   color: #000;
@@ -40,7 +40,16 @@ code {
   min-width: 200px;
   line-height: 40px;
 }
-
+.list-group-item {
+  background-color: transparent;
+  border-color: transparent;
+  padding: 20px;
+}
+.list-group-item.active {
+  background-color: #fff;
+  color: #daa400;
+  border: 1px solid #e0e0e0;
+}
 ////если окно браузера больше максимальной ширины сайта
 //@media screen and (min-width: 500px) {
 // html {
@@ -54,14 +63,13 @@ body {
 ::-webkit-scrollbar {
   width: 12px; /* ширина для вертикального скролла */
   height: 8px; /* высота для горизонтального скролла */
-  background-color: #ECF0F1;
-
+  background-color: #ecf0f1;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #3498DB;
+  background-color: #3498db;
   border-radius: 9em;
   box-shadow: inset 1px 1px 10px #f3faf7;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #2980B9;
+  background-color: #2980b9;
 }

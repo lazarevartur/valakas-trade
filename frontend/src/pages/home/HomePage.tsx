@@ -5,6 +5,7 @@ import { VideoBlock } from "../../component/homePageLandingGroup/videoBlock";
 import { MainRow } from "../../layouts/mainRow";
 import { FullWidthRow } from "../../layouts/fullWidthRow";
 import { Benefits } from "../../component/homePageLandingGroup/benefits";
+import { PartnershipPrograms } from "../../component/homePageLandingGroup/partnershipPrograms";
 
 const HomePage = () => {
   return (
@@ -18,6 +19,9 @@ const HomePage = () => {
       <MainRow>
         <Benefits />
       </MainRow>
+      <FullWidthRow>
+        <PartnershipPrograms />
+      </FullWidthRow>
     </>
   );
 };
