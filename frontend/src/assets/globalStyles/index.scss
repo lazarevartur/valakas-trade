@@ -44,11 +44,15 @@ code {
   background-color: transparent;
   border-color: transparent;
   padding: 20px;
+  font-weight: 600;
 }
 .list-group-item.active {
   background-color: #fff;
   color: #daa400;
   border: 1px solid #e0e0e0;
+}
+.active {
+  border-color: red;
 }
 ////если окно браузера больше максимальной ширины сайта
 //@media screen and (min-width: 500px) {

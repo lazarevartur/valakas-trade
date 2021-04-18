@@ -6,6 +6,8 @@ import { MainRow } from "../../layouts/mainRow";
 import { FullWidthRow } from "../../layouts/fullWidthRow";
 import { Benefits } from "../../component/homePageLandingGroup/benefits";
 import { PartnershipPrograms } from "../../component/homePageLandingGroup/partnershipPrograms";
+import { ProfitabilityTableLanding } from "../../component/homePageLandingGroup/profitabilityTableLanding";
+import { ProfitCalculator } from "../../component/homePageLandingGroup/profitСalculator";
 
 const HomePage = () => {
   return (
@@ -21,6 +23,12 @@ const HomePage = () => {
       </MainRow>
       <FullWidthRow>
         <PartnershipPrograms />
+      </FullWidthRow>
+      <MainRow>
+        <ProfitabilityTableLanding />
+      </MainRow>
+      <FullWidthRow>
+        <ProfitCalculator />
       </FullWidthRow>
     </>
   );

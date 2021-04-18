@@ -19,7 +19,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
       <HomeBg className={styles.bg_svg} />
       <Container>
         <Row>
-          <Col lg={12} className={styles.video_block}>
+          <Col lg={12}>
             <h1 className={styles.title}>
               <strong>Инвестиционно-партнерские программы</strong>
             </h1>
