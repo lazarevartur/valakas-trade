@@ -74,8 +74,17 @@
   justify-content: space-between;
   margin-top: 24px;
   border-bottom: 1px solid;
-  border-image: linear-gradient(90deg, rgba(196, 196, 196, 0) 0.52%, #E5E5E5 51.04%, rgba(196, 196, 196, 0) 100%);
+  border-image: linear-gradient(
+    90deg,
+    rgba(196, 196, 196, 0) 0.52%,
+    #e5e5e5 51.04%,
+    rgba(196, 196, 196, 0) 100%
+  );
   border-image-slice: 1;
+}
+.center_logo {
+  justify-content: center;
+  padding-right: 6%;
 }
 header {
   margin-bottom: 23px;

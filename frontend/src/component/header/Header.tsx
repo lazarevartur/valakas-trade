@@ -13,27 +13,42 @@ import {
 import { LogoSvg } from "../uiKit/Logo";
 import { SocialButtons } from "../socialButtons";
 import { SubMenu } from "./subMenu";
+import { LinkContainer } from "react-router-bootstrap";
+import { RoutePath } from "../../routes/routesConfig";
+import cn from "classnames";
 const Header = () => {
   const location = useLocation();
   const dispatch = useDispatchTyped();
+  const isHome = location.pathname === RoutePath.home;
   const {
     userData: { token: isAuth },
   } = useSelectorTyped((state) => state.authentication);
 
   return (
     <header className={"container"}>
-      <Navbar className={styles.header_main_menu}>
-        <Navbar.Brand href="#home">
-          <SocialButtons />
-        </Navbar.Brand>
+      <Navbar
+        className={cn(styles.header_main_menu, {
+          [styles.center_logo]: !isHome,
+        })}
+      >
+        {isHome && (
+          <Navbar.Brand href="#home">
+            <SocialButtons />
+          </Navbar.Brand>
+        )}
+
         <Navbar.Brand>
           <Link to={"/"}>
             <LogoSvg />
           </Link>
         </Navbar.Brand>
-        <Button>Вход/Регистрация</Button>
+        {isHome && (
+          <LinkContainer to={RoutePath.auth}>
+            <Button>Вход/Регистрация</Button>
+          </LinkContainer>
+        )}
       </Navbar>
-      <SubMenu />
+      {isHome && <SubMenu />}
     </header>
   );
 };

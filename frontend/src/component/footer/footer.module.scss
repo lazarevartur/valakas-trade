@@ -1,3 +1,7 @@
+footer {
+  margin-top: 50px;
+}
+
 p {
   font-size: 14px;
   color: #828282;
@@ -5,13 +9,14 @@ p {
 }
 .nav_Link {
   padding: 6px 0;
-  color: #4F4F4F;
+  color: #4f4f4f;
 }
 .title {
   text-transform: uppercase;
   color: #bdbdbd;
 }
-.title,.nav_Link, {
+.title,
+.nav_Link {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
