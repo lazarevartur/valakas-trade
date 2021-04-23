@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,500&display=swap");
 $mainColor: #f1c40f;
-$secondColor: #f39c12;
+$secondColor: #ffde7b;
 
 body {
   margin: 0;
@@ -69,16 +69,16 @@ code {
 .card {
   border-color: transparent;
 }
-
 ////если окно браузера больше максимальной ширины сайта
 //@media screen and (min-width: 500px) {
-// html {
+//  html {
 //    margin-left: calc(100vw - 100%);
-//   margin-right: 0;
+//    margin-right: 0;
 //  }
 //}
 body {
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 ::-webkit-scrollbar {
   width: 12px; /* ширина для вертикального скролла */
@@ -86,10 +86,10 @@ body {
   background-color: #ecf0f1;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #3498db;
+  background-color: #fec825;
   border-radius: 9em;
   box-shadow: inset 1px 1px 10px #f3faf7;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #2980b9;
+  background-color: #ffde7b;
 }

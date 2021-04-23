@@ -9,6 +9,7 @@ import { PartnershipPrograms } from "../../component/homePageLandingGroup/partne
 import { ProfitabilityTableLanding } from "../../component/homePageLandingGroup/profitabilityTableLanding";
 import { ProfitCalculator } from "../../component/homePageLandingGroup/profitСalculator";
 import { News } from "../../component/homePageLandingGroup/news";
+import { BecomePartner } from "../../component/homePageLandingGroup/becomePartner";
 
 const HomePage = () => {
   return (
@@ -33,6 +34,9 @@ const HomePage = () => {
       </FullWidthRow>
       <FullWidthRow>
         <News />
+      </FullWidthRow>
+      <FullWidthRow>
+        <BecomePartner />
       </FullWidthRow>
     </>
   );
