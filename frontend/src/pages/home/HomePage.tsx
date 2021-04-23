@@ -11,7 +11,7 @@ import { ProfitCalculator } from "../../component/homePageLandingGroup/profitСa
 import { News } from "../../component/homePageLandingGroup/news";
 import { BecomePartner } from "../../component/homePageLandingGroup/becomePartner";
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <>
       <FullWidthRow>
@@ -41,7 +41,5 @@ const HomePage = () => {
     </>
   );
 };
-
-HomePage.defaultProps = {};
 
 export default HomePage;

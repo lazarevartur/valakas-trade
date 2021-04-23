@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,500&display=swap");
 $mainColor: #f1c40f;
 $secondColor: #ffde7b;
-
+$pressedColor: #ffcf3e;
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -51,8 +51,24 @@ code {
   color: #daa400;
   border: 1px solid #e0e0e0;
 }
-.active {
-  border-color: red;
+.nav-link.active {
+  color: $pressedColor;
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid #fec825;
+    border-radius: 50px;
+  }
+}
+.nav-link:hover {
+  color: $pressedColor;
+}
+a:hover {
+  color: #ffcf3e;
 }
 .form-control {
   background: #ffffff;
@@ -62,6 +78,10 @@ code {
   option {
     padding: 10px;
   }
+}
+.nav-link {
+  margin: 0.5rem 1rem;
+  padding: 0;
 }
 .form-control {
   border-radius: 4px;

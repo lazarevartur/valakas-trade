@@ -26,29 +26,22 @@ const Header = () => {
 
   return (
     <header className={"container"}>
-      <Navbar
-        className={cn(styles.header_main_menu, {
-          [styles.center_logo]: !isHome,
-        })}
-      >
-        {isHome && (
-          <Navbar.Brand href="#home">
-            <SocialButtons />
-          </Navbar.Brand>
-        )}
+      <Navbar className={cn(styles.header_main_menu)}>
+        <Navbar.Brand href="#home">
+          <SocialButtons />
+        </Navbar.Brand>
 
         <Navbar.Brand>
           <Link to={"/"}>
             <LogoSvg />
           </Link>
         </Navbar.Brand>
-        {isHome && (
-          <LinkContainer to={RoutePath.auth}>
-            <Button>Вход/Регистрация</Button>
-          </LinkContainer>
-        )}
+
+        <LinkContainer to={RoutePath.auth}>
+          <Button>Вход/Регистрация</Button>
+        </LinkContainer>
       </Navbar>
-      {isHome && <SubMenu />}
+      <SubMenu />
     </header>
   );
 };

@@ -5,7 +5,6 @@ import { Switch } from "react-router-dom";
 import { routesConfig } from "../routes/routesConfig";
 import { ProtectedRoute } from "../routes/ProtectedRoute";
 import { Footer } from "../component/footer";
-import { Container } from "react-bootstrap";
 
 function App() {
   return (

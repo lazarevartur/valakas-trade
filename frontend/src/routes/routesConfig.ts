@@ -8,6 +8,7 @@ import { AccessRouts } from "../config";
 import { Profile } from "../pages/profile";
 import { Income } from "../pages/income";
 import { Authorization } from "../pages/authorization";
+import { AboutPage } from "../pages/about";
 
 export interface route {
   path: RoutePath;
@@ -18,6 +19,7 @@ export interface route {
 
 export enum RoutePath {
   home = "/",
+  about = "/about",
   login = "/login",
   auth = "/auth",
   authWithRef = "/r/:id",
@@ -33,6 +35,12 @@ const routesConfig: route[] = [
     path: RoutePath.home,
     exact: true,
     component: HomePage,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.about,
+    exact: true,
+    component: AboutPage,
     access: AccessRouts.all,
   },
   {

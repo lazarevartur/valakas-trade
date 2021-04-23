@@ -9,15 +9,19 @@ import {
   Row,
 } from "react-bootstrap";
 import styles from "./subMenu.module.scss";
+import { RoutePath } from "../../../routes/routesConfig";
+import { LinkContainer } from "react-router-bootstrap";
 
 const SubMenu = () => {
   return (
     <Container className={styles.sub_menu}>
       <Row>
         <Col md={{ span: 10, offset: 1 }}>
-          <Nav>
+          <Nav activeKey>
             <Nav.Item>
-              <Nav.Link href="/home">О нас</Nav.Link>
+              <LinkContainer to={RoutePath.about}>
+                <Nav.Link>О нас</Nav.Link>
+              </LinkContainer>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="link-2">Как сдесь заработать?</Nav.Link>
