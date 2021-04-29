@@ -26,7 +26,11 @@ const AuthorizationModal: React.FC<AuthorizationModalProps> = () => {
     return null;
   }
 
-  return <Component isOpened={isOpened} url={pathname} />;
+  return (
+    <ModalLayout isOpened={isOpened}>
+      <Component url={pathname} />
+    </ModalLayout>
+  );
 };
 
 export default AuthorizationModal;

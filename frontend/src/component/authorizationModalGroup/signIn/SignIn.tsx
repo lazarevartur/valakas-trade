@@ -23,7 +23,7 @@ interface SignInProps extends defaultModalComponentProps {}
 
 const SignIn: React.FC<SignInProps> = ({ isOpened = false, url }) => {
   return (
-    <ModalLayout isOpened={isOpened}>
+    <>
       <ModalBg className={styles.bg} />
       <Container>
         <Form>
@@ -65,7 +65,7 @@ const SignIn: React.FC<SignInProps> = ({ isOpened = false, url }) => {
           </Row>
         </Form>
       </Container>
-    </ModalLayout>
+    </>
   );
 };
 

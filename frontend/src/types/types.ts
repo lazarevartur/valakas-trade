@@ -13,7 +13,7 @@ export interface defaultComponentProps {
 }
 export interface defaultModalComponentProps {
   className?: string;
-  isOpened: boolean;
+  isOpened?: boolean;
   url?: string;
   title?: string;
 }

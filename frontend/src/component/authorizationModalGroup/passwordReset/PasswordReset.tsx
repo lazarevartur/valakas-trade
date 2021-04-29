@@ -10,12 +10,9 @@ import { RoutePath } from "../../../routes/routesConfig";
 
 interface PasswordResetProps extends defaultModalComponentProps {}
 
-const PasswordReset: React.FC<PasswordResetProps> = ({
-  isOpened = false,
-  url,
-}) => {
+const PasswordReset: React.FC<PasswordResetProps> = ({ url }) => {
   return (
-    <ModalLayout isOpened={isOpened}>
+    <>
       <ModalBg className={styles.bg} />
       <Container>
         <Form>
@@ -44,7 +41,7 @@ const PasswordReset: React.FC<PasswordResetProps> = ({
           </Row>
         </Form>
       </Container>
-    </ModalLayout>
+    </>
   );
 };
 
