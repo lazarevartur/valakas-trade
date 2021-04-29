@@ -20,7 +20,6 @@ export interface route {
 export enum RoutePath {
   home = "/",
   about = "/about",
-  login = "/login",
   auth = "/auth",
   authWithRef = "/r/:id",
   personal = "/personal",
@@ -28,6 +27,9 @@ export enum RoutePath {
   profile = "/profile",
   dashboard = "/dashboard",
   team = "/team",
+  login = "?auth=sign-in",
+  registration = "?auth=sign-up",
+  resetPassword = "?auth=reset-password",
 }
 
 const routesConfig: route[] = [
@@ -71,12 +73,6 @@ const routesConfig: route[] = [
     path: RoutePath.team,
     exact: true,
     component: TeamPage,
-    access: AccessRouts.all,
-  },
-  {
-    path: RoutePath.login,
-    exact: true,
-    component: Login,
     access: AccessRouts.all,
   },
   {

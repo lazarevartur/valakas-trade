@@ -27,7 +27,7 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
         <Row>
           <Col lg={{ offset: 2, span: 4 }} className={cn(styles.collum_select)}>
             <small>Инвест план</small>
-            <Form.Control as="select">
+            <Form.Control as="select" className={cn(styles.form_control)}>
               <option>FOURTH (1% в день)</option>
               <option>FOURTH (2% в день)</option>
               <option>FOURTH (3% в день)</option>
@@ -38,8 +38,9 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
             <InputGroup className="mb-3">
               <FormControl
                 placeholder="Сумма"
-                aria-label="Username"
+                aria-label="Сумма"
                 aria-describedby="basic-addon1"
+                className={cn(styles.form_control)}
               />
             </InputGroup>
           </Col>
