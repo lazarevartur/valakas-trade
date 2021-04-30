@@ -7,6 +7,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import cn from "classnames";
 import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../../routes/routesConfig";
+import { Link } from "react-router-dom";
 
 interface PasswordResetProps extends defaultModalComponentProps {}
 
@@ -36,6 +37,9 @@ const PasswordReset: React.FC<PasswordResetProps> = ({ url }) => {
               </Form.Group>
               <div className={cn(styles.button_group)}>
                 <Button className={cn(styles.button)}>Войти</Button>
+                <Link to={`${url}${RoutePath.login}`}>
+                  Вход в личный кабинет
+                </Link>
               </div>
             </Col>
           </Row>
