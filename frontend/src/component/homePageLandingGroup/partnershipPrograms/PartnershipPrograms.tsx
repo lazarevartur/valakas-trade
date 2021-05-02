@@ -253,6 +253,4 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
   );
 };
 
-PartnershipPrograms.defaultProps = {};
-
 export default PartnershipPrograms;

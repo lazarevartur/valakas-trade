@@ -24,7 +24,9 @@ const SubMenu = () => {
               </LinkContainer>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="link-2">Как сдесь заработать?</Nav.Link>
+              <LinkContainer to={RoutePath.howToMakeMoneyHere}>
+                <Nav.Link eventKey="link-2">Как сдесь заработать?</Nav.Link>
+              </LinkContainer>
             </Nav.Item>
             <NavDropdown title="Партнерские програмы" id="nav-dropdown">
               <NavDropdown.Item eventKey="4.1">

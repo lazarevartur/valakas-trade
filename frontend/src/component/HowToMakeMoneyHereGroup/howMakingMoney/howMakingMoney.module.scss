@@ -1,0 +1,36 @@
+@import "./src/assets/globalStyles/style";
+.title {
+  text-align: right;
+  font-size: 49px;
+}
+.HowMakingMoney {
+  position: relative;
+  height: 432px;
+}
+.content {
+  display: flex;
+  align-items: center;
+}
+.bg {
+  background-color: transparent;
+  position: relative;
+  min-height: 400px;
+  //&:after {
+  //  content: "";
+  //  position: absolute;
+  //  top: 0;
+  //  left: 28%;
+  //  width: 100%;
+  //  height: 100%;
+  //  background: linear-gradient(
+  //    90.17deg,
+  //    #ffffff 20.6%,
+  //    rgba(255, 255, 255, 0.4) 65.39%
+  //  );
+  //}
+}
+
+.bg_img {
+  position: absolute;
+  left: -35%;
+}

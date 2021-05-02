@@ -13,9 +13,12 @@
     font-weight: 500;
   }
 }
-.singIn,
+.singUp,
 .registration {
-  padding: 50px;
+  padding: 30px;
+}
+.singUp {
+  padding-bottom: 0;
 }
 .button_group {
   display: flex;

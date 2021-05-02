@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./jumbotronMain.module.scss";
 import cn from "classnames";
 import { Button, Col, Container, Jumbotron, Row } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { RoutePath } from "../../../routes/routesConfig";
 
 interface JumbotronMainProps {
   className?: string;
@@ -28,7 +30,9 @@ const JumbotronMain: React.FC<JumbotronMainProps> = ({ className = "" }) => {
                 doloremque ullam quae eaque qui iste ut. Atque officia laborum
                 recusandae.
               </p>
-              <Button size={"lg"}>Вход/Регистрация</Button>
+              <LinkContainer to={RoutePath.login}>
+                <Button size={"lg"}>Вход/Регистрация</Button>
+              </LinkContainer>
             </h1>
           </Col>
         </Row>

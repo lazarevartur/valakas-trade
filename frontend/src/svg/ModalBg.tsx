@@ -13,7 +13,7 @@ const ModalBg: React.FC<ModalBgProps> = ({ className = "" }) => {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <g clip-path="url(#clip0)">
+      <g clipPath="url(#clip0)">
         <g opacity="0.3">
           <path
             opacity="0.3"

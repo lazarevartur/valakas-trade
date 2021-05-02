@@ -9,6 +9,7 @@ import { Profile } from "../pages/profile";
 import { Income } from "../pages/income";
 import { Authorization } from "../pages/authorization";
 import { AboutPage } from "../pages/about";
+import { HowToMakeMoneyHere } from "../pages/howToMakeMoneyHere";
 
 export interface route {
   path: RoutePath;
@@ -20,6 +21,7 @@ export interface route {
 export enum RoutePath {
   home = "/",
   about = "/about",
+  howToMakeMoneyHere = "/howToMakeMoneyHere",
   auth = "/auth",
   authWithRef = "/r/:id",
   personal = "/personal",
@@ -43,6 +45,12 @@ const routesConfig: route[] = [
     path: RoutePath.about,
     exact: true,
     component: AboutPage,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.howToMakeMoneyHere,
+    exact: true,
+    component: HowToMakeMoneyHere,
     access: AccessRouts.all,
   },
   {
