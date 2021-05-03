@@ -1,3 +1,20 @@
+export interface defaultContainerProps {
+  className?: string;
+}
+export interface defaultSvgProps {
+  className?: string;
+}
+
+export interface defaultComponentProps {
+  className?: string;
+}
+export interface defaultModalComponentProps {
+  className?: string;
+  isOpened?: boolean;
+  url?: string;
+  title?: string;
+}
+
 export interface IDefaultUserData {
   _id: string;
   name: string;

@@ -1,0 +1,62 @@
+.profitCalculator {
+  background-color: #fec825;
+  padding: 70px;
+}
+.title {
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 64px;
+  text-align: center;
+  color: #333333;
+  margin-bottom: 50px;
+}
+.output {
+  h6 {
+    color: #151719;
+    font-size: 20px;
+    line-height: 10px;
+    text-align: center;
+  }
+  p {
+    color: #151719;
+    font-weight: 500;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  small {
+    color: #151719;
+    text-align: center;
+    display: block;
+  }
+}
+.collum {
+  padding: 40px;
+  position: relative;
+  background: #ffe187;
+  &:nth-of-type(odd) {
+    &:after {
+      content: "";
+      position: absolute;
+      height: 95%;
+      width: 2px;
+      background: #fec825;
+      top: 5px;
+      right: 0;
+      border-radius: 20px;
+    }
+  }
+}
+.collum_select {
+  padding: 0 40px 0 0;
+  margin-bottom: 40px;
+  &:nth-of-type(even) {
+    padding: 0 0 0 40px;
+  }
+}
+.form_control {
+  background: #ffffff;
+  height: 60px;
+  border: transparent;
+  border-radius: 4px;
+}

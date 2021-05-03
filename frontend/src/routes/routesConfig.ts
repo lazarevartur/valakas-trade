@@ -8,6 +8,8 @@ import { AccessRouts } from "../config";
 import { Profile } from "../pages/profile";
 import { Income } from "../pages/income";
 import { Authorization } from "../pages/authorization";
+import { AboutPage } from "../pages/about";
+import { HowToMakeMoneyHere } from "../pages/howToMakeMoneyHere";
 
 export interface route {
   path: RoutePath;
@@ -18,7 +20,8 @@ export interface route {
 
 export enum RoutePath {
   home = "/",
-  login = "/login",
+  about = "/about",
+  howToMakeMoneyHere = "/howToMakeMoneyHere",
   auth = "/auth",
   authWithRef = "/r/:id",
   personal = "/personal",
@@ -26,6 +29,9 @@ export enum RoutePath {
   profile = "/profile",
   dashboard = "/dashboard",
   team = "/team",
+  login = "?auth=sign-in",
+  registration = "?auth=sign-up",
+  resetPassword = "?auth=reset-password",
 }
 
 const routesConfig: route[] = [
@@ -33,6 +39,18 @@ const routesConfig: route[] = [
     path: RoutePath.home,
     exact: true,
     component: HomePage,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.about,
+    exact: true,
+    component: AboutPage,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.howToMakeMoneyHere,
+    exact: true,
+    component: HowToMakeMoneyHere,
     access: AccessRouts.all,
   },
   {
@@ -63,12 +81,6 @@ const routesConfig: route[] = [
     path: RoutePath.team,
     exact: true,
     component: TeamPage,
-    access: AccessRouts.all,
-  },
-  {
-    path: RoutePath.login,
-    exact: true,
-    component: Login,
     access: AccessRouts.all,
   },
   {

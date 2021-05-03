@@ -1,14 +1,14 @@
-import React from 'react'
-import './App.css'
-import { Header } from '../component/header'
-import { Switch } from 'react-router-dom'
-import { routesConfig } from '../routes/routesConfig'
-import { ProtectedRoute } from '../routes/ProtectedRoute'
-import { Footer } from '../component/footer'
+import React from "react";
+import "./App.css";
+import { Header } from "../component/header";
+import { Switch } from "react-router-dom";
+import { routesConfig } from "../routes/routesConfig";
+import { ProtectedRoute } from "../routes/ProtectedRoute";
+import { Footer } from "../component/footer";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Header />
       <Switch>
         {routesConfig.map((route) => (
@@ -23,7 +23,7 @@ function App() {
       </Switch>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

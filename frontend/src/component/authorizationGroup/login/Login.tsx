@@ -1,12 +1,14 @@
 import React from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatchTyped } from "../../../hooks/useTypedRedux";
-import "./loginPage.scss";
+import styles from "./loginPage.module.scss";
 import { RoutePath } from "../../../routes/routesConfig";
 import { Loader } from "../../loader";
 import { login } from "../../../store/action/authAction";
+import { MainRow } from "../../../layouts/mainRow";
+import { FullWidthRow } from "../../../layouts/fullWidthRow";
 //TODO ОБРАБОТКА ОШИБОК
 export interface userLogin {
   email: string;
@@ -21,7 +23,8 @@ const Login: React.FC = () => {
     dispatch(login(data));
   };
   return (
-    <div className={"login"}>
+    <FullWidthRow className={styles.login} lg={12}>
+      <h2 className={"text-center mb-4"}>Вход в личный кабинет.</h2>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
@@ -31,9 +34,6 @@ const Login: React.FC = () => {
             ref={register}
             name="email"
           />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
@@ -45,14 +45,22 @@ const Login: React.FC = () => {
             name="password"
           />
         </Form.Group>
-        <Form.Group controlId="formBasicCheckbox1">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Row>
+          <Col className={styles.two_column}>
+            <Form.Group controlId="formBasicCheckbox1" className={styles.reset}>
+              <Form.Check type="checkbox" label="Запомнить меня" />
+            </Form.Group>
+            <a href="#">Забыли пароль?</a>
+          </Col>
+        </Row>
+        <Row>
+          <Col className={styles.two_column}>
+            <a href="#">Регистрация</a>
+            <Button className={styles.login_button}>Войти</Button>
+          </Col>
+        </Row>
       </Form>
-    </div>
+    </FullWidthRow>
   );
 };
 

@@ -1,91 +1,50 @@
-import React from 'react'
+import React from "react";
+import styles from "./header.module.scss";
+import { useLocation, Link, useRouteMatch } from "react-router-dom";
+import { useDispatchTyped, useSelectorTyped } from "../../hooks/useTypedRedux";
 import {
   Button,
-  Col,
   Container,
+  Form,
+  FormControl,
   Nav,
   Navbar,
-  Image,
-  Dropdown,
-  Row,
-} from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
-
-import './header.scss'
-import logo from './logo.png'
-import { SocialButtons } from '../socialButtons'
-import { SubMenu } from './subMenu'
-import { RoutePath } from '../../routes/routesConfig'
-import { useLocation } from 'react-router-dom'
-import { Avatar } from '../avatar'
-import { logout } from './../../store/action/authAction'
-import { useDispatchTyped, useSelectorTyped } from '../../hooks/useTypedRedux'
-
+} from "react-bootstrap";
+import { LogoSvg } from "../uiKit/Logo";
+import { SocialButtons } from "../socialButtons";
+import { SubMenu } from "./subMenu";
+import { LinkContainer } from "react-router-bootstrap";
+import { RoutePath } from "../../routes/routesConfig";
+import cn from "classnames";
+import { AuthorizationModal } from "../authorizationModalGroup/authorizationModal";
 const Header = () => {
-  const location = useLocation()
-  const dispatch = useDispatchTyped()
+  const location = useLocation();
+  const router = useRouteMatch();
+  const dispatch = useDispatchTyped();
+  const isHome = location.pathname === RoutePath.home;
   const {
     userData: { token: isAuth },
-  } = useSelectorTyped((state) => state.authentication)
+  } = useSelectorTyped((state) => state.authentication);
 
   return (
-    <header>
-      <Navbar collapseOnSelect expand="lg">
-        <Container>
-          <div className={'logo'}>
-            <LinkContainer to={`${RoutePath.home}`}>
-              <Navbar.Brand href="#home">
-                <Col xs={6} md={4}>
-                  <Image src={`${logo}`} className={'logo-img'} />
-                </Col>
-              </Navbar.Brand>
-            </LinkContainer>
-            <span>ТВОЙ ПРАВИЛЬНЫЙ ВЫБОР</span>
-          </div>
-          {location.pathname !== RoutePath.home && isAuth ? (
-            <>
-              <Row>
-                <Col lg={6}>
-                  <Avatar />
-                </Col>
-                <Col lg={4}>
-                  <Dropdown className={'dropdown__header'}>
-                    <Dropdown.Toggle variant="primary" id="dropdown-menu" />
-                    <Dropdown.Menu>
-                      <Dropdown.Item onClick={() => dispatch(logout())}>
-                        Выход
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </Col>
-              </Row>
-            </>
-          ) : (
-            <>
-              <SocialButtons className={'position'} />
-              <div className={'divider'} />
-              <Navbar.Toggle aria-controls="responsive-navbar-nav">
-                Меню
-              </Navbar.Toggle>
-              <Navbar.Collapse
-                id="responsive-navbar-nav"
-                className={'flex-grow-0'}
-              >
-                <Nav className="ml-auto" activeKey>
-                  <LinkContainer to={`${RoutePath.auth}`}>
-                    <Nav.Link>
-                      <Button variant="primary">Войти / Регистрация</Button>
-                    </Nav.Link>
-                  </LinkContainer>
-                </Nav>
-              </Navbar.Collapse>
-            </>
-          )}
-        </Container>
+    <header className={"container"}>
+      <AuthorizationModal />
+      <Navbar className={cn(styles.header_main_menu)}>
+        <Navbar.Brand href="#home">
+          <SocialButtons />
+        </Navbar.Brand>
+        <Navbar.Brand>
+          <Link to={"/"}>
+            <LogoSvg />
+          </Link>
+        </Navbar.Brand>
+        <LinkContainer to={`${location.pathname}${RoutePath.login}`}>
+          <Button>Вход/Регистрация</Button>
+        </LinkContainer>
       </Navbar>
-      {location.pathname === RoutePath.home && <SubMenu />}
+      <SubMenu />
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

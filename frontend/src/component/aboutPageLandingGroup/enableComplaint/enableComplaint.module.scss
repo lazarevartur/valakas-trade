@@ -1,0 +1,32 @@
+.EnableComplaint {
+  background-color: #fec825;
+  padding: 100px;
+  strong {
+    font-weight: 600;
+    font-size: 41px;
+    line-height: 64px;
+    color: #333333;
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button {
+  width: 350px;
+  height: 70px;
+  border: 1px solid #000;
+  background-color: #fec825;
+  font-size: 22px;
+  &:hover {
+    border: 1px solid #000;
+  }
+}
+.bg_svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.3;
+}

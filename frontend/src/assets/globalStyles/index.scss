@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,500&display=swap");
+$mainColor: #f1c40f;
+$secondColor: #ffde7b;
+$pressedColor: #ffcf3e;
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+button {
+  letter-spacing: 0px;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+a:hover {
+  color: #ffcf3e;
+}
+.container {
+  max-width: 1180px;
+}
+.btn-primary {
+  background: $mainColor;
+  border-color: $mainColor;
+  border-radius: 10px;
+  color: #000;
+  padding: 10px;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background: $secondColor;
+  border-color: $secondColor;
+  color: #000;
+}
+.dropdown-menu {
+  box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.1);
+  border-color: transparent;
+}
+.dropdown-item {
+  min-height: 44px;
+  min-width: 200px;
+  line-height: 40px;
+}
+.list-group-item {
+  background-color: transparent;
+  border-color: transparent;
+  padding: 20px;
+  font-weight: 600;
+}
+.list-group-item.active {
+  background-color: #fff;
+  color: #daa400;
+  border: 1px solid #e0e0e0;
+}
+.nav-link.active {
+  color: $pressedColor;
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid #fec825;
+    border-radius: 50px;
+  }
+}
+.nav-link:hover {
+  color: $pressedColor;
+}
+.nav-link {
+  margin: 0.5rem 1rem;
+  padding: 0;
+}
+.card {
+  border-color: transparent;
+}
+.form-group {
+  margin-bottom: 2rem;
+}
+.form-control {
+  height: 50px;
+  background: #f5f5f5;
+  border: transparent;
+  &:focus {
+    background: #f5f5f5;
+  }
+}
+.modal-content {
+  border-radius: 30px;
+}
+.modal-body {
+  position: relative;
+  overflow: hidden;
+}
+////если окно браузера больше максимальной ширины сайта
+//@media screen and (min-width: 500px) {
+//  html {
+//    margin-left: calc(100vw - 100%);
+//    margin-right: 0;
+//  }
+//}
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 12px; /* ширина для вертикального скролла */
+  height: 8px; /* высота для горизонтального скролла */
+  background-color: #ecf0f1;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #fec825;
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px #f3faf7;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ffde7b;
+}

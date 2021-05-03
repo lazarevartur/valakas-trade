@@ -1,0 +1,41 @@
+.signInContainer {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  h5 {
+    font-size: 26px;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 35px;
+    font-weight: 500;
+  }
+}
+.singUp,
+.registration {
+  padding: 30px;
+}
+.singUp {
+  padding-bottom: 0;
+}
+.button_group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  p {
+    text-align: center;
+  }
+}
+.button {
+  min-width: 192px;
+  margin-bottom: 20px;
+  margin-top: 25px;
+}
+.bg {
+  position: absolute;
+  bottom: -15%;
+  left: -1%;
+}

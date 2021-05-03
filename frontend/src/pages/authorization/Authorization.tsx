@@ -34,12 +34,9 @@ const Authorization = () => {
   return (
     <Container className={styles.auth_block}>
       <Row>
-        <Col>
-          <Tabs id="controlled-tab-login" defaultActiveKey={"registration"}>
+        <Col lg={{ offset: 2, span: 8 }}>
+          <Tabs id="controlled-tab-login" defaultActiveKey={"login"}>
             <Tab eventKey="login" title="Войти" className={"mt-4"}>
-              <h2 className={"text-center mb-4"}>
-                <strong>Вход в личный кабинет.</strong>
-              </h2>
               <Login />
             </Tab>
             <Tab

@@ -1,0 +1,40 @@
+.title {
+  font-weight: 600;
+  font-size: 54px;
+  line-height: 64px;
+  text-align: center;
+  color: #333333;
+}
+.bg {
+  padding-top: 120px;
+  background: #f9f9f9;
+  padding-bottom: 160px;
+}
+.bg_svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+small {
+  margin-top: 30px;
+  margin-bottom: 7px;
+  text-align: center;
+  display: block;
+  color: #828282;
+}
+.content {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 41px;
+  letter-spacing: 0px;
+  text-align: center;
+  div {
+    display: inline;
+    background-color: #fef2cc;
+    padding: 0 20px;
+    color: #333333;
+    line-height: 14px;
+    font-size: 24px;
+  }
+}
