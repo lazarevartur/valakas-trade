@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Col,
-  Container,
-  Dropdown,
-  DropdownButton,
-  Nav,
-  NavDropdown,
-  Row,
-} from "react-bootstrap";
+import { Col, Container, Nav, NavDropdown, Row } from "react-bootstrap";
 import styles from "./subMenu.module.scss";
 import { RoutePath } from "../../../routes/routesConfig";
 import { LinkContainer } from "react-router-bootstrap";
@@ -29,9 +21,11 @@ const SubMenu = () => {
               </LinkContainer>
             </Nav.Item>
             <NavDropdown title="Партнерские програмы" id="nav-dropdown">
-              <NavDropdown.Item eventKey="4.1">
-                Token Profit Team
-              </NavDropdown.Item>
+              <LinkContainer to={RoutePath.binarProfitTeam}>
+                <NavDropdown.Item eventKey="4.1">
+                  Binar Profit Team
+                </NavDropdown.Item>
+              </LinkContainer>
               <NavDropdown.Item eventKey="4.2">
                 Coin Profit Team
               </NavDropdown.Item>

@@ -1,18 +1,7 @@
 import React from "react";
 import styles from "./signIn.module.scss";
 import { defaultModalComponentProps } from "../../../types/types";
-import { useHistory } from "react-router";
-import {
-  Button,
-  Col,
-  Container,
-  Form,
-  FormControl,
-  InputGroup,
-  Modal,
-  Row,
-} from "react-bootstrap";
-import { ModalLayout } from "../../../layouts/ModalLayout";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import cn from "classnames";
 import ModalBg from "../../../svg/ModalBg";
 import { LinkContainer } from "react-router-bootstrap";

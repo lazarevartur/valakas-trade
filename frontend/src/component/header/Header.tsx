@@ -1,15 +1,8 @@
 import React from "react";
 import styles from "./header.module.scss";
-import { useLocation, Link, useRouteMatch } from "react-router-dom";
-import { useDispatchTyped, useSelectorTyped } from "../../hooks/useTypedRedux";
-import {
-  Button,
-  Container,
-  Form,
-  FormControl,
-  Nav,
-  Navbar,
-} from "react-bootstrap";
+import { useLocation, Link } from "react-router-dom";
+import { useSelectorTyped } from "../../hooks/useTypedRedux";
+import { Button, Navbar } from "react-bootstrap";
 import { LogoSvg } from "../uiKit/Logo";
 import { SocialButtons } from "../socialButtons";
 import { SubMenu } from "./subMenu";
@@ -19,9 +12,6 @@ import cn from "classnames";
 import { AuthorizationModal } from "../authorizationModalGroup/authorizationModal";
 const Header = () => {
   const location = useLocation();
-  const router = useRouteMatch();
-  const dispatch = useDispatchTyped();
-  const isHome = location.pathname === RoutePath.home;
   const {
     userData: { token: isAuth },
   } = useSelectorTyped((state) => state.authentication);

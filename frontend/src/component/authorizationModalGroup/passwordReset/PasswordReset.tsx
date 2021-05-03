@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./PasswordReset.module.scss";
 import { defaultModalComponentProps } from "../../../types/types";
-import { ModalLayout } from "../../../layouts/ModalLayout";
 import ModalBg from "../../../svg/ModalBg";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import cn from "classnames";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./ModalLayout.module.scss";
 import { defaultModalComponentProps } from "../../types/types";
 import { Modal } from "react-bootstrap";

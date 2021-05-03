@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Card, Col, Container, Image, Row } from "react-bootstrap";
 
 import style from "./profile.module.scss";

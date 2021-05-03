@@ -10,7 +10,6 @@ import { ProfitabilityTableLanding } from "../../component/homePageLandingGroup/
 import { ProfitCalculator } from "../../component/homePageLandingGroup/profitСalculator";
 import { News } from "../../component/homePageLandingGroup/news";
 import { BecomePartner } from "../../component/homePageLandingGroup/becomePartner";
-import { ModalLayout } from "../../layouts/ModalLayout";
 
 const HomePage: React.FC = () => {
   return (

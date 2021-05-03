@@ -2,16 +2,7 @@ import React from "react";
 import styles from "./BecomePartner.module.scss";
 import { defaultComponentProps } from "../../../types/types";
 import cn from "classnames";
-import HomeBg from "../../../svg/HomeBg";
-import {
-  Button,
-  Card,
-  CardDeck,
-  Col,
-  Container,
-  Image,
-  Row,
-} from "react-bootstrap";
+import { Button, Col, Container, Image, Row } from "react-bootstrap";
 
 interface BecomePartnerProps extends defaultComponentProps {}
 

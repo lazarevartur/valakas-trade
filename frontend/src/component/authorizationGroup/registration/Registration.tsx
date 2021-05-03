@@ -1,15 +1,6 @@
-import React, { ReactNode, RefObject, useEffect } from "react";
+import React from "react";
 import { Form, Button } from "react-bootstrap";
-import { useForm } from "react-hook-form";
 import styles from "./registration.module.scss";
-import { register as registerAction } from "../../../store/action/authAction";
-import {
-  useDispatchTyped,
-  useSelectorTyped,
-} from "../../../hooks/useTypedRedux";
-import { IUserRegistration, rootState } from "../../../types/types";
-import { useHistory } from "react-router";
-import { RoutePath } from "../../../routes/routesConfig";
 import { Loader } from "../../loader";
 
 export interface RegistrationProp {

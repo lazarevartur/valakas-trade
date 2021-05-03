@@ -1,31 +1,20 @@
-import React from 'react'
-import {
-  Alert,
-  Button,
-  Col,
-  Container,
-  Nav,
-  OverlayTrigger,
-  Row,
-  Tab,
-  Tooltip,
-  Card,
-} from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
-import { RoutePath } from '../../routes/routesConfig'
-import './dashboardLayout.scss'
+import React from "react";
+import { Button, Col, Container, Nav, Row, Tab, Card } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { RoutePath } from "../../routes/routesConfig";
+import "./dashboardLayout.scss";
 
 interface Layout {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const DashboardLayout: React.FC<Layout> = ({
   children,
 }): React.ReactElement => {
   return (
-    <Container className={'dashboard-layout'}>
-      <Row className={'mt-3'}>
-        <Col lg={3} className={'dashboard-sidebar'}>
+    <Container className={"dashboard-layout"}>
+      <Row className={"mt-3"}>
+        <Col lg={3} className={"dashboard-sidebar"}>
           <Card>
             <Card.Body>
               <Tab.Container id="left-tabs-example" defaultActiveKey="first">
@@ -52,14 +41,14 @@ const DashboardLayout: React.FC<Layout> = ({
                   </Nav.Item>
                 </Nav>
               </Tab.Container>
-              <Button variant="outline-success" className={'mt-3'}>
+              <Button variant="outline-success" className={"mt-3"}>
                 Зарегистрировать нового партнера
               </Button>
             </Card.Body>
           </Card>
         </Col>
         <Col lg={9}>
-          <Row className={'mb-3'}>
+          <Row className={"mb-3"}>
             <Col lg={12}>
               <Card>
                 <Nav variant="pills" defaultActiveKey={RoutePath.dashboard}>
@@ -80,9 +69,9 @@ const DashboardLayout: React.FC<Layout> = ({
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-DashboardLayout.defaultProps = {}
+DashboardLayout.defaultProps = {};
 
-export default DashboardLayout
+export default DashboardLayout;

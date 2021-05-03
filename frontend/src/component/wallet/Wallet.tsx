@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Button, Card, CardDeck } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import styles from "./wallet.module.scss";
 import useHover from "../../hooks/useHover";
 

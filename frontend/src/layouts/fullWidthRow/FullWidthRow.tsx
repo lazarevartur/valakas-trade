@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./fullWidthRow.module.scss";
-import { Col, ColProps, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { defaultContainerProps } from "../../types/types";
 import cn from "classnames";
 

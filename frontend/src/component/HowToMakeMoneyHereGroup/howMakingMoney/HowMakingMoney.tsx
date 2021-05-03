@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./howMakingMoney.module.scss";
 import cn from "classnames";
 import { defaultComponentProps } from "../../../types/types";
-import { Col, Row, Image, Container } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import BgMakeMoney from "../../../svg/BgMakeMoney";
 
 interface HowMakingMoneyProps extends defaultComponentProps {}
