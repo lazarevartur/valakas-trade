@@ -6,7 +6,7 @@
 }
 .BinarProfitTeamMain {
   position: relative;
-  padding: 50px 0;
+  margin: 40px 0;
   p {
     margin-bottom: 50px;
     color: #000;
@@ -20,7 +20,7 @@
     content: "";
     position: absolute;
     height: 450px;
-    width: 140%;
+    width: 145%;
     z-index: 1;
     left: -5%;
 
@@ -37,7 +37,7 @@
   top: 0;
   left: -5%;
   height: 450px;
-  width: 140%;
+  width: 145%;
   object-fit: cover;
 }
 .flex_container {
