@@ -1,0 +1,34 @@
+@import "./src/assets/globalStyles/style";
+.InvestmentPackages {
+  padding: 80px 0;
+  background-color: #f9f9f9;
+  p {
+    text-align: center;
+    font-weight: 400;
+    font-size: 15px;
+    color: #333333;
+  }
+  .cardGroup {
+    margin: 100px 0;
+  }
+}
+.title {
+  font-size: 50px;
+  margin-bottom: 30px;
+}
+
+.description {
+  text-align: center;
+  .accent {
+    font-size: 30px;
+    color: #fec825;
+  }
+  span {
+    font-size: 74px;
+    font-weight: 600;
+    color: #fec825;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}

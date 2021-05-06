@@ -1,0 +1,44 @@
+@import "./src/assets/globalStyles/style";
+.title {
+  text-align: left;
+  margin-top: 130px;
+  margin-bottom: 30px;
+}
+.BinarProfitTeamMain {
+  position: relative;
+  margin: 40px 0;
+  p {
+    margin-bottom: 50px;
+    color: #000;
+    z-index: 100;
+  }
+}
+.img_container {
+  position: relative;
+  &:before {
+    /* Rectangle 5 */
+    content: "";
+    position: absolute;
+    height: 450px;
+    width: 145%;
+    z-index: 1;
+    left: -5%;
+
+    background: linear-gradient(
+      90.17deg,
+      #ffffff 0.6%,
+      rgba(255, 255, 255, 0.4) 69.39%
+    );
+  }
+}
+.img {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: -5%;
+  height: 450px;
+  width: 145%;
+  object-fit: cover;
+}
+.flex_container {
+}

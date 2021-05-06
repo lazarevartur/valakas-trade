@@ -4,7 +4,7 @@ import { FullWidthRow } from "../../layouts/fullWidthRow";
 import { HowMakingMoney } from "../../component/HowToMakeMoneyHereGroup/howMakingMoney";
 import TwoCols from "../../layouts/TwoCols/TwoCols";
 import cn from "classnames";
-import { Button, Col, Image } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../routes/routesConfig";
 
@@ -190,7 +190,9 @@ const HowToMakeMoneyHere: React.FC<HowToMakeMoneyHereProps> = () => {
                   <span>прямо сейчас</span>!
                 </h5>
                 <LinkContainer to={RoutePath.registration}>
-                  <Button>Стать партнером</Button>
+                  <Button className={styles.become_partner_button}>
+                    Стать партнером
+                  </Button>
                 </LinkContainer>
               </div>
             );

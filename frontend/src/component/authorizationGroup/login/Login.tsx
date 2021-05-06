@@ -4,10 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatchTyped } from "../../../hooks/useTypedRedux";
 import styles from "./loginPage.module.scss";
-import { RoutePath } from "../../../routes/routesConfig";
-import { Loader } from "../../loader";
 import { login } from "../../../store/action/authAction";
-import { MainRow } from "../../../layouts/mainRow";
 import { FullWidthRow } from "../../../layouts/fullWidthRow";
 //TODO ОБРАБОТКА ОШИБОК
 export interface userLogin {
@@ -16,9 +13,8 @@ export interface userLogin {
 }
 
 const Login: React.FC = () => {
-  const history = useHistory();
   const dispatch = useDispatchTyped();
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data: userLogin) => {
     dispatch(login(data));
   };
