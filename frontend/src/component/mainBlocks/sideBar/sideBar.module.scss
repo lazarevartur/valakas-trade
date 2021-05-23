@@ -1,0 +1,29 @@
+@import "./src/assets/globalStyles/variables";
+
+.side_bar {
+  .card_body {
+    padding: 0 8px;
+  }
+  .nav_link {
+    margin: 0 1px;
+    a {
+      color: black;
+    }
+
+    padding: 20px 30px;
+
+    span {
+      padding-left: 10px;
+    }
+  }
+
+  .nav_item {
+    a {
+      color: #4f4f4f;
+      font-size: 16px;
+      &:hover {
+        color: $pressedColor;
+      }
+    }
+  }
+}

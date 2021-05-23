@@ -4,7 +4,7 @@ import { Header } from "../component/header";
 import { Switch } from "react-router-dom";
 import { routesConfig } from "../routes/routesConfig";
 import { ProtectedRoute } from "../routes/ProtectedRoute";
-import { Footer } from "../component/footer";
+import { Footer } from "../component/mainBlocks/footer";
 
 function App() {
   return (

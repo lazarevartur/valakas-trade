@@ -1,0 +1,41 @@
+import React from "react";
+import styles from "./desktop.module.scss";
+import { Col, Container, Image, Row } from "react-bootstrap";
+import cn from "classnames";
+import { DashboardTitleBlock } from "../../../layouts/dashboardTitleBlock";
+
+const src =
+  "https://s3-alpha-sig.figma.com/img/aaf6/d86c/eb742c3d298838770f5e6737a24405ba?Expires=1622419200&Signature=cKVV-aTf889f38BR~X14cCwh24gT1MyOilVVXNs30FWp9fhsB0P3f0hZ1gXgyl8~3bB~UMFeKrvUQmaMy25F4w6iIK28NuSjU3199-OCOQ~jLDVRxwFT7bl3ZRDmk3II-LrEevm6QHkTdd7SgqX5pkTCibFKafuAgBNdW51oKXJ1GPNowflvPPTjzIJCNhZ8mAJTqzUPIzDmfYwy-KWtDcVYa9GUr9vtZV-z3euDX-le8iWITfs2iPL40d6W9BaWidVMSfZVuHFv3CCrwhX5ccnIjNRdh75SFSwxAp~LrR~DdOo8iV5SHwafcr7Ag29PxrepOyULiyIGf56jaxbu5Q__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA";
+
+interface DesktopProps {}
+
+const Desktop: React.FC<DesktopProps> = () => {
+  return (
+    <Container className={cn(styles.Desktop)}>
+      <DashboardTitleBlock title={"Ваш профиль"} />
+      <Row className={styles.row_info_block}>
+        <Col lg={3} className={styles.img_block}>
+          <Image src={src} className={styles.img} />
+        </Col>
+        <Col lg={9}>
+          <div className={styles.info_block}>
+            <span className={styles.name}>Andrew Newton</span>
+            <span className={styles.email}>Keenan50@gmail.com</span>
+            <span className={styles.id}>ID: UA3789209134</span>
+            <div className={styles.verify_block}>
+              <span className={styles.no_verify}>Не верифицирован</span>
+              <a href={"#"} className={styles.go_verify}>
+                Пройти верификацию
+              </a>
+            </div>
+          </div>
+        </Col>
+      </Row>
+      <DashboardTitleBlock title={"Рабочий стол"} />
+    </Container>
+  );
+};
+
+Desktop.defaultProps = {};
+
+export default Desktop;

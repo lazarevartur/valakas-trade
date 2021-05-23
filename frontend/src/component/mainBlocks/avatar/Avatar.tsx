@@ -1,6 +1,6 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { RoutePath } from "../../routes/routesConfig";
+import { RoutePath } from "../../../routes/routesConfig";
 import { Image } from "react-bootstrap";
 import "./avatar.scss";
 

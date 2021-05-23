@@ -1,9 +1,7 @@
 import React from "react";
 import { HomePage } from "../pages/home";
 import { PersonalPage } from "../pages/personal";
-import { Dashboard } from "../pages/dashnboard";
 import { TeamPage } from "../pages/team";
-import { Login } from "../component/authorizationGroup/login";
 import { AccessRouts } from "../config";
 import { Profile } from "../pages/profile";
 import { Income } from "../pages/income";
@@ -11,6 +9,7 @@ import { Authorization } from "../pages/authorization";
 import { AboutPage } from "../pages/about";
 import { HowToMakeMoneyHere } from "../pages/howToMakeMoneyHere";
 import { BinarProfitTeam } from "../pages/binarProfitTeam";
+import { Dashboard } from "../pages/dashnboard";
 
 export interface route {
   path: RoutePath;
@@ -69,9 +68,9 @@ const routesConfig: route[] = [
   },
   {
     path: RoutePath.dashboard,
-    exact: true,
+    exact: false,
     component: Dashboard,
-    access: AccessRouts.user,
+    access: AccessRouts.all,
   },
   {
     path: RoutePath.profile,
