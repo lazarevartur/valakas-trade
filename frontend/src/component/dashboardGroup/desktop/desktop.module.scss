@@ -1,3 +1,5 @@
+$mainMargin: 55px;
+
 .row {
   margin-top: 24px;
   border-bottom: 1px solid #e0e0e0;
@@ -14,9 +16,10 @@
     font-weight: 500;
   }
 }
+
 .row_info_block {
-  padding-top: 26px;
   margin-bottom: 55px;
+
   .img_block {
     .img {
       object-fit: cover;
@@ -26,6 +29,7 @@
     }
   }
 }
+
 .info_block {
   display: flex;
   flex-direction: column;
@@ -33,20 +37,24 @@
   align-items: flex-start;
   color: #333333;
   font-size: 16px;
+
   span {
     margin-bottom: 5px;
   }
 
   .verify_block {
     margin-top: 25px;
+
     span {
       margin-right: 10px;
     }
+
     .no_verify {
       color: #eb5757;
       border: 1px solid #eb5757;
       padding: 7px;
     }
+
     .go_verify {
       color: #2f80ed;
     }
@@ -64,4 +72,44 @@
   .id {
     color: #4f4f4f;
   }
+}
+
+.desktop_info {
+  .text {
+    font-size: 16px;
+    color: #4f4f4f;
+    margin-bottom: 10px;
+  }
+
+  .count {
+    font-weight: 500;
+    font-size: 17px;
+    color: #4f4f4f;
+  }
+
+  .referral_link {
+    background-color: #fffaea;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 95px;
+    margin-left: 15px;
+
+    span {
+      font-size: 16px;
+      color: #828282;
+      margin-bottom: 5px;
+    }
+
+    .link {
+      font-weight: 500;
+      font-size: 16px;
+      color: #daa400;
+      cursor: pointer;
+    }
+  }
+}
+
+.wallets {
+  margin-bottom: $mainMargin;
 }

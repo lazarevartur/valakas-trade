@@ -1,5 +1,6 @@
 import React from "react";
-import { Alert, Card, Table } from "react-bootstrap";
+import styles from "./profitabilityTable.module.scss";
+import { Card, Row, Table, Col } from "react-bootstrap";
 
 interface ITable {
   className?: string;
@@ -10,17 +11,18 @@ const ProfitabilityTable: React.FC<ITable> = ({
   className,
 }): React.ReactElement => {
   return (
-    <Card>
-      <Card.Header className={"text-center"}>
-        <strong className={"h4"}>Таблица вашей доходности:</strong>
-      </Card.Header>
-      <Card.Header>
-        <Alert variant={"secondary"}>Всего заработанно: 10000$</Alert>
-      </Card.Header>
-      <Card.Body>
-        <Table hover className={className}>
+    <Card className={styles.ProfitabilityTable}>
+      <Row>
+        <Col lg={5} className={styles.total_earned}>
+          <span>
+            Всего заработанно: <span className={styles.count}>10000$</span>
+          </span>
+        </Col>
+      </Row>
+      <Card.Body className={styles.card_body}>
+        <Table hover striped className={className}>
           <thead>
-            <tr>
+            <tr className={styles.t_head}>
               <th>Название</th>
               <th>Полученная сумма</th>
               <th>% соотношения от общей суммы</th>
