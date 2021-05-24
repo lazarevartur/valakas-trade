@@ -1,7 +1,12 @@
 .wallet {
+  box-shadow: 0px 0px 5px rgba(108, 108, 108, 0.05);
+  border-radius: 10px;
+  border: 1px solid #f2f2f2;
+
   &:hover {
-    background: linear-gradient( 135deg, #86c5f5 0%,#2399f1 100%);
+    background: #ffde7b;
   }
+
   &:after {
     content: "";
     position: absolute;
@@ -10,9 +15,10 @@
     z-index: 1;
     width: 95px;
     height: 91px;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF8AAABbCAMAAAAiA6nRAAAAPFBMVEUAAADy8vLz8/Pz8/Py8vLz8/Pz8/Pv7+/y8vL39/fv7+/09PTy8vL09PTz8/P09PTz8/Py8vLy8vLy8vLaJLYjAAAAE3RSTlMAv79/3z9fIO8fEJ+fb48vr89Pb4dJuwAAAmZJREFUaN7t2Nt6oyAABGCUsxFPvP+77ibUTrVlB3Dz9ca565f4oxMOTURDtNzEG2NijEG8L91ff7kkcL/Hn7d/+7d/+7f/K77Xm/nI5k/+YJBNz9W2ntZ4iD742sVjuuDL8UG6eM5y8Jf4PaOv0Ik/xh/iQgk/qx+v9fCzb4oT543bxSUYvWcezp+v/pqw7B1RPqb0eqian9akJ5KknKQrXT//7YJ5lotVqcahaX3J163lrsW0CK3rdySfsSE88weFhrLtyAv7j0ZDucfrL+1vE+4w045v9tHQnH9JimYfDa3ZR1OizecNadIO8WlDpB3i04YkaYf4rCGLdq75aIi2w33eEN+ZuM8bsthZL/to6NTOKGp83hD88GrH1/i8IfjWPX0j/qc/OPgL2rnqI9unb0g7lT7uGocKa8cunTn6dlwDawiHCmtnfU1n+OmmNtJQeTvxGQn/yfN/1tBOoLWnAZKfLiKd8iMX2UGZ/M+/WHDklg7w9BXh67dNDOBiSiFvcKiUDVDHiw7tFA8AnieeorrJkwEYr2W3v09oyEjn8wNQfu4iIrYTzS6nEzMcHCFjywB5XoKA//iS3sV/r0w7PQz7auWWDy35pyd8jeAGURe05ySuhc+/A/CM2Cm/+8jc+gAKiynn4z50Na9xjmR9vDHU0MDmvI843Ehl/U6U+KrZV8V+1/TT1lrkL5UTCK32RX6oXAFYvIH6WAG+YfF66uPYUb6a7wX18QDRSV/5c50v87GPr11JcOxQH69UBDz32wcIosYXdqzSey/KfMSaqS/LI2A1Er81t3/7t3/7VQk4dN6RP7dIZF78yTaNAAAAAElFTkSuQmCC) no-repeat center center transparent;
   }
+
   .card_text {
+    text-align: center;
     font-size: 40px;
     line-height: 50px;
     color: #354052;
@@ -20,25 +26,36 @@
     position: relative;
     z-index: 2;
   }
+
   .card_title {
-    font-size: 18px;
+    text-align: center;
+    font-size: 16px;
     line-height: 26px;
     color: #354052;
     position: relative;
     z-index: 2;
   }
+
   .card_button {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 20px;
-    color: #FFF;
+    color: #fffc;
     position: relative;
     z-index: 3;
     padding: 10px 15px;
   }
+
+  .card_body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
   .card_button_hover {
     @extend .card_button;
-    color: #3498DB;
-    background: white;
+    color: #333333;
+    background: #ffffff;
     box-shadow: none;
   }
 }

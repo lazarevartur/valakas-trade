@@ -1,0 +1,23 @@
+.ProfitabilityTable {
+  .card_body {
+    padding: 0;
+  }
+  .total_earned {
+    background-color: #fffaea;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 16px;
+    margin-left: 15px;
+    color: #333333;
+    .count {
+      font-weight: 600;
+      font-size: 20px;
+      color: #daa400;
+      margin-left: 21px;
+    }
+  }
+  .t_head {
+    font-weight: 600;
+    font-size: 15px;
+  }
+}

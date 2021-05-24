@@ -1,8 +1,8 @@
 import React from "react";
 import { Row, Col, Nav } from "react-bootstrap";
 import styles from "./footer.module.scss";
-import { LogoSvg } from "../uiKit/Logo";
-import { SocialButtons } from "../socialButtons";
+import { LogoSvg } from "../../uiKit/Logo";
+import { SocialButtons } from "../../socialButtons";
 import { Link } from "react-router-dom";
 
 const Footer = () => {

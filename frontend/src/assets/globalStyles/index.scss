@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,500&display=swap");
-$mainColor: #f1c40f;
-$secondColor: #ffde7b;
-$pressedColor: #ffcf3e;
+@import "variables";
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -73,6 +71,23 @@ a:hover {
 .nav-link {
   margin: 0.5rem 1rem;
   padding: 0;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: $mainColor;
+  background: #fffcf4;
+  border-radius: 0;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    border-left: 4px solid #fec825;
+    border-bottom: transparent;
+    border-radius: 0;
+  }
 }
 .card {
   border-color: transparent;
