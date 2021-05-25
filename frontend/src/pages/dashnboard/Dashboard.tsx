@@ -21,8 +21,17 @@ const Dashboard: React.FC<DashboardProps> = () => {
     }
   }, []);
 
+  const $startDashboard = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    if ($startDashboard.current) {
+      $startDashboard.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  }, [pathname]);
+
   return (
-    <div className={cn(styles.dashboard)}>
+    <div className={cn(styles.dashboard)} ref={$startDashboard}>
       <Container className={cn(styles.container)}>
         <Row>
           <Col lg={3} className={styles.side_bar}>

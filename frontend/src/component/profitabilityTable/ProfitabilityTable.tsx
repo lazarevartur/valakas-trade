@@ -1,26 +1,32 @@
 import React from "react";
 import styles from "./profitabilityTable.module.scss";
 import { Card, Row, Table, Col } from "react-bootstrap";
+import cn from "classnames";
 
 interface ITable {
   className?: string;
   children?: React.ReactNode;
+  totalEarned?: boolean;
 }
 
 const ProfitabilityTable: React.FC<ITable> = ({
-  className,
+  className = "",
+  totalEarned,
 }): React.ReactElement => {
   return (
-    <Card className={styles.ProfitabilityTable}>
-      <Row>
-        <Col lg={5} className={styles.total_earned}>
-          <span>
-            Всего заработанно: <span className={styles.count}>10000$</span>
-          </span>
-        </Col>
-      </Row>
+    <Card className={cn(styles.ProfitabilityTable, { [className]: className })}>
+      {totalEarned ? (
+        <Row>
+          <Col lg={5} className={styles.total_earned}>
+            <span>
+              Всего заработанно: <span className={styles.count}>10000$</span>
+            </span>
+          </Col>
+        </Row>
+      ) : null}
+
       <Card.Body className={styles.card_body}>
-        <Table hover striped className={className}>
+        <Table hover striped className={styles.table_striped}>
           <thead>
             <tr className={styles.t_head}>
               <th>Название</th>

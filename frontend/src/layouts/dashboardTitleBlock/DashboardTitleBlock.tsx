@@ -4,11 +4,15 @@ import { Col, Row } from "react-bootstrap";
 
 interface DashboardTitleBlockProps {
   title: string;
+  reff?: React.Ref<HTMLDivElement>;
 }
 
-const DashboardTitleBlock: React.FC<DashboardTitleBlockProps> = ({ title }) => {
+const DashboardTitleBlock: React.FC<DashboardTitleBlockProps> = ({
+  title,
+  reff = undefined,
+}) => {
   return (
-    <Row className={styles.row}>
+    <Row className={styles.row} ref={reff}>
       <Col lg={12} className={styles.col}>
         <span className={styles.title}>{title}</span>
       </Col>

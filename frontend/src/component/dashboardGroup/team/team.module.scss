@@ -1,0 +1,80 @@
+$marginBottom: 50px;
+
+.information {
+  margin-bottom: $marginBottom;
+  .row {
+    padding: 10px 0;
+    .accent {
+      font-weight: 500;
+      font-size: 18px;
+      color: #333333;
+    }
+  }
+}
+.profit_table {
+  margin-bottom: $marginBottom;
+}
+.table_striped {
+  border-top: 2px solid #fff;
+  thead th {
+    border-bottom: 1px solid #fec825;
+    font-size: 15px;
+  }
+  tbody tr:nth-of-type(odd) {
+    background-color: #ffffff;
+  }
+  tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+  }
+  .lines {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      right: 40%;
+      top: 0;
+      background-color: #f2f2f2;
+      width: 1px;
+      height: 100%;
+    }
+  }
+  td,
+  th {
+    border-top: transparent;
+  }
+}
+.table_striped_sm {
+  @extend .table_striped;
+  tbody tr:nth-of-type(even) {
+    background-color: #ffffff;
+  }
+  tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+  }
+  td {
+    padding: 7px;
+    font-size: 18px;
+  }
+}
+.our_partners {
+  margin-bottom: $marginBottom;
+}
+.status_mentora {
+  .table_striped_status {
+    @extend .table_striped;
+    thead th {
+      font-size: 14px;
+    }
+    td:nth-of-type(1) {
+      font-weight: 600;
+      font-size: 16px;
+      color: #4f4f4f;
+    }
+    td {
+      padding: 15px 10px;
+    }
+  }
+  .width {
+    width: 120px;
+  }
+}
