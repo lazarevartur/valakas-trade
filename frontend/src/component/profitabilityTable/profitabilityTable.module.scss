@@ -2,6 +2,7 @@
   .card_body {
     padding: 0;
   }
+
   .total_earned {
     background-color: #fffaea;
     padding: 10px;
@@ -9,6 +10,7 @@
     margin-bottom: 16px;
     margin-left: 15px;
     color: #333333;
+
     .count {
       font-weight: 600;
       font-size: 20px;
@@ -16,8 +18,22 @@
       margin-left: 21px;
     }
   }
+
   .t_head {
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
+  }
+}
+
+.table_striped {
+  border-top: 2px solid #fff;
+  thead th {
+    border-bottom: 1px solid #fec825;
+  }
+  tbody tr:nth-of-type(odd) {
+    background-color: #ffffff;
+  }
+  tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9;
   }
 }
