@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactEventHandler } from "react";
 import styles from "./signIn.module.scss";
 import { defaultModalComponentProps } from "../../../types/types";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
@@ -7,10 +7,13 @@ import ModalBg from "../../../svg/ModalBg";
 import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../../routes/routesConfig";
 import { Link } from "react-router-dom";
+import { CustomInput } from "../../uiKit/customInput";
 
 interface SignInProps extends defaultModalComponentProps {}
 
 const SignIn: React.FC<SignInProps> = ({ isOpened = false, url }) => {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
   return (
     <>
       <ModalBg className={styles.bg} />
@@ -32,20 +35,34 @@ const SignIn: React.FC<SignInProps> = ({ isOpened = false, url }) => {
             <Col lg={6} className={cn(styles.singIn)}>
               <h5>Вход в личный кабинет</h5>
               <Form.Group controlId="formEmail">
-                <Form.Control type="email" placeholder="Email" name="email" />
+                <CustomInput
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />{" "}
               </Form.Group>
               <Form.Group controlId="formPassword">
-                <Form.Control
+                <CustomInput
                   type="password"
                   placeholder="Пароль"
                   name="password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 />
               </Form.Group>
               <Form.Group controlId="formCheckbox">
                 <Form.Check type="checkbox" label="Запомнить меня" />
               </Form.Group>
               <div className={cn(styles.button_group)}>
-                <Button className={cn(styles.button)}>Войти</Button>
+                <Button type="submit" className={cn(styles.button)}>
+                  Войти
+                </Button>
                 <Link to={`${url}${RoutePath.resetPassword}`}>
                   Забыли пароль?
                 </Link>

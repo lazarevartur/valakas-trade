@@ -35,13 +35,13 @@ const ModalBg: React.FC<ModalBgProps> = ({ className = "" }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(129083 -189671) rotate(164.233) scale(207.656 207.624)"
         >
-          <stop stop-color="white" />
-          <stop offset="0.07" stop-color="#E4E4E4" />
-          <stop offset="0.27" stop-color="#A0A0A0" />
-          <stop offset="0.46" stop-color="#676767" />
-          <stop offset="0.63" stop-color="#3A3A3A" />
-          <stop offset="0.78" stop-color="#1A1A1A" />
-          <stop offset="0.91" stop-color="#070707" />
+          <stop stopColor="white" />
+          <stop offset="0.07" stopColor="#E4E4E4" />
+          <stop offset="0.27" stopColor="#A0A0A0" />
+          <stop offset="0.46" stopColor="#676767" />
+          <stop offset="0.63" stopColor="#3A3A3A" />
+          <stop offset="0.78" stopColor="#1A1A1A" />
+          <stop offset="0.91" stopColor="#070707" />
           <stop offset="1" />
         </radialGradient>
         <radialGradient
@@ -52,13 +52,13 @@ const ModalBg: React.FC<ModalBgProps> = ({ className = "" }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(55888.8 -91094.8) rotate(164.233) scale(51.9139 51.9059)"
         >
-          <stop stop-color="white" />
-          <stop offset="0.07" stop-color="#E4E4E4" />
-          <stop offset="0.27" stop-color="#A0A0A0" />
-          <stop offset="0.46" stop-color="#676767" />
-          <stop offset="0.63" stop-color="#3A3A3A" />
-          <stop offset="0.78" stop-color="#1A1A1A" />
-          <stop offset="0.91" stop-color="#070707" />
+          <stop stopColor="white" />
+          <stop offset="0.07" stopColor="#E4E4E4" />
+          <stop offset="0.27" stopColor="#A0A0A0" />
+          <stop offset="0.46" stopColor="#676767" />
+          <stop offset="0.63" stopColor="#3A3A3A" />
+          <stop offset="0.78" stopColor="#1A1A1A" />
+          <stop offset="0.91" stopColor="#070707" />
           <stop offset="1" />
         </radialGradient>
         <radialGradient
@@ -69,13 +69,13 @@ const ModalBg: React.FC<ModalBgProps> = ({ className = "" }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(55416.8 -89880.2) rotate(164.233) scale(51.9142 51.9188)"
         >
-          <stop stop-color="white" />
-          <stop offset="0.07" stop-color="#E4E4E4" />
-          <stop offset="0.27" stop-color="#A0A0A0" />
-          <stop offset="0.46" stop-color="#676767" />
-          <stop offset="0.63" stop-color="#3A3A3A" />
-          <stop offset="0.78" stop-color="#1A1A1A" />
-          <stop offset="0.91" stop-color="#070707" />
+          <stop stopColor="white" />
+          <stop offset="0.07" stopColor="#E4E4E4" />
+          <stop offset="0.27" stopColor="#A0A0A0" />
+          <stop offset="0.46" stopColor="#676767" />
+          <stop offset="0.63" stopColor="#3A3A3A" />
+          <stop offset="0.78" stopColor="#1A1A1A" />
+          <stop offset="0.91" stopColor="#070707" />
           <stop offset="1" />
         </radialGradient>
         <clipPath id="clip0">

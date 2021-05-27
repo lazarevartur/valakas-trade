@@ -3,6 +3,7 @@ import styles from "./profit.module.scss";
 import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { DashboardTitleBlock } from "../../../layouts/dashboardTitleBlock";
 import { ProfitabilityTable } from "../../profitabilityTable";
+import { CustomInput } from "../../uiKit/customInput";
 
 interface ProfitProps {
   totalEarned?: boolean;

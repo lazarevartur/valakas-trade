@@ -89,6 +89,21 @@ a:hover {
     border-radius: 0;
   }
 }
+.nav-tabs {
+  padding: 10px 0;
+}
+.nav-tabs .nav-link {
+  border: none;
+  color: #333;
+}
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #daa400;
+
+  &:after {
+    bottom: -10px;
+  }
+}
 .card {
   border-color: transparent;
 }
@@ -109,6 +124,24 @@ a:hover {
 .modal-body {
   position: relative;
   overflow: hidden;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: #fec825;
+  background-color: #fff;
+  color: #000;
+}
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
+  content: "";
+  height: 6px;
+  width: 9px;
+  border-right: 2px solid #fec825;
+  border-top: 2px solid #fec825;
+  top: 8px;
+  left: -20px;
+  transform: rotate(127deg);
+}
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label:focus {
+  background: red;
 }
 ////если окно браузера больше максимальной ширины сайта
 //@media screen and (min-width: 500px) {
