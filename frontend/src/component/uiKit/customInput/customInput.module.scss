@@ -1,0 +1,17 @@
+.customInput {
+  position: relative;
+  span {
+    position: absolute;
+    top: 14px;
+    left: 12px;
+    transition: 0.3s ease;
+    color: #828282;
+    pointer-events: none;
+  }
+  .to_top {
+    pointer-events: auto;
+    top: -25px;
+    color: #333;
+    font-size: 14px;
+  }
+}

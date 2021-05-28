@@ -13,7 +13,11 @@ const MainAdvantages: React.FC<MainAdvantagesProps> = () => {
       <Container>
         <Row>
           <Col>
-            <h2 className={styles.title}>Главные преимущества</h2>
+            <h2 className={styles.title}>Быстрый старт – лучший результат</h2>
+            <p className={styles.sub_title}>
+              Начните работу прямо сейчас, чтобы ваши средства начали работать
+              на вас
+            </p>
           </Col>
         </Row>
         <Row>
@@ -21,8 +25,9 @@ const MainAdvantages: React.FC<MainAdvantagesProps> = () => {
             <div className={styles.advantage}>
               <span className={styles.big_number}>01</span>
               <p>
-                <strong>Мы не торгуем на бирже,</strong> никаких сделок на
-                повышение или понижение, в такой стратегии есть риск
+                <strong>Зарегистрируйтесь бесплатно.</strong> Регистрация
+                занимает не более трех минут. Вы сможете управлять и
+                контролировать свои средства прямо в личном аккаунте.
               </p>
             </div>
           </Col>
@@ -32,9 +37,8 @@ const MainAdvantages: React.FC<MainAdvantagesProps> = () => {
             <div className={styles.advantage}>
               <span className={styles.big_number}>02</span>
               <p>
-                Предоставляем возможность{" "}
-                <strong>построить свою структуру,</strong> получая
-                дополнительную прибыль
+                <strong>Выберите программу.</strong> Пополните ваш баланс и
+                выберите программу с наиболее подходящими условиями.
               </p>
             </div>
           </Col>
@@ -44,9 +48,9 @@ const MainAdvantages: React.FC<MainAdvantagesProps> = () => {
             <div className={styles.advantage}>
               <span className={styles.big_number}>03</span>
               <p>
-                Участие в{" "}
-                <strong>нескольких проектах по разным направлениям,</strong>{" "}
-                данная стратегия повышает доходность и снижает риски
+                <strong>Зарабатывайте.</strong> Начните зарабатывать с первого
+                дня! Вы можете выводить средства по завершению периода программы
+                или участвовать в новой программе, чтобы зарабатывать больше!
               </p>
             </div>
           </Col>

@@ -14,13 +14,12 @@ const VideoBlock: React.FC<VideoBlockProps> = ({ className = "" }) => {
       <HomeBg className={styles.bg_svg} />
       <Col lg={{ offset: 3, span: 6 }} className={styles.video_block}>
         <h1 className={styles.title}>
-          <strong>Quis veniam sed</strong>
+          <strong>Успейте стать партнером</strong>
         </h1>
         <p className={styles.text}>
-          Exercitationem rerum nesciunt dicta voluptatem eligendi laudantium
-          temporibus voluptatibus pariatur. Numquam veritatis dolorem et.
-          Tenetur omnis qui omnis minus. Omnis sit eaque doloremque ullam quae
-          eaque qui iste ut. Atque officia laborum recusandae.
+          C Mirax стратегии доверительного управления активами нацелены на
+          результат. Подбор финансовых решений осуществляется, исходя из ваших
+          запросов и потребностей.
         </p>
         <iframe
           width="800"

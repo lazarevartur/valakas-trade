@@ -15,19 +15,14 @@ const HighQualityPrototype: React.FC<HighQualityPrototypeProps> = ({
       <Container>
         <Row>
           <Col>
-            <h5 className={styles.title}>
-              Высококачественный
-              <br /> прототип будущего
-            </h5>
+            <h5 className={styles.title}>Навсегда решите эти проблемы</h5>
             <small>Каждый день большинство людей задумываются</small>
             <div className={styles.content}>
               <div>Как приумножить свой капитал?</div>
               <br />
-              <div>Что бы я сделал, будь у меня такая сумма?</div>
+              <div> Куда инвестировать, чтобы не прогореть?</div>
               <br />
-              <div>
-                Как выйти на пассивный доход ,который покроет мои расходы?
-              </div>
+              <div>Как выйти на доход, который покроет мои расходы?</div>
             </div>
           </Col>
         </Row>

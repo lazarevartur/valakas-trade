@@ -5,6 +5,7 @@ import { Profit } from "../component/dashboardGroup/profit";
 import { Team } from "../component/dashboardGroup/team";
 import { Profile } from "../component/dashboardGroup/profile";
 import { HistoryPage } from "../component/dashboardGroup/history";
+import { TokenProfit } from "../component/dashboardGroup/programs/tokenProfit";
 
 export interface routeDashboard {
   path: DashboardRoute;
@@ -19,6 +20,7 @@ export enum DashboardRoute {
   desktop = "/dashboard/desktop",
   profit = "/dashboard/profit",
   history = "/dashboard/history",
+  tokenProfit = "/dashboard/tokenProfit",
 }
 
 export const dashboardRouteConfig: routeDashboard[] = [
@@ -50,6 +52,12 @@ export const dashboardRouteConfig: routeDashboard[] = [
     path: DashboardRoute.profile,
     exact: true,
     component: Profile,
+    access: AccessRouts.all,
+  },
+  {
+    path: DashboardRoute.tokenProfit,
+    exact: true,
+    component: TokenProfit,
     access: AccessRouts.all,
   },
 ];

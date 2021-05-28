@@ -14,26 +14,26 @@ const JumbotronMain: React.FC<JumbotronMainProps> = ({ className = "" }) => {
     <Jumbotron className={cn(styles.jumbotron, { [className]: className })}>
       <Container>
         <Row className={styles.content}>
-          <Col lg={5}>
+          <Col lg={9}>
             <h1>
-              <strong>Quis veniam sed placeat porro</strong>
+              <strong>
+                Готовые инвестиционные решения с ежедневным доходом{" "}
+              </strong>
             </h1>
           </Col>
         </Row>
         <Row className={styles.content}>
           <Col lg={6}>
-            <h1>
+            <h2>
               <p className={styles.text}>
-                Exercitationem rerum nesciunt dicta voluptatem eligendi
-                laudantium temporibus voluptatibus pariatur. Numquam veritatis
-                dolorem et. Tenetur omnis qui omnis minus. Omnis sit eaque
-                doloremque ullam quae eaque qui iste ut. Atque officia laborum
-                recusandae.
+                Платформа Mirax предоставляет широкие инвестиционные предложения
+                в проекты блокчейн-индустрии для создания активного и пассивного
+                доходов с помощью модели партнерских программ.
               </p>
               <LinkContainer to={RoutePath.login}>
-                <Button size={"lg"}>Вход/Регистрация</Button>
+                <Button size={"lg"}>Присоединиться</Button>
               </LinkContainer>
-            </h1>
+            </h2>
           </Col>
         </Row>
       </Container>

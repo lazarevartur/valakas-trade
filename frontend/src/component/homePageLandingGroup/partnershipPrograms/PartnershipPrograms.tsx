@@ -21,16 +21,13 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
         <Row>
           <Col lg={12}>
             <h1 className={styles.title}>
-              <strong>Инвестиционно-партнерские программы</strong>
+              <strong>Для тех, кто хочет большего</strong>
             </h1>
             <Row>
               <Col lg={{ offset: 3, span: 6 }}>
                 <p className={styles.text}>
-                  Exercitationem rerum nesciunt dicta voluptatem eligendi
-                  laudantium temporibus voluptatibus pariatur. Numquam veritatis
-                  dolorem et. Tenetur omnis qui omnis minus. Omnis sit eaque
-                  doloremque ullam quae eaque qui iste ut. Atque officia laborum
-                  recusandae.
+                  Выберите любую программу на комфортных условиях. Ваш счет
+                  прибавит в весе.
                 </p>
               </Col>
             </Row>

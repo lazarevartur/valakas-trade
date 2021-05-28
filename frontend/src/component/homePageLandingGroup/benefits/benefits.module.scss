@@ -14,7 +14,7 @@
 .title {
   margin: 20px 0;
   font-weight: 600;
-  font-size: 26px;
+  font-size: 20px;
   line-height: 160%;
 }
 .text {
@@ -32,10 +32,10 @@
     position: absolute;
     top: 0;
     right: 16px;
-    content: '';
+    content: "";
     width: 1px;
     height: 105%;
-    background: #FEC825;
+    background: #fec825;
     opacity: 0.8;
   }
 }

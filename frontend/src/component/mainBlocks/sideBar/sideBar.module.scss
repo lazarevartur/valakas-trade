@@ -26,4 +26,15 @@
       }
     }
   }
+  .delimiter {
+    border-bottom: 1px solid #e5e5e5;
+    border-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(229, 229, 229, 1) 52%,
+      rgba(255, 255, 255, 1) 100%
+    );
+
+    border-image-slice: 1;
+  }
 }

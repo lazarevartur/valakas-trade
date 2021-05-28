@@ -16,8 +16,8 @@ const BecomePartner: React.FC<BecomePartnerProps> = ({ className = "" }) => {
           <Col lg={7}>
             <Container>
               <div className={cn(styles.title)}>
-                Присоединяйтесь к мировому инвестиционному сообществу
-                независимых предпринимателей
+                Станьте партнером Mirax и сделайте ваш бизнес высокодоходным с
+                первого дня
               </div>
               <LinkContainer to={RoutePath.registration}>
                 <Button className={cn(styles.button)}>СТАТЬ ПАРТНЕРОМ</Button>
@@ -28,7 +28,7 @@ const BecomePartner: React.FC<BecomePartnerProps> = ({ className = "" }) => {
             <Image
               height={300}
               src={
-                "https://s3-alpha-sig.figma.com/img/fe67/007f/0823074800cca0ecaf37945a84042597?Expires=1621209600&Signature=StmfLY1dpIvxeQV11IhdaE8QFqsa~ala4mBCR5AY9k4dJBzJmob~i9ylL6cGDoROYjx-jj65myqy-Fzewv0Gu4KEEbEoR~DxMAwSKa8e72-LhIsnCpjmk9VzxwPwugC0LN6tBxjmqQ9gIeAxGp7ouO-fdxGpsu3BZcXbsZVZMdQA6v2A2n~-TXc9K5ceZfwUQelMFTu4EBWKzIgmxkna4pMsE0Z510rbsWVUZBwoIxBxXgaQSURtSnwS8CM0f49jPs9xpNiY-XUC8nsyQo7~6vmNiK6wtsq~36zwhEz-GpXaSkxQnVkwHRSPxcSuj4kNQtLeUl6JAgiqypYIaRvZEQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                "https://s3-alpha-sig.figma.com/img/fe67/007f/0823074800cca0ecaf37945a84042597?Expires=1623024000&Signature=YBca3xaItoo3KbqnrdA7-GyvlYN1shzJKzQCLAXFYMA2ze0RcrRkfW461econPPwp1t29dLwlde3qbTuyhUfs3nOxYMb-NGNQ~lgutHr56~dm-G86-TkCXyymGzNedDlxN138moFsw72Zo8OKuzqrUoFIlTa7W1H2BLe~qbOG-XNLv4KTayHXbawjhPpAIyaiUxt8GyXHdM-mnY8wDio~Azq2q6-JZ6mANP5oAyUarD82D3zCYdyogo5Ce2~vL50gEQGnQ70-pSeqTx4ZXi9Imy-wATGoyu9zlfU01wuRCXONCzS1-CKG-ShVXWiXIu7vE~6l5vvUKhLfvtJAgIUPA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
               }
             />
           </Col>

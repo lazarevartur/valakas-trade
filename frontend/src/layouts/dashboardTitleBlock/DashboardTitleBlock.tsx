@@ -1,21 +1,27 @@
 import React from "react";
 import styles from "./dashboardTitleBlock.module.scss";
 import { Col, Row } from "react-bootstrap";
+import cn from "classnames";
 
 interface DashboardTitleBlockProps {
   title: string;
-  reff?: React.Ref<HTMLDivElement>;
+  withOutBottomLine?: boolean;
+  info?: any;
 }
 
 const DashboardTitleBlock: React.FC<DashboardTitleBlockProps> = ({
   title,
-  reff = undefined,
+  withOutBottomLine,
+  info,
 }) => {
   return (
-    <Row className={styles.row} ref={reff}>
-      <Col lg={12} className={styles.col}>
+    <Row
+      className={cn(styles.row, { [styles.border_none]: withOutBottomLine })}
+    >
+      <Col lg={7} className={styles.col}>
         <span className={styles.title}>{title}</span>
       </Col>
+      <Col lg={3}>{info}</Col>
     </Row>
   );
 };

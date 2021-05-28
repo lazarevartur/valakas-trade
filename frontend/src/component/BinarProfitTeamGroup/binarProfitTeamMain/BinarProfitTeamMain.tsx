@@ -29,7 +29,7 @@ const BinarProfitTeamMain: React.FC<BinarProfitTeamMainProps> = () => {
           <Image
             className={styles.img}
             src={
-              "https://s3-alpha-sig.figma.com/img/b5c8/5774/8d3be940407bee939eedbcb5d8a6dd44?Expires=1621209600&Signature=b8yEa1R7kxOb3DuKXEydqkXq8iIwqFNcmQOqhUAXNRWqbsyoERWJFaaVGAX9kQBCO64IodIFKpk5jjpYS~I-mzqfwBjOtfsfjKWvdockbI4FArF9Yhsy~VP~dLa6gRReUbddgc6E4E126dVdsy0iv7rrpUszm5SgKQBz0sk3LgMKQM2T-abqpOh2WTkBOnxr8XAKk1y5nZVP5ny~l9JYxldheH8u1Pu8CI3QBUNkaNAGNraGc2lRyCeBLouKb3lQ6YEAdXo-nK7bg-z0o5vmsOnzNjOXzDb75lxeJNhZ8GXPHhH1k0fDToF2XjMogaEXWxlvh5zSJg7~Hf0iIC1bpA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+              "https://s3-alpha-sig.figma.com/img/b5c8/5774/8d3be940407bee939eedbcb5d8a6dd44?Expires=1623024000&Signature=Ot-8P17SDiv0vCAurM6Z5VCZaVa9IHM37pRPXntANOIzx9b~d2bpiXYrZQD2ztaeR5ADrcAFGKe9NN3SkON1xrJnisIiCTex8GgmWPH2ya7l-LcN65MFUJ7HItFtallHlSn1FKSx5Ps-0vEv0AXaPVuyrQ106Hihq8v8IM4FUn1cL2pvkzjMafV3SC-yJkVf6viBhOltYykdiQOPsirSeF69rRNbZ4kRugrskn3Ro2UW7RlVrCPtIe5kIgErAsdopWSiXCbeCBECRZBrIkrplLFK1Vvg218C8rzNany3iSvusiC0nsKPklnguc9ynqFw~7e9VzDINGacCk5gTFvq1g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
             }
           />
         </Col>

@@ -1,0 +1,53 @@
+@import "src/assets/globalStyles/style";
+.security {
+  button {
+    @extend .button;
+    text-transform: none;
+    font-size: 16px;
+  }
+  .change_password {
+    @extend .bottom_padding;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .info_disable {
+    color: #0058cf;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+  }
+  .authentication {
+    @extend .bottom_padding;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .connect_email_notifications {
+    @extend .bottom_padding;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .sms {
+    @extend .bottom_padding;
+    border-bottom: 1px solid #e0e0e0;
+    p {
+      padding: 15px 0;
+      color: #828282;
+      font-size: 16px;
+      line-height: 140%;
+    }
+  }
+  .verification {
+    margin-bottom: 50px;
+    span {
+      padding: 15px 0;
+      color: #828282;
+      font-size: 16px;
+      line-height: 140%;
+    }
+  }
+  .success {
+    margin-top: 20px;
+  }
+  .success_button {
+    color: #27ae60;
+    border: 1px solid #27ae60;
+    padding: 5px;
+  }
+}
