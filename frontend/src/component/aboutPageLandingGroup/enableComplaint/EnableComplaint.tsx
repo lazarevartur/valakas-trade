@@ -12,10 +12,10 @@ const EnableComplaint: React.FC<EnableComplaintProps> = () => {
       <Container>
         <Row>
           <Col lg={6}>
-            <strong>Ready to enable complaint productivity?</strong>
+            <strong>Оставьте заявку на бесплатную консультацию</strong>
           </Col>
           <Col lg={6} className={styles.flex}>
-            <Button className={styles.button}>Наши контакты</Button>
+            <Button className={styles.button}>Отправить заявку </Button>
           </Col>
         </Row>
       </Container>

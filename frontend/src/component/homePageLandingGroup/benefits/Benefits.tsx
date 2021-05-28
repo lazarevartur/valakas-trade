@@ -6,19 +6,17 @@ import Mountains from "../../../svg/Mountains";
 const Benefits = () => {
   return (
     <div>
-      <h2 className={styles.main_title}>Quis veniam sed</h2>
+      <h2 className={styles.main_title}>Почему стоит инвестировать сейчас</h2>
       <Row className={styles.mt_big}>
         <Col lg={4}>
           <div className={styles.icon}>
             <Mountains />
           </div>
           <div className={styles.content}>
-            <h3 className={styles.title}>Concept</h3>
+            <h3 className={styles.title}>Доходность 100% годовых</h3>
             <p className={styles.text}>
-              Exercitationem rerum nesciunt dicta voluptatem eligendi laudantium
-              temporibus voluptatibus pariatur. Numquam veritatis dolorem et.
-              Tenetur omnis qui omnis minus. Omnis sit eaque doloremque ullam
-              quae eaque qui iste ut.
+              Выбор из представленных тарифных пакетов с высокой окупаемостью до
+              100% годовых. Гарантированный доход уже через день.
             </p>
           </div>
         </Col>
@@ -28,12 +26,11 @@ const Benefits = () => {
           </div>
 
           <div className={styles.content}>
-            <h3 className={styles.title}>Research</h3>
+            <h3 className={styles.title}>Прибыльная бизнес-модель</h3>
             <p className={styles.text}>
-              Exercitationem rerum nesciunt dicta voluptatem eligendi laudantium
-              temporibus voluptatibus pariatur. Numquam veritatis dolorem et.
-              Tenetur omnis qui omnis minus. Omnis sit eaque doloremque ullam
-              quae eaque qui iste ut.
+              Возможность построить собственную структуру благодаря
+              интегрированным реферальным системам, получая дополнительный
+              доход, бонусы и премии за активность.
             </p>
           </div>
         </Col>
@@ -42,12 +39,10 @@ const Benefits = () => {
             <Mountains />
           </div>
           <div>
-            <h3 className={styles.title}>Marketing</h3>
+            <h3 className={styles.title}>Отсутствие рисков</h3>
             <p className={styles.text}>
-              Exercitationem rerum nesciunt dicta voluptatem eligendi laudantium
-              temporibus voluptatibus pariatur. Numquam veritatis dolorem et.
-              Tenetur omnis qui omnis minus. Omnis sit eaque doloremque ullam
-              quae eaque qui iste ut.
+              Никаких нелегальных проектов, торговли на биржах, сделок на
+              повышение или понижение, несущих риск.
             </p>
           </div>
         </Col>

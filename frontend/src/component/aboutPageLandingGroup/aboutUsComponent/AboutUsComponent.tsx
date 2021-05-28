@@ -10,27 +10,27 @@ const AboutUsComponent: React.FC<AboutUsComponentProps> = ({
   return (
     <Row className={styles.bg}>
       <Col lg={6} className={styles.content}>
-        <p>Компания с опытом и своими наработками это отличное решение.</p>
+        <h2>
+          Руководствуйтесь балансом между возможными рисками и потенциальной
+          доходностью
+        </h2>
         <p>
-          <span className={styles.accent}>Mirax</span> выводит своих партнеров
-          на подходящий уровень.
+          На современном рынке финансовые инструменты работают в одном
+          направлении, ограничивая возможности инвесторов и увеличивая риски.
         </p>
         <p>
-          Рынок заполнен компаниями, каждая из них развивается в одном
-          направлении, это может быть криптомайнинг, торговля криптовалютой,
-          выдача кредитов и тд. Наша компания объединяет все эти направления.
+          <span className={styles.accent}>Mirax</span> расширяет возможности
+          заработка для своих партнеров, объединяя самые прибыльные и
+          перспективные направления: блокчейн-проекты, майнинговые компании,
+          цифровые продукты, сетевые компании и стартапы. Откройте для себя
+          возможность получения финансовой свободы без рисков!
         </p>
-
-        <span className={styles.accent2}>
-          Кто сказал Как приумножить свой капитал? нельзя быть лучшими во всех
-          сферах?
-        </span>
       </Col>
       <Col lg={6}>
         <Image
           className={styles.bg_img}
           src={
-            "https://s3-alpha-sig.figma.com/img/ed03/56cc/1f21eea4f24543e574c71ad07991b283?Expires=1620000000&Signature=BshjhUtNECzQYSJQvrKpIComxRJjCWz-TQJC3njU5Kd99wZZQ73kQcSXlv5vx0QOrc5ySe~jEBlhTHF5SB50kGUMRgk5W8YtH9Zi8t3DeXquZMvoveI1SWXkEAo-ba3zIoU-iCaOMSRXQfCR4hgQcEMizkTpOY2Ml6c-4mBToBm-HJXZ~SEOkxfc~J~sQkWT5wMOS2nYKUmf~h9J47pYKAYjkAaVdBtUnXbDooQ2eGFEV98tXWp6JIsuHd0QbubFscY6bHE7bHcOGHlJC6cVkSulnXuZdSY85WK2-JLi8ENUekft8L8QQuCia6XPlpBdxzUsYUUofNQvUsk86PpTDQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            "https://s3-alpha-sig.figma.com/img/ed03/56cc/1f21eea4f24543e574c71ad07991b283?Expires=1623024000&Signature=MXsXXMpwv3I9htZVqgAGq84TJVtU2n61XGhjpNLJ6aMC5LJyygbou5g3pV1~DcLBUf~6uZn1Tn6HlMNBF9jIA1r4jNrE64AmK4HI9s60N3IGqHQEyNCVgY3IkWZEYg2ShgyTiNyMZJgJ5zy9Ohd~9WkJ59-HDnzmsYa2jq4gM7VVM9u4psbb3ddfwQdCjsJHQtD5K1R7dwO0dNWxYlvYNB9BQY6UDB2qOBdZeZ85BcxJMkT5uqEGZ4OyQ2gg89gP~uqmMB7c4HCVEmgsgUcjR-0VnuWMot34iWDwJTEyXBIbYyUYPZEGxCUea9kbFmGugW5tDRHtl~mWoCFk49L2Mw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
           }
         />
       </Col>

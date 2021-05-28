@@ -41,22 +41,23 @@ const menu: menu[] = [
     link: DashboardRoute.profile,
     icon: `fas fa-cog`,
   },
-];
-const a = ["Token Profit", "Coin Profit", "Synergy"];
-const subMenu = [
   {
     title: "Token Profit",
-    link: "/dashboard/profile",
+    link: DashboardRoute.tokenProfit,
+    icon: `far fa-play-circle`,
   },
   {
     title: "Coin Profit",
-    link: "/dashboard/profile",
+    link: "/dashboard/profile1",
+    icon: `far fa-play-circle`,
   },
   {
     title: "Synergy",
-    link: "/dashboard/profile",
+    link: "/dashboard/profile3",
+    icon: `far fa-play-circle`,
   },
 ];
+const a = ["Token Profit", "Coin Profit", "Synergy"];
 
 const SideBar: React.FC<SideBarProps> = ({ className = "" }) => {
   return (
@@ -67,7 +68,11 @@ const SideBar: React.FC<SideBarProps> = ({ className = "" }) => {
             {menu.map(({ link, title, icon }) => (
               <Nav.Item key={title} className={styles.nav_item}>
                 <LinkContainer to={link}>
-                  <Nav.Link className={styles.nav_link}>
+                  <Nav.Link
+                    className={cn(styles.nav_link, {
+                      [styles.delimiter]: title === "Личные данные",
+                    })}
+                  >
                     <i className={icon} />
                     <span>{title}</span>
                   </Nav.Link>
