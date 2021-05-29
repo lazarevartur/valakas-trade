@@ -114,26 +114,4 @@ const TokenProfit: React.FC<TokenProfitProps> = () => {
   );
 };
 
-TokenProfit.defaultProps = {};
-
 export default TokenProfit;
-// <Row>
-//     <Col lg={4}>
-//         <div className={styles.account}>
-//             <span>Сумма депозита</span>
-//             <span>19 778 $</span>
-//         </div>
-//     </Col>
-//     <Col lg={4}>
-//         <div className={styles.account}>
-//             <span>Дивиденды</span>
-//             <span>19 778 $</span>
-//         </div>
-//     </Col>
-//     <Col lg={4}>
-//         <div className={styles.account}>
-//             <span>Выплаты по реферальной программе</span>
-//             <span>19 778 $</span>
-//         </div>
-//     </Col>
-// </Row>
