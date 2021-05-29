@@ -1,11 +1,13 @@
-import React from "react";
+import React, { RefObject } from "react";
 import styles from "./security.module.scss";
 import { DashboardTitleBlock } from "../../../../layouts/dashboardTitleBlock";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { CustomInput } from "../../../uiKit/customInput";
 import { CustomCheckBox } from "../../../uiKit/customCheckBox";
 
-interface SecurityProps {}
+interface SecurityProps {
+  verifRef?: any;
+}
 
 const Security: React.FC<SecurityProps> = () => {
   return (

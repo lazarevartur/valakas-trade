@@ -10,6 +10,7 @@ import {
   ListGroup,
   Row,
 } from "react-bootstrap";
+import Chart from "../../../uiKit/chart/Chart";
 
 interface TokenProfitProps {}
 
@@ -88,7 +89,9 @@ const TokenProfit: React.FC<TokenProfitProps> = () => {
           title={"Статистика доходности по программе Token Profit"}
         />
         <Row className={styles.statistics}>
-          <Col lg={{ offset: 1, span: 6 }}>СДЕЛАИТь ГРАФИК</Col>
+          <Col lg={5}>
+            <Chart />
+          </Col>
           <Col lg={5}>
             <ListGroup className={styles.list_group}>
               <ListGroup.Item className={styles.first}>
