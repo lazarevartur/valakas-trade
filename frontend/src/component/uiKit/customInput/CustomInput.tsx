@@ -18,6 +18,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
   placeholder = "Text",
   name = "textInput",
   value = "",
+  onChange = () => null,
   ...props
 }) => {
   return (
@@ -30,6 +31,7 @@ const CustomInput: React.FC<CustomInputProps> = ({
         type={type}
         name={name}
         value={value}
+        onChange={onChange}
         {...props}
       />
     </div>

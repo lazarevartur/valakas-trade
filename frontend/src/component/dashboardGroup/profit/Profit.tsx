@@ -4,6 +4,7 @@ import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { DashboardTitleBlock } from "../../../layouts/dashboardTitleBlock";
 import { ProfitabilityTable } from "../../profitabilityTable";
 import { CustomInput } from "../../uiKit/customInput";
+import Chart from "../../uiKit/chart/Chart";
 
 interface ProfitProps {
   totalEarned?: boolean;
@@ -56,7 +57,9 @@ const Profit: React.FC<ProfitProps> = () => {
       <DashboardTitleBlock title={"Статистика"} />
       <div className={styles.statistics}>
         <Row>
-          <Col lg={{ offset: 1, span: 6 }}>СДЕЛАИТь ГРАФИК</Col>
+          <Col lg={6}>
+            <Chart />
+          </Col>
           <Col lg={5}>
             <ListGroup className={styles.list_group}>
               <ListGroup.Item className={styles.first}>

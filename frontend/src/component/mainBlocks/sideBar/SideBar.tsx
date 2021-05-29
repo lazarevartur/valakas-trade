@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./sideBar.module.scss";
 import { Button, Card, Nav, Tab } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { RoutePath } from "../../../routes/routesConfig";
 import { defaultComponentProps } from "../../../types/types";
 import cn from "classnames";
 import { DashboardRoute } from "../../../routes/dashboard";
@@ -57,7 +56,6 @@ const menu: menu[] = [
     icon: `far fa-play-circle`,
   },
 ];
-const a = ["Token Profit", "Coin Profit", "Synergy"];
 
 const SideBar: React.FC<SideBarProps> = ({ className = "" }) => {
   return (

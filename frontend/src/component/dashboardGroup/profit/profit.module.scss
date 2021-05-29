@@ -21,6 +21,10 @@
 
 .statistics {
   margin-bottom: 60px;
+  .chart {
+    z-index: 1000;
+    overflow: visible;
+  }
 
   span {
     color: #333;
