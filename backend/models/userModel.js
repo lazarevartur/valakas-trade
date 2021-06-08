@@ -53,7 +53,6 @@ const userSchema = new mongoose.Schema(
                     ref: 'User',
                 },
             ],
-            additional_lines: { type: Boolean, default: false },
             fourth: [
                 {
                     type: mongoose.Schema.Types.ObjectId,
@@ -109,6 +108,7 @@ const userSchema = new mongoose.Schema(
             default: 0,
         },
         configUser: {
+            additional_lines: { type: Boolean, default: false },
             linear_premium: {
                 firstLine: { type: Number, default: 0.04 },
                 sekondLine: { type: Number, default: 0.03 },

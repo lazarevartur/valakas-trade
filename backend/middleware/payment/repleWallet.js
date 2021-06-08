@@ -3,9 +3,10 @@ import User from '../../models/userModel.js';
 import mongoose from 'mongoose';
 import { getPartnet } from '../../services/partnerService.js';
 
-//мидл для оплаты
+// мидл для оплаты
 // Принимает id пользователя и сумму пополнения
 // id = req.user, cost = req.body
+// в req.isPayd кладет ответ от оплаты bool
 export const repleWallet = asyncHandler(async (req, res, next) => {
     const { cost } = req.body;
     const user_id = req.user;
@@ -15,7 +16,7 @@ export const repleWallet = asyncHandler(async (req, res, next) => {
 
     try {
         user = await User.findById(user_id).select(
-            'wallets Inviting_id total_investment configUser'
+            'wallets Inviting_id total_investment configUser.linear_premium partners.additional_lines'
         );
     } catch (error) {
         console.log(error);
@@ -28,21 +29,6 @@ export const repleWallet = asyncHandler(async (req, res, next) => {
         user.total_investment += Number(cost);
         user.save();
         req.isPayd = true;
-
-        const config = user.toObject().configUser.linear_premium;
-        let partners_id = user_id;
-
-        for (const prop in config) {
-            if (partners_id) {
-                partners_id = await getPartnet(
-                    partners_id,
-                    (partner) => {
-                        partner.wallets.bonus_account += cost * config[prop];
-                    },
-                    'Inviting_id wallets'
-                );
-            }
-        }
     } else {
         return res.status(400).send({
             message: 'Неверная сумма пополнения',
@@ -54,17 +40,4 @@ export const repleWallet = asyncHandler(async (req, res, next) => {
     } else {
         return res.send('Ошибка при оплате ');
     }
-
-    // if (isPayd) {
-    //     console.log('test');
-    //     req.params.id = '60ba4772a26370453c4b67b0';
-    //     return addProgramsMrx(req, res);
-    // }
-
-    // if (user) {
-    //     res.json('good');
-    // } else {
-    //     res.status(400);
-    //     throw new Error('no good');
-    // }
 });

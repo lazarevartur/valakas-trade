@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import User from '../models/userModel.js';
-import asyncHandler from 'express-async-handler';
 
 export const getPartnet = async (userId, cb = () => null, selectQuery = '') => {
     if (!mongoose.isValidObjectId(userId)) {
