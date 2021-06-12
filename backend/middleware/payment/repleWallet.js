@@ -1,7 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import User from '../../models/userModel.js';
 import mongoose from 'mongoose';
-import { getPartnet } from '../../services/partnerService.js';
 
 // мидл для оплаты
 // Принимает id пользователя и сумму пополнения
@@ -16,7 +15,7 @@ export const repleWallet = asyncHandler(async (req, res, next) => {
 
     try {
         user = await User.findById(user_id).select(
-            'wallets Inviting_id total_investment configUser.linear_premium partners.additional_lines'
+            'Inviting_id total_investment configUser.linear_premium programs_walets'
         );
     } catch (error) {
         console.log(error);
@@ -25,7 +24,7 @@ export const repleWallet = asyncHandler(async (req, res, next) => {
 
     // пополнение
     if (user && cost > 0) {
-        user.wallets.start_account += Number(cost);
+        user.programs_walets.mrx += Number(cost);
         user.total_investment += Number(cost);
         user.save();
         req.isPayd = true;

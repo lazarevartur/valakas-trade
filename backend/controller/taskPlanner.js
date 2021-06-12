@@ -9,17 +9,17 @@ export const dailyUpdate = asyncHandler(async (req, res) => {
                 'partners.first partners.second partners.third partners.fourth partners.fifth',
         });
         const userIncomeMap = {};
-        // Каждый день капает от 0.1-2% от суммы депозита ( линейный доход )
+        // Каждый день капает от 0.1-2% от MRX  ( линейный доход )
         const stageOne = allUsers.map((user) => {
-            const income = user.wallets.start_account * dailyInterest;
+            const income = user.programs_walets.mrx * dailyInterest;
             userIncomeMap[user.email] = income;
             user.wallets.operating_account += income;
 
             return user.save();
         });
-        // Каждый день капает от 5-2% от линейного дохода партнеров ( дивиденды )
-        const stageTwo = await Promise.all(stageOne);
 
+        const stageTwo = await Promise.all(stageOne);
+        // Каждый день капает от 5-2% от линейного дохода партнеров ( дивиденды )
         stageTwo.map((user) => {
             const partnersLines = Object.values(user.partners.toObject());
             console.log(user.email, 'email');
@@ -30,7 +30,8 @@ export const dailyUpdate = asyncHandler(async (req, res) => {
                             partner.email,
                             `line:${line + 1} partner:${i + 1} `
                         );
-                        const interestRate = +(0.05 - +`0.0${line}`).toFixed(2);
+                        const lineRate = +`0.0${line}`;
+                        const interestRate = +(0.05 - lineRate).toFixed(2);
                         const partnerIncome = userIncomeMap[partner.email];
                         user.wallets.bonus_account +=
                             partnerIncome * interestRate;

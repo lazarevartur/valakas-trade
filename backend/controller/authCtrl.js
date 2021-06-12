@@ -61,50 +61,42 @@ export const regUser = asyncHandler(async (req, res) => {
 // @access Public
 export const login = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+    let user;
     // ищем в базе пользователя по email
-    const user = await User.findOne({ email }).populate({
-        path: `partners.first partners.second partners.third`,
-        select: 'referralLinkCounter',
-    });
-    const endingTime = (day) => Number(24 * 60 * 60 * 1000 * day);
-    console.log(Date.now() + endingTime(200));
-    const result = {
-        referralLinkCounter: 0,
-    };
-
-    const partners = user.partners;
-    for (const u in partners) {
-        if (user.partners.hasOwnProperty(u)) {
-            if (Array.isArray(user.partners[u])) {
-                user.partners[u].forEach((t) => {
-                    result.referralLinkCounter += t.referralLinkCounter
-                        ? t.referralLinkCounter
-                        : 0;
-                });
-            }
-        }
+    try {
+        user = await User.findOne({ email }).populate({
+            path: `partners.first partners.second partners.third`,
+            select: 'referral_link_counter',
+        });
+    } catch (error) {
+        console.log(error);
     }
 
-    console.log(result);
-    const a = {
-        name: { type: String },
-        b_award: { type: Number },
-        validity: { type: Date },
-        premium: { type: Number },
-        line_count: { type: Number },
-    };
-    const program = await Program.create({
-        name: '5000',
-        b_award: 3,
-        validity: 225,
-        premium: 0.1,
-        line_count: 3,
-    });
+    // const endingTime = (day) => Number(24 * 60 * 60 * 1000 * day);
+    // console.log(Date.now() + endingTime(200));
+    // const result = {
+    //     referralLinkCounter: 0,
+    // };
 
+    // const partners = user.partners;
+    // for (const u in partners) {
+    //     if (user.partners.hasOwnProperty(u)) {
+    //         if (Array.isArray(user.partners[u])) {
+    //             user.partners[u].forEach((t) => {
+    //                 result.referralLinkCounter += t.referralLinkCounter
+    //                     ? t.referralLinkCounter
+    //                     : 0;
+    //             });
+    //         }
+    //     }
+    // }
+
+    // console.log(result);
     // console.log(program);
     // проверяем есть ли пользователь и если есть проверяем его пароль
+
     if (user && (await user.matchPassword(password))) {
-        res.json(getUserWithToken(user));
+        return res.json(getUserWithToken(user));
     } else {
         res.status(401);
         throw new Error('Invalid email or password');
