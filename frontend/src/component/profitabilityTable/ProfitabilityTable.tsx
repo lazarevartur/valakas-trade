@@ -40,12 +40,12 @@ const ProfitabilityTable: React.FC<ITable> = ({
           <tbody>
             <tr>
               <td>Начисления по инвестиционному пакету</td>
-              <td>0</td>
+              <td>{data.linear_premium} $</td>
               <td>0%</td>
             </tr>
             <tr>
               <td>Линейная премия</td>
-              <td>0</td>
+              <td>{data.linear_premium} $</td>
               <td>0%</td>
             </tr>
             <tr>

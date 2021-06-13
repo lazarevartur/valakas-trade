@@ -15,7 +15,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }).concat(jwtMiddleware),
+    }).concat(),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
@@ -24,11 +24,11 @@ export type RootState = ReturnType<typeof store.getState>;
 
 // @ts-ignore
 export type AppDispatch = typeof store.dispatch;
-export function jwtMiddleware({ dispatch, getState }) {
-  return (next: any) => (action) => {
-    if (action.type === "dashboard/USER_DASHBOARD_FAIL") {
-      return dispatch(logout());
-    }
-    return next(action);
-  };
-}
+// export function jwtMiddleware({ dispatch, getState }) {
+//   return (next: any) => (action) => {
+//     if (action.type === "dashboard/USER_DASHBOARD_FAIL") {
+//       return dispatch(logout());
+//     }
+//     return next(action);
+//   };
+// }
