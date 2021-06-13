@@ -63,8 +63,8 @@ const Footer = () => {
           </Nav>
         </Col>
         <Col lg={2}>
-          <h6 className={styles.title}>Контент</h6>
           <Nav className="flex-column">
+            <h6 className={styles.title}>Контент</h6>
             <Nav.Link className={styles.nav_Link} href="/home">
               Новости
             </Nav.Link>
