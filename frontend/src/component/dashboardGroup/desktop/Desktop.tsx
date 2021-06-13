@@ -24,7 +24,9 @@ const Desktop: React.FC<DesktopProps> = () => {
   );
   console.log(userDashboard);
   const dispatch = useDispatchTyped();
-  const tableData = {};
+  const tableData = {
+    deposit: userDashboard.totalEarned,
+  };
 
   React.useEffect(() => {
     dispatch(getCurrentUser());
