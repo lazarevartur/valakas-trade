@@ -16,6 +16,7 @@ export const me = asyncHandler(async (req, res) => {
       wallets: user.wallets,
       totalEarned: user.total_earned,
       depositAccount: user.deposit_account,
+      linear_premium: user.metaData.incomeFromLines.linear_premium,
     };
     return res.send(response);
   } catch (e) {
