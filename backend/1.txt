@@ -1,0 +1,6 @@
+NODE_ENV = dev
+PORT = 5000
+#MONGO_URI = mongodb+srv://admin:520834@cluster0.is6co.mongodb.net/valakas?retryWrites=true&w=majority
+MONGO_URI = mongodb+srv://valakas:6hFedb9rUgMaBiMr@cluster0.jdtb1.mongodb.net/valakas_trade?retryWrites=true&w=majority
+JWT_SECRET = tetris
+PAYPAL_CLIENT_ID = AeMsraTIoUIGAlRkMFCIqRYDuCBptJlrjfQIbVDs28eVD_GiWErdtmuyemfL7lszD_UvoQN-mlylZnZK

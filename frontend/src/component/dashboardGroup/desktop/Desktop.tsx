@@ -24,6 +24,7 @@ const Desktop: React.FC<DesktopProps> = () => {
   );
   console.log(userDashboard);
   const dispatch = useDispatchTyped();
+  const tableData = {};
 
   React.useEffect(() => {
     dispatch(getCurrentUser());
