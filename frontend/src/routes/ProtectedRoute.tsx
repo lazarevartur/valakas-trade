@@ -1,16 +1,16 @@
-import React, { ReactNode } from 'react'
-import { Redirect, Route } from 'react-router-dom'
-import { AccessRouts } from '../config'
-import { useSelectorTyped } from '../hooks/useTypedRedux'
-import { rootState } from '../types/types'
-import { RoutePath } from './routesConfig'
+import React, { ReactNode } from "react";
+import { Redirect, Route, useLocation } from "react-router-dom";
+import { AccessRouts } from "../config";
+import { useSelectorTyped } from "../hooks/useTypedRedux";
+import { rootState } from "../types/types";
+import { RoutePath } from "./routesConfig";
 
 interface ProtectedRouteProps {
-  children?: ReactNode
-  path: string
-  exact: boolean
-  component: any
-  access: AccessRouts
+  children?: ReactNode;
+  path: string;
+  exact: boolean;
+  component: any;
+  access: AccessRouts;
 }
 
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
@@ -20,7 +20,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
 }) => {
   const {
     userData: { access: userRole = AccessRouts.all },
-  } = useSelectorTyped((state: rootState) => state.authentication)
+  } = useSelectorTyped((state: rootState) => state.authentication);
   return (
     <Route
       {...rest}
@@ -28,9 +28,9 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
         access <= userRole ? (
           <Component {...props} />
         ) : (
-          <Redirect to={RoutePath.auth} />
+          <Redirect to={RoutePath.home} />
         )
       }
     />
-  )
-}
+  );
+};

@@ -24,8 +24,8 @@ const Mountains: React.FC<defaultSvgProps> = ({ className = "" }) => {
           y2="25.709"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FEC825" />
-          <stop offset="1" stop-color="#FF7A00" />
+          <stop stopColor="#FEC825" />
+          <stop offset="1" stopColor="#FF7A00" />
         </linearGradient>
       </defs>
     </svg>

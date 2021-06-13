@@ -10,8 +10,10 @@ import { ProfitabilityTableLanding } from "../../component/homePageLandingGroup/
 import { ProfitCalculator } from "../../component/homePageLandingGroup/profitСalculator";
 import { News } from "../../component/homePageLandingGroup/news";
 import { BecomePartner } from "../../component/homePageLandingGroup/becomePartner";
+import useRefferalLink from "../../hooks/useRefferalLink";
 
 const HomePage: React.FC = () => {
+  useRefferalLink();
   return (
     <>
       <FullWidthRow>

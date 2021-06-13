@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./header.module.scss";
 import { useLocation, Link } from "react-router-dom";
-import { useSelectorTyped } from "../../hooks/useTypedRedux";
+import { useDispatchTyped, useSelectorTyped } from "../../hooks/useTypedRedux";
 import { Button, Navbar } from "react-bootstrap";
 import { LogoSvg } from "../uiKit/Logo";
 import { SocialButtons } from "../socialButtons";
@@ -10,8 +10,10 @@ import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../routes/routesConfig";
 import cn from "classnames";
 import { AuthorizationModal } from "../authorizationModalGroup/authorizationModal";
+import { logout } from "../../store/action/authAction";
 const Header = () => {
   const location = useLocation();
+  const dispatch = useDispatchTyped();
   const {
     userData: { token: isAuth },
   } = useSelectorTyped((state) => state.authentication);
@@ -28,9 +30,13 @@ const Header = () => {
             <LogoSvg />
           </Link>
         </Navbar.Brand>
-        <LinkContainer to={`${location.pathname}${RoutePath.login}`}>
-          <Button>Вход/Регистрация</Button>
-        </LinkContainer>
+        {isAuth ? (
+          <Button onClick={() => dispatch(logout())}>Выход</Button>
+        ) : (
+          <LinkContainer to={`${location.pathname}${RoutePath.login}`}>
+            <Button>Вход/Регистрация</Button>
+          </LinkContainer>
+        )}
       </Navbar>
       <SubMenu />
     </header>

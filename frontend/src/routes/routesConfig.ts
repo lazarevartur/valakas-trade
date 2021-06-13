@@ -10,6 +10,8 @@ import { AboutPage } from "../pages/about";
 import { HowToMakeMoneyHere } from "../pages/howToMakeMoneyHere";
 import { BinarProfitTeam } from "../pages/binarProfitTeam";
 import { Dashboard } from "../pages/dashnboard";
+import { SignUp } from "../component/authorizationModalGroup/signUp";
+import ReferralLink from "../component/referralLink/referralLink";
 
 export interface route {
   path: RoutePath;
@@ -70,7 +72,7 @@ const routesConfig: route[] = [
     path: RoutePath.dashboard,
     exact: false,
     component: Dashboard,
-    access: AccessRouts.all,
+    access: AccessRouts.user,
   },
   {
     path: RoutePath.profile,
@@ -99,7 +101,7 @@ const routesConfig: route[] = [
   {
     path: RoutePath.authWithRef,
     exact: true,
-    component: Authorization,
+    component: HomePage,
     access: AccessRouts.all,
   },
 ];

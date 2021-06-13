@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 import styles from "./registration.module.scss";
-import { Loader } from "../../loader";
+import { Loader } from "../../uiKit/loader";
 
 export interface RegistrationProp {
   isLoading?: boolean;

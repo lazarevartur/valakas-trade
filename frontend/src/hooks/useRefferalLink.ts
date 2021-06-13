@@ -1,4 +1,4 @@
-import { useRouteMatch } from "react-router-dom";
+import { useLocation, useRouteMatch } from "react-router-dom";
 import { useEffect } from "react";
 import { USER_REGISTER_REFERRAL_LINK } from "../store/slice/authSlice";
 import { RoutePath } from "../routes/routesConfig";
@@ -12,7 +12,7 @@ const UseReferralLink = () => {
   useEffect(() => {
     if (match.params.id) {
       dispatch(USER_REGISTER_REFERRAL_LINK(match.params.id));
-      history.push(RoutePath.auth);
+      history.push(`${RoutePath.home}?auth=sign-up`);
     }
   }, []);
 };

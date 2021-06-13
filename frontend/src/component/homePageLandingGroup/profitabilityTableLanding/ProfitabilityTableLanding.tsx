@@ -36,25 +36,25 @@ const ProfitabilityTableLanding: React.FC<ProfitabilityTableLandingProps> = ({
                 <td>8 month</td>
                 <td>179%</td>
                 <td>@123456</td>
-              </tr>{" "}
+              </tr>
               <tr>
                 <td>Profit Team </td>
                 <td>8 month</td>
                 <td>179%</td>
                 <td>@123456</td>
-              </tr>{" "}
+              </tr>
               <tr>
                 <td>Profit Team </td>
                 <td>8 month</td>
                 <td>179%</td>
                 <td>@123456</td>
-              </tr>{" "}
+              </tr>
               <tr>
                 <td>Profit Team </td>
                 <td>8 month</td>
                 <td>179%</td>
                 <td>@123456</td>
-              </tr>{" "}
+              </tr>
               <tr>
                 <td>Profit Team </td>
                 <td>8 month</td>
