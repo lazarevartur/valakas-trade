@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatchTyped } from "../../../hooks/useTypedRedux";
 import styles from "./loginPage.module.scss";

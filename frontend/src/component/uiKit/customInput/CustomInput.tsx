@@ -3,6 +3,7 @@ import styles from "./customInput.module.scss";
 import { Form, FormControlProps } from "react-bootstrap";
 import { defaultComponentProps } from "../../../types/types";
 import cn from "classnames";
+import { log } from "util";
 
 interface CustomInputProps extends FormControlProps {
   type?: string;
@@ -10,6 +11,8 @@ interface CustomInputProps extends FormControlProps {
   name?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  reff?: any;
+  readOnly?: boolean;
 }
 
 const CustomInput: React.FC<CustomInputProps> = ({
@@ -19,6 +22,8 @@ const CustomInput: React.FC<CustomInputProps> = ({
   name = "textInput",
   value = "",
   onChange = () => null,
+  reff,
+  readOnly = false,
   ...props
 }) => {
   return (
@@ -30,8 +35,8 @@ const CustomInput: React.FC<CustomInputProps> = ({
         className={cn({ [className]: className })}
         type={type}
         name={name}
-        value={value}
-        onChange={onChange}
+        ref={reff}
+        readOnly={readOnly}
         {...props}
       />
     </div>

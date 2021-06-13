@@ -30,8 +30,8 @@ const Rocket = () => {
           y2="12.9056"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FEC825" />
-          <stop offset="1" stop-color="#FF7A00" />
+          <stop stopColor="#FEC825" />
+          <stop offset="1" stopColor="#FF7A00" />
         </linearGradient>
       </defs>
     </svg>

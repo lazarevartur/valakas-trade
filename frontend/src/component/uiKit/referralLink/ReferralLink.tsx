@@ -9,11 +9,12 @@ interface ReferralLinkProps {
 const ReferralLink: React.FC<ReferralLinkProps> = ({
   link = "https://antares.trade/personal/?signup=UA918470928",
 }) => {
+  const originUrl = window.location.origin;
   return (
     <div className={styles.referral_link}>
       <span>Ваша реферальная ссылка:</span>
       <span className={styles.link}>
-        {link} <i className="far fa-copy" />
+        {`${originUrl}/r/${link}`} <i className="far fa-copy" />
       </span>
     </div>
   );

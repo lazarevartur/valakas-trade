@@ -22,6 +22,10 @@ export interface IDefaultUserData {
   token: string;
   access?: any;
 }
+export interface IUserLogin {
+  email: string;
+  password: string;
+}
 export interface IUserRegistration {
   name: string;
   password: string;
@@ -36,9 +40,30 @@ export interface IUserState {
   error?: {};
   refLink?: string;
 }
+export interface IUserDashboardData {
+  totalInvestment: number;
+  referralIncomeOfPartners: number;
+  name: string;
+  id: string;
+  email: string;
+  referralLink: string;
+}
+export interface IUserTeamData {}
+export interface IUserDashboardState {
+  isLoading: boolean;
+  readonly userDashboard: IUserDashboardData | any;
+  error?: {};
+}
+export interface IUserTeamState {
+  isLoading: boolean;
+  readonly userTeam: IUserTeamData | any;
+  error?: {};
+}
 
 export interface rootState {
   authentication: IUserState;
+  dashboard: IUserDashboardState;
+  team: IUserTeamState;
 }
 // {
 //     "_id": "6060fa0956ce3247188ea5f2",

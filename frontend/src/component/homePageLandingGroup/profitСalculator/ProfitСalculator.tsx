@@ -52,7 +52,9 @@ const ProfitCalculator: React.FC<ProfitCalculatorProps> = ({
               }}
             >
               {programsProfit.map((p) => (
-                <option value={p}>FOURTH ({p}% в день)</option>
+                <option key={p} value={p}>
+                  FOURTH ({p}% в день)
+                </option>
               ))}
             </Form.Control>
           </Col>

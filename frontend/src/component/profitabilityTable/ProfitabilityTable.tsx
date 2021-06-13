@@ -7,11 +7,13 @@ interface ITable {
   className?: string;
   children?: React.ReactNode;
   totalEarned?: boolean;
+  data?: any;
 }
 
 const ProfitabilityTable: React.FC<ITable> = ({
   className = "",
   totalEarned,
+  data = {},
 }): React.ReactElement => {
   return (
     <Card className={cn(styles.ProfitabilityTable, { [className]: className })}>
@@ -19,7 +21,8 @@ const ProfitabilityTable: React.FC<ITable> = ({
         <Row>
           <Col lg={5} className={styles.total_earned}>
             <span>
-              Всего заработанно: <span className={styles.count}>10000$</span>
+              Всего заработанно:{" "}
+              <span className={styles.count}>{totalEarned}$</span>
             </span>
           </Col>
         </Row>
@@ -47,16 +50,6 @@ const ProfitabilityTable: React.FC<ITable> = ({
             </tr>
             <tr>
               <td>Менторская премия</td>
-              <td>0</td>
-              <td>0%</td>
-            </tr>
-            <tr>
-              <td>Бинарная премия</td>
-              <td>0</td>
-              <td>0%</td>
-            </tr>
-            <tr>
-              <td>Имиджевая премия</td>
               <td>0</td>
               <td>0%</td>
             </tr>

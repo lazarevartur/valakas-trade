@@ -113,3 +113,9 @@ $mainMargin: 55px;
 .wallets {
   margin-bottom: $mainMargin;
 }
+.fakeBg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 800px;
+}

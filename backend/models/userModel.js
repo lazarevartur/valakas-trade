@@ -106,7 +106,44 @@ const userSchema = new mongoose.Schema(
         fourthdLine: { type: Number, default: 0.01 },
       },
     },
-    сontact_details: {
+    metaData: {
+      incomeFromLines: {
+        first: {
+          type: Number,
+          default: 0,
+        },
+        second: {
+          type: Number,
+          default: 0,
+        },
+        third: {
+          type: Number,
+          default: 0,
+        },
+        fourth: {
+          type: Number,
+          default: 0,
+        },
+        linear_premium: {
+          type: Number,
+          default: 0,
+        },
+        mentor_prime: {
+          type: Number,
+          default: 0,
+        },
+      },
+      img: { type: String },
+      sms_notifications: {
+        type: Boolean,
+        default: false,
+      },
+      verification: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    contact_details: {
       name: {
         type: String,
         default: "",
@@ -149,11 +186,18 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+userSchema.plugin(mongooseLeanVirtuals);
+
 userSchema.virtual("count_line").get(function () {
   return Object.keys(this.partners).length;
 });
 
-userSchema.plugin(mongooseLeanVirtuals);
+userSchema.virtual("total_earned").get(function () {
+  if (this.wallets) {
+    return this.wallets.bonus_account + this.wallets.operating_account;
+  }
+  return 0;
+});
 
 userSchema.methods.matchPassword = async function (plainPassword) {
   //TODO УБРАТЬ КОМЕНТАРИЙ
