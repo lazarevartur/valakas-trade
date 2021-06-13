@@ -18,7 +18,7 @@ export const me = asyncHandler(async (req, res) => {
       depositAccount: user.deposit_account,
       linear_premium: user.metaData.incomeFromLines.linear_premium,
     };
-    return res.send(response);
+    return res.json(response);
   } catch (e) {
     console.log(e);
   }
@@ -33,6 +33,7 @@ export const team = asyncHandler(async (req, res) => {
       path: "partners.first partners.second partners.third partners.fourth",
       select: "email",
     });
+
     const response = {
       status: user.status,
       referralIncomeOfPartners: user.referral_income_of_partners,
@@ -40,6 +41,7 @@ export const team = asyncHandler(async (req, res) => {
       totalEarned: user.total_earned,
       id: user._id,
       referralLinkCounter: user.referral_link_counter,
+      meta: user.metaData.incomeFromLines,
     };
 
     return res.json(response);

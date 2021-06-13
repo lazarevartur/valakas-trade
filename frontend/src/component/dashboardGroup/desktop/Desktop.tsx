@@ -26,7 +26,7 @@ const Desktop: React.FC<DesktopProps> = () => {
   const dispatch = useDispatchTyped();
   const tableData = {
     linear_premium: userDashboard.linear_premium,
-    totalEarned: userDashboard.totalEarned,
+    totalEarned: userDashboard.wallets.operating_account,
   };
 
   React.useEffect(() => {
