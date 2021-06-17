@@ -12,6 +12,7 @@ import { BinarProfitTeam } from "../pages/binarProfitTeam";
 import { Dashboard } from "../pages/dashnboard";
 import { SignUp } from "../component/authorizationModalGroup/signUp";
 import ReferralLink from "../component/referralLink/referralLink";
+import { page404 } from "../pages/page404";
 
 export interface route {
   path: RoutePath;
@@ -35,6 +36,10 @@ export enum RoutePath {
   login = "?auth=sign-in",
   registration = "?auth=sign-up",
   resetPassword = "?auth=reset-password",
+  replenishmentWallet = `?wallet=replenishment`,
+  withdrawWallet = `?wallet=withdraw`,
+  transferWallet = `?wallet=transfer`,
+  page404 = "*",
 }
 
 const routesConfig: route[] = [
@@ -102,6 +107,12 @@ const routesConfig: route[] = [
     path: RoutePath.authWithRef,
     exact: true,
     component: HomePage,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.page404,
+    exact: false,
+    component: page404,
     access: AccessRouts.all,
   },
 ];

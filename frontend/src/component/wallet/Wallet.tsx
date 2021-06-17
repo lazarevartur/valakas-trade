@@ -4,18 +4,25 @@ import styles from "./wallet.module.scss";
 import useHover from "../../hooks/useHover";
 import { defaultComponentProps } from "../../types/types";
 import cn from "classnames";
+import { RoutePath } from "../../routes/routesConfig";
+import { LinkContainer } from "react-router-bootstrap";
+import { useLocation } from "react-router-dom";
 
 interface WalletProps extends defaultComponentProps {
-  title: string;
-  count: number;
-  onClick?: () => void;
+  title?: string;
+  count?: number;
+  name?: string;
+  to?: string;
+  location?: any;
 }
 
 const Wallet: React.FC<WalletProps> = ({
   className = "",
   title = "Wallet",
+  name = "Пополнить баланс",
+  to = "",
   count = 100,
-  onClick,
+  location = "",
 }) => {
   const hoverRef = useRef(null);
   const isHover = useHover(hoverRef);
@@ -28,12 +35,15 @@ const Wallet: React.FC<WalletProps> = ({
         <Card.Body className={styles.card_body}>
           <Card.Title className={styles.card_title}>{title}</Card.Title>
           <Card.Text className={styles.card_text}>$ {count}</Card.Text>
-          <Button
-            className={!isHover ? styles.card_button : styles.card_button_hover}
-            onClick={onClick}
-          >
-            Пополнить баланс
-          </Button>
+          <LinkContainer to={`${to}`}>
+            <Button
+              className={
+                !isHover ? styles.card_button : styles.card_button_hover
+              }
+            >
+              {name}
+            </Button>
+          </LinkContainer>
         </Card.Body>
       </Card>
     </>

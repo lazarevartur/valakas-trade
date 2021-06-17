@@ -15,6 +15,8 @@ import {
 } from "../../../hooks/useTypedRedux";
 import { rootState } from "../../../types/types";
 import { Loader } from "../../uiKit/loader";
+import { BalanceReplenishment } from "../../workWithWallets/Balance";
+import { RoutePath } from "../../../routes/routesConfig";
 const src = "http://placehold.it/150x150";
 interface DesktopProps {}
 
@@ -22,16 +24,16 @@ const Desktop: React.FC<DesktopProps> = () => {
   const { userDashboard, isLoading } = useSelectorTyped(
     (state: rootState) => state.dashboard
   );
-  console.log(userDashboard);
   const dispatch = useDispatchTyped();
   const tableData = {
     linear_premium: userDashboard.linear_premium,
-    totalEarned: userDashboard.wallets.operating_account,
+    totalEarned: userDashboard.wallets?.operating_account,
   };
 
   React.useEffect(() => {
     dispatch(getCurrentUser());
   }, []);
+
   return (
     <Container className={cn(styles.Desktop)}>
       {isLoading ? (
@@ -72,22 +74,6 @@ const Desktop: React.FC<DesktopProps> = () => {
                 $ {userDashboard.totalInvestment}
               </Col>
             </Row>
-            {/*<Row>*/}
-            {/*  <Col lg={6} className={styles.text}>*/}
-            {/*    Операционных кошельков*/}
-            {/*  </Col>*/}
-            {/*  <Col lg={6} className={styles.count}>*/}
-            {/*    43*/}
-            {/*  </Col>*/}
-            {/*</Row>*/}
-            {/*<Row>*/}
-            {/*  <Col lg={6} className={styles.text}>*/}
-            {/*    По каждой программе*/}
-            {/*  </Col>*/}
-            {/*  <Col lg={6} className={styles.count}>*/}
-            {/*    4151435*/}
-            {/*  </Col>*/}
-            {/*</Row>*/}
             <Row>
               <Col lg={6} className={styles.text}>
                 Реферальные с дохода партёров
@@ -108,14 +94,19 @@ const Desktop: React.FC<DesktopProps> = () => {
               <Wallet
                 title={"Стартовый счет"}
                 count={userDashboard.depositAccount?.toFixed()}
+                to={RoutePath.replenishmentWallet}
               />
               <Wallet
                 title={"Бонусный счет"}
                 count={userDashboard.wallets?.bonus_account?.toFixed()}
+                name={"Вывести средства"}
+                to={RoutePath.withdrawWallet}
               />
               <Wallet
                 title={"Операционный счет"}
                 count={userDashboard.wallets?.operating_account?.toFixed()}
+                name={"Перевести средства"}
+                to={RoutePath.transferWallet}
               />
             </CardDeck>
           </div>

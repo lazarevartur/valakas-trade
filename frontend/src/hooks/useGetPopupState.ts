@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
 import useGetParameter from "./useGetParameter";
-import { GET_PARAMS } from "../const/popup";
+import { GET_PARAMS, ModalType } from "../const/popup";
 
 let timeout: any;
 
-export default () => {
-  const popupName = useGetParameter(GET_PARAMS.auth);
+export default (type: ModalType) => {
+  const popupName = useGetParameter(type);
   const [mountedPopup, setMountedPopup] = useState(popupName);
 
   useEffect(() => {

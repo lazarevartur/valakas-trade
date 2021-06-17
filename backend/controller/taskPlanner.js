@@ -12,7 +12,7 @@ export const dailyUpdate = asyncHandler(async (req, res) => {
   try {
     const allUsers = await User.find({}).populate({
       path:
-        "partners.first partners.second partners.third partners.fourth partners.fifth metaData.incomeFromLines",
+        "partners.first partners.second partners.third partners.fourth partners.fifth metaData.partners",
     });
     const userIncomeMap = {};
     // Каждый день капает от 0.1-2% от MRX  ( линейный доход )
@@ -20,6 +20,7 @@ export const dailyUpdate = asyncHandler(async (req, res) => {
       const income = user.programs_walets.mrx * dailyInterest;
       userIncomeMap[user.email] = income;
       user.wallets.operating_account += income;
+      user.metaData.investment_package += income;
 
       return user.save();
     });
@@ -41,7 +42,8 @@ export const dailyUpdate = asyncHandler(async (req, res) => {
             const partnerIncome = userIncomeMap[partner.email] * interestRate;
             user.wallets.bonus_account += partnerIncome;
             user.referral_income_of_partners += partnerIncome;
-            user.metaData.incomeFromLines[mapLines[line]] += partnerIncome;
+            user.metaData.partners[mapLines[line]] += partnerIncome;
+            user.metaData.dividends += partnerIncome;
           });
 
           console.log("--------------");

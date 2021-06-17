@@ -73,6 +73,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 24px;
+  padding-bottom: 25px;
   border-bottom: 1px solid;
   border-image: linear-gradient(
     90deg,
@@ -81,6 +82,10 @@
     rgba(196, 196, 196, 0) 100%
   );
   border-image-slice: 1;
+}
+.logo {
+  position: absolute;
+  left: 40%;
 }
 .center_logo {
   justify-content: center;

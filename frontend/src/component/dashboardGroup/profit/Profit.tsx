@@ -5,6 +5,8 @@ import { DashboardTitleBlock } from "../../../layouts/dashboardTitleBlock";
 import { ProfitabilityTable } from "../../profitabilityTable";
 import { CustomInput } from "../../uiKit/customInput";
 import Chart from "../../uiKit/chart/Chart";
+import { LinkContainer } from "react-router-bootstrap";
+import { RoutePath } from "../../../routes/routesConfig";
 
 interface ProfitProps {
   totalEarned?: boolean;
@@ -50,7 +52,9 @@ const Profit: React.FC<ProfitProps> = () => {
         </Row>
         <Row>
           <Col lg={12}>
-            <Button className={styles.button}>Пополнить</Button>
+            <LinkContainer to={RoutePath.replenishmentWallet}>
+              <Button className={styles.button}>Пополнить</Button>
+            </LinkContainer>
           </Col>
         </Row>
       </div>

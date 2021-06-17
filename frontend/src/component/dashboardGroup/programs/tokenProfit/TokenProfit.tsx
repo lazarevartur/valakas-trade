@@ -11,6 +11,8 @@ import {
   Row,
 } from "react-bootstrap";
 import Chart from "../../../uiKit/chart/Chart";
+import { LinkContainer } from "react-router-bootstrap";
+import { RoutePath } from "../../../../routes/routesConfig";
 
 interface TokenProfitProps {}
 
@@ -55,7 +57,9 @@ const TokenProfit: React.FC<TokenProfitProps> = () => {
             <span>17.08.2021</span>
           </Col>
         </Row>
-        <Button>Пополнить</Button>
+        <LinkContainer to={RoutePath.replenishmentWallet}>
+          <Button>Пополнить</Button>
+        </LinkContainer>
       </div>
       <div className={styles.accounts}>
         <DashboardTitleBlock title={"Мои счета"} />

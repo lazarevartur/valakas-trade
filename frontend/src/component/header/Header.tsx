@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./header.module.scss";
 import { useLocation, Link } from "react-router-dom";
 import { useDispatchTyped, useSelectorTyped } from "../../hooks/useTypedRedux";
-import { Button, Navbar } from "react-bootstrap";
+import { Button, Nav, Navbar } from "react-bootstrap";
 import { LogoSvg } from "../uiKit/Logo";
 import { SocialButtons } from "../socialButtons";
 import { SubMenu } from "./subMenu";
@@ -25,13 +25,22 @@ const Header = () => {
         <Navbar.Brand href="#home">
           <SocialButtons />
         </Navbar.Brand>
-        <Navbar.Brand>
+        <Navbar.Brand className={styles.logo}>
           <Link to={"/"}>
             <LogoSvg />
           </Link>
         </Navbar.Brand>
         {isAuth ? (
-          <Button onClick={() => dispatch(logout())}>Выход</Button>
+          <Nav activeKey>
+            <Nav.Item>
+              <LinkContainer to={RoutePath.dashboard}>
+                <Nav.Link>Личный кабинет</Nav.Link>
+              </LinkContainer>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link onClick={() => dispatch(logout())}>Выход</Nav.Link>
+            </Nav.Item>
+          </Nav>
         ) : (
           <LinkContainer to={`${location.pathname}${RoutePath.login}`}>
             <Button>Вход/Регистрация</Button>

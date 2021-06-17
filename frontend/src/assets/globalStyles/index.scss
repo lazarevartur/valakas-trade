@@ -121,9 +121,20 @@ a:hover {
 .modal-content {
   border-radius: 30px;
 }
+.modal-header {
+  border: none;
+}
 .modal-body {
   position: relative;
   overflow: hidden;
+}
+.close {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #000;
+}
+.modal-header .close {
+  margin: -2rem -1rem -1rem -3.5rem;
 }
 .custom-control-input:checked ~ .custom-control-label::before {
   border-color: #fec825;

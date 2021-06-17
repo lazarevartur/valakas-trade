@@ -25,7 +25,7 @@ import { Loader } from "../../uiKit/loader";
 
 interface SignInProps extends defaultModalComponentProps {}
 
-const SignIn: React.FC<SignInProps> = ({ isOpened = false, url }) => {
+const SignIn: React.FC<SignInProps> = ({ isOpened = false, url = "" }) => {
   const { register, handleSubmit, errors, watch } = useForm();
   const dispatch = useDispatchTyped();
   const { isLoading } = useSelectorTyped(

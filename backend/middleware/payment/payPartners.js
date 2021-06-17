@@ -45,12 +45,11 @@ export const payPartners = asyncHandler(async (req, res, next) => {
             const income = cost * (value + bonus);
             partner.wallets.bonus_account += income;
             partner.referral_income_of_partners += income;
-            partner.metaData.incomeFromLines[mapLines[i]] += income;
-            console.log(partner);
-            partner.metaData.incomeFromLines.linear_premium += income;
+            partner.metaData.partners[mapLines[i]] += income;
+            partner.metaData.linear_premium += income;
           },
           "Inviting_id wallets configUser.additional_lines referral_income_of_partners" +
-            " metaData.incomeFromLines"
+            " metaData"
         );
       } else {
         break;
