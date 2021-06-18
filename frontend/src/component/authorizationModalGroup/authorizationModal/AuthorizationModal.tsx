@@ -30,7 +30,7 @@ const AuthorizationModal: React.FC<AuthorizationModalProps> = () => {
     if (token && isOpened) {
       history.push(RoutePath.dashboard);
     }
-  }, [token]);
+  }, [token, isOpened]);
   if (!Component || token) {
     return null;
   }

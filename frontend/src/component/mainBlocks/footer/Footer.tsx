@@ -4,6 +4,8 @@ import styles from "./footer.module.scss";
 import { LogoSvg } from "../../uiKit/Logo";
 import { SocialButtons } from "../../socialButtons";
 import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
+import { RoutePath } from "../../../routes/routesConfig";
 
 const Footer = () => {
   return (
@@ -18,7 +20,6 @@ const Footer = () => {
             temporibus voluptatibus pariatur.
           </p>
           <SocialButtons className={"mb-3"} />
-          <div className={` mb-3 ${styles.copy}`}>© 2021 Mirax</div>
         </Col>
         <Col lg={2}>
           <h6 className={styles.title}>О компании</h6>
@@ -75,6 +76,25 @@ const Footer = () => {
               Мероприятия
             </Nav.Link>
           </Nav>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={3}>
+          <div className={` mb-3 ${styles.copy}`}>
+            Все права защищены © 2021 Mirax
+          </div>
+        </Col>
+        <Col lg={5} className={styles.privacyPolicy}>
+          <LinkContainer to={RoutePath.termsUse}>
+            <a className={` mb-3 ${styles.privacy}`}>
+              Пользовательское соглашение
+            </a>
+          </LinkContainer>
+          <LinkContainer to={RoutePath.privacyPolicy}>
+            <a className={` mb-3 ${styles.privacy}`}>
+              Политика конфиденциальности
+            </a>
+          </LinkContainer>
         </Col>
       </Row>
     </footer>

@@ -23,8 +23,25 @@ footer {
   font-size: 14px;
   line-height: 17px;
 }
-.copy {
+.copy,
+.privacyPolicy {
   font-size: 12px;
   line-height: 12px;
   color: #828282;
+}
+.privacyPolicy {
+  margin: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  .privacy {
+    color: #828282;
+    text-decoration-line: underline;
+    &:hover {
+      text-decoration-line: none;
+    }
+  }
+  & .privacy {
+    margin-right: 30px;
+  }
 }

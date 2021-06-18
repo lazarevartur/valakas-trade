@@ -13,6 +13,8 @@ import { Dashboard } from "../pages/dashnboard";
 import { SignUp } from "../component/authorizationModalGroup/signUp";
 import ReferralLink from "../component/referralLink/referralLink";
 import { page404 } from "../pages/page404";
+import { PrivacyPolicy } from "../pages/privacyPolicy";
+import TermsUse from "../pages/TermsUse/TermsUse";
 
 export interface route {
   path: RoutePath;
@@ -33,6 +35,8 @@ export enum RoutePath {
   profile = "/profile",
   dashboard = "/dashboard",
   team = "/team",
+  privacyPolicy = "/privacy-policy",
+  termsUse = "/terms-of-use",
   login = "?auth=sign-in",
   registration = "?auth=sign-up",
   resetPassword = "?auth=reset-password",
@@ -107,6 +111,18 @@ const routesConfig: route[] = [
     path: RoutePath.authWithRef,
     exact: true,
     component: HomePage,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.privacyPolicy,
+    exact: true,
+    component: PrivacyPolicy,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.termsUse,
+    exact: true,
+    component: TermsUse,
     access: AccessRouts.all,
   },
   {

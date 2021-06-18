@@ -63,10 +63,4 @@ export const dashboardRouteConfig: routeDashboard[] = [
     component: TokenProfit,
     access: AccessRouts.user,
   },
-  {
-    path: DashboardRoute.page404,
-    exact: false,
-    component: page404,
-    access: AccessRouts.all,
-  },
 ];

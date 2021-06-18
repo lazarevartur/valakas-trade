@@ -20,6 +20,7 @@ import { useForm } from "react-hook-form";
 import { register as registerAction } from "../../../store/action/authAction";
 import { Loader } from "../../uiKit/loader";
 import { CustomInput } from "../../uiKit/customInput";
+import { Link } from "react-router-dom";
 
 interface SignUpProps extends defaultModalComponentProps {}
 
@@ -127,7 +128,18 @@ const SignUp: React.FC<SignUpProps> = ({ url }) => {
                   <Form.Group controlId="formCheckbox">
                     <Form.Check
                       type="checkbox"
-                      label="Я соглашаюсь с условиями защиты персональных данных и пользовательского соглашения"
+                      label={
+                        <span>
+                          Я принимаю{" "}
+                          <Link to={RoutePath.termsUse}>
+                            условия использования
+                          </Link>{" "}
+                          и соглашаюсь с{" "}
+                          <Link to={RoutePath.privacyPolicy}>
+                            политикой конфиденциальности
+                          </Link>
+                        </span>
+                      }
                       ref={register}
                     />
                   </Form.Group>

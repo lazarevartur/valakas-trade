@@ -41,10 +41,9 @@ const TransferWallet: React.FC<TransferWalletProps> = () => {
               />
             </Form.Group>
             <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Label>Тип вывода</Form.Label>
+              <Form.Label>Счет списания</Form.Label>
               <Form.Control as="select">
-                <option>Счет списания</option>
-                <option>Карта</option>
+                <option>Бонусный счет</option>
               </Form.Control>
             </Form.Group>
           </Col>
