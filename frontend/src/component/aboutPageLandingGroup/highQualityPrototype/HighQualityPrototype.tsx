@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./HighQualityPrototype.module.scss";
 import { defaultComponentProps } from "../../../types/types";
 import { Col, Container, Row } from "react-bootstrap";
-import HomeBg from "../../../svg/HomeBg";
+import HomeBg from "../../../assets/svg/HomeBg";
 
 interface HighQualityPrototypeProps extends defaultComponentProps {}
 

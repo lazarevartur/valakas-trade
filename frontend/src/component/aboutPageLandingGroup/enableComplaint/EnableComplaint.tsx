@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./enableComplaint.module.scss";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import HomeBg from "../../../svg/HomeBg";
+import HomeBg from "../../../assets/svg/HomeBg";
 
 interface EnableComplaintProps {}
 

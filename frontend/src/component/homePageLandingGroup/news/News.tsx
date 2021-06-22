@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./News.module.scss";
 import { defaultComponentProps } from "../../../types/types";
 import { Card, CardDeck, Col, Container, Row } from "react-bootstrap";
-import HomeBg from "../../../svg/HomeBg";
+import HomeBg from "../../../assets/svg/HomeBg";
 import cn from "classnames";
 
 interface NewsProps extends defaultComponentProps {}

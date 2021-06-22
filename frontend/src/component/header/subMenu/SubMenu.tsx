@@ -34,7 +34,12 @@ const SubMenu = () => {
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Партнерство с Mirax" id="nav-dropdown">
-              <NavDropdown.Item eventKey="1">Сообщество Mirax</NavDropdown.Item>
+              <LinkContainer to={RoutePath.community}>
+                <NavDropdown.Item eventKey="1">
+                  Сообщество Mirax
+                </NavDropdown.Item>
+              </LinkContainer>
+
               <NavDropdown.Item eventKey="2">Вакансии</NavDropdown.Item>
               <NavDropdown.Item eventKey="3">
                 Открытие индивидуального <br /> консультационного центра

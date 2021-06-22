@@ -27,3 +27,15 @@ export function capitalaze(str: string) {
 export function normalazeUrl(str: string) {
   return str.replace(" ", "").toLowerCase();
 }
+
+export const getChunks = (array: any[]) => {
+  return array.reduce((chunks, value, index) => {
+    const chunkIndex = Math.floor(index / 3);
+
+    if (!chunks[chunkIndex]) {
+      chunks[chunkIndex] = [];
+    }
+    chunks[chunkIndex].push(value);
+    return chunks;
+  }, []);
+};

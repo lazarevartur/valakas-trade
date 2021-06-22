@@ -8,7 +8,7 @@ import {
   IUserRegistration,
   rootState,
 } from "../../../types/types";
-import ModalBg from "../../../svg/ModalBg";
+import ModalBg from "../../../assets/svg/ModalBg";
 import { RoutePath } from "../../../routes/routesConfig";
 import UseReferralLink from "../../../hooks/useRefferalLink";
 

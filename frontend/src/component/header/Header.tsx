@@ -11,6 +11,7 @@ import { RoutePath } from "../../routes/routesConfig";
 import cn from "classnames";
 import { AuthorizationModal } from "../authorizationModalGroup/authorizationModal";
 import { logout } from "../../store/action/authAction";
+import { ExitIcon, PersonIcon } from "@modulz/radix-icons";
 const Header = () => {
   const location = useLocation();
   const dispatch = useDispatchTyped();
@@ -31,14 +32,23 @@ const Header = () => {
           </Link>
         </Navbar.Brand>
         {isAuth ? (
-          <Nav activeKey>
+          <Nav activeKey navbar={true}>
             <Nav.Item>
               <LinkContainer to={RoutePath.dashboard}>
-                <Nav.Link>Личный кабинет</Nav.Link>
+                <Nav.Link className={styles.nav_item}>
+                  <PersonIcon width={24} height={24} />
+                  <span>Личный кабинет</span>
+                </Nav.Link>
               </LinkContainer>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link onClick={() => dispatch(logout())}>Выход</Nav.Link>
+              <Nav.Link
+                onClick={() => dispatch(logout())}
+                className={styles.nav_item}
+              >
+                <ExitIcon width={24} height={24} />
+                <span>Выход</span>
+              </Nav.Link>
             </Nav.Item>
           </Nav>
         ) : (

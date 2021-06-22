@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./videoBlock.module.scss";
 import { Col, Row } from "react-bootstrap";
-import HomeBg from "../../../svg/HomeBg";
+import HomeBg from "../../../assets/svg/HomeBg";
 import cn from "classnames";
 
 interface VideoBlockProps {
@@ -18,8 +18,7 @@ const VideoBlock: React.FC<VideoBlockProps> = ({ className = "" }) => {
         </h1>
         <p className={styles.text}>
           C Mirax стратегии доверительного управления активами нацелены на
-          результат. Подбор финансовых решений осуществляется, исходя из ваших
-          запросов и потребностей.
+          результат
         </p>
         <iframe
           width="800"

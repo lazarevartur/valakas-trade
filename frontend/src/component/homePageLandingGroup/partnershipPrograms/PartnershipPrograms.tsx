@@ -2,12 +2,12 @@ import React from "react";
 import styles from "./partnershipPrograms.module.scss";
 import cn from "classnames";
 import { defaultComponentProps } from "../../../types/types";
-import HomeBg from "../../../svg/HomeBg";
+import HomeBg from "../../../assets/svg/HomeBg";
 import { Col, Container, ListGroup, Row, Tab } from "react-bootstrap";
 import { ExternalLinkIcon } from "@modulz/radix-icons";
-import Backpack from "../../../svg/Backpack";
-import Rocket from "../../../svg/Rocket";
-import Clock from "../../../svg/Clock";
+import Backpack from "../../../assets/svg/Backpack";
+import Rocket from "../../../assets/svg/Rocket";
+import Clock from "../../../assets/svg/Clock";
 
 interface PartnershipProgramsProps extends defaultComponentProps {}
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { defaultSvgProps } from "../types/types";
+import { defaultSvgProps } from "../../types/types";
 
 interface ModalBgProps extends defaultSvgProps {}
 

@@ -5,16 +5,14 @@ import { TeamPage } from "../pages/team";
 import { AccessRouts } from "../config";
 import { Profile } from "../pages/profile";
 import { Income } from "../pages/income";
-import { Authorization } from "../pages/authorization";
 import { AboutPage } from "../pages/about";
 import { HowToMakeMoneyHere } from "../pages/howToMakeMoneyHere";
 import { BinarProfitTeam } from "../pages/binarProfitTeam";
 import { Dashboard } from "../pages/dashnboard";
-import { SignUp } from "../component/authorizationModalGroup/signUp";
-import ReferralLink from "../component/referralLink/referralLink";
 import { page404 } from "../pages/page404";
 import { PrivacyPolicy } from "../pages/privacyPolicy";
 import TermsUse from "../pages/TermsUse/TermsUse";
+import { Community } from "../pages/сommunity";
 
 export interface route {
   path: RoutePath;
@@ -28,10 +26,10 @@ export enum RoutePath {
   about = "/about",
   howToMakeMoneyHere = "/howToMakeMoneyHere",
   binarProfitTeam = "/binarProfitTeam",
-  auth = "/auth",
   authWithRef = "/r/:id",
   personal = "/personal",
   income = "/income",
+  community = "/community",
   profile = "/profile",
   dashboard = "/dashboard",
   team = "/team",
@@ -57,6 +55,12 @@ const routesConfig: route[] = [
     path: RoutePath.about,
     exact: true,
     component: AboutPage,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.community,
+    exact: true,
+    component: Community,
     access: AccessRouts.all,
   },
   {
@@ -99,12 +103,6 @@ const routesConfig: route[] = [
     path: RoutePath.team,
     exact: true,
     component: TeamPage,
-    access: AccessRouts.all,
-  },
-  {
-    path: RoutePath.auth,
-    exact: true,
-    component: Authorization,
     access: AccessRouts.all,
   },
   {

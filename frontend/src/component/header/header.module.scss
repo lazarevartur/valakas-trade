@@ -94,3 +94,13 @@
 header {
   margin-bottom: 23px;
 }
+.nav_item {
+  position: relative;
+  svg {
+    position: absolute;
+    left: -20px;
+  }
+  &:after {
+    display: none;
+  }
+}
