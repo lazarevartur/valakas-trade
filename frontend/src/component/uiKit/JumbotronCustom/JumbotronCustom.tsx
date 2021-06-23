@@ -10,8 +10,8 @@ interface JumbotronCustomProps {
   bgPos?: string;
   contentPosRight?: boolean;
   bgSize?: string;
-  title?: string;
-  text?: string;
+  title?: JSX.Element | string;
+  text?: JSX.Element | string;
   lg?: number;
 }
 

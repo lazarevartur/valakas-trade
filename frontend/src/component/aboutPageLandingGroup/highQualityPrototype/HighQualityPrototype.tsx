@@ -15,8 +15,9 @@ const HighQualityPrototype: React.FC<HighQualityPrototypeProps> = ({
       <Container>
         <Row>
           <Col>
-            <h5 className={styles.title}>Навсегда решите эти проблемы</h5>
-            <small>Каждый день большинство людей задумываются</small>
+            <h5 className={styles.title}>
+              Навсегда решите эти <br /> проблемы
+            </h5>
             <div className={styles.content}>
               <div>Как приумножить свой капитал?</div>
               <br />

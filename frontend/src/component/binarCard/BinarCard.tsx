@@ -15,14 +15,6 @@ const BinarCard: React.FC<BinarCardProps> = () => {
           Инвестиционный пакет
         </Card.Title>
         <Row>
-          <Col lg={8} className={cn(styles.left_col)}>
-            Бинарная премия с меньшей ноги
-          </Col>
-          <Col lg={4} className={cn(styles.right_col)}>
-            10%
-          </Col>
-        </Row>
-        <Row>
           <Col lg={7} className={cn(styles.left_col)}>
             Срок работы инвестиционного пакета
           </Col>

@@ -7,6 +7,10 @@ import cn from "classnames";
 import { Button, Image } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../routes/routesConfig";
+import howMakeImg1 from "../../assets/img/HowToMakeMoneyHere1.jpg";
+import howMakeImg2 from "../../assets/img/HowToMakeMoneyHere2.jpg";
+import howMakeImg3 from "../../assets/img/HowToMakeMoneyHere3.jpg";
+import howMakeImg4 from "../../assets/img/HowToMakeMoneyHere4.jpg";
 
 interface HowToMakeMoneyHereProps {}
 
@@ -48,12 +52,7 @@ const HowToMakeMoneyHere: React.FC<HowToMakeMoneyHereProps> = () => {
           RightCol={() => {
             return (
               <>
-                <Image
-                  className={styles.img}
-                  src={
-                    "https://s3-alpha-sig.figma.com/img/50e7/0a98/908ef82e310ecef6e6c473e7c3b8424f?Expires=1620604800&Signature=Mhk~vutz~s~oe-tlVxghBBmW37C6hSy9xrurzGjNYXBpO1K9ouiWHD0vulCt7o8Btd0Cq0c9KgvmhjR-9uQM92Alow2emsnQ~n71ZqgzkO150G8bS62xUU17JG1IpkXahOo1RIQ9S3mhdPGmMINdI~HkPtArR1aJo6SP6vzaKtIoZROGtTqTGZPHeg~YExrhnQvYYlL~CsW2mYNXG8KioJUACpym-O0iZ~VNNtZyuj-WRuS08JDeVaO-hDs0kBVk2JEl3xS5ZDwDRp31wsY7yTr0I9HWxZwaDawFi62n12~uJldYTIG4m~PaEXzWPc1PYpQhEidGlYPlIpJgqNZtgw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                  }
-                />
+                <Image className={styles.img} src={howMakeImg2} />
               </>
             );
           }}
@@ -88,12 +87,7 @@ const HowToMakeMoneyHere: React.FC<HowToMakeMoneyHereProps> = () => {
           LeftCol={() => {
             return (
               <>
-                <Image
-                  className={styles.img}
-                  src={
-                    "https://s3-alpha-sig.figma.com/img/739f/4461/a560b358a1a2888b50e0400021082f4f?Expires=1620604800&Signature=hi5z9jRXWC1P9Q3Gb3p7g1B-07B767awCT-Jdi07fh1XuFTAcnhGdig-ra5qpxwFdBXlOBFZkoJqYaSTfQUeje99pId4JA7ecEZ9O6064yGxjzmqe0tNMRou3oy9MQU3979qnzlbPQbmnSA8siUGuShayQSHqpTlku76LCdWP40ztlximythc8JmzKageqWhhMmeg1PTAAP8~vr8eEzx4pxzoaDmhwvDYDSUWic8nDphJ7RkU09S18qE4zAg0wBSnXq21wk5J-ACaVQYF59H1zU7KIy4nUiHnQBJLLJFJ1WWrTCekw2yuZI8QPdzlfbPfgeo~-5~zlZYZf5Jt6NVIQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                  }
-                />
+                <Image className={styles.img} src={howMakeImg3} />
               </>
             );
           }}
@@ -133,14 +127,7 @@ const HowToMakeMoneyHere: React.FC<HowToMakeMoneyHereProps> = () => {
             );
           }}
           FullWidthRow={() => {
-            return (
-              <Image
-                className={styles.full_width}
-                src={
-                  "https://s3-alpha-sig.figma.com/img/774e/422c/884f1cc9b3a05d63360f1e09206e2c64?Expires=1620604800&Signature=IGYfF3gTFqXhFeB-nAFxc-BgXecOGL7UmIYR0RnqBDv-Jp-IsuQWujZsF35DWde3nZAnMjJw2WjgqpdT1QonbLhdynNSUIMZf5j0f4hnkIC~zLIkiI5i0gEEclWYWM6d7tOZlKhfYl1ZeL9cpUpXmFc1m2C6XpseS1wI2llPQbXrgsyhJ0tfddNF6PvyobtFZBNHd0v1~rB7q~wra86IVPwxKAMfvR5r9eSUvkdh9wuQ1w2KaB5DdrU~hdwHClAPAhyYXlfKb6~li9R1u1VZu7KidbpehVQ5eTBTjoL-23WRwYs3hlF0Bbat8ZfWhfK~~O1K4V8gGBiwFxd-wxXvbg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                }
-              />
-            );
+            return <Image className={styles.full_width} src={howMakeImg4} />;
           }}
         />
       </FullWidthRow>
@@ -168,12 +155,7 @@ const HowToMakeMoneyHere: React.FC<HowToMakeMoneyHereProps> = () => {
           LeftCol={() => {
             return (
               <>
-                <Image
-                  className={styles.img}
-                  src={
-                    "https://s3-alpha-sig.figma.com/img/e593/6d73/ee48bfe27d076ee449a96583a4c4b6db?Expires=1620604800&Signature=DaLcR8vhUDsAdX2lswswziIVlLgtfq9WyhDUY4KDY2UX9kc5huIfCLUN4~dGoJ5~XyfX15ubLHRQqr~hAckzDVgtiuotFgYRvattfLjArb~pY-U0e6CwBvRvAUG0Hw7qE7q6uX9Hj7P0OXYCu1ikbut9hweTqXDbWS8WeN6tLLFJZhIEm2J2yx1yhU1mDnXVMpF8~gpcbnFVopv1OZWIVCnGiqmY8aE5hnstYBwzXmRKXHLkq7k5ksTsCaLA6yf~mwgLSX82s1dRNr2kYH6MESDthig~ilzEDo3tPZAnfKzs7sSMS6lO-xfviWwuSVTBgmg85xNi32B37oaS4wLytQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                  }
-                />
+                <Image className={styles.img} src={howMakeImg1} />
               </>
             );
           }}

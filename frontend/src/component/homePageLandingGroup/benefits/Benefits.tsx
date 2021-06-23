@@ -41,13 +41,16 @@ const dataMocha = [
 interface BenefitsProps {
   data?: any[];
   title?: string;
+  fourElement?: boolean;
 }
 
 const Benefits: React.FC<BenefitsProps> = ({
   data = dataMocha,
   title = "Почему стоит инвестировать сейчас",
+  fourElement = false,
 }) => {
-  const chunks = getChunks(data);
+  const countElement = fourElement ? 4 : 3;
+  const chunks = getChunks(data, countElement);
   return (
     <div className={styles.Benefits}>
       <h2 className={styles.main_title}>{title}</h2>
@@ -57,11 +60,17 @@ const Benefits: React.FC<BenefitsProps> = ({
           <Row className={styles.mt_big} key={u}>
             {chunk.map(({ title, text, icon }, i) => {
               return (
-                <Col lg={4} key={title}>
+                <Col
+                  lg={fourElement ? 3 : 4}
+                  key={title}
+                  className={cn({
+                    [styles.content]: (i + 1) % countElement !== 0,
+                  })}
+                >
                   <div className={styles.icon}>
                     <img src={icon} alt={icon} />
                   </div>
-                  <div className={cn({ [styles.content]: (i + 1) % 3 !== 0 })}>
+                  <div>
                     <h3 className={styles.title}>{title}</h3>
                     <p className={styles.text}>{text}</p>
                   </div>

@@ -9,7 +9,7 @@ const HomeBg: React.FC<HomeBgProps> = ({ className }) => {
   return (
     <svg
       width="1440"
-      height="748"
+      height="500"
       viewBox="0 0 1440 748"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
