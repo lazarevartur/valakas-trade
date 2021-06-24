@@ -168,7 +168,7 @@ const HowToMakeMoneyHere: React.FC<HowToMakeMoneyHereProps> = () => {
             return (
               <div className={styles.become_partner_flex}>
                 <h5 className={styles.become_partner_title}>
-                  Хотите изменить жизнь? Сделайте это с Mirax{" "}
+                  Хотите измени ть жизнь? Сделайте это с Mirax{" "}
                   <span>прямо сейчас</span>!
                 </h5>
                 <LinkContainer to={RoutePath.registration}>

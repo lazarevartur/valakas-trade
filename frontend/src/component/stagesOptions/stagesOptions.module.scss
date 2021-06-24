@@ -1,0 +1,23 @@
+@import "src/assets/globalStyles/style";
+@import "src/assets/globalStyles/variables";
+.description {
+  display: flex;
+  align-items: center;
+  img {
+    padding-right: 20px;
+  }
+  .textBlock {
+    display: flex;
+    flex-direction: column;
+    span {
+      font-size: 17px;
+      line-height: 140%;
+      color: #828282;
+    }
+    strong {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 140%;
+    }
+  }
+}

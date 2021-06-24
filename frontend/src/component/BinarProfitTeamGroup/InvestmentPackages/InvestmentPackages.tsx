@@ -31,9 +31,9 @@ const InvestmentPackages: React.FC<InvestmentPackagesProps> = () => {
             </p>
             <p>плавающая ставка</p>
           </Col>
-          <Col lg={4}>
+          <Col lg={5}>
             <p className={cn(styles.accent)}>
-              <span>200-300</span>
+              <span>180-270 дней</span>
             </p>
             <p>календарных дней</p>
           </Col>

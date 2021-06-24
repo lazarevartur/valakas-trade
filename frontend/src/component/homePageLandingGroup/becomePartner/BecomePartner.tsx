@@ -10,12 +10,14 @@ import images from "../../../assets/img/CommunityImg.jpg";
 interface BecomePartnerProps extends defaultComponentProps {
   img?: string;
   title?: string;
+  regButton?: boolean;
 }
 
 const BecomePartner: React.FC<BecomePartnerProps> = ({
   className = "",
   img = images,
   title = "Станьте партнером Mirax",
+  regButton = true,
 }) => {
   return (
     <div className={cn(styles.BecomePartner, { [className]: className })}>
@@ -24,9 +26,11 @@ const BecomePartner: React.FC<BecomePartnerProps> = ({
           <Col lg={7}>
             <Container className={styles.container}>
               <div className={cn(styles.title)}>{title}</div>
-              <LinkContainer to={RoutePath.registration}>
-                <Button className={cn(styles.button)}>СТАТЬ ПАРТНЕРОМ</Button>
-              </LinkContainer>
+              {regButton ? (
+                <LinkContainer to={RoutePath.registration}>
+                  <Button className={cn(styles.button)}>СТАТЬ ПАРТНЕРОМ</Button>
+                </LinkContainer>
+              ) : null}
             </Container>
           </Col>
           <Col lg={5}>
