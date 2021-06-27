@@ -5,13 +5,16 @@ import { TeamPage } from "../pages/team";
 import { AccessRouts } from "../config";
 import { Profile } from "../pages/profile";
 import { Income } from "../pages/income";
-import { Authorization } from "../pages/authorization";
-import { AboutPage } from "../pages/about";
 import { HowToMakeMoneyHere } from "../pages/howToMakeMoneyHere";
-import { BinarProfitTeam } from "../pages/binarProfitTeam";
 import { Dashboard } from "../pages/dashnboard";
-import { SignUp } from "../component/authorizationModalGroup/signUp";
-import ReferralLink from "../component/referralLink/referralLink";
+import { page404 } from "../pages/page404";
+import { PrivacyPolicy } from "../pages/privacyPolicy";
+import TermsUse from "../pages/TermsUse/TermsUse";
+import { Community } from "../pages/сommunity";
+const AboutPage = React.lazy(() => import("../pages/about/AboutPage"));
+const mrxInvest = React.lazy(() => import("../pages/mrxInvest/MrxInvest"));
+const Optional = React.lazy(() => import("../pages/optional/Optional"));
+const Priority = React.lazy(() => import("../pages/priority/Priority"));
 
 export interface route {
   path: RoutePath;
@@ -24,17 +27,25 @@ export enum RoutePath {
   home = "/",
   about = "/about",
   howToMakeMoneyHere = "/howToMakeMoneyHere",
-  binarProfitTeam = "/binarProfitTeam",
-  auth = "/auth",
+  binarProfitTeam = "/mrx-invest",
+  optional = "/optional",
+  priority = "/priority",
   authWithRef = "/r/:id",
   personal = "/personal",
   income = "/income",
+  community = "/community",
   profile = "/profile",
   dashboard = "/dashboard",
   team = "/team",
+  privacyPolicy = "/privacy-policy",
+  termsUse = "/terms-of-use",
   login = "?auth=sign-in",
   registration = "?auth=sign-up",
   resetPassword = "?auth=reset-password",
+  replenishmentWallet = `?wallet=replenishment`,
+  withdrawWallet = `?wallet=withdraw`,
+  transferWallet = `?wallet=transfer`,
+  page404 = "*",
 }
 
 const routesConfig: route[] = [
@@ -51,6 +62,12 @@ const routesConfig: route[] = [
     access: AccessRouts.all,
   },
   {
+    path: RoutePath.community,
+    exact: true,
+    component: Community,
+    access: AccessRouts.all,
+  },
+  {
     path: RoutePath.howToMakeMoneyHere,
     exact: true,
     component: HowToMakeMoneyHere,
@@ -59,7 +76,19 @@ const routesConfig: route[] = [
   {
     path: RoutePath.binarProfitTeam,
     exact: true,
-    component: BinarProfitTeam,
+    component: mrxInvest,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.optional,
+    exact: true,
+    component: Optional,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.priority,
+    exact: true,
+    component: Priority,
     access: AccessRouts.all,
   },
   {
@@ -93,15 +122,27 @@ const routesConfig: route[] = [
     access: AccessRouts.all,
   },
   {
-    path: RoutePath.auth,
-    exact: true,
-    component: Authorization,
-    access: AccessRouts.all,
-  },
-  {
     path: RoutePath.authWithRef,
     exact: true,
     component: HomePage,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.privacyPolicy,
+    exact: true,
+    component: PrivacyPolicy,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.termsUse,
+    exact: true,
+    component: TermsUse,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.page404,
+    exact: false,
+    component: page404,
     access: AccessRouts.all,
   },
 ];

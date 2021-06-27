@@ -7,7 +7,7 @@ import {
 } from "../../../types/types";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import cn from "classnames";
-import ModalBg from "../../../svg/ModalBg";
+import ModalBg from "../../../assets/svg/ModalBg";
 import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../../routes/routesConfig";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ import { Loader } from "../../uiKit/loader";
 
 interface SignInProps extends defaultModalComponentProps {}
 
-const SignIn: React.FC<SignInProps> = ({ isOpened = false, url }) => {
+const SignIn: React.FC<SignInProps> = ({ isOpened = false, url = "" }) => {
   const { register, handleSubmit, errors, watch } = useForm();
   const dispatch = useDispatchTyped();
   const { isLoading } = useSelectorTyped(

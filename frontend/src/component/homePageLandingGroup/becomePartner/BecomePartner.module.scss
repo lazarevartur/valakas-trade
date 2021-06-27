@@ -1,3 +1,6 @@
+.BecomePartner {
+  background: #fff;
+}
 .title {
   font-weight: 600;
   font-size: 36px;
@@ -13,12 +16,9 @@
   line-height: 23px;
   padding: 20px;
 }
-.bg {
-  background: #f9f9f9;
-  padding-bottom: 60px;
+.container {
+  padding: 60px 30px;
 }
-.bg_svg {
-  position: absolute;
-  top: 0;
-  right: 0;
+.img {
+  object-fit: cover;
 }

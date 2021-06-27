@@ -2,12 +2,12 @@ import React from "react";
 import styles from "./partnershipPrograms.module.scss";
 import cn from "classnames";
 import { defaultComponentProps } from "../../../types/types";
-import HomeBg from "../../../svg/HomeBg";
+import HomeBg from "../../../assets/svg/HomeBg";
 import { Col, Container, ListGroup, Row, Tab } from "react-bootstrap";
 import { ExternalLinkIcon } from "@modulz/radix-icons";
-import Backpack from "../../../svg/Backpack";
-import Rocket from "../../../svg/Rocket";
-import Clock from "../../../svg/Clock";
+import Backpack from "../../../assets/svg/Backpack";
+import Rocket from "../../../assets/svg/Rocket";
+import Clock from "../../../assets/svg/Clock";
 
 interface PartnershipProgramsProps extends defaultComponentProps {}
 
@@ -26,8 +26,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
             <Row>
               <Col lg={{ offset: 3, span: 6 }}>
                 <p className={styles.text}>
-                  Выберите любую программу на комфортных условиях. Ваш счет
-                  прибавит в весе.
+                  Выберите любую программу на комфортных условиях.
                 </p>
               </Col>
             </Row>
@@ -37,7 +36,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
           <Col>
             <Tab.Container
               id="list-group-tabs-example"
-              defaultActiveKey="#tokenProfitTeam"
+              defaultActiveKey="#MRX_invest"
             >
               <Row>
                 <Col sm={4}>
@@ -45,21 +44,21 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                     <ListGroup.Item
                       className={styles.list_group_item}
                       action
-                      href="#tokenProfitTeam"
+                      href="#MRX_invest"
                     >
-                      Token Profit Team
+                      MRX-invest
                     </ListGroup.Item>
-                    <ListGroup.Item action href="#coinProfitTeam">
-                      Coin Profit Team
+                    <ListGroup.Item action href="#Optional">
+                      Optional
                     </ListGroup.Item>
-                    <ListGroup.Item action href="#synergyProfitTeam">
-                      Synergy Profit Team
+                    <ListGroup.Item action href="#Priority">
+                      Priority
                     </ListGroup.Item>
                   </ListGroup>
                 </Col>
                 <Col sm={8}>
                   <Tab.Content>
-                    <Tab.Pane eventKey="#tokenProfitTeam">
+                    <Tab.Pane eventKey="#MRX_invest">
                       <Row>
                         <Col className={styles.description}>
                           <h4>
@@ -119,7 +118,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                         </Col>
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="#coinProfitTeam">
+                    <Tab.Pane eventKey="#Optional">
                       <Row>
                         <Col className={styles.description}>
                           <h4>
@@ -179,7 +178,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                         </Col>
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="#synergyProfitTeam">
+                    <Tab.Pane eventKey="#Priority">
                       <Row>
                         <Col className={styles.description}>
                           <h4>

@@ -73,6 +73,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 24px;
+  padding-bottom: 25px;
   border-bottom: 1px solid;
   border-image: linear-gradient(
     90deg,
@@ -82,10 +83,24 @@
   );
   border-image-slice: 1;
 }
+.logo {
+  position: absolute;
+  left: 40%;
+}
 .center_logo {
   justify-content: center;
   padding-right: 6%;
 }
 header {
   margin-bottom: 23px;
+}
+.nav_item {
+  position: relative;
+  svg {
+    position: absolute;
+    left: -20px;
+  }
+  &:after {
+    display: none;
+  }
 }

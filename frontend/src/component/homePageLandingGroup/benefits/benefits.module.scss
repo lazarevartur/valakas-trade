@@ -1,3 +1,6 @@
+.Benefits {
+  padding: 50px 0;
+}
 .main_title {
   padding-top: 40px;
   font-weight: 600;
@@ -7,9 +10,6 @@
   color: #333333;
 }
 .icon {
-  padding-left: 10px;
-  height: 110px;
-  width: 115px;
 }
 .title {
   margin: 20px 0;
@@ -30,11 +30,11 @@
   position: relative;
   &:after {
     position: absolute;
-    top: 0;
+    top: 44%;
     right: 16px;
     content: "";
     width: 1px;
-    height: 105%;
+    height: 50%;
     background: #fec825;
     opacity: 0.8;
   }

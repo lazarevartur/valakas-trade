@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       country: "",
     },
-    status: { type: String, default: "Новичек" },
+    status: { type: String, default: "М1" },
     Inviting_id: {
       type: String,
       default: "",
@@ -105,9 +105,18 @@ const userSchema = new mongoose.Schema(
         thirddLine: { type: Number, default: 0.02 },
         fourthdLine: { type: Number, default: 0.01 },
       },
+      img: { type: String },
+      sms_notifications: {
+        type: Boolean,
+        default: false,
+      },
+      verification: {
+        type: Boolean,
+        default: false,
+      },
     },
     metaData: {
-      incomeFromLines: {
+      partners: {
         first: {
           type: Number,
           default: 0,
@@ -124,23 +133,26 @@ const userSchema = new mongoose.Schema(
           type: Number,
           default: 0,
         },
-        linear_premium: {
-          type: Number,
-          default: 0,
-        },
-        mentor_prime: {
-          type: Number,
-          default: 0,
-        },
       },
-      img: { type: String },
-      sms_notifications: {
-        type: Boolean,
-        default: false,
+      linear_premium: {
+        type: Number,
+        default: 0,
       },
-      verification: {
-        type: Boolean,
-        default: false,
+      dividends: {
+        type: Number,
+        default: 0,
+      },
+      investment_package: {
+        type: Number,
+        default: 0,
+      },
+      options: {
+        type: Number,
+        default: 0,
+      },
+      mentor_prime: {
+        type: Number,
+        default: 0,
       },
     },
     contact_details: {

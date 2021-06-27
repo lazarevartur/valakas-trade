@@ -22,19 +22,22 @@ const SubMenu = () => {
             </Nav.Item>
             <NavDropdown title="Партнерские програмы" id="nav-dropdown">
               <LinkContainer to={RoutePath.binarProfitTeam}>
-                <NavDropdown.Item eventKey="4.1">
-                  Binar Profit Team
-                </NavDropdown.Item>
+                <NavDropdown.Item eventKey="4.1">MRX-invest</NavDropdown.Item>
               </LinkContainer>
-              <NavDropdown.Item eventKey="4.2">
-                Coin Profit Team
-              </NavDropdown.Item>
-              <NavDropdown.Item eventKey="4.3">
-                Synergy Profit Team
-              </NavDropdown.Item>
+              <LinkContainer to={RoutePath.optional}>
+                <NavDropdown.Item eventKey="4.2">Optional</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to={RoutePath.priority}>
+                <NavDropdown.Item eventKey="4.3">Priority</NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
             <NavDropdown title="Партнерство с Mirax" id="nav-dropdown">
-              <NavDropdown.Item eventKey="1">Сообщество Mirax</NavDropdown.Item>
+              <LinkContainer to={RoutePath.community}>
+                <NavDropdown.Item eventKey="1">
+                  Сообщество Mirax
+                </NavDropdown.Item>
+              </LinkContainer>
+
               <NavDropdown.Item eventKey="2">Вакансии</NavDropdown.Item>
               <NavDropdown.Item eventKey="3">
                 Открытие индивидуального <br /> консультационного центра

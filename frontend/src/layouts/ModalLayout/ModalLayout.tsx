@@ -1,17 +1,21 @@
 import React from "react";
 import styles from "./ModalLayout.module.scss";
-import { defaultModalComponentProps } from "../../types/types";
-import { Modal } from "react-bootstrap";
+import { Modal, ModalProps } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { useLocation } from "react-router-dom";
+import { defaultModalComponentProps } from "../../types/types";
 
-interface ModalLayoutProps extends defaultModalComponentProps {}
+interface ModalLayoutProps extends ModalProps, defaultModalComponentProps {
+  aria_labelledby?: string;
+}
 
 const ModalLayout: React.FC<ModalLayoutProps> = ({
   isOpened = false,
   title = "",
   children,
   className = "",
+  size = "xl",
+  aria_labelledby = "labelledby",
 }) => {
   const history = useHistory();
   const { pathname } = useLocation();
@@ -20,12 +24,11 @@ const ModalLayout: React.FC<ModalLayoutProps> = ({
   };
   return (
     <Modal
-      size={"xl"}
+      size={size}
       show={isOpened}
       onHide={closeModal}
-      aria-labelledby="example-modal-sizes-title-lg"
+      aria-labelledby={aria_labelledby}
     >
-      <Modal.Title>{title}</Modal.Title>
       <Modal.Body>{children}</Modal.Body>
     </Modal>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./mainAdvantages.module.scss";
 import { defaultComponentProps } from "../../../types/types";
 import { Row, Col, Container } from "react-bootstrap";
-import HomeBg from "../../../svg/HomeBg";
+import HomeBg from "../../../assets/svg/HomeBg";
 
 interface MainAdvantagesProps extends defaultComponentProps {}
 

@@ -10,6 +10,7 @@ import cn from "classnames";
 import { SideBar } from "../../component/mainBlocks/sideBar";
 import { useDispatchTyped } from "../../hooks/useTypedRedux";
 import { getCurrentUser } from "../../store/action/dashboardAction";
+import { BalanceReplenishment } from "../../component/workWithWallets/Balance";
 
 interface DashboardProps {}
 
@@ -34,6 +35,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
 
   return (
     <div className={cn(styles.dashboard)} ref={$startDashboard}>
+      <BalanceReplenishment />
       <Container className={cn(styles.container)}>
         <Row>
           <Col lg={3} className={styles.side_bar}>

@@ -6,6 +6,8 @@ import { Team } from "../component/dashboardGroup/team";
 import { Profile } from "../component/dashboardGroup/profile";
 import { HistoryPage } from "../component/dashboardGroup/history";
 import { TokenProfit } from "../component/dashboardGroup/programs/tokenProfit";
+import { RoutePath } from "./routesConfig";
+import { page404 } from "../pages/page404";
 
 export interface routeDashboard {
   path: DashboardRoute;
@@ -21,6 +23,7 @@ export enum DashboardRoute {
   profit = "/dashboard/profit",
   history = "/dashboard/history",
   tokenProfit = "/dashboard/tokenProfit",
+  page404 = "*",
 }
 
 export const dashboardRouteConfig: routeDashboard[] = [

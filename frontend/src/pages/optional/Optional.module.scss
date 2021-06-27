@@ -1,0 +1,37 @@
+@import "src/assets/globalStyles/style";
+@import "src/assets/globalStyles/variables";
+
+.description {
+  padding: 50px 0;
+
+  p {
+    line-height: 160%;
+  }
+}
+.bgf9 {
+  background-color: #f9f9f9;
+}
+.title {
+  text-align: left;
+  padding-bottom: 30px;
+}
+.stages_options {
+  padding: $padding;
+  .title {
+    text-align: center;
+    padding-bottom: 30px;
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 64px;
+    color: #4f4f4f;
+  }
+}
+.Satisfied {
+  .title {
+    font-size: 48px;
+  }
+  .accentBig {
+    font-size: 20px;
+    font-weight: 500;
+  }
+}

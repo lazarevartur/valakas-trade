@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./HighQualityPrototype.module.scss";
 import { defaultComponentProps } from "../../../types/types";
 import { Col, Container, Row } from "react-bootstrap";
-import HomeBg from "../../../svg/HomeBg";
+import HomeBg from "../../../assets/svg/HomeBg";
 
 interface HighQualityPrototypeProps extends defaultComponentProps {}
 
@@ -15,8 +15,9 @@ const HighQualityPrototype: React.FC<HighQualityPrototypeProps> = ({
       <Container>
         <Row>
           <Col>
-            <h5 className={styles.title}>Навсегда решите эти проблемы</h5>
-            <small>Каждый день большинство людей задумываются</small>
+            <h5 className={styles.title}>
+              Навсегда решите эти <br /> проблемы
+            </h5>
             <div className={styles.content}>
               <div>Как приумножить свой капитал?</div>
               <br />
