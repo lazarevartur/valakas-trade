@@ -1,0 +1,45 @@
+@import "src/assets/globalStyles/style";
+@import "src/assets/globalStyles/variables";
+.Priority {
+  padding: 50px 0;
+}
+.desc {
+  small {
+    text-align: left;
+    color: #828282;
+  }
+  .title {
+    text-align: left;
+    font-size: 50px;
+  }
+  ol {
+    padding-left: 20px;
+    margin: 20px 0;
+  }
+}
+.description {
+  text-align: center;
+  padding-bottom: 70px;
+  .accent {
+    font-size: 30px;
+    color: #fec825;
+  }
+  span {
+    font-size: 56px;
+    font-weight: 600;
+    color: #fec825;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+.quote {
+  margin: 50px 50px;
+  color: #fec825;
+  text-align: center;
+  border: 2px solid #fec825;
+  padding: 40px;
+  font-size: 30px;
+}
+.title {
+}

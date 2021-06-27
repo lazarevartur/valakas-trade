@@ -104,6 +104,29 @@ a:hover {
     bottom: -10px;
   }
 }
+.PrioritySelector {
+  display: flex;
+  justify-content: space-between;
+  .text {
+    color: #000;
+  }
+  .icon {
+    border: 1px solid transparent;
+  }
+  .nav-link.active {
+    & .icon {
+      border: 1px solid #fec825;
+      box-shadow: 0px 0px 30px rgba(136, 136, 136, 0.25);
+      border-radius: 16px;
+    }
+  }
+  a {
+    color: $mainColor;
+  }
+  .nav-link.active:after {
+    border: none;
+  }
+}
 .card {
   border-color: transparent;
 }
@@ -153,6 +176,10 @@ a:hover {
 }
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label:focus {
   background: red;
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #fec825;
 }
 ////если окно браузера больше максимальной ширины сайта
 //@media screen and (min-width: 500px) {
