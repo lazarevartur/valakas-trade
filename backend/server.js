@@ -21,8 +21,10 @@ JwtPassport(passport);
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+
 if (process.env.NODE_ENV === "production") {
-  console.log("tus");
   app.use(express.static(path.join(__dirname, "/frontend/build")));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
@@ -33,8 +35,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 //Регистрация роутор api
-app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
 
 // не найден путь
 app.use(notFound);
