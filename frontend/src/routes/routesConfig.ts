@@ -11,6 +11,7 @@ import { page404 } from "../pages/page404";
 import { PrivacyPolicy } from "../pages/privacyPolicy";
 import TermsUse from "../pages/TermsUse/TermsUse";
 import { Community } from "../pages/сommunity";
+import { PriorityDescription } from "../pages/PriorityDescription";
 const AboutPage = React.lazy(() => import("../pages/about/AboutPage"));
 const mrxInvest = React.lazy(() => import("../pages/mrxInvest/MrxInvest"));
 const Optional = React.lazy(() => import("../pages/optional/Optional"));
@@ -30,6 +31,7 @@ export enum RoutePath {
   binarProfitTeam = "/mrx-invest",
   optional = "/optional",
   priority = "/priority",
+  priorityDescription = "/priority/:id",
   authWithRef = "/r/:id",
   personal = "/personal",
   income = "/income",
@@ -89,6 +91,12 @@ const routesConfig: route[] = [
     path: RoutePath.priority,
     exact: true,
     component: Priority,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.priorityDescription,
+    exact: true,
+    component: PriorityDescription,
     access: AccessRouts.all,
   },
   {
