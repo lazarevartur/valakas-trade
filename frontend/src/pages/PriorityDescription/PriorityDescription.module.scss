@@ -1,0 +1,39 @@
+@import "src/assets/globalStyles/style";
+@import "src/assets/globalStyles/variables";
+
+.PriorityDescription {
+  background-color: $bgGrey;
+  padding: 50px 0;
+  .container {
+    background: #fff;
+    padding: 70px;
+  }
+  .goBack {
+    cursor: pointer;
+    position: relative;
+    color: $mainColor;
+    padding-left: 20px;
+    font-size: 22px;
+    &:after {
+      position: absolute;
+      top: 7px;
+      left: 2px;
+      content: "";
+      width: 13px;
+      height: 13px;
+      transform: rotate(-45deg);
+      border-left: 2px solid $mainColor;
+      border-top: 2px solid $mainColor;
+    }
+  }
+  .PrioritySlide {
+    padding: 30px 0 80px;
+  }
+  .calculator {
+    padding: 0 60px;
+    p {
+      font-size: 16px;
+      line-height: 160%;
+    }
+  }
+}

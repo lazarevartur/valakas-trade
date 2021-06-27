@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./prioritySelector.module.scss";
-import { Button, Col, Image, Nav, Row, Tab } from "react-bootstrap";
+import { Col, Image, Nav, Row, Tab } from "react-bootstrap";
 import cn from "classnames";
 import icon1 from "../../assets/svg/Home.svg";
 import icon2 from "../../assets/svg/car.svg";
@@ -11,6 +11,7 @@ import icon6 from "../../assets/svg/rings.svg";
 import icon7 from "../../assets/svg/dollar.svg";
 import homeImg from "../../assets/img/home.jpg";
 import carImg from "../../assets/img/car.jpg";
+import { PrioritySlide } from "./prioritySlide";
 
 interface data {
   icon: string;
@@ -19,14 +20,6 @@ interface data {
   description: string;
   conditions: [];
 }
-
-const normalizeCondition = {
-  discount: "Скидка",
-  term: "Срок",
-  minCost: "Мин. стоимость",
-  maxCost: "Макс. стоимость",
-  minStatus: "Мин. статус участника",
-};
 
 const menuData = [
   {
@@ -58,10 +51,62 @@ const menuData = [
       minStatus: "M2",
     },
   },
-  { icon: icon3, title: "Moto" },
-  { icon: icon4, title: "Device" },
-  { icon: icon5, title: "Travel" },
-  { icon: icon6, title: "Wedding" },
+  {
+    icon: icon3,
+    title: "Auto2",
+    type: "Автомобиль",
+    img: carImg,
+    description: "Приобретите автомобиль вашей мечты всего за часть стоимости",
+    conditions: {
+      discount: "до -25%",
+      term: "30 дней",
+      minCost: "10000",
+      maxCost: "100000",
+      minStatus: "M2",
+    },
+  },
+  {
+    icon: icon4,
+    title: "Auto3",
+    type: "Автомобиль",
+    img: carImg,
+    description: "Приобретите автомобиль вашей мечты всего за часть стоимости",
+    conditions: {
+      discount: "до -25%",
+      term: "30 дней",
+      minCost: "10000",
+      maxCost: "100000",
+      minStatus: "M2",
+    },
+  },
+  {
+    icon: icon5,
+    title: "Travel",
+    type: "Автомобиль",
+    img: carImg,
+    description: "Приобретите автомобиль вашей мечты всего за часть стоимости",
+    conditions: {
+      discount: "до -25%",
+      term: "30 дней",
+      minCost: "10000",
+      maxCost: "100000",
+      minStatus: "M2",
+    },
+  },
+  {
+    icon: icon6,
+    title: "Wedding",
+    type: "Автомобиль",
+    img: carImg,
+    description: "Приобретите автомобиль вашей мечты всего за часть стоимости",
+    conditions: {
+      discount: "до -25%",
+      term: "30 дней",
+      minCost: "10000",
+      maxCost: "100000",
+      minStatus: "M2",
+    },
+  },
   {
     icon: icon7,
     title: (
@@ -69,6 +114,16 @@ const menuData = [
         Early <br /> Repayment
       </span>
     ),
+    type: "Автомобиль",
+    img: carImg,
+    description: "Приобретите автомобиль вашей мечты всего за часть стоимости",
+    conditions: {
+      discount: "до -25%",
+      term: "30 дней",
+      minCost: "10000",
+      maxCost: "100000",
+      minStatus: "M2",
+    },
   },
 ];
 
@@ -99,55 +154,11 @@ const PrioritySelector: React.FC<PrioritySelectorProps> = () => {
           </Nav>
         </Col>
       </Row>
-      <Row className={styles.slide}>
-        <Col sm={12}>
-          <Tab.Content>
-            {menuData.map((item) => {
-              const condition = item.conditions
-                ? Object.entries(item.conditions)
-                : null;
-              console.log(condition);
-              return (
-                <Tab.Pane eventKey={item.title}>
-                  <Row>
-                    <Col lg={5}>
-                      <Image src={item.img} className={styles.img} />
-                    </Col>
-                    <Col lg={7} className={styles.description}>
-                      <h2>Priority {item.title}</h2>
-                      <div className={styles.typeText}>{item.type}</div>
-                      <div>{item.description}</div>
-                      <div className={styles.separator} />
-
-                      {condition &&
-                        condition.map(([key, value]) => {
-                          return (
-                            <Row>
-                              <Col lg={6} className={styles.key}>
-                                {normalizeCondition[key]}
-                              </Col>
-                              <Col lg={6} className={styles.value}>
-                                {value}
-                              </Col>
-                            </Row>
-                          );
-                        })}
-                      <Row>
-                        <Col lg={12} className={styles.button_group}>
-                          <Button className={cn(styles.button)}>
-                            Участвовать
-                          </Button>
-                          <Button className={styles.whiteButton}>Детали</Button>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                </Tab.Pane>
-              );
-            })}
-          </Tab.Content>
-        </Col>
-      </Row>
+      <div className={styles.PrioritySlide}>
+        {menuData.map(({ icon, ...item }) => {
+          return <PrioritySlide {...item} />;
+        })}
+      </div>
     </Tab.Container>
   );
 };

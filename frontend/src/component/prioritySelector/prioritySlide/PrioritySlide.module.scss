@@ -1,0 +1,61 @@
+.slide {
+  position: relative;
+  .img {
+    border-radius: 10px 10px;
+  }
+  .description {
+    border-radius: 0 10px 10px 0px;
+    background-color: #fff;
+    padding: 50px;
+    h2 {
+      font-weight: bold;
+      font-size: 30px;
+      line-height: 140%;
+      color: #333333;
+    }
+    .typeText {
+      font-size: 20px;
+      line-height: 140%;
+      color: #828282;
+      padding: 5px 0 15px;
+    }
+    .separator {
+      border: 1px solid #e0e0e0;
+      margin: 15px 0;
+      width: 90%;
+    }
+    .key {
+      font-size: 16px;
+      line-height: 150%;
+      color: #4f4f4f;
+      padding-top: 10px;
+    }
+    .value {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 150%;
+      color: #333333;
+    }
+    .color_red {
+      color: #eb5757;
+    }
+  }
+  .button_group {
+    position: absolute;
+    bottom: 50px;
+    padding-top: 50px;
+    .button,
+    .whiteButton {
+      width: 200px;
+      text-transform: capitalize;
+    }
+    .whiteButton {
+      @extend .button;
+      background-color: transparent;
+      border: 1px solid #000000;
+      box-sizing: border-box;
+      border-radius: 10px;
+      margin: 0 20px;
+    }
+  }
+}
