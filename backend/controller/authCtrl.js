@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import { generateToken } from "../utils/utils.js";
 import { roles } from "../config/role.js";
 import { getDayinMm } from "../utils/utils.js";
-import Program from "../models/programModel.js";
+import mrxPrograms from "../models/programModel.js";
 
 // @desc Register new user
 // @route POST /api/auth/
@@ -126,7 +126,7 @@ export const addProgramsMrx = asyncHandler(async (req, res) => {
     mongoose.isValidObjectId(user_id)
   ) {
     try {
-      program = await Program.findById(program_id).lean();
+      program = await mrxPrograms.findById(program_id).lean();
       user = await User.findById(user_id);
       const endTime = Date.now() + getDayinMm(program.validity);
       const programIsActive = user.programs.mrx.find((item) => {

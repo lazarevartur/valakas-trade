@@ -3,13 +3,29 @@ import styles from "./binarCard.module.scss";
 import { defaultComponentProps } from "../../types/types";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import cn from "classnames";
+import { LinkContainer } from "react-router-bootstrap";
 
-interface BinarCardProps extends defaultComponentProps {}
-
-const BinarCard: React.FC<BinarCardProps> = () => {
+interface BinarCardProps extends defaultComponentProps {
+  name?: string;
+  validity?: number;
+  line_count?: number;
+  price?: number;
+  _id?: string;
+  linkTo?: string;
+}
+/*
+ * “linear_premium”: 4, “premium”: 0.2, “line_count”: 4, “price”: 10000, “_id”: “60da42c6e3c2022c8c4d6d25”, “name”: “10000”, “validity”: 260,*/
+const BinarCard: React.FC<BinarCardProps> = ({
+  name = "Пакет",
+  validity = 210,
+  line_count = 3,
+  price = 1000,
+  _id = "1",
+  linkTo = "/lol",
+}) => {
   return (
     <Card className={styles.BinarCard}>
-      <Card.Header className={cn(styles.card_header)}>$100</Card.Header>
+      <Card.Header className={cn(styles.card_header)}>${name}</Card.Header>
       <Card.Body>
         <Card.Title className={cn(styles.card_title)}>
           Инвестиционный пакет
@@ -19,7 +35,7 @@ const BinarCard: React.FC<BinarCardProps> = () => {
             Срок работы инвестиционного пакета
           </Col>
           <Col lg={5} className={cn(styles.right_col)}>
-            200 дней
+            {validity} дней
           </Col>
         </Row>
         <Row>
@@ -35,7 +51,7 @@ const BinarCard: React.FC<BinarCardProps> = () => {
             Количество уровней по линейной премии
           </Col>
           <Col lg={4} className={cn(styles.right_col)}>
-            3
+            {line_count}
           </Col>
         </Row>
       </Card.Body>
@@ -45,11 +61,13 @@ const BinarCard: React.FC<BinarCardProps> = () => {
             Стоимость
           </Col>
           <Col lg={6} className={cn(styles.right_col, styles.accent)}>
-            $100
+            ${price}
           </Col>
         </Row>
         <div className={styles.dFlex}>
-          <Button className={styles.button}>Купить</Button>
+          <LinkContainer to={linkTo}>
+            <Button className={styles.button}>Купить</Button>
+          </LinkContainer>
         </div>
       </Card.Footer>
     </Card>

@@ -5,12 +5,14 @@ import { userDashboard } from "./slice/userDashboardSlice";
 import { userTeam } from "./slice/teamSlice";
 
 import { logout } from "./action/authAction";
+import { mrxProgram } from "./slice/mrxProgramsSlice";
 
 export const store = configureStore({
   reducer: {
     authentication: userAuthentication.reducer,
     dashboard: userDashboard.reducer,
     team: userTeam.reducer,
+    mrx: mrxProgram.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

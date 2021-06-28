@@ -30,6 +30,10 @@
   thead th {
     border-bottom: 1px solid #fec825;
   }
+  tbody td:nth-of-type(odd),
+  tbody td:nth-of-type(even) {
+    padding: 20px 10px;
+  }
   tbody tr:nth-of-type(odd) {
     background-color: #ffffff;
   }

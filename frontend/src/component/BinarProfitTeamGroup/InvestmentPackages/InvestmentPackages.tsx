@@ -2,14 +2,35 @@ import React from "react";
 import cn from "classnames";
 import { CardDeck, Col, Container, Row } from "react-bootstrap";
 import styles from "./InvestmentPackages.module.scss";
-import { defaultComponentProps } from "../../../types/types";
+import { defaultComponentProps, rootState } from "../../../types/types";
 import { BinarCard } from "../../binarCard";
+import {
+  useDispatchTyped,
+  useSelectorTyped,
+} from "../../../hooks/useTypedRedux";
+import { getMrxPrograms } from "../../../store/action/programsAction";
+import { Loader } from "../../uiKit/loader";
+import { getChunks } from "../../../utils/utils";
+import { RoutePath } from "../../../routes/routesConfig";
+import { Balance } from "../../workWithWallets/Balance";
 
 interface InvestmentPackagesProps extends defaultComponentProps {}
 
 const InvestmentPackages: React.FC<InvestmentPackagesProps> = () => {
+  const { mrxPrograms, isLoading } = useSelectorTyped(
+    (state: rootState) => state.mrx
+  );
+  const {
+    userData: { token },
+  } = useSelectorTyped((state: rootState) => state.authentication);
+  const dispatch = useDispatchTyped();
+  React.useEffect(() => {
+    dispatch(getMrxPrograms());
+  }, []);
+
   return (
     <div className={cn(styles.InvestmentPackages)}>
+      <Balance />
       <Container>
         <Row>
           <Col lg={12}>
@@ -47,17 +68,33 @@ const InvestmentPackages: React.FC<InvestmentPackagesProps> = () => {
         </Row>
         <Row className={cn(styles.cardGroup)}>
           <Col lg={12}>
-            <CardDeck>
-              <BinarCard />
-              <BinarCard />
-              <BinarCard />
-            </CardDeck>
-            <br />
-            <CardDeck>
-              <BinarCard />
-              <BinarCard />
-              <BinarCard />
-            </CardDeck>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <>
+                {getChunks(mrxPrograms).map((chunk) => {
+                  return (
+                    <>
+                      <CardDeck>
+                        {chunk.map(({ _id, ...program }) => {
+                          return (
+                            <BinarCard
+                              {...program}
+                              linkTo={
+                                !token
+                                  ? RoutePath.login
+                                  : RoutePath.replenishmentWallet
+                              }
+                            />
+                          );
+                        })}
+                      </CardDeck>
+                      <br />
+                    </>
+                  );
+                })}
+              </>
+            )}
           </Col>
           <Row>
             <Col lg={7} className={cn(styles.desk)}>

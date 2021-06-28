@@ -31,9 +31,123 @@
   }
   .calculator {
     padding: 0 60px;
+    h2 {
+      padding: 20px 0;
+    }
     p {
       font-size: 16px;
       line-height: 160%;
+    }
+  }
+
+  .priority_parameters {
+    .calculated {
+      background-color: #fff7df;
+      padding: 25px;
+      margin-top: 25px;
+      color: #333333;
+      font-weight: 500;
+      font-size: 22px;
+      div {
+        &:last-child {
+          color: #daa400;
+        }
+      }
+    }
+    .parameter {
+      div {
+        padding: 5px 0;
+        color: #4f4f4f;
+        font-size: 16px;
+        &:last-child {
+          color: #daa400;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .m_assistance {
+    padding: 60px 0;
+    .card_block {
+      padding: 25px 0;
+    }
+    .link {
+      text-decoration: none;
+      color: #000;
+    }
+    .card {
+      box-shadow: 0px 0px 10px rgba(160, 160, 160, 0.25);
+      border-radius: 16px;
+      width: 200px;
+      height: 120px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      &:hover {
+        border: 1px solid #fec825;
+        box-shadow: 0 0 30px rgba(136, 136, 136, 0.25);
+      }
+      p {
+        div {
+          color: #828282;
+          font-size: 13px;
+        }
+      }
+      .card_type {
+        display: flex;
+        font-weight: 600;
+        font-size: 10px;
+        background-color: #fec825;
+        color: #ffffff;
+        align-items: center;
+        justify-content: center;
+        width: 65px;
+        height: 24px;
+        border-radius: 5px;
+      }
+    }
+  }
+  .dependency_table {
+    .title {
+      font-size: 40px;
+      line-height: 56px;
+    }
+  }
+  .table {
+    padding: 25px 0;
+    .title {
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 140%;
+    }
+
+    .t_head {
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+
+  .table_striped {
+    border-top: 2px solid #fff;
+    thead th {
+      border-bottom: 1px solid #fec825;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 160%;
+    }
+    tbody tr:nth-of-type(odd),
+    tbody tr:nth-of-type(even) {
+      text-align: center;
+      font-size: 18px;
+    }
+    tbody tr td:nth-of-type(odd),
+    tbody tr td:nth-of-type(even) {
+      border-color: transparent;
+    }
+    tbody tr:nth-of-type(odd) {
+      background-color: #ffffff;
+    }
+    tbody tr:nth-of-type(even) {
+      background-color: #f9f9f9;
     }
   }
 }

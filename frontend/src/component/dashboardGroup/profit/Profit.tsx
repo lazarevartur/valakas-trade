@@ -21,11 +21,22 @@ const Profit: React.FC<ProfitProps> = () => {
           <Col lg={6}>
             <p>
               Общий показатель доходности по инвестийциям за{" "}
+              <span>всё время</span>
+            </p>
+          </Col>
+          <Col lg={6}>
+            <span>$ 0</span>
+          </Col>
+        </Row>
+        <Row className={styles.row}>
+          <Col lg={6}>
+            <p>
+              Общий показатель доходности по инвестийциям за{" "}
               <span>последню неделю</span>
             </p>
           </Col>
           <Col lg={6}>
-            <span>$ 19773</span>
+            <span>$ 0</span>
           </Col>
         </Row>
         <Row className={styles.row}>
@@ -36,7 +47,7 @@ const Profit: React.FC<ProfitProps> = () => {
             </p>
           </Col>
           <Col lg={6}>
-            <span>$ 19773</span>
+            <span>$ 0</span>
           </Col>
         </Row>
         <Row className={styles.row}>
@@ -47,7 +58,7 @@ const Profit: React.FC<ProfitProps> = () => {
             </p>
           </Col>
           <Col lg={6}>
-            <span>$ 19773</span>
+            <span>$ 0</span>
           </Col>
         </Row>
         <Row>

@@ -168,6 +168,50 @@ const Team: React.FC<TeamProps> = () => {
               </tbody>
             </Table>
           </div>
+          <DashboardTitleBlock
+            title={"Линейная премия / Дивиденды партнеров"}
+          />
+          <div className={styles.status_mentora}>
+            <Table striped className={styles.table_striped_status}>
+              <thead>
+                <tr>
+                  <th className={styles.width}>Уровень линии</th>
+                  <th>Линейная премия ⃰ для “Options” и “MRX-invest”</th>
+                  <th>
+                    Начисления от дивиденов партнеров для “Options” и
+                    “MRX-invest”
+                  </th>
+                  <th>Линейная премия для “Priority” </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1-я линия</td>
+                  <td>4%</td>
+                  <td>5%</td>
+                  <td>1,5%</td>
+                </tr>
+                <tr>
+                  <td>2-я линия</td>
+                  <td>3%</td>
+                  <td>4%</td>
+                  <td>1%</td>
+                </tr>
+                <tr>
+                  <td>3-я линия</td>
+                  <td>2%</td>
+                  <td>3%</td>
+                  <td>0,5%</td>
+                </tr>
+                <tr>
+                  <td>4-я линия</td>
+                  <td>1%</td>
+                  <td>2%</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </Table>
+          </div>
         </>
       )}
     </Container>

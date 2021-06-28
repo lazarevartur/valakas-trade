@@ -9,6 +9,7 @@ dotenv.config();
 import connectDB from "./core/connect.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import programsRoutes from "./routes/programsRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddle.js";
 import { JwtPassport } from "./middleware/passport.js";
 
@@ -23,6 +24,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/programs", programsRoutes);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/build")));

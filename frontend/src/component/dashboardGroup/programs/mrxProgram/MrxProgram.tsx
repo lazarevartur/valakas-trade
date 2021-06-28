@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./tokenProfit.module.scss";
+import styles from "./MrxProgram.module.scss";
 import { DashboardTitleBlock } from "../../../../layouts/dashboardTitleBlock";
 import {
   Button,
@@ -14,9 +14,9 @@ import Chart from "../../../uiKit/chart/Chart";
 import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../../../routes/routesConfig";
 
-interface TokenProfitProps {}
+interface MrxProgramProps {}
 
-const TokenProfit: React.FC<TokenProfitProps> = () => {
+const MrxProgram: React.FC<MrxProgramProps> = () => {
   return (
     <Container>
       <DashboardTitleBlock title={"Доходность"} />
@@ -24,13 +24,13 @@ const TokenProfit: React.FC<TokenProfitProps> = () => {
         <Row>
           <Col lg={5}>Программа:</Col>
           <Col lg={4}>
-            <span>Token Profit</span>
+            <span>MRX-invest</span>
           </Col>
         </Row>
         <Row>
           <Col lg={5}>Вы с нами:</Col>
           <Col lg={4}>
-            <span>243 дня</span>
+            <span>0</span>
           </Col>
         </Row>
         <Row>
@@ -42,13 +42,13 @@ const TokenProfit: React.FC<TokenProfitProps> = () => {
         <Row>
           <Col lg={5}>Текущая базоваая ставка доходности:</Col>
           <Col lg={4}>
-            <span className={styles.accent}>0.51% (в сутки)</span>
+            <span className={styles.accent}>0</span>
           </Col>
         </Row>
         <Row>
           <Col lg={5}>Средняя базовая ставка доходности:</Col>
           <Col lg={4}>
-            <span className={styles.accent}>21%</span>
+            <span className={styles.accent}>0</span>
           </Col>
         </Row>
         <Row>
@@ -69,13 +69,13 @@ const TokenProfit: React.FC<TokenProfitProps> = () => {
               <Card.Title className={styles.card_title}>
                 Сумма депозита
               </Card.Title>
-              <Card.Text>19 778 $</Card.Text>
+              <Card.Text>0 $</Card.Text>
             </Card.Body>
           </Card>
           <Card className={styles.account}>
             <Card.Body>
               <Card.Title className={styles.card_title}>Дивиденды</Card.Title>
-              <Card.Text>19 778 $</Card.Text>
+              <Card.Text>0 $</Card.Text>
             </Card.Body>
           </Card>
           <Card className={styles.account}>
@@ -83,7 +83,7 @@ const TokenProfit: React.FC<TokenProfitProps> = () => {
               <Card.Title className={styles.card_title}>
                 Выплаты по реферальной программе
               </Card.Title>
-              <Card.Text>19 778 $</Card.Text>
+              <Card.Text>0 $</Card.Text>
             </Card.Body>
           </Card>
         </CardDeck>
@@ -118,4 +118,4 @@ const TokenProfit: React.FC<TokenProfitProps> = () => {
   );
 };
 
-export default TokenProfit;
+export default MrxProgram;

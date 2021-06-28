@@ -1,1 +1,1 @@
-export { default as BalanceReplenishment } from "./Balance";
+export { default as Balance } from "./Balance";

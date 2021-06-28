@@ -1,9 +1,7 @@
 import React from "react";
 import styles from "./customInput.module.scss";
 import { Form, FormControlProps } from "react-bootstrap";
-import { defaultComponentProps } from "../../../types/types";
 import cn from "classnames";
-import { log } from "util";
 
 interface CustomInputProps extends FormControlProps {
   type?: string;

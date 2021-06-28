@@ -23,36 +23,39 @@ const Footer = () => {
         </Col>
         <Col lg={2}>
           <h6 className={styles.title}>О компании</h6>
-          <Nav className="flex-column">
-            <Nav.Link className={styles.nav_Link} href="/home">
-              О нас
-            </Nav.Link>
+          <Nav className="flex-column" activeKey>
+            <LinkContainer to={RoutePath.about}>
+              <Nav.Link className={styles.nav_Link}>О нас</Nav.Link>
+            </LinkContainer>
+
             <Nav.Link className={styles.nav_Link} href="/home">
               Контакты
             </Nav.Link>
-            <Nav.Link className={styles.nav_Link} href="/home">
-              Как здесь заработать?
-            </Nav.Link>
+            <LinkContainer to={RoutePath.howToMakeMoneyHere}>
+              <Nav.Link className={styles.nav_Link}>
+                Как здесь заработать?
+              </Nav.Link>
+            </LinkContainer>
           </Nav>
         </Col>
         <Col lg={2}>
           <h6 className={styles.title}>Партнерские программы</h6>
-          <Nav className="flex-column">
-            <Nav.Link className={styles.nav_Link} href="/home">
-              Token Profit Team
-            </Nav.Link>
-            <Nav.Link className={styles.nav_Link} href="/home">
-              Coin Profit Team
-            </Nav.Link>
-            <Nav.Link className={styles.nav_Link} href="/home">
-              Synergy Profit Team
-            </Nav.Link>
+          <Nav className="flex-column" activeKey>
+            <LinkContainer to={RoutePath.binarProfitTeam}>
+              <Nav.Link className={styles.nav_Link}>MRX-invest</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to={RoutePath.optional}>
+              <Nav.Link className={styles.nav_Link}>Optional</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to={RoutePath.priority}>
+              <Nav.Link className={styles.nav_Link}>Priority</Nav.Link>
+            </LinkContainer>
           </Nav>
         </Col>
         <Col lg={3}>
           <h6 className={styles.title}>Партнерство с Mirax</h6>
-          <Nav className="flex-column">
-            <Nav.Link className={styles.nav_Link} href="/home">
+          <Nav className="flex-column" activeKey>
+            <Nav.Link className={styles.nav_Link} href="/">
               Сообщество Mirax
             </Nav.Link>
             <Nav.Link className={styles.nav_Link} href="/home">
