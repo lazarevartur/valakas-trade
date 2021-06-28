@@ -1,25 +1,19 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const programModel = mongoose.Schema(
-    {
-        name: { type: String },
-        b_award: { type: Number },
-        validity: { type: Number },
-        premium: { type: Number },
-        line_count: { type: Number },
-        price: {
-            type: Number,
-            virtual: true,
-            get() {
-                return Number(this.name);
-            },
-        },
-    },
-    {
-        timestamps: true,
-    }
+const mrxProgramsModel = mongoose.Schema(
+  {
+    name: { type: String },
+    linear_premium: { type: Number, default: 4 },
+    validity: { type: Number },
+    premium: { type: Number, default: 0.2 },
+    line_count: { type: Number, default: 3 },
+    price: { type: Number, default: 0 },
+  },
+  {
+    timestamps: true,
+  }
 );
 
-const Program = mongoose.model('Programs', programModel);
+const mrxPrograms = mongoose.model("mrxPrograms", mrxProgramsModel);
 
-export default Program;
+export default mrxPrograms;

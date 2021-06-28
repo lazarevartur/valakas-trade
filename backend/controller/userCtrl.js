@@ -1,9 +1,11 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
+import mrxPrograms from "../models/programModel.js";
 
 export const me = asyncHandler(async (req, res) => {
   const userId = req.user;
   let user;
+
   try {
     user = await User.findById(userId);
     const response = {

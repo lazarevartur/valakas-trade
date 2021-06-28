@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { defaultComponentProps } from "../../../types/types";
 import cn from "classnames";
 import { DashboardRoute } from "../../../routes/dashboard";
+import { RoutePath } from "../../../routes/routesConfig";
 
 interface SideBarProps extends defaultComponentProps {}
 
@@ -14,50 +15,49 @@ interface menu {
   icon?: string;
 }
 
-const menu: menu[] = [
-  {
-    title: "Рабочий стол",
-    link: DashboardRoute.desktop,
-    icon: `fas fa-desktop`,
-  },
-  {
-    title: "Доходность",
-    link: DashboardRoute.profit,
-    icon: `fas fa-chart-line`,
-  },
-  {
-    title: "Команда",
-    link: DashboardRoute.team,
-    icon: `fas fa-users`,
-  },
-  {
-    title: "История",
-    link: DashboardRoute.history,
-    icon: `fas fa-history`,
-  },
-  {
-    title: "Личные данные",
-    link: DashboardRoute.profile,
-    icon: `fas fa-cog`,
-  },
-  {
-    title: "Token Profit",
-    link: DashboardRoute.tokenProfit,
-    icon: `far fa-play-circle`,
-  },
-  {
-    title: "Coin Profit",
-    link: "/dashboard/profile1",
-    icon: `far fa-play-circle`,
-  },
-  {
-    title: "Synergy",
-    link: "/dashboard/profile3",
-    icon: `far fa-play-circle`,
-  },
-];
-
 const SideBar: React.FC<SideBarProps> = ({ className = "" }) => {
+  const menu: menu[] = [
+    {
+      title: "Рабочий стол",
+      link: DashboardRoute.desktop,
+      icon: `fas fa-desktop`,
+    },
+    {
+      title: "Доходность",
+      link: DashboardRoute.profit,
+      icon: `fas fa-chart-line`,
+    },
+    {
+      title: "Команда",
+      link: DashboardRoute.team,
+      icon: `fas fa-users`,
+    },
+    {
+      title: "История",
+      link: DashboardRoute.history,
+      icon: `fas fa-history`,
+    },
+    {
+      title: "Личные данные",
+      link: DashboardRoute.profile,
+      icon: `fas fa-cog`,
+    },
+    {
+      title: "MRX-Invest",
+      link: DashboardRoute.mrx_invest,
+      icon: `far fa-play-circle`,
+    },
+    {
+      title: "Optional",
+      link: RoutePath.optional,
+      icon: `far fa-play-circle`,
+    },
+    {
+      title: "Priority",
+      link: RoutePath.priority,
+      icon: `far fa-play-circle`,
+    },
+  ];
   return (
     <Card className={cn(styles.side_bar, { [className]: className })}>
       <Card.Body className={styles.card_body}>

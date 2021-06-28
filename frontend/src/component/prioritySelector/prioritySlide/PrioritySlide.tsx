@@ -44,7 +44,6 @@ const PrioritySlide: React.FC<PrioritySlideProps> = ({
     minStatus: "Мин. статус участника",
   };
   const condition = conditions ? Object.entries(conditions) : null;
-
   return (
     <div className={styles.slide}>
       <Row>

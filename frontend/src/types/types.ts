@@ -54,6 +54,28 @@ export interface IUserDashboardState {
   readonly userDashboard: IUserDashboardData | any;
   error?: {};
 }
+// "linear_premium": 4,
+//     "premium": 0.2,
+//     "line_count": 4,
+//     "price": 10000,
+//     "_id": "60da42c6e3c2022c8c4d6d25",
+//     "name": "10000",
+//     "validity": 260,
+export interface IMrxData {
+  linear_premium: number;
+  premium: number;
+  line_count: number;
+  validity: number;
+  price: number;
+  _id: string;
+  name: string;
+}
+export interface IMrxProgramsState {
+  isLoading: boolean;
+  readonly mrxPrograms: IMrxData[];
+  readonly mrxProgram: IMrxData | any;
+  error?: {};
+}
 export interface IUserTeamState {
   isLoading: boolean;
   readonly userTeam: IUserTeamData | any;
@@ -64,6 +86,7 @@ export interface rootState {
   authentication: IUserState;
   dashboard: IUserDashboardState;
   team: IUserTeamState;
+  mrx: IMrxProgramsState;
 }
 // {
 //     "_id": "6060fa0956ce3247188ea5f2",

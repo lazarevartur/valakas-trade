@@ -5,7 +5,7 @@ import { Profit } from "../component/dashboardGroup/profit";
 import { Team } from "../component/dashboardGroup/team";
 import { Profile } from "../component/dashboardGroup/profile";
 import { HistoryPage } from "../component/dashboardGroup/history";
-import { TokenProfit } from "../component/dashboardGroup/programs/tokenProfit";
+import { TokenProfit } from "../component/dashboardGroup/programs/mrxProgram";
 import { RoutePath } from "./routesConfig";
 import { page404 } from "../pages/page404";
 
@@ -22,7 +22,7 @@ export enum DashboardRoute {
   desktop = "/dashboard/desktop",
   profit = "/dashboard/profit",
   history = "/dashboard/history",
-  tokenProfit = "/dashboard/tokenProfit",
+  mrx_invest = "/dashboard/MRX-Invest",
   page404 = "*",
 }
 
@@ -58,7 +58,7 @@ export const dashboardRouteConfig: routeDashboard[] = [
     access: AccessRouts.user,
   },
   {
-    path: DashboardRoute.tokenProfit,
+    path: DashboardRoute.mrx_invest,
     exact: true,
     component: TokenProfit,
     access: AccessRouts.user,

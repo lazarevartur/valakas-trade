@@ -28,7 +28,7 @@ export function normalazeUrl(str: string) {
   return str.replace(" ", "").toLowerCase();
 }
 
-export const getChunks = (array: any[], chunk = 3) => {
+export function getChunks<T>(array: T[], chunk = 3): T[][] {
   return array.reduce((chunks, value, index) => {
     const chunkIndex = Math.floor(index / chunk);
 
@@ -38,4 +38,4 @@ export const getChunks = (array: any[], chunk = 3) => {
     chunks[chunkIndex].push(value);
     return chunks;
   }, []);
-};
+}

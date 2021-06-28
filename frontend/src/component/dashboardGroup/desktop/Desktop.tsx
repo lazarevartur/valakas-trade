@@ -6,7 +6,7 @@ import { DashboardTitleBlock } from "../../../layouts/dashboardTitleBlock";
 import { Wallet } from "../../wallet";
 import { ProfitabilityTable } from "../../profitabilityTable";
 import { ReferralLink } from "../../uiKit/referralLink";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { DashboardRoute } from "../../../routes/dashboard";
 import { getCurrentUser } from "../../../store/action/dashboardAction";
 import {
@@ -15,7 +15,6 @@ import {
 } from "../../../hooks/useTypedRedux";
 import { rootState } from "../../../types/types";
 import { Loader } from "../../uiKit/loader";
-import { BalanceReplenishment } from "../../workWithWallets/Balance";
 import { RoutePath } from "../../../routes/routesConfig";
 const src = "http://placehold.it/150x150";
 interface DesktopProps {}
@@ -72,6 +71,14 @@ const Desktop: React.FC<DesktopProps> = () => {
               </Col>
               <Col lg={6} className={styles.count}>
                 $ {userDashboard.totalInvestment}
+              </Col>
+            </Row>
+            <Row>
+              <Col lg={6} className={styles.text}>
+                Операционных кошельков
+              </Col>
+              <Col lg={6} className={styles.count}>
+                3
               </Col>
             </Row>
             <Row>
