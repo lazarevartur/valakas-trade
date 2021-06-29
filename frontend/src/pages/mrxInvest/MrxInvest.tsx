@@ -11,6 +11,8 @@ import mrx1 from "../../assets/svg/mrx1.svg";
 import mrx2 from "../../assets/svg/mrx2.svg";
 import mrx3 from "../../assets/svg/mrx3.svg";
 import mrx4 from "../../assets/svg/mrx4.svg";
+import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router";
 
 interface MrxInvest {}
 

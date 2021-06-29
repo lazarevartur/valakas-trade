@@ -10,10 +10,14 @@ export const GET_PARAMS = {
   auth: "auth",
   wallet: "wallet",
   notificationId: "notification-id",
+  program: "program",
 };
 export enum ModalType {
   auth = "auth",
   wallet = "wallet",
+}
+export enum ProgramType {
+  mrx = "mrx",
 }
 export enum AuthTypeEnum {
   signIn = "sign-in",

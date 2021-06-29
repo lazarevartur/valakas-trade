@@ -32,7 +32,6 @@ export const payPartners = asyncHandler(async (req, res, next) => {
 
   if (userLinearPremium) {
     const userPremiumArray = Object.values(linear_premium);
-    console.log("start");
     for (let i = 0; i <= userPremiumArray.length; i++) {
       if (currentUser) {
         const value = userPremiumArray[i];
@@ -48,8 +47,8 @@ export const payPartners = asyncHandler(async (req, res, next) => {
             partner.metaData.partners[mapLines[i]] += income;
             partner.metaData.linear_premium += income;
           },
-          "Inviting_id wallets configUser.additional_lines referral_income_of_partners" +
-            " metaData"
+          `Inviting_id wallets configUser.additional_lines referral_income_of_partners
+         metaData`
         );
       } else {
         break;
