@@ -55,7 +55,6 @@ const Benefits: React.FC<BenefitsProps> = ({
     <div className={styles.Benefits}>
       <h2 className={styles.main_title}>{title}</h2>
       {chunks.map((chunk, u) => {
-        console.log(chunk);
         return (
           <Row className={styles.mt_big} key={u}>
             {chunk.map(({ title, text, icon }, i) => {

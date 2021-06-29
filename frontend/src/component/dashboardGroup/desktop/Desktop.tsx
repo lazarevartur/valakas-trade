@@ -16,7 +16,7 @@ import {
 import { rootState } from "../../../types/types";
 import { Loader } from "../../uiKit/loader";
 import { RoutePath } from "../../../routes/routesConfig";
-const src = "http://placehold.it/150x150";
+import userIcon from "../../../assets/svg/icon/userIcon.svg";
 interface DesktopProps {}
 
 const Desktop: React.FC<DesktopProps> = () => {
@@ -44,7 +44,7 @@ const Desktop: React.FC<DesktopProps> = () => {
           <DashboardTitleBlock title={"Ваш профиль"} />
           <Row className={styles.row_info_block}>
             <Col lg={3} className={styles.img_block}>
-              <Image src={src} className={styles.img} />
+              <Image src={userIcon} className={styles.img} />
             </Col>
             <Col lg={9}>
               <div className={styles.info_block}>

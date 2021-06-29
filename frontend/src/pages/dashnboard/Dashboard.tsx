@@ -34,6 +34,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
 
   return (
     <div className={cn(styles.dashboard)} ref={$startDashboard}>
+      {/*PopUp Balance*/}
       <Balance />
       <Container className={cn(styles.container)}>
         <Row>

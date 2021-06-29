@@ -10,12 +10,57 @@ import {
   CardDeck,
   Card,
 } from "react-bootstrap";
+import useWalletData from "../../../hooks/useWalletData";
+import { Loader } from "../../uiKit/loader";
+import useGetParameter from "../../../hooks/useGetParameter";
+import { GET_PARAMS, ProgramType } from "../../../const/popup";
+import { useForm } from "react-hook-form";
+import {
+  useDispatchTyped,
+  useSelectorTyped,
+} from "../../../hooks/useTypedRedux";
+import {
+  byMrxProgramById,
+  resetWallet,
+} from "../../../store/action/walletsAction";
+import { rootState } from "../../../types/types";
+import { useHistory } from "react-router";
+import { DashboardRoute } from "../../../routes/dashboard";
 
 interface ReplenishmentWalletProps {}
 
 const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
+  const { mrxPrograms, isLoading } = useWalletData();
+  const dispatch = useDispatchTyped();
+  const history = useHistory();
+  const { success } = useSelectorTyped((state: rootState) => state.wallets);
+  const { register, handleSubmit, errors, watch } = useForm();
+  const [typeWallet, setTypeWallet] = React.useState("");
+  enum typeWalletEnum {
+    mrx = "mrx",
+    options = "options",
+  }
+  const program = useGetParameter(GET_PARAMS.program);
+  React.useEffect(() => {
+    if (ProgramType[program]) {
+      setTypeWallet(program);
+    }
+    return () => {
+      dispatch(resetWallet());
+    };
+  }, []);
+
+  React.useEffect(() => {
+    if (success) {
+      history.push(DashboardRoute.mrx_invest, { success });
+    }
+  }, [success]);
+
+  const onSubmit = (data) => {
+    dispatch(byMrxProgramById(data));
+  };
   return (
-    <Form>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <Container>
         <Row>
           <Col lg={12}>
@@ -26,17 +71,48 @@ const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
             </Modal.Header>
           </Col>
         </Row>
-        <Row>
-          <Col lg={{ offset: 2, span: 8 }}>
-            <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Label>Программа</Form.Label>
-              <Form.Control as="select">
-                <option>MRX</option>
-                <option>OPTIONS</option>
-              </Form.Control>
-            </Form.Group>
-          </Col>
-        </Row>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <Row>
+              <Col lg={{ offset: 2, span: 8 }}>
+                <Form.Group controlId="exampleForm.SelectCustom">
+                  <Form.Label>Программа</Form.Label>
+                  <Form.Control
+                    as="select"
+                    onChange={(e) => setTypeWallet(e.target.value)}
+                    ref={register}
+                    name={"typeWallet"}
+                    defaultValue={typeWalletEnum[program]}
+                  >
+                    <option value={""}>Выбирите программу</option>
+                    <option value={typeWalletEnum.mrx}>MRX</option>
+                    <option value={typeWalletEnum.options}>OPTIONS</option>
+                  </Form.Control>
+                </Form.Group>
+              </Col>
+            </Row>
+            {typeWallet === typeWalletEnum.mrx && (
+              <Row>
+                <Col lg={{ offset: 2, span: 8 }}>
+                  <Form.Group controlId="exampleForm.SelectCustom">
+                    <Form.Label>Инвестиционные пакеты</Form.Label>
+                    <Form.Control as="select" ref={register} name={"id"}>
+                      {mrxPrograms.map(({ name, _id }) => {
+                        return (
+                          <option key={name} value={_id}>
+                            $ {name}
+                          </option>
+                        );
+                      })}
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
+              </Row>
+            )}
+          </>
+        )}
         <Row className={styles.wallets}>
           <Col lg={{ offset: 2, span: 8 }}>
             <CardDeck className={styles.CardDeck}>
@@ -62,34 +138,11 @@ const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
                 />
               </Card>
             </CardDeck>
-            <CardDeck className={styles.CardDeck}>
-              <Card className={styles.wallet}>
-                <Card.Img
-                  className={styles.wallet_img}
-                  variant="bottom"
-                  src="https://ru.bitcoinwiki.org/upload/ru/images/thumb/d/d8/%D0%90%D0%B4%D0%B2_%D0%9A%D1%8D%D1%88.png/400px-%D0%90%D0%B4%D0%B2_%D0%9A%D1%8D%D1%88.png"
-                />
-              </Card>
-              <Card className={styles.wallet}>
-                <Card.Img
-                  className={styles.wallet_img}
-                  variant="bottom"
-                  src="https://ru.bitcoinwiki.org/upload/ru/images/thumb/d/d8/%D0%90%D0%B4%D0%B2_%D0%9A%D1%8D%D1%88.png/400px-%D0%90%D0%B4%D0%B2_%D0%9A%D1%8D%D1%88.png"
-                />
-              </Card>
-              <Card className={styles.wallet}>
-                <Card.Img
-                  className={styles.wallet_img}
-                  variant="bottom"
-                  src="https://ru.bitcoinwiki.org/upload/ru/images/thumb/d/d8/%D0%90%D0%B4%D0%B2_%D0%9A%D1%8D%D1%88.png/400px-%D0%90%D0%B4%D0%B2_%D0%9A%D1%8D%D1%88.png"
-                />
-              </Card>
-            </CardDeck>
           </Col>
         </Row>
         <Row>
           <Col lg={{ offset: 2, span: 8 }} className={styles.button_block}>
-            <Button>Пополнить</Button>
+            <Button type="submit">Пополнить</Button>
           </Col>
         </Row>
       </Container>

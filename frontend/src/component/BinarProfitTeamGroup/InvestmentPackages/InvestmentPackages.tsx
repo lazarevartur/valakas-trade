@@ -13,20 +13,12 @@ import { Loader } from "../../uiKit/loader";
 import { getChunks } from "../../../utils/utils";
 import { RoutePath } from "../../../routes/routesConfig";
 import { Balance } from "../../workWithWallets/Balance";
+import useWalletData from "../../../hooks/useWalletData";
 
 interface InvestmentPackagesProps extends defaultComponentProps {}
 
 const InvestmentPackages: React.FC<InvestmentPackagesProps> = () => {
-  const { mrxPrograms, isLoading } = useSelectorTyped(
-    (state: rootState) => state.mrx
-  );
-  const {
-    userData: { token },
-  } = useSelectorTyped((state: rootState) => state.authentication);
-  const dispatch = useDispatchTyped();
-  React.useEffect(() => {
-    dispatch(getMrxPrograms());
-  }, []);
+  const { mrxPrograms, isLoading, isAuth } = useWalletData();
 
   return (
     <div className={cn(styles.InvestmentPackages)}>
@@ -81,9 +73,9 @@ const InvestmentPackages: React.FC<InvestmentPackagesProps> = () => {
                             <BinarCard
                               {...program}
                               linkTo={
-                                !token
+                                !isAuth
                                   ? RoutePath.login
-                                  : RoutePath.replenishmentWallet
+                                  : `${RoutePath.replenishmentWallet}&program=mrx`
                               }
                             />
                           );

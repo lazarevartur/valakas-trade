@@ -49,6 +49,12 @@ export interface IUserDashboardData {
   referralLink: string;
 }
 export interface IUserTeamData {}
+
+export interface IWalletsState {
+  isLoading: boolean;
+  readonly success: boolean;
+  error?: {};
+}
 export interface IUserDashboardState {
   isLoading: boolean;
   readonly userDashboard: IUserDashboardData | any;
@@ -87,6 +93,7 @@ export interface rootState {
   dashboard: IUserDashboardState;
   team: IUserTeamState;
   mrx: IMrxProgramsState;
+  wallets: IWalletsState;
 }
 // {
 //     "_id": "6060fa0956ce3247188ea5f2",

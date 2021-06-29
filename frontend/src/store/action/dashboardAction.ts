@@ -1,4 +1,3 @@
-import { IUserRegistration } from "../../types/types";
 import {
   USER_DASHBOARD_REQUEST,
   USER_DASHBOARD_SUCCESS,

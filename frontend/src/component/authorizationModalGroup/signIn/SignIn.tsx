@@ -13,10 +13,7 @@ import { RoutePath } from "../../../routes/routesConfig";
 import { Link } from "react-router-dom";
 import { CustomInput } from "../../uiKit/customInput";
 import { useForm } from "react-hook-form";
-import {
-  login,
-  register as registerAction,
-} from "../../../store/action/authAction";
+import { login } from "../../../store/action/authAction";
 import {
   useDispatchTyped,
   useSelectorTyped,

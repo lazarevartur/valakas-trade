@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { userAuthentication } from "./slice/authSlice";
 import { userDashboard } from "./slice/userDashboardSlice";
 import { userTeam } from "./slice/teamSlice";
+import { wallets } from "./slice/walletsSlice";
 
 import { logout } from "./action/authAction";
 import { mrxProgram } from "./slice/mrxProgramsSlice";
@@ -13,6 +14,7 @@ export const store = configureStore({
     dashboard: userDashboard.reducer,
     team: userTeam.reducer,
     mrx: mrxProgram.reducer,
+    wallets: wallets.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

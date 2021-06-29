@@ -5,6 +5,7 @@ export const getPartnet = async (userId, cb = () => null, selectQuery = "") => {
     throw new Error("Партнер не найден");
   }
   let partner;
+
   try {
     partner = await User.findById(userId)
       .select(selectQuery)
@@ -16,7 +17,6 @@ export const getPartnet = async (userId, cb = () => null, selectQuery = "") => {
   } catch (error) {
     console.log("Больше нет партнеров");
   }
-
   const firstLine = partner ? partner.Inviting_id : null;
 
   if (firstLine) {
