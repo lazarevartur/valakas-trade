@@ -28,4 +28,5 @@ export enum WalletTypeEnum {
   replenishment = "replenishment", // пополнение кошелька
   withdraw = "withdraw", // вывод денег
   transfer = "transfer", // перевод между кошельками
+  buyProgram = "buy-programs", // перевод между кошельками
 }

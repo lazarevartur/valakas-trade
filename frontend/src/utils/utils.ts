@@ -39,3 +39,60 @@ export function getChunks<T>(array: T[], chunk = 3): T[][] {
     return chunks;
   }, []);
 }
+export function percentageOfAmount(base) {
+  return (attitude) => {
+    if (!base || !attitude) return 0;
+    return (attitude / base) * 100;
+  };
+}
+
+function getNoun(number, one, two, five) {
+  let n = Math.abs(number);
+  n %= 100;
+  if (n >= 5 && n <= 20) {
+    return five;
+  }
+  n %= 10;
+  if (n === 1) {
+    return one;
+  }
+  if (n >= 2 && n <= 4) {
+    return two;
+  }
+  return five;
+}
+
+export function numberDays(date) {
+  const dateNow = new Date();
+  if (date) {
+    const lastDate = new Date(date);
+    const diff = dateNow.getTime() - lastDate.getTime();
+    const milliseconds = diff;
+
+    const seconds = milliseconds / 1000;
+
+    const minutes = seconds / 60;
+
+    const hours = minutes / 60;
+
+    const days = hours / 24;
+
+    const noun = getNoun(days.toFixed(), "день", "дня", "дней");
+    return `${days.toFixed()} ${noun}`;
+  }
+
+  return 0;
+}
+
+export const ruDays = (days) => {
+  return getNoun(days.toFixed(), "день", "дня", "дней");
+};
+
+export function getRuDate(date) {
+  return new Date(date).toLocaleString("ru", {
+    timeZone: "UTC",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
+}

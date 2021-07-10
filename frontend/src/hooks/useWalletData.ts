@@ -1,7 +1,11 @@
 import { useDispatchTyped, useSelectorTyped } from "./useTypedRedux";
 import { rootState } from "../types/types";
 import React from "react";
-import { getMrxPrograms } from "../store/action/programsAction";
+import {
+  getAvailableMrxPrograms,
+  getMrxPrograms,
+} from "../store/action/programsAction";
+import { getAvailableOptionalPrograms } from "../store/action/optionalAction";
 
 export default () => {
   const { mrxPrograms, isLoading } = useSelectorTyped(
@@ -12,9 +16,8 @@ export default () => {
   } = useSelectorTyped((state: rootState) => state.authentication);
   const dispatch = useDispatchTyped();
   React.useEffect(() => {
-    if (!mrxPrograms.length) {
-      dispatch(getMrxPrograms());
-    }
+    dispatch(getAvailableMrxPrograms());
+    dispatch(getAvailableOptionalPrograms());
   }, []);
   const isAuth = !!token;
 

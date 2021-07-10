@@ -6,7 +6,7 @@ import { DashboardTitleBlock } from "../../../layouts/dashboardTitleBlock";
 import { Wallet } from "../../wallet";
 import { ProfitabilityTable } from "../../profitabilityTable";
 import { ReferralLink } from "../../uiKit/referralLink";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { DashboardRoute } from "../../../routes/dashboard";
 import { getCurrentUser } from "../../../store/action/dashboardAction";
 import {
@@ -17,6 +17,7 @@ import { rootState } from "../../../types/types";
 import { Loader } from "../../uiKit/loader";
 import { RoutePath } from "../../../routes/routesConfig";
 import userIcon from "../../../assets/svg/icon/userIcon.svg";
+
 interface DesktopProps {}
 
 const Desktop: React.FC<DesktopProps> = () => {
@@ -27,11 +28,17 @@ const Desktop: React.FC<DesktopProps> = () => {
   const tableData = {
     linear_premium: userDashboard.linear_premium,
     totalEarned: userDashboard.wallets?.operating_account,
+    dividends: userDashboard.dividends,
   };
-
+  const location = useLocation();
   React.useEffect(() => {
     dispatch(getCurrentUser());
   }, []);
+  React.useEffect(() => {
+    if (location.state) {
+      dispatch(getCurrentUser());
+    }
+  }, [location]);
 
   return (
     <Container className={cn(styles.Desktop)}>
@@ -50,16 +57,15 @@ const Desktop: React.FC<DesktopProps> = () => {
               <div className={styles.info_block}>
                 <span className={styles.name}>{userDashboard.name}</span>
                 <span className={styles.email}>{userDashboard.email}</span>
-                <span className={styles.id}>ID: {userDashboard.id}</span>
-                <div className={styles.verify_block}>
-                  <span className={styles.no_verify}>Не верифицирован</span>
-                  <Link
-                    to={`${DashboardRoute.profile}?verif=1`}
-                    className={styles.go_verify}
-                  >
-                    Пройти верификацию
-                  </Link>
-                </div>
+                {/*<div className={styles.verify_block}>*/}
+                {/*  <span className={styles.no_verify}>Не верифицирован</span>*/}
+                {/*  <Link*/}
+                {/*    to={`${DashboardRoute.profile}?verif=1`}*/}
+                {/*    className={styles.go_verify}*/}
+                {/*  >*/}
+                {/*    Пройти верификацию*/}
+                {/*  </Link>*/}
+                {/*</div>*/}
               </div>
             </Col>
           </Row>
@@ -86,12 +92,15 @@ const Desktop: React.FC<DesktopProps> = () => {
                 Реферальные с дохода партёров
               </Col>
               <Col lg={6} className={styles.count}>
-                $ {userDashboard.referralIncomeOfPartners}
+                $ {userDashboard.referralIncomeOfPartners?.toFixed(2)}
               </Col>
             </Row>
             <Row>
               <Col lg={7}>
-                <ReferralLink link={userDashboard.id} />
+                <ReferralLink
+                  link={userDashboard.id}
+                  count={userDashboard.depositAccount}
+                />
               </Col>
             </Row>
           </div>

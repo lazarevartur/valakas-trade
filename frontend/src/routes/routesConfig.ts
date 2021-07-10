@@ -47,6 +47,7 @@ export enum RoutePath {
   replenishmentWallet = `?wallet=replenishment`,
   withdrawWallet = `?wallet=withdraw`,
   transferWallet = `?wallet=transfer`,
+  buyPrograms = `?wallet=buy-programs`,
   page404 = "*",
 }
 

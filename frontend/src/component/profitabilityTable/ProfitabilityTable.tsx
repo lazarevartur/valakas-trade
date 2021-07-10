@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./profitabilityTable.module.scss";
 import { Card, Row, Table, Col } from "react-bootstrap";
 import cn from "classnames";
+import { percentageOfAmount } from "../../utils/utils";
 
 interface ITable {
   className?: string;
@@ -15,6 +16,7 @@ const ProfitabilityTable: React.FC<ITable> = ({
   totalEarned,
   data = {},
 }): React.ReactElement => {
+  const procent = percentageOfAmount(totalEarned);
   return (
     <Card className={cn(styles.ProfitabilityTable, { [className]: className })}>
       {totalEarned ? (
@@ -40,17 +42,22 @@ const ProfitabilityTable: React.FC<ITable> = ({
           <tbody>
             <tr>
               <td>Начисления по инвестиционному пакету</td>
-              <td>{data.totalEarned} $</td>
-              <td>0%</td>
+              <td>{data.totalEarned || 0}$</td>
+              <td>{procent(data.totalEarned).toFixed()}%</td>
+            </tr>
+            <tr>
+              <td>Дивиденты</td>
+              <td>{data.dividends?.toFixed() || 0}$</td>
+              <td>{procent(data.dividends).toFixed()}%</td>
             </tr>
             <tr>
               <td>Линейная премия</td>
-              <td>{data.linear_premium} $</td>
-              <td>0%</td>
+              <td>{data.linear_premium || 0}$</td>
+              <td>{procent(data.linear_premium).toFixed()}%</td>
             </tr>
             <tr>
               <td>Менторская премия</td>
-              <td>0</td>
+              <td>0$</td>
               <td>0%</td>
             </tr>
           </tbody>

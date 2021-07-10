@@ -1,0 +1,17 @@
+.Plug {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    padding-bottom: 20px;
+  }
+  .infoBlock {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}

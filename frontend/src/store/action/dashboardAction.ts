@@ -11,6 +11,8 @@ import {
   USER_TEAM_REQUEST,
   USER_TEAM_SUCCESS,
 } from "../slice/teamSlice";
+import { Storage } from "../../utils/utils";
+import { StoregeKey } from "../../config";
 
 export const getCurrentUser = () => async (
   dispatch: AppDispatch,
@@ -25,6 +27,7 @@ export const getCurrentUser = () => async (
     dispatch(USER_DASHBOARD_REQUEST());
     const data = await DashboardApi.getCurrentUser(token);
     setTimeout(() => {
+      Storage.set(StoregeKey.USER_DATA, data);
       dispatch(USER_DASHBOARD_SUCCESS(data));
     }, 500);
   } catch (e) {
@@ -42,6 +45,7 @@ export const getTeam = () => async (dispatch: AppDispatch, getState?: any) => {
     dispatch(USER_TEAM_REQUEST());
     const data = await DashboardApi.getTeam(token);
     setTimeout(() => {
+      Storage.set(StoregeKey.USER_TEAM, data);
       dispatch(USER_TEAM_SUCCESS(data));
     }, 500);
   } catch (e) {

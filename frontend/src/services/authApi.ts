@@ -8,7 +8,7 @@ interface ResponseApi {
 }
 
 export const AuthApi = {
-  rootUrl: "api/auth",
+  rootUrl: "/api/auth",
 
   async register(candidate: IUserRegistration): Promise<ResponseApi> {
     const config = {
@@ -36,6 +36,16 @@ export const AuthApi = {
       userEmailAndPassword,
       config
     );
+    return data;
+  },
+  async chekAuth(token: string): Promise<ResponseApi> {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const { data } = await axios.get(`${this.rootUrl}/chek-auth`, config);
     return data;
   },
 };

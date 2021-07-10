@@ -31,6 +31,8 @@ export const getPartnet = async (userId, cb = () => null, selectQuery = "") => {
   };
 };
 
+export const addProfitPartnerForWeek = async () => {};
+
 // export const getPartnet = async (userId, cb = () => null, selectQuery = "") => {
 //   if (!mongoose.isValidObjectId(userId)) {
 //     throw new Error("Партнер не найден");

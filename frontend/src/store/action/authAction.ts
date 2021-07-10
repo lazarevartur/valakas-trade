@@ -14,6 +14,11 @@ import { Storage } from "../../utils/utils";
 import { StoregeKey } from "../../config";
 import { userLogin } from "../../component/authorizationGroup/login/Login";
 import { setToken } from "../../core/axios";
+import {
+  USER_DASHBOARD_CHEK_AUTH,
+  USER_DASHBOARD_FAIL,
+  USER_DASHBOARD_REQUEST,
+} from "../slice/userDashboardSlice";
 
 const loadingTime = 700;
 
@@ -48,8 +53,25 @@ export const login = (emailAndPassword: userLogin) => async (
   }
 };
 
+export const chekAuth = () => async (dispatch: AppDispatch, getState?: any) => {
+  const {
+    authentication: {
+      userData: { token },
+    },
+  } = getState();
+  try {
+    dispatch(USER_DASHBOARD_REQUEST());
+    const { data } = await AuthApi.chekAuth(token);
+    dispatch(USER_DASHBOARD_CHEK_AUTH());
+  } catch (e) {
+    dispatch(USER_DASHBOARD_FAIL(e));
+  }
+};
+
 export const logout = (): any => async (dispatch: AppDispatch) => {
   Storage.remove(StoregeKey.USER);
+  Storage.remove(StoregeKey.USER_DATA);
+  Storage.remove(StoregeKey.USER_TEAM);
   setToken(false);
   dispatch(USER_LOGOUT());
 };

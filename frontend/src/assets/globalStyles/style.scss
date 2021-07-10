@@ -36,6 +36,7 @@
   color: #333333;
   font-weight: 500;
   margin: 0 auto;
+  padding-bottom: 20px;
 }
 .bgf9 {
   background-color: #f9f9f9;
@@ -44,4 +45,10 @@
   border: 1px solid #e0e0e0;
   margin: 15px 0;
   width: 90%;
+}
+.fakeBg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 800px;
 }
