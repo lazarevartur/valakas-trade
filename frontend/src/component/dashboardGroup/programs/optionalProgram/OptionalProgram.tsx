@@ -33,9 +33,9 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
   );
 
   const isPaid = userDashboard.wallets?.start_account || 0;
-  const quantity = userDashboard.programs?.optional.optional.quantity || 0;
-  const cost = userDashboard.programs?.optional.optional.cost || 0;
-  const round = userDashboard.programs?.optional.optional.round_number || 0;
+  const quantity = userDashboard.programs?.optional.optional?.quantity || 0;
+  const cost = userDashboard.programs?.optional.optional?.cost || 0;
+  const round = userDashboard.programs?.optional.optional?.round_number || 0;
   const deposit = quantity * cost;
 
   const profitability = (optionalProgram.profitability * 100).toFixed() || 0;
