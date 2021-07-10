@@ -38,10 +38,9 @@ const SubMenu = () => {
                 </NavDropdown.Item>
               </LinkContainer>
 
-              <NavDropdown.Item eventKey="2">Вакансии</NavDropdown.Item>
-              <NavDropdown.Item eventKey="3">
-                Открытие индивидуального <br /> консультационного центра
-              </NavDropdown.Item>
+              {/*<NavDropdown.Item eventKey="3">*/}
+              {/*  Открытие индивидуального <br /> консультационного центра*/}
+              {/*</NavDropdown.Item>*/}
             </NavDropdown>
             <NavDropdown title="Контент" id="nav-dropdown">
               <NavDropdown.Item eventKey="4.11">Новости</NavDropdown.Item>

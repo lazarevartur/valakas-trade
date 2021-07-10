@@ -7,6 +7,7 @@ import { Profile } from "../component/dashboardGroup/profile";
 import { HistoryPage } from "../component/dashboardGroup/history";
 import { MrxProgram } from "../component/dashboardGroup/programs/mrxProgram";
 import { OptionalProgram } from "../component/dashboardGroup/programs/optionalProgram";
+import { PriorityProgram } from "../component/dashboardGroup/programs/priorityProgram";
 
 export interface routeDashboard {
   path: DashboardRoute;
@@ -73,7 +74,7 @@ export const dashboardRouteConfig: routeDashboard[] = [
   {
     path: DashboardRoute.priority,
     exact: true,
-    component: OptionalProgram,
+    component: PriorityProgram,
     access: AccessRouts.user,
   },
 ];
