@@ -6,8 +6,14 @@ import { routesConfig } from "../routes/routesConfig";
 import { ProtectedRoute } from "../routes/ProtectedRoute";
 import { Footer } from "../component/mainBlocks/footer";
 import { FullScreenLoader } from "../component/uiKit/FullScreenLoader";
+import { useDispatchTyped } from "../hooks/useTypedRedux";
+import { chekAuth } from "../store/action/authAction";
 
 function App() {
+  const dispatch = useDispatchTyped();
+  React.useEffect(() => {
+    // dispatch(chekAuth());
+  }, []);
   return (
     <>
       <Header />

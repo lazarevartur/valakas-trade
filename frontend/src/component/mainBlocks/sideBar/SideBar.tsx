@@ -49,19 +49,23 @@ const SideBar: React.FC<SideBarProps> = ({ className = "" }) => {
     },
     {
       title: "Optional",
-      link: RoutePath.optional,
+      link: DashboardRoute.optional,
       icon: `far fa-play-circle`,
     },
     {
       title: "Priority",
-      link: RoutePath.priority,
+      link: DashboardRoute.priority,
       icon: `far fa-play-circle`,
     },
   ];
   return (
     <Card className={cn(styles.side_bar, { [className]: className })}>
       <Card.Body className={styles.card_body}>
-        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+        <Tab.Container
+          id="left-tabs-example"
+          defaultActiveKey="first"
+          activeKey
+        >
           <Nav variant="pills" className="flex-column">
             {menu.map(({ link, title, icon }) => (
               <Nav.Item key={title} className={styles.nav_item}>

@@ -1,6 +1,6 @@
 export const config = {
-  siteName: 'Valakas',
-}
+  siteName: "Valakas",
+};
 
 export enum AccessRouts {
   all,
@@ -8,5 +8,7 @@ export enum AccessRouts {
 }
 
 export enum StoregeKey {
-  USER = 'user',
+  USER = "user",
+  USER_DATA = "USER_DATA",
+  USER_TEAM = `USER_TEAM`,
 }

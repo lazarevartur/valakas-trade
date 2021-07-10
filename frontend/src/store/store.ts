@@ -7,6 +7,7 @@ import { wallets } from "./slice/walletsSlice";
 
 import { logout } from "./action/authAction";
 import { mrxProgram } from "./slice/mrxProgramsSlice";
+import { optionalProgram } from "./slice/optionalProgram";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     dashboard: userDashboard.reducer,
     team: userTeam.reducer,
     mrx: mrxProgram.reducer,
+    optional: optionalProgram.reducer,
     wallets: wallets.reducer,
   },
   middleware: (getDefaultMiddleware) =>

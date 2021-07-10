@@ -48,7 +48,7 @@ const WithdrawWallet: React.FC<WithdrawWalletProps> = () => {
                 placeholder="Сумма вывода"
                 name="withdrawal"
                 value={watch("withdrawal")}
-                reff={register}
+                reff={register({ pattern: /[0-9]/ })}
               />
             </Form.Group>
             <Form.Group controlId="withdrawal">

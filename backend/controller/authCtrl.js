@@ -1,6 +1,7 @@
 import User from "../models/userModel.js";
 import asyncHandler from "express-async-handler";
 import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
 
 import { generateToken } from "../utils/utils.js";
 import { roles } from "../config/role.js";
@@ -163,6 +164,9 @@ export const addProgramsMrx = asyncHandler(async (req, res) => {
 // @desc buy programs by id and user
 // @route POST /api/programs/:id
 // @access Private
+export const chekAuth = asyncHandler(async (req, res) => {
+  return res.status(200).json({ message: "ok" });
+});
 export const exemple = asyncHandler(async (req, res) => {});
 
 //Exemple

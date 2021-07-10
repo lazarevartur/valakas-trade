@@ -1,3 +1,9 @@
+export enum optionalStatus {
+  passed = "passed",
+  active = "active",
+  future = "future",
+}
+
 export interface defaultContainerProps {
   className?: string;
 }
@@ -76,10 +82,28 @@ export interface IMrxData {
   _id: string;
   name: string;
 }
+
+export interface IOptionalData {
+  cost: number;
+  quantity: number;
+  profitability: number;
+  purpose: number;
+  round_term: number;
+  round_number: string;
+  status: optionalStatus;
+  start_round: number;
+  end_round: number;
+}
 export interface IMrxProgramsState {
   isLoading: boolean;
   readonly mrxPrograms: IMrxData[];
   readonly mrxProgram: IMrxData | any;
+  error?: {};
+}
+export interface IOptionalProgramsState {
+  isLoading: boolean;
+  readonly optionalPrograms: IOptionalData[];
+  readonly optionalProgram: IOptionalData | any;
   error?: {};
 }
 export interface IUserTeamState {
@@ -93,6 +117,7 @@ export interface rootState {
   dashboard: IUserDashboardState;
   team: IUserTeamState;
   mrx: IMrxProgramsState;
+  optional: IOptionalProgramsState;
   wallets: IWalletsState;
 }
 // {

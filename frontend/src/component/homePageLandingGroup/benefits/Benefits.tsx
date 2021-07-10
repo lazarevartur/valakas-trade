@@ -61,7 +61,7 @@ const Benefits: React.FC<BenefitsProps> = ({
               return (
                 <Col
                   lg={fourElement ? 3 : 4}
-                  key={title}
+                  key={icon}
                   className={cn({
                     [styles.content]: (i + 1) % countElement !== 0,
                   })}

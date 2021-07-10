@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import mongooseLeanVirtuals from "mongoose-lean-virtuals";
+import mrxPrograms from "./programModel.js";
+import optionalProgram from "./optionalProgramModel.js";
 
 const userSchema = new mongoose.Schema(
   {
@@ -19,6 +21,10 @@ const userSchema = new mongoose.Schema(
     },
     status: { type: String, default: "М1" },
     Inviting_id: {
+      type: String,
+      default: "",
+    },
+    Inviting_avangard_id: {
       type: String,
       default: "",
     },
@@ -70,24 +76,42 @@ const userSchema = new mongoose.Schema(
           },
           program: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Programs",
+            ref: "mrxPrograms",
           },
+        },
+      ],
+      //Количество, ценна, доходность, раунд
+      optional: [
+        {
+          _id: false,
+          program: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "optionalPrograms",
+          },
+          quantity: { type: Number, default: 0 },
+          cost: { type: Number, default: 0 },
+          round_number: { type: Number, default: 0 },
         },
       ],
     },
     wallets: {
+      //Депозит
+      start_account: { type: Number, default: 0 },
+      // Деньги на вывод
       bonus_account: {
         type: Number,
         default: 0,
       },
+      // Операционный счет
       operating_account: {
         type: Number,
         default: 0,
       },
     },
-    programs_walets: {
+    programs_wallets: {
       mrx: { type: Number, default: 0 },
       options: { type: Number, default: 0 },
+      priority: { type: Number, default: 0 },
     },
     total_investment: {
       type: Number,
@@ -134,7 +158,31 @@ const userSchema = new mongoose.Schema(
           default: 0,
         },
       },
+      partners_profit_for_week: {
+        first: {
+          type: [Number],
+        },
+        second: {
+          type: [Number],
+        },
+
+        third: {
+          type: [Number],
+        },
+
+        fourth: {
+          type: [Number],
+        },
+      },
       linear_premium: {
+        type: Number,
+        default: 0,
+      },
+      linear_premium_option: {
+        type: Number,
+        default: 0,
+      },
+      linear_premium_priority: {
         type: Number,
         default: 0,
       },
@@ -153,6 +201,9 @@ const userSchema = new mongoose.Schema(
       mentor_prime: {
         type: Number,
         default: 0,
+      },
+      avangard_id: {
+        type: String,
       },
     },
     contact_details: {
@@ -190,7 +241,9 @@ const userSchema = new mongoose.Schema(
       type: Number,
       virtual: true,
       get() {
-        return Number(this.programs_walets.mrx + this.programs_walets.options);
+        return Number(
+          this.programs_wallets.mrx + this.programs_wallets.options
+        );
       },
     },
   },
@@ -202,6 +255,81 @@ userSchema.plugin(mongooseLeanVirtuals);
 
 userSchema.virtual("count_line").get(function () {
   return Object.keys(this.partners).length;
+});
+userSchema.virtual("current_optional_program").get(async function () {
+  let activeOptional;
+  try {
+    [activeOptional] = await optionalProgram.find({ status: "active" }).lean();
+  } catch (e) {
+    console.log(e);
+    return { message: "ошибка сервера" };
+  }
+  if (!activeOptional) {
+    return { message: "нету активной программы" };
+  }
+
+  return this.programs.optional.find((item) => {
+    //return activeOptional._id.equals(item.program) ? item : null;
+    return String(activeOptional._id) === String(item.program);
+  });
+});
+userSchema.virtual("active_mrx_program").get(async function () {
+  let maxProgram = { _id: "", price: 0 };
+  for (const item of this.programs.mrx) {
+    const mrx = await mrxPrograms.findById(item.program);
+
+    maxProgram =
+      maxProgram.price < mrx.price
+        ? {
+            _id: mrx._id,
+            price: mrx.price,
+            start_time: item.start_time,
+            ending_time: item.ending_time,
+          }
+        : maxProgram;
+  }
+
+  return maxProgram;
+});
+
+userSchema.virtual("income_partner_for_week").get(function () {
+  const [initMongo, ...list] = Object.entries(
+    this.metaData.partners_profit_for_week
+  );
+
+  const week = list[0][1].length;
+  if (week <= 7) {
+    return [];
+  }
+
+  return list.reduce((acc, [nameLine, arraySum]) => {
+    let totalSum = 0;
+    arraySum.some((sum, i) => {
+      if (i > 6) {
+        return false;
+      }
+      totalSum += sum;
+    });
+    acc.push([nameLine, totalSum]);
+    return acc;
+  }, []);
+});
+
+userSchema.virtual("quantity_for_each_line").get(function () {
+  const partnerLineList = Object.entries(this.partners);
+  const [initMongo, ...list] = partnerLineList;
+  return list.reduce((acc, item) => {
+    acc.push(item[1].length);
+    return acc;
+  }, []);
+});
+
+userSchema.virtual("total_number_partners").get(function () {
+  const partnerLineList = Object.entries(this.partners);
+  const [initMongo, ...list] = partnerLineList;
+  return list.reduce((acc, item) => {
+    return acc + item[1].length;
+  }, 0);
 });
 
 userSchema.virtual("total_earned").get(function () {

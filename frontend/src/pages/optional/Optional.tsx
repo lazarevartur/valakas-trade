@@ -12,6 +12,10 @@ import cn from "classnames";
 import { TwoCols } from "../../layouts/TwoCols";
 import howMakeImg1 from "../../assets/img/HowToMakeMoneyHere1.jpg";
 import StagesOptions from "../../component/stagesOptions/StagesOptions";
+import { useDispatchTyped, useSelectorTyped } from "../../hooks/useTypedRedux";
+import { rootState } from "../../types/types";
+import { getOptionalPrograms } from "../../store/action/optionalAction";
+import { Loader } from "../../component/uiKit/loader";
 
 interface OptionalProps {}
 
@@ -40,6 +44,14 @@ const dataBenefist = [
 ];
 
 const Optional: React.FC<OptionalProps> = () => {
+  const { optionalPrograms, isLoading } = useSelectorTyped(
+    (state: rootState) => state.optional
+  );
+  const dispatch = useDispatchTyped();
+  React.useEffect(() => {
+    dispatch(getOptionalPrograms());
+  }, []);
+
   return (
     <>
       <JumbotronCustom
@@ -99,7 +111,7 @@ const Optional: React.FC<OptionalProps> = () => {
         </Container>
       </div>
       <Container className={cn(styles.stages_options)}>
-        <StagesOptions />
+        {isLoading ? <Loader /> : <StagesOptions rounds={optionalPrograms} />}
       </Container>
 
       <TwoCols

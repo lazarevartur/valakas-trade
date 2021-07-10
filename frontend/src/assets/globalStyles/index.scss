@@ -104,6 +104,42 @@ a:hover {
     bottom: -10px;
   }
 }
+.Wallets {
+  .nav-item {
+    a {
+      img {
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .nav-link {
+      width: 150px;
+      height: 70px;
+      border: 1px solid #bdbdbd;
+      border-radius: 5px;
+      margin: 0;
+      &:hover {
+        border-color: #fec825;
+        box-shadow: 0 0 4px rgba(136, 136, 136, 0.2);
+      }
+    }
+
+    .nav-link.active {
+      border-color: #fec825;
+      box-shadow: 0 0 4px rgba(136, 136, 136, 0.2);
+      &:after {
+        border: none;
+      }
+    }
+  }
+  .walletsDesk {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+  }
+}
 .PrioritySelector {
   display: flex;
   justify-content: space-between;

@@ -18,10 +18,32 @@ const Team: React.FC<TeamProps> = () => {
   const { isLoading, userTeam } = useSelectorTyped(
     (state: rootState) => state.team
   );
-  console.log(userTeam);
+
+  const {
+    total_number_partners,
+    quantity_for_each_line,
+    deposit_account,
+    meta,
+    income_partner_for_week,
+  } = userTeam;
   React.useEffect(() => {
     dispatch(getTeam());
   }, []);
+  let linesList: any[] = meta ? Object.entries(meta.partners) : [];
+  linesList = mergeArr(linesList, income_partner_for_week);
+
+  function mergeArr(arr1, arr2) {
+    if (!arr1 || arr2) {
+      return [];
+    }
+    return arr1.map(([lineName, value], i) => {
+      const [lineNameArr2, line2Value] = arr2[i];
+      if (lineName === lineNameArr2) {
+        return [lineName, value, line2Value];
+      }
+    });
+  }
+
   return (
     <Container className={styles.team}>
       {isLoading ? (
@@ -49,7 +71,7 @@ const Team: React.FC<TeamProps> = () => {
             </Row>
             <Row className={styles.row}>
               <Col lg={7}>
-                <ReferralLink link={userTeam.id} />{" "}
+                <ReferralLink link={userTeam.id} count={deposit_account} />{" "}
               </Col>
             </Row>
           </div>
@@ -66,21 +88,17 @@ const Team: React.FC<TeamProps> = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className={styles.lines}>1-я линия</td>
-                  <td>345 $</td>
-                  <td>41 5434 $</td>
-                </tr>
-                <tr>
-                  <td className={styles.lines}>2-я линия</td>
-                  <td>121 $</td>
-                  <td>1 5434 $</td>
-                </tr>
-                <tr>
-                  <td className={styles.lines}>3-я линия</td>
-                  <td>331 $</td>
-                  <td>1 54341 $</td>
-                </tr>
+                {linesList
+                  ? linesList.map(([nameLine, value, valueForWeek], i) => {
+                      return (
+                        <tr key={nameLine}>
+                          <td className={styles.lines}>{i + 1}-я линия</td>
+                          <td>{valueForWeek.toFixed(2)} $</td>
+                          <td>{value.toFixed(2)} $</td>
+                        </tr>
+                      );
+                    })
+                  : null}
               </tbody>
             </Table>
           </div>
@@ -92,20 +110,18 @@ const Team: React.FC<TeamProps> = () => {
                   <tbody>
                     <tr>
                       <td>Общеее колличество</td>
-                      <td>1627</td>
+                      <td>{total_number_partners || 0}</td>
                     </tr>
-                    <tr>
-                      <td>1-я линия</td>
-                      <td>16</td>
-                    </tr>
-                    <tr>
-                      <td>2-я линия</td>
-                      <td>162</td>
-                    </tr>
-                    <tr>
-                      <td>3-я линия</td>
-                      <td>1627</td>
-                    </tr>
+                    {quantity_for_each_line
+                      ? quantity_for_each_line.map((count, index) => {
+                          return (
+                            <tr key={index}>
+                              <td>{index + 1}-я линия</td>
+                              <td>{count}</td>
+                            </tr>
+                          );
+                        })
+                      : null}
                   </tbody>
                 </Table>
               </Col>

@@ -1,1 +1,1 @@
-export { default as TokenProfit } from "./MrxProgram";
+export { default as MrxProgram } from "./MrxProgram";

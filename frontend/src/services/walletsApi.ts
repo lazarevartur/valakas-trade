@@ -5,10 +5,10 @@ interface ResponseApi {
   data?: any;
 }
 export const WalletsApi = {
-  rootUrl: "/api/auth",
-  async byMrxProgramById(
+  rootUrl: "/api/wallets",
+  async balanceReplenishment(
     token: string,
-    programId: string
+    amount: string
   ): Promise<ResponseApi> {
     const config = {
       headers: {
@@ -17,10 +17,21 @@ export const WalletsApi = {
       },
     };
     const { data } = await axios.post(
-      `${this.rootUrl}/byMrxProgram`,
-      { program_id: programId },
+      `${this.rootUrl}/reple-wallet`,
+      { amount },
       config
     );
+    return data;
+  },
+
+  async buyMrxProgram(token: string, req: any): Promise<ResponseApi> {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const { data } = await axios.post(`${this.rootUrl}/buy-mrx`, req, config);
     return data;
   },
   // async getTeam(token: string): Promise<ResponseApi> {

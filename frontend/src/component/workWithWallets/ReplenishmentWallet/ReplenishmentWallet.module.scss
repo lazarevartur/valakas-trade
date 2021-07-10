@@ -6,19 +6,22 @@
   margin-bottom: 15px;
 }
 .wallet {
-  border: 1px solid #bdbdbd;
-  border-radius: 5px;
-  justify-content: center;
-  cursor: pointer;
-  height: 80px;
-  width: 180px;
-  padding: 10px;
-  &:hover {
-    border-color: #fec825;
-    box-shadow: 0 0 4px rgba(136, 136, 136, 0.2);
-  }
   .wallet_img {
     object-fit: cover;
+  }
+  img {
+    display: flex;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    justify-content: center;
+    cursor: pointer;
+    height: 80px;
+    width: 180px;
+    padding: 10px;
+    &:hover {
+      border-color: #fec825;
+      box-shadow: 0 0 4px rgba(136, 136, 136, 0.2);
+    }
   }
 }
 .button_block {

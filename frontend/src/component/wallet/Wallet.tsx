@@ -4,9 +4,7 @@ import styles from "./wallet.module.scss";
 import useHover from "../../hooks/useHover";
 import { defaultComponentProps } from "../../types/types";
 import cn from "classnames";
-import { RoutePath } from "../../routes/routesConfig";
 import { LinkContainer } from "react-router-bootstrap";
-import { useLocation } from "react-router-dom";
 
 interface WalletProps extends defaultComponentProps {
   title?: string;

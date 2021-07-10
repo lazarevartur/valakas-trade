@@ -8,8 +8,9 @@ import { DashboardRoute, dashboardRouteConfig } from "../../routes/dashboard";
 import { RoutePath } from "../../routes/routesConfig";
 import cn from "classnames";
 import { SideBar } from "../../component/mainBlocks/sideBar";
-import { useDispatchTyped } from "../../hooks/useTypedRedux";
+import { useDispatchTyped, useSelectorTyped } from "../../hooks/useTypedRedux";
 import { Balance } from "../../component/workWithWallets/Balance";
+import { getCurrentUser } from "../../store/action/dashboardAction";
 
 interface DashboardProps {}
 
@@ -17,6 +18,12 @@ const Dashboard: React.FC<DashboardProps> = () => {
   const { pathname } = useLocation<Location>();
   const history = useHistory();
   const dispatch = useDispatchTyped();
+
+  React.useEffect(() => {
+    if (pathname !== DashboardRoute.desktop) {
+      dispatch(getCurrentUser());
+    }
+  }, []);
   React.useEffect(() => {
     if (pathname === RoutePath.dashboard) {
       history.push(DashboardRoute.desktop);

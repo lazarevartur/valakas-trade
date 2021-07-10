@@ -9,7 +9,9 @@ import {
 } from "recharts";
 import styles from "./chart.module.scss";
 
-interface ChartProps {}
+interface ChartProps {
+  dataProps?: any;
+}
 const data = [
   { name: "First characteristic", value: 1666 },
   { name: "Second characteristic", value: 666 },
@@ -19,7 +21,7 @@ const data = [
 
 const COLORS = ["#45DBC5", "#FE8278", "#FCCE9E", "#CFE3FF"];
 
-const Chart: React.FC<ChartProps> = () => {
+const Chart: React.FC<ChartProps> = ({ dataProps = data }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const onPieEnter = useCallback(
     (_, index) => {
@@ -32,7 +34,7 @@ const Chart: React.FC<ChartProps> = () => {
     <ResponsiveContainer height={"100%"} width={"100%"}>
       <PieChart width={400} height={400}>
         <Pie
-          data={data}
+          data={dataProps}
           cx="50%"
           cy="50%"
           outerRadius={80}
@@ -40,7 +42,7 @@ const Chart: React.FC<ChartProps> = () => {
           fill="#8884d8"
           dataKey="value"
         >
-          {data.map((entry, index) => (
+          {dataProps.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>

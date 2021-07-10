@@ -5,9 +5,8 @@ import { Profit } from "../component/dashboardGroup/profit";
 import { Team } from "../component/dashboardGroup/team";
 import { Profile } from "../component/dashboardGroup/profile";
 import { HistoryPage } from "../component/dashboardGroup/history";
-import { TokenProfit } from "../component/dashboardGroup/programs/mrxProgram";
-import { RoutePath } from "./routesConfig";
-import { page404 } from "../pages/page404";
+import { MrxProgram } from "../component/dashboardGroup/programs/mrxProgram";
+import { OptionalProgram } from "../component/dashboardGroup/programs/optionalProgram";
 
 export interface routeDashboard {
   path: DashboardRoute;
@@ -23,6 +22,8 @@ export enum DashboardRoute {
   profit = "/dashboard/profit",
   history = "/dashboard/history",
   mrx_invest = "/dashboard/MRX-Invest",
+  optional = "/dashboard/optional",
+  priority = "/dashboard/priority",
   page404 = "*",
 }
 
@@ -60,7 +61,19 @@ export const dashboardRouteConfig: routeDashboard[] = [
   {
     path: DashboardRoute.mrx_invest,
     exact: true,
-    component: TokenProfit,
+    component: MrxProgram,
+    access: AccessRouts.user,
+  },
+  {
+    path: DashboardRoute.optional,
+    exact: true,
+    component: OptionalProgram,
+    access: AccessRouts.user,
+  },
+  {
+    path: DashboardRoute.priority,
+    exact: true,
+    component: OptionalProgram,
     access: AccessRouts.user,
   },
 ];

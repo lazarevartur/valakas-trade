@@ -1,9 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IUserTeamState } from "../../types/types";
+import { Storage } from "../../utils/utils";
+import { StoregeKey } from "../../config";
 
 const initialState: IUserTeamState = {
   isLoading: false,
-  userTeam: {},
+  userTeam: Storage.has(StoregeKey.USER_TEAM)
+    ? Storage.get(StoregeKey.USER_TEAM)
+    : {},
   error: {},
 };
 
