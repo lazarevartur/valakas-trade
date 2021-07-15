@@ -87,9 +87,11 @@ export const buyMrxProgram = asyncHandler(async (req, res) => {
 export const buyOptionalProgram = asyncHandler(async (req, res) => {
   console.log("=============buyOptionalProgram===============");
   const { program_id, amount } = req.body;
+  console.log(amount);
   const user_id = req.user;
   let program;
   let user;
+
   if (mongoose.isValidObjectId(program_id)) {
     try {
       program = await optionalPrograms.findById(program_id);
@@ -105,15 +107,16 @@ export const buyOptionalProgram = asyncHandler(async (req, res) => {
             quantity: amount,
             round_number: program.round_number,
             cost: program.cost,
+            profitability: program.profitability,
           });
         } else {
-          userOption.quantity += amount;
+          userOption.quantity += +amount;
         }
 
         user.wallets.start_account -= optionalToMany;
         user.programs_wallets.options += optionalToMany;
-        program.quantity -= amount;
-        program.collected += amount;
+        program.quantity -= +amount;
+        program.collected += +optionalToMany;
 
         user.save();
         program.save();

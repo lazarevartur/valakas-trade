@@ -7,16 +7,21 @@ interface DashboardTitleBlockProps {
   title: string;
   withOutBottomLine?: boolean;
   info?: any;
+  className?: string;
 }
 
 const DashboardTitleBlock: React.FC<DashboardTitleBlockProps> = ({
   title,
   withOutBottomLine,
   info,
+  className = "",
 }) => {
   return (
     <Row
-      className={cn(styles.row, { [styles.border_none]: withOutBottomLine })}
+      className={cn(styles.row, {
+        [styles.border_none]: withOutBottomLine,
+        [className]: className,
+      })}
     >
       <Col lg={7} className={styles.col}>
         <span className={styles.title}>{title}</span>

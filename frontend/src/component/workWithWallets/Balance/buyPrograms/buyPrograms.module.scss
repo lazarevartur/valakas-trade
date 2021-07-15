@@ -31,3 +31,18 @@
     width: 200px;
   }
 }
+
+.options {
+  .parameter {
+    padding-bottom: 10px;
+    color: #828282;
+    div:last-child {
+      font-size: 18px;
+      color: #daa400;
+      font-weight: 500;
+    }
+  }
+  .input {
+    padding: 25px 0;
+  }
+}

@@ -18,14 +18,18 @@ import {
   useSelectorTyped,
 } from "../../../../hooks/useTypedRedux";
 import { rootState } from "../../../../types/types";
-import { getOptionalProgram } from "../../../../store/action/optionalAction";
+import {
+  getOptionalProgram,
+  getPurchasedOptions,
+} from "../../../../store/action/optionalAction";
 import { Loader } from "../../../uiKit/loader";
 import { Plug } from "../../../uiKit/plug";
+import { ProgramType } from "../../../../const/popup";
 
 interface OptionalProgramProps {}
 
 const OptionalProgram: React.FC<OptionalProgramProps> = () => {
-  const { optionalProgram, isLoading } = useSelectorTyped(
+  const { optionalProgram, optionalPrograms, isLoading } = useSelectorTyped(
     (state: rootState) => state.optional
   );
   const { userDashboard } = useSelectorTyped(
@@ -33,15 +37,15 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
   );
 
   const isPaid = userDashboard.wallets?.start_account || 0;
-  const quantity = userDashboard.programs?.optional.optional?.quantity || 0;
-  const cost = userDashboard.programs?.optional.optional?.cost || 0;
-  const round = userDashboard.programs?.optional.optional?.round_number || 0;
-  const deposit = quantity * cost;
-
+  const quantity = userDashboard.programs?.optional?.quantity || 0;
+  const cost = userDashboard.programs?.optional?.cost || 0;
+  const activeRound = optionalProgram.round_number || 1;
+  const deposit = (quantity * cost).toFixed(2) || 0;
   const profitability = (optionalProgram.profitability * 100).toFixed() || 0;
   const dispatch = useDispatchTyped();
   React.useEffect(() => {
     dispatch(getOptionalProgram());
+    dispatch(getPurchasedOptions());
   }, []);
 
   if (isLoading) {
@@ -81,21 +85,23 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
         <Row>
           <Col lg={5}>Текущий раунд:</Col>
           <Col lg={4}>
-            <span className={styles.accent}>{round}</span>
+            <span className={styles.accent}>{activeRound}</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Счет активен до:</Col>
+          <Col lg={5}>Завершение последнего раунда</Col>
           <Col lg={4}>
             <span>17.08.2022</span>
           </Col>
         </Row>
-        <LinkContainer to={RoutePath.replenishmentWallet}>
-          <Button>Пополнить</Button>
+        <LinkContainer
+          to={`${RoutePath.buyPrograms}&program=${ProgramType.optional}`}
+        >
+          <Button>Купить опционы</Button>
         </LinkContainer>
       </div>
       <div className={styles.accounts}>
-        <DashboardTitleBlock title={"Мои счета"} />
+        <DashboardTitleBlock title={"Мой счет текущего раунда"} />
         <CardDeck>
           <Card className={styles.account}>
             <Card.Body>
@@ -121,8 +127,65 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
               <Card.Text>{cost} $</Card.Text>
             </Card.Body>
           </Card>
+          <Card className={styles.account}>
+            <Card.Body>
+              <Card.Title className={styles.card_title}>
+                Текущая базоваая ставка доходности
+              </Card.Title>
+              <Card.Text>{profitability}% </Card.Text>
+            </Card.Body>
+          </Card>
         </CardDeck>
       </div>
+      {optionalPrograms.map(
+        ({ cost, profitability, round_number, quantity }) => {
+          const profit = (profitability * 100).toFixed();
+          const depositProgram = (cost * quantity).toFixed(3);
+          return (
+            <div className={styles.accounts} key={round_number}>
+              <DashboardTitleBlock
+                title={`Счет ${round_number}-го раунда`}
+                className={styles.margin_none}
+              />
+              <CardDeck>
+                <Card className={styles.account}>
+                  <Card.Body>
+                    <Card.Title className={styles.card_title}>
+                      Сумма депозита
+                    </Card.Title>
+                    <Card.Text>{depositProgram} $</Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card className={styles.account}>
+                  <Card.Body>
+                    <Card.Title className={styles.card_title}>
+                      Количество опционов
+                    </Card.Title>
+                    <Card.Text>{quantity}</Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card className={styles.account}>
+                  <Card.Body>
+                    <Card.Title className={styles.card_title}>
+                      Цена опциона
+                    </Card.Title>
+                    <Card.Text>{cost} $</Card.Text>
+                  </Card.Body>
+                </Card>
+                <Card className={styles.account}>
+                  <Card.Body>
+                    <Card.Title className={styles.card_title}>
+                      Текущая базоваая ставка доходности
+                    </Card.Title>
+                    <Card.Text>{profit}% </Card.Text>
+                  </Card.Body>
+                </Card>
+              </CardDeck>
+            </div>
+          );
+        }
+      )}
+
       {/*<div>*/}
       {/*  <DashboardTitleBlock*/}
       {/*    title={"Статистика доходности по программе MRX-invest"}*/}

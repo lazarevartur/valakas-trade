@@ -2,16 +2,11 @@ import React from "react";
 import styles from "./prioritySelector.module.scss";
 import { Col, Image, Nav, Row, Tab } from "react-bootstrap";
 import cn from "classnames";
-import icon1 from "../../assets/svg/Home.svg";
-import icon2 from "../../assets/svg/car.svg";
-import icon3 from "../../assets/svg/motorcycle.svg";
-import icon4 from "../../assets/svg/iphone.svg";
-import icon5 from "../../assets/svg/airplane.svg";
-import icon6 from "../../assets/svg/rings.svg";
-import icon7 from "../../assets/svg/dollar.svg";
-import homeImg from "../../assets/img/home.jpg";
-import carImg from "../../assets/img/car.jpg";
 import { PrioritySlide } from "./prioritySlide";
+import { getPriorityPrograms } from "../../store/action/priorityAction";
+import { useDispatchTyped, useSelectorTyped } from "../../hooks/useTypedRedux";
+import { rootState } from "../../types/types";
+import { Loader } from "../uiKit/loader";
 
 interface data {
   icon: string;
@@ -21,130 +16,36 @@ interface data {
   conditions: [];
 }
 
-const menuData = [
-  {
-    icon: icon1,
-    title: "Home",
-    type: "Квартира",
-    img: homeImg,
-    description:
-      "Собственная квартира на этапе строительства – без кредитов, рассрочек и без экономии на повседневных вещах!",
-    conditions: {
-      discount: "-25% / -25%",
-      term: "120 дней / 180 дней",
-      minCost: "20000",
-      maxCost: "200000",
-      minStatus: "M2",
-    },
-  },
-  {
-    icon: icon2,
-    title: "Auto",
-    type: "Автомобиль",
-    img: carImg,
-    description: "Приобретите автомобиль вашей мечты всего за часть стоимости",
-    conditions: {
-      discount: "до -25%",
-      term: "30 дней",
-      minCost: "10000",
-      maxCost: "100000",
-      minStatus: "M2",
-    },
-  },
-  {
-    icon: icon3,
-    title: "Auto2",
-    type: "Автомобиль",
-    img: carImg,
-    description: "Приобретите автомобиль вашей мечты всего за часть стоимости",
-    conditions: {
-      discount: "до -25%",
-      term: "30 дней",
-      minCost: "10000",
-      maxCost: "100000",
-      minStatus: "M2",
-    },
-  },
-  {
-    icon: icon4,
-    title: "Auto3",
-    type: "Автомобиль",
-    img: carImg,
-    description: "Приобретите автомобиль вашей мечты всего за часть стоимости",
-    conditions: {
-      discount: "до -25%",
-      term: "30 дней",
-      minCost: "10000",
-      maxCost: "100000",
-      minStatus: "M2",
-    },
-  },
-  {
-    icon: icon5,
-    title: "Travel",
-    type: "Автомобиль",
-    img: carImg,
-    description: "Приобретите автомобиль вашей мечты всего за часть стоимости",
-    conditions: {
-      discount: "до -25%",
-      term: "30 дней",
-      minCost: "10000",
-      maxCost: "100000",
-      minStatus: "M2",
-    },
-  },
-  {
-    icon: icon6,
-    title: "Wedding",
-    type: "Автомобиль",
-    img: carImg,
-    description: "Приобретите автомобиль вашей мечты всего за часть стоимости",
-    conditions: {
-      discount: "до -25%",
-      term: "30 дней",
-      minCost: "10000",
-      maxCost: "100000",
-      minStatus: "M2",
-    },
-  },
-  {
-    icon: icon7,
-    title: (
-      <span>
-        Early <br /> Repayment
-      </span>
-    ),
-    type: "Автомобиль",
-    img: carImg,
-    description: "Приобретите автомобиль вашей мечты всего за часть стоимости",
-    conditions: {
-      discount: "до -25%",
-      term: "30 дней",
-      minCost: "10000",
-      maxCost: "100000",
-      minStatus: "M2",
-    },
-  },
-];
-
 interface PrioritySelectorProps {}
 
 const PrioritySelector: React.FC<PrioritySelectorProps> = () => {
+  const { priorityPrograms, isLoading } = useSelectorTyped(
+    (state: rootState) => state.priority
+  );
+
+  const dispatch = useDispatchTyped();
+  React.useEffect(() => {
+    dispatch(getPriorityPrograms());
+  }, []);
+  if (isLoading) {
+    return <Loader />;
+  }
+  const activeTab = priorityPrograms[0] ? priorityPrograms[0].name : 1;
   return (
-    <Tab.Container id="left-tabs-example" defaultActiveKey={menuData[0].title}>
+    <Tab.Container id="left-tabs-example" defaultActiveKey={activeTab}>
       <Row>
         <Col sm={12}>
           <Nav variant="pills" bsPrefix={"PrioritySelector"}>
-            {menuData.map((item) => {
+            {priorityPrograms.map((item, i) => {
               return (
-                <Nav.Item>
-                  <Nav.Link eventKey={item.title}>
+                <Nav.Item key={i}>
+                  <Nav.Link eventKey={item.name}>
                     <div className={styles.desk}>
                       <div className={cn(styles.icon, "icon")}>
                         <Image src={item.icon} />
                       </div>
                       <div className={"d-flex flex-column text"}>
-                        Priority <strong>{item.title}</strong>
+                        Priority <strong>{item.name}</strong>
                       </div>
                     </div>
                   </Nav.Link>
@@ -155,8 +56,8 @@ const PrioritySelector: React.FC<PrioritySelectorProps> = () => {
         </Col>
       </Row>
       <div className={styles.PrioritySlide}>
-        {menuData.map(({ icon, ...item }) => {
-          return <PrioritySlide {...item} />;
+        {priorityPrograms.map(({ icon, ...item }) => {
+          return <PrioritySlide {...item} key={icon} />;
         })}
       </div>
     </Tab.Container>

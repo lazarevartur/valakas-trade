@@ -14,6 +14,9 @@
   }
 }
 .accounts {
+  .margin_none {
+    margin-top: 0;
+  }
   @extend .bottom_padding;
   .account {
     display: flex;

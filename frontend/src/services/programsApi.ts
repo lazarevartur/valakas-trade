@@ -55,7 +55,20 @@ export const ProgramsApi = {
     );
     return data;
   },
+  async getPurchasedOptions(token): Promise<ResponseApi> {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
 
+    const { data } = await axios.get(
+      `${this.rootUrl}/optional/purchased-options`,
+      config
+    );
+    return data;
+  },
   async getAllOptionalPrograms(): Promise<ResponseApi> {
     const config = {
       headers: {
@@ -74,6 +87,29 @@ export const ProgramsApi = {
     };
     const { data } = await axios.get(
       `${this.rootUrl}/optional/active-program`,
+      config
+    );
+    return data;
+  },
+
+  async getAllPriorityPrograms(): Promise<ResponseApi> {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.get(`${this.rootUrl}/priority`, config);
+    return data;
+  },
+  async getPriorityProgramByName(token: string, name): Promise<ResponseApi> {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const { data } = await axios.get(
+      `${this.rootUrl}/priority/${name}`,
       config
     );
     return data;

@@ -12,6 +12,7 @@ import useGetParameter from "../../../../hooks/useGetParameter";
 import { GET_PARAMS, ProgramType } from "../../../../const/popup";
 import {
   buyMrxProgram,
+  buyOptionalProgram,
   resetWallet,
 } from "../../../../store/action/walletsAction";
 import { Button, Card, CardDeck, Col, Container, Row } from "react-bootstrap";
@@ -19,20 +20,20 @@ import { Form } from "react-bootstrap";
 import { Loader } from "../../../uiKit/loader";
 import { Modal } from "react-bootstrap";
 import { DashboardRoute } from "../../../../routes/dashboard";
+import { CustomInput } from "../../../uiKit/customInput";
+import { getRuDate, getRuFormatNumbers } from "../../../../utils/utils";
 
 interface BuyProgramsProps {}
 
 const BuyPrograms: React.FC<BuyProgramsProps> = () => {
-  const { mrxPrograms, isLoading } = useWalletData();
+  const { mrxPrograms, isLoading, optionalProgram } = useWalletData();
   const { register, handleSubmit, errors, watch } = useForm();
   const dispatch = useDispatchTyped();
   const history = useHistory();
   const { success } = useSelectorTyped((state: rootState) => state.wallets);
   const [typeWallet, setTypeWallet] = React.useState("");
-  enum typeWalletEnum {
-    mrx = "mrx",
-    options = "options",
-  }
+  const amount = watch("amount");
+
   const program = useGetParameter(GET_PARAMS.program);
 
   React.useEffect(() => {
@@ -50,13 +51,34 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
     }
   }, [success]);
 
-  const onSubmit = (data) => {
-    const program = mrxPrograms.find((program) => {
-      return program._id === data.id;
-    });
-    const req = { amount: program.price, program_id: program._id };
+  const {
+    start_round,
+    end_round,
+    cost,
+    quantity,
+    round_number,
+    profitability,
+    purpose,
+    collected,
+    _id: optionalId,
+  } = optionalProgram;
+  const profit = (profitability * 100).toFixed();
+  const price = (+amount * cost).toFixed(3);
 
-    dispatch(buyMrxProgram(req));
+  const onSubmit = (data) => {
+    switch (typeWallet) {
+      case ProgramType.mrx:
+        const program = mrxPrograms.find((program) => {
+          return program._id === data.id;
+        });
+        const mrxReq = { amount: program.price, program_id: program._id };
+        dispatch(buyMrxProgram(mrxReq));
+        break;
+      case ProgramType.optional:
+        const optionalReq = { ...data, program_id: optionalId };
+        dispatch(buyOptionalProgram(optionalReq));
+        break;
+    }
   };
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -83,16 +105,16 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
                     onChange={(e) => setTypeWallet(e.target.value)}
                     ref={register}
                     name={"typeWallet"}
-                    defaultValue={typeWalletEnum[program]}
+                    defaultValue={ProgramType[program]}
                   >
                     <option value={""}>Выбирите программу</option>
-                    <option value={typeWalletEnum.mrx}>MRX</option>
-                    <option value={typeWalletEnum.options}>OPTIONS</option>
+                    <option value={ProgramType.mrx}>MRX</option>
+                    <option value={ProgramType.optional}>OPTIONS</option>
                   </Form.Control>
                 </Form.Group>
               </Col>
             </Row>
-            {typeWallet === typeWalletEnum.mrx && (
+            {typeWallet === ProgramType.mrx && (
               <Row>
                 <Col lg={{ offset: 2, span: 8 }}>
                   <Form.Group controlId="exampleForm.SelectCustom">
@@ -110,20 +132,63 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
                 </Col>
               </Row>
             )}
-            {typeWallet === typeWalletEnum.options && (
+            {typeWallet === ProgramType.optional && (
               <Row>
                 <Col lg={{ offset: 2, span: 8 }}>
-                  <Form.Group controlId="exampleForm.SelectCustom">
-                    <Form.Label>Инвестиционные пакеты</Form.Label>
-                    <Form.Control as="select" ref={register} name={"id"}>
-                      {mrxPrograms.map(({ name, _id }) => {
-                        return (
-                          <option key={name} value={_id}>
-                            $ {name}
-                          </option>
-                        );
-                      })}
-                    </Form.Control>
+                  <Form.Group
+                    controlId="optionsWallet"
+                    className={styles.options}
+                  >
+                    <Form.Label>Опционы</Form.Label>
+                    <Row className={styles.parameter}>
+                      <Col sm={7}>Раунд</Col>
+                      <Col sm={5}>{round_number}</Col>
+                    </Row>
+                    <Row className={styles.parameter}>
+                      <Col sm={7}>Начало раунда</Col>
+                      <Col sm={5}>{getRuDate(start_round)}</Col>
+                    </Row>
+                    <Row className={styles.parameter}>
+                      <Col sm={7}>Завершение раунда</Col>
+                      <Col sm={5}>{getRuDate(end_round)}</Col>
+                    </Row>
+                    <Row className={styles.parameter}>
+                      <Col sm={7}>Цена опциона</Col>
+                      <Col sm={5}>{cost}$</Col>
+                    </Row>
+                    <Row className={styles.parameter}>
+                      <Col sm={7}>Доходность на вложенный капитал</Col>
+                      <Col sm={5}>{profit}%</Col>
+                    </Row>
+                    <Row className={styles.parameter}>
+                      <Col sm={7}>Выделено опционов</Col>
+                      <Col sm={5}>{getRuFormatNumbers(quantity)}</Col>
+                    </Row>
+                    <Row className={styles.parameter}>
+                      <Col sm={7}>Цель сбора</Col>
+                      <Col sm={5}>{getRuFormatNumbers(purpose)}$</Col>
+                    </Row>
+                    <Row className={styles.parameter}>
+                      <Col sm={7}>Собранно</Col>
+                      <Col sm={5}>{getRuFormatNumbers(collected)}$</Col>
+                    </Row>
+                    <Row className={styles.input}>
+                      <Col sm={12}>
+                        <CustomInput
+                          reff={register()}
+                          type="text"
+                          placeholder={"Количество опционов"}
+                          value={watch("amount")}
+                          name={"amount"}
+                        />
+                      </Col>
+                    </Row>
+                    {amount && (
+                      <Row className={styles.parameter}>
+                        <Col sm={7}>Стоимость опционов</Col>
+                        <Col sm={5}>{price}$</Col>
+                      </Row>
+                    )}
                   </Form.Group>
                 </Col>
               </Row>

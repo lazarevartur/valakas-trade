@@ -5,6 +5,7 @@ import cn from "classnames";
 import homeImg from "../../../assets/img/home.jpg";
 import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../../routes/routesConfig";
+import { IPriorityData } from "../../../types/types";
 
 interface conditions {
   discount?: string;
@@ -13,17 +14,12 @@ interface conditions {
   maxCost?: string;
   minStatus?: string;
 }
-interface PrioritySlideProps {
-  title?: string | JSX.Element;
-  type?: string;
-  description?: string;
-  img?: string;
-  conditions?: conditions;
+interface PrioritySlideProps extends IPriorityData {
   tab?: boolean;
 }
 
 const PrioritySlide: React.FC<PrioritySlideProps> = ({
-  title = "Home",
+  name = "Home",
   type = "Квартира",
   description = "Собственная квартира на этапе строительства – без кредитов, рассрочек и без экономии на повседневных вещах!",
   conditions = {
@@ -50,13 +46,13 @@ const PrioritySlide: React.FC<PrioritySlideProps> = ({
         <Col sm={12}>
           {tab ? (
             <Tab.Content>
-              <Tab.Pane eventKey={title}>
+              <Tab.Pane eventKey={name}>
                 <Row>
                   <Col lg={5}>
                     <Image src={img} className={styles.img} />
                   </Col>
                   <Col lg={7} className={styles.description}>
-                    <h2>Priority {title}</h2>
+                    <h2>Priority {name}</h2>
                     <div className={styles.typeText}>{type}</div>
                     <div>{description}</div>
                     <div className={styles.separator} />
@@ -79,7 +75,7 @@ const PrioritySlide: React.FC<PrioritySlideProps> = ({
                         <Button className={cn(styles.button)}>
                           Участвовать
                         </Button>
-                        <LinkContainer to={`${RoutePath.priority}/${title}`}>
+                        <LinkContainer to={`${RoutePath.priority}/${name}`}>
                           <Button className={styles.whiteButton}>Детали</Button>
                         </LinkContainer>
                       </Col>
@@ -94,7 +90,7 @@ const PrioritySlide: React.FC<PrioritySlideProps> = ({
                 <Image src={img} className={styles.img} />
               </Col>
               <Col lg={7} className={styles.description}>
-                <h2>Priority {title}</h2>
+                <h2>Priority {name}</h2>
                 <div className={styles.typeText}>{type}</div>
                 <div>{description}</div>
                 <div className={styles.separator} />
@@ -116,7 +112,7 @@ const PrioritySlide: React.FC<PrioritySlideProps> = ({
                   <Col lg={12} className={styles.button_group}>
                     <Button className={cn(styles.button)}>Участвовать</Button>
                     {tab && (
-                      <LinkContainer to={`${RoutePath.priority}/${title}`}>
+                      <LinkContainer to={`${RoutePath.priority}/${name}`}>
                         <Button className={styles.whiteButton}>Детали</Button>
                       </LinkContainer>
                     )}

@@ -15,6 +15,6 @@ router
   .post([jwtGuard(), checkUserStartAccount, payPartners], buyMrxProgram);
 router
   .route("/buy-optional")
-  .post([jwtGuard(), checkUserStartAccount, payPartners], buyOptionalProgram);
+  .post([jwtGuard(), payPartners], buyOptionalProgram);
 
 export default router;

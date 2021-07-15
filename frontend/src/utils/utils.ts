@@ -96,3 +96,7 @@ export function getRuDate(date) {
     day: "numeric",
   });
 }
+
+export function getRuFormatNumbers(number) {
+  return new Intl.NumberFormat("ru-RU").format(number);
+}

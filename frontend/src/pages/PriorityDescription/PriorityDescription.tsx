@@ -14,13 +14,23 @@ import { PrioritySlide } from "../../component/prioritySelector/prioritySlide";
 import { CustomInput } from "../../component/uiKit/customInput";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { IPriorityData } from "../../types/types";
 
-interface PriorityDescriptionProps {
+interface PriorityDescriptionProps extends IPriorityData {
   match: any;
 }
 
-const PriorityDescription: React.FC<PriorityDescriptionProps> = ({ match }) => {
+const PriorityDescription: React.FC<PriorityDescriptionProps> = ({
+  match,
+  img,
+  icon,
+  conditions,
+  description,
+  type,
+  name,
+}) => {
   const id = match.params.id;
+  console.log(id);
   const { register, handleSubmit, errors, watch } = useForm();
   const history = useHistory();
   return (
@@ -37,14 +47,9 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({ match }) => {
             <Col lg={12}>
               <h2 className={styles.title}>Калькулятор</h2>
               <p className={"text-center"}>
-                Exercitationem rerum nesciunt dicta voluptatem eligendi
-                laudantium temporibus voluptatibus pariatur. Numquam veritatis
-                dolorem et. Tenetur omnis qui omnis minus. Omnis sit eaque
-                doloremque ullam quae eaque qui iste ut. Exercitationem rerum
-                nesciunt dicta voluptatem eligendi laudantium temporibus
-                voluptatibus pariatur. Numquam veritatis dolorem et. Tenetur
-                omnis qui omnis minus. Omnis sit eaque doloremque ullam quae
-                eaque qui iste ut.
+                Предварительный расчет по взносу и сроку действия депозита.
+                Обратите внимание на условия маркетингово содействия
+                маркетингового
               </p>
             </Col>
           </Row>
@@ -63,8 +68,9 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({ match }) => {
               <Form.Group controlId="formGridState">
                 <Form.Label>Укажите взнос и срок</Form.Label>
                 <Form.Control as="select" defaultValue="Choose...">
-                  <option>30% взнос - 149 дней ожидания</option>
-                  <option>40% взнос - 170 дней ожидания</option>
+                  <option>40% взнос - 120 дней ожидания</option>
+                  <option>30% взнос - 150 дней ожидания</option>
+                  <option>25% взнос - 180 дней ожидания</option>
                 </Form.Control>
               </Form.Group>
             </Col>
@@ -189,6 +195,8 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({ match }) => {
             <DependencyTable title={"DEVICE"} />
             <DependencyTable title={"Wedding"} />
             <DependencyTable title={"Early Repayment"} />
+            <DependencyTable title={"MOTO"} />
+            <DependencyTable title={"TRAWEL"} />
           </div>
         </div>
       </Container>
@@ -218,16 +226,16 @@ const DependencyTable: React.FC<DependencyTableProps> = ({
         </thead>
         <tbody>
           <tr>
-            <td>60/60</td>
-            <td>2</td>
+            <td>40%/120</td>
+            <td>2%</td>
           </tr>
           <tr>
-            <td>45/99</td>
-            <td>3.3</td>
+            <td>30%/150</td>
+            <td>3.5%</td>
           </tr>
           <tr>
-            <td>30/149</td>
-            <td>5</td>
+            <td>25%/180</td>
+            <td>5%</td>
           </tr>
         </tbody>
       </Table>
@@ -238,3 +246,30 @@ const DependencyTable: React.FC<DependencyTableProps> = ({
 PriorityDescription.defaultProps = {};
 
 export default PriorityDescription;
+/*
+АВТО
+50%/60 1,5%
+40%/90 2,7%
+30%/120 3,8%
+----------
+Мото
+50%/50 2%
+40%/80 3%
+30%/100 4%
+------------
+Device
+60%/35 1.5%
+50%/55 2%
+40%/75 2.7%
+-----------
+Travel
+45%/30 2%
+-----
+swadba
+40%/100 3.6%
+45%/80 2.8%
+50%/60 2.2
+------
+krediti
+40%/90 2.5%
+*/
