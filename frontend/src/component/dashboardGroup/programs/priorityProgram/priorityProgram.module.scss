@@ -1,0 +1,98 @@
+@import "src/assets/globalStyles/style";
+.information {
+  .accent {
+    color: #daa400;
+  }
+  .disable {
+    color: #bdbdbd;
+  }
+  div {
+    padding-bottom: 10px;
+  }
+  span {
+    color: #333333;
+  }
+}
+.accounts {
+  .margin_none {
+    margin-top: 0;
+  }
+  @extend .bottom_padding;
+  .account {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #f2f2f2;
+    box-shadow: 0px 0px 5px rgba(108, 108, 108, 0.05);
+    border-radius: 10px;
+  }
+  .card_title {
+    font-size: 16px;
+    color: #828282;
+    font-weight: 400;
+  }
+  p {
+    color: #daa400;
+    font-weight: 600;
+    font-size: 20px;
+  }
+}
+.statistics {
+  margin-bottom: 60px;
+
+  span {
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 8px;
+  }
+
+  .first,
+  .second,
+  .third,
+  .fourth {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 10px 20px;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 44%;
+      height: 10px;
+      width: 10px;
+      border-radius: 50px;
+    }
+  }
+
+  .first {
+    color: #45dbc5;
+    &:before {
+      background-color: #45dbc5;
+    }
+  }
+
+  .second {
+    color: #fe8278;
+    &:before {
+      background-color: #fe8278;
+    }
+  }
+
+  .third {
+    color: #fcce9e;
+    &:before {
+      background-color: #fcce9e;
+    }
+  }
+
+  .fourth {
+    color: #cfe3ff;
+    &:before {
+      background-color: #cfe3ff;
+    }
+  }
+}

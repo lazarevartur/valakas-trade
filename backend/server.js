@@ -23,6 +23,7 @@ JwtPassport(passport);
 
 app.use(cors());
 app.use(express.json());
+app.use("/public", express.static(path.join(__dirname, "/backend/public")));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);

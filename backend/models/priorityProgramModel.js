@@ -10,6 +10,8 @@ const priorityProgramModel = mongoose.Schema(
     conditions: {
       discount: [{ type: Number, _id: false }],
       term: [{ type: Number, _id: false }],
+      insurance: [{ type: Number, _id: false }],
+      activateProgram: { type: Number, default: 1 },
       minCost: { type: Number, default: 0 },
       maxCost: { type: Number, default: 0 },
       minStatus: { type: String },

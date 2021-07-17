@@ -13,26 +13,143 @@ import { useHistory } from "react-router";
 import { PrioritySlide } from "../../component/prioritySelector/prioritySlide";
 import { CustomInput } from "../../component/uiKit/customInput";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { IPriorityData } from "../../types/types";
+import { Link, useLocation } from "react-router-dom";
+import { IPriorityData, rootState } from "../../types/types";
+import { useDispatchTyped, useSelectorTyped } from "../../hooks/useTypedRedux";
+import {
+  getPriorityProgram,
+  getPriorityPrograms,
+} from "../../store/action/priorityAction";
+import Page404 from "../page404/page404";
+import _ from "lodash";
+import { Loader } from "../../component/uiKit/loader";
+import { RoutePath } from "../../routes/routesConfig";
+import { getDayinMm, getRuDate, percentageOfAmount } from "../../utils/utils";
 
 interface PriorityDescriptionProps extends IPriorityData {
   match: any;
 }
 
-const PriorityDescription: React.FC<PriorityDescriptionProps> = ({
-  match,
-  img,
-  icon,
-  conditions,
-  description,
-  type,
-  name,
-}) => {
+const homeInsurance = [
+  { contribution: "40%/120", insuranceCost: 2 },
+  { contribution: "30%/150", insuranceCost: 3.5 },
+  { contribution: "25%/180", insuranceCost: 5 },
+];
+
+const avtoInsurance = [
+  { contribution: "50%/60", insuranceCost: 1.5 },
+  { contribution: "40%/90", insuranceCost: 2.7 },
+  { contribution: "30%/120", insuranceCost: 3.8 },
+];
+const motoInsurance = [
+  { contribution: "50%/50", insuranceCost: 2 },
+  { contribution: "40%/80", insuranceCost: 3 },
+  { contribution: "30%/100", insuranceCost: 4 },
+];
+const deviceInsurance = [
+  { contribution: "60%/35", insuranceCost: 1.5 },
+  { contribution: "50%/55", insuranceCost: 2 },
+  { contribution: "40%/75", insuranceCost: 2.7 },
+];
+const travelInsurance = [{ contribution: "45%/30", insuranceCost: 2 }];
+const weddingInsurance = [
+  { contribution: "40%/100", insuranceCost: 3.6 },
+  { contribution: "45%/80", insuranceCost: 2.8 },
+  { contribution: "50%/60", insuranceCost: 2.2 },
+];
+const repaymentInsurance = [{ contribution: "40%/90", insuranceCost: 2.5 }];
+
+const PriorityDescription: React.FC<PriorityDescriptionProps> = ({ match }) => {
   const id = match.params.id;
-  console.log(id);
-  const { register, handleSubmit, errors, watch } = useForm();
   const history = useHistory();
+  const location = useLocation();
+  const {
+    priorityProgram,
+    priorityPrograms,
+    isLoading,
+    error,
+  } = useSelectorTyped((state: rootState) => state.priority);
+  const dispatch = useDispatchTyped();
+  const [typeProgram, setTypeProgram] = React.useState(id);
+  const [activeIdxConditions, setActiveIdxConditions] = React.useState(0);
+  const [marketingAssistance, setMarketingAssistance] = React.useState(true);
+  const newSum = priorityProgram.conditions?.minCost || 0;
+  const { register, handleSubmit, errors, watch, reset } = useForm({
+    defaultValues: { summa: `${newSum}` },
+  });
+  React.useEffect(() => {
+    dispatch(getPriorityProgram(id));
+    if (!priorityPrograms.length) {
+      dispatch(getPriorityPrograms());
+    }
+  }, []);
+  React.useEffect(() => {
+    if (typeProgram !== location.pathname) {
+      dispatch(getPriorityProgram(id));
+    }
+  }, [location.pathname]);
+  React.useEffect(() => {
+    if (typeProgram !== id) {
+      history.push(`${RoutePath.priority}/${typeProgram}`);
+    }
+  }, [typeProgram]);
+
+  if (!_.isEmpty(error)) {
+    return <Page404 />;
+  }
+  const discount = priorityProgram.conditions?.discount || [];
+  const term = priorityProgram.conditions?.term || [];
+  const insurance = priorityProgram.conditions?.insurance || [];
+  let newDiscount = [];
+  discount.forEach((item, index) => {
+    const obj = {
+      discount: item,
+      term: term[index],
+      insurance: insurance[index],
+    };
+    newDiscount.push(obj);
+  });
+  const waitingPeriod =
+    priorityProgram.conditions?.term[activeIdxConditions] || 0;
+  const inputSum = +watch("summa");
+  const marketingProc = marketingAssistance ? 0.2 : 0;
+  const disco = newDiscount[activeIdxConditions]?.discount / 100 || 0;
+  const activateProgProc =
+    priorityProgram.conditions?.activateProgram / 100 || 0;
+  const activateProgramSum = inputSum * activateProgProc;
+  const insuranceLargoSum =
+    (inputSum * insurance[activeIdxConditions]) / 100 || 0;
+  const marketingAssistanceDisplay = inputSum * marketingProc || 0;
+  const contribution = inputSum * disco;
+  const dateCompletionMm = Date.now() + getDayinMm(waitingPeriod);
+  const dateCompletion = getRuDate(dateCompletionMm);
+  const calculateSum = () => {
+    if (!newDiscount.length) {
+      return 0;
+    }
+
+    return (
+      inputSum * disco +
+      marketingAssistanceDisplay +
+      activateProgramSum +
+      insuranceLargoSum
+    );
+  };
+  const calculateProcent = (marketingProc + disco + activateProgProc) * 100;
+  const benefit = inputSum - calculateSum() || 0;
+  const procBenefit = percentageOfAmount(inputSum);
+
+  const sendData = () => {
+    const req = {
+      amount: calculateSum(),
+      conditions: newDiscount[activeIdxConditions],
+      marketingAssistance: !marketingAssistance,
+      dateCompletion: dateCompletionMm,
+      originalAmount: +inputSum,
+      programType: typeProgram,
+    };
+    console.log(req);
+  };
   return (
     <div className={styles.PriorityDescription}>
       <Container className={styles.container}>
@@ -40,7 +157,7 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({
           {id}
         </a>
         <div className={styles.PrioritySlide}>
-          <PrioritySlide tab={false} />
+          <PrioritySlide tab={false} {...priorityProgram} onClick={sendData} />
         </div>
         <div className={styles.calculator}>
           <Row>
@@ -57,20 +174,35 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({
             <Col lg={6}>
               <Form.Group controlId="formGridState">
                 <Form.Label>Выберите программу</Form.Label>
-                <Form.Control as="select" defaultValue="Choose...">
-                  <option>Priority Home</option>
-                  <option>Priority Auto</option>
-                  <option>Priority Device</option>
+                <Form.Control
+                  as="select"
+                  defaultValue={typeProgram}
+                  onChange={(e) => {
+                    setTypeProgram(e.target.value);
+                  }}
+                >
+                  {priorityPrograms.map((item, i) => {
+                    return <option key={i}>{item.name}</option>;
+                  })}
                 </Form.Control>
               </Form.Group>
             </Col>
             <Col lg={6}>
               <Form.Group controlId="formGridState">
                 <Form.Label>Укажите взнос и срок</Form.Label>
-                <Form.Control as="select" defaultValue="Choose...">
-                  <option>40% взнос - 120 дней ожидания</option>
-                  <option>30% взнос - 150 дней ожидания</option>
-                  <option>25% взнос - 180 дней ожидания</option>
+                <Form.Control
+                  as="select"
+                  onChange={(e) => {
+                    setActiveIdxConditions(+e.target.value);
+                  }}
+                >
+                  {newDiscount.map(({ discount, term, insurance }, i) => {
+                    return (
+                      <option key={i} value={i}>
+                        {discount}% взнос - {term} дней ожидания
+                      </option>
+                    );
+                  })}
                 </Form.Control>
               </Form.Group>
             </Col>
@@ -87,7 +219,12 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({
             </Col>
             <Col lg={6}>
               <Form.Group controlId="formHorizontalCheck">
-                <Form.Check label="Согласен с маркетинговым содействием (+20% при отказе)" />
+                <Form.Check
+                  label="Согласен с маркетинговым содействием (+20% при отказе)"
+                  onClick={() => {
+                    setMarketingAssistance(!marketingAssistance);
+                  }}
+                />
               </Form.Group>
             </Col>
           </Row>
@@ -99,39 +236,51 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({
               <Col lg={6}>
                 <Row className={styles.parameter}>
                   <Col lg={7}>Срок ожидания</Col>
-                  <Col lg={5}>149</Col>
+                  <Col lg={5}>{waitingPeriod} дней</Col>
                 </Row>
                 <Row className={styles.parameter}>
                   <Col lg={7}>Взнос по программе</Col>
-                  <Col lg={5}>$3 000 / 30%</Col>
+                  <Col lg={5}>
+                    ${contribution.toFixed()} / {discount[activeIdxConditions]}%
+                  </Col>
                 </Row>
                 <Row className={styles.parameter}>
                   <Col lg={7}>Активация программы</Col>
-                  <Col lg={5}>$100 / 1%</Col>
+                  <Col lg={5}>${activateProgramSum.toFixed()} / 1%</Col>
                 </Row>
                 <Row className={styles.parameter}>
                   <Col lg={7}>Сумма взносов по программе</Col>
-                  <Col lg={5}>$3 600 / 36%</Col>
+                  <Col lg={5}>
+                    ${calculateSum().toFixed()} /{" "}
+                    {inputSum ? calculateProcent.toFixed() : 0}%
+                  </Col>
                 </Row>
               </Col>
               <Col lg={6}>
                 <Row className={styles.parameter}>
                   <Col lg={7}>Дата завершения</Col>
-                  <Col lg={5}>19.11.2021</Col>
+                  <Col lg={5}>{dateCompletion}</Col>
                 </Row>
                 <Row className={styles.parameter}>
                   <Col lg={7}>Страхование Largo Insurance</Col>
-                  <Col lg={5}>$500 / 5%</Col>
+                  <Col lg={5}>
+                    ${insuranceLargoSum} / {insurance[activeIdxConditions]} %
+                  </Col>
                 </Row>
                 <Row className={styles.parameter}>
                   <Col lg={7}>Маркетинговое содействие</Col>
-                  <Col lg={5}>$0 / 0%</Col>
+                  <Col lg={5}>
+                    ${marketingAssistanceDisplay.toFixed()} /{" "}
+                    {marketingProc * 100}%
+                  </Col>
                 </Row>
               </Col>
             </Row>
             <Row className={styles.calculated}>
               <Col lg={9}>Ваша выгода составит:</Col>
-              <Col lg={3}>$6 400 / 76%</Col>
+              <Col lg={3}>
+                ${benefit.toFixed()} / {procBenefit(benefit).toFixed()}%
+              </Col>
             </Row>
           </div>
           <div className={styles.m_assistance}>
@@ -190,13 +339,16 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({
                 </h2>
               </Col>
             </Row>
-            <DependencyTable />
-            <DependencyTable title={"AUTO"} />
-            <DependencyTable title={"DEVICE"} />
-            <DependencyTable title={"Wedding"} />
-            <DependencyTable title={"Early Repayment"} />
-            <DependencyTable title={"MOTO"} />
-            <DependencyTable title={"TRAWEL"} />
+            <DependencyTable data={homeInsurance} />
+            <DependencyTable title={"AUTO"} data={avtoInsurance} />
+            <DependencyTable title={"DEVICE"} data={deviceInsurance} />
+            <DependencyTable title={"Wedding"} data={weddingInsurance} />
+            <DependencyTable
+              title={"Early Repayment"}
+              data={repaymentInsurance}
+            />
+            <DependencyTable title={"MOTO"} data={motoInsurance} />
+            <DependencyTable title={"TRAVEL"} data={travelInsurance} />
           </div>
         </div>
       </Container>
@@ -206,10 +358,12 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({
 
 interface DependencyTableProps {
   title?: string;
+  data?: any;
 }
 
 const DependencyTable: React.FC<DependencyTableProps> = ({
   title = "Home",
+  data = [],
 }) => {
   return (
     <div className={styles.table}>
@@ -225,18 +379,14 @@ const DependencyTable: React.FC<DependencyTableProps> = ({
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>40%/120</td>
-            <td>2%</td>
-          </tr>
-          <tr>
-            <td>30%/150</td>
-            <td>3.5%</td>
-          </tr>
-          <tr>
-            <td>25%/180</td>
-            <td>5%</td>
-          </tr>
+          {data.map((item, i) => {
+            return (
+              <tr key={i}>
+                <td>{item.contribution}</td>
+                <td>{item.insuranceCost}%</td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </div>
@@ -246,6 +396,7 @@ const DependencyTable: React.FC<DependencyTableProps> = ({
 PriorityDescription.defaultProps = {};
 
 export default PriorityDescription;
+
 /*
 АВТО
 50%/60 1,5%

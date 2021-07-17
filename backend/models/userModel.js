@@ -94,6 +94,20 @@ const userSchema = new mongoose.Schema(
           profitability: { type: Number, default: 0 },
         },
       ],
+      priority: [
+        {
+          amount: { type: Number },
+          conditions: {
+            discount: { type: Number },
+            insurance: { type: Number },
+            term: { type: Number },
+          },
+          dateCompletion: { type: Number },
+          originalAmount: { type: Number },
+          marketingAssistance: { type: Boolean },
+          programType: { type: String },
+        },
+      ],
     },
     wallets: {
       //Депозит
@@ -205,6 +219,7 @@ const userSchema = new mongoose.Schema(
       },
       avangard_id: {
         type: String,
+        default: "",
       },
     },
     contact_details: {

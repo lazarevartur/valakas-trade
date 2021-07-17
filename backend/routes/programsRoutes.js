@@ -8,6 +8,7 @@ import {
   getPurchasedOptions,
   getPriorityPrograms,
   getPriorityProgramByName,
+  getPurchasedPriorityPrograms,
 } from "../controller/programsCtrl.js";
 import { jwtGuard } from "../middleware/passport.js";
 
@@ -23,6 +24,9 @@ router
 router.route("/optional/active-program").get(getActiveOptionalProgram);
 
 router.route("/priority").get(getPriorityPrograms);
+router
+  .route("/priority/current")
+  .get([jwtGuard()], getPurchasedPriorityPrograms);
 router.route("/priority/:name").get(getPriorityProgramByName);
 
 export default router;

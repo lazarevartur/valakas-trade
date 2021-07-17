@@ -5,9 +5,17 @@ import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../../routes/routesConfig";
 import bg from "../../../assets/png/plug_bg.png";
 
-interface PlugProps {}
+interface PlugProps {
+  text?: string;
+  link?: string;
+  buttonText?: string;
+}
 
-const Plug: React.FC<PlugProps> = () => {
+const Plug: React.FC<PlugProps> = ({
+  text = `Необходимо преобрести программу`,
+  buttonText = `Пополнить счет`,
+  link = RoutePath.replenishmentWallet,
+}) => {
   return (
     <div
       className={styles.Plug}
@@ -20,13 +28,13 @@ const Plug: React.FC<PlugProps> = () => {
       <div className={styles.infoBlock}>
         <Row>
           <Col lg={12}>
-            <h2>Необходимо преобрести программу</h2>
+            <h2>{text}</h2>
           </Col>
         </Row>
         <Row>
           <Col lg={12}>
-            <LinkContainer to={RoutePath.replenishmentWallet}>
-              <Button>Пополнить счет</Button>
+            <LinkContainer to={link}>
+              <Button>{buttonText}</Button>
             </LinkContainer>
           </Col>
         </Row>

@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./PrioritySlide.module.scss";
 import { Button, Col, Image, Row, Tab } from "react-bootstrap";
 import cn from "classnames";
-import homeImg from "../../../assets/img/home.jpg";
 import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../../routes/routesConfig";
 import { IPriorityData } from "../../../types/types";
+import { getFirstAndLast, getRuFormatNumbers } from "../../../utils/utils";
 
 interface conditions {
   discount?: string;
@@ -16,6 +16,8 @@ interface conditions {
 }
 interface PrioritySlideProps extends IPriorityData {
   tab?: boolean;
+  onClick?: any;
+  button?: boolean;
 }
 
 const PrioritySlide: React.FC<PrioritySlideProps> = ({
@@ -23,23 +25,17 @@ const PrioritySlide: React.FC<PrioritySlideProps> = ({
   type = "Квартира",
   description = "Собственная квартира на этапе строительства – без кредитов, рассрочек и без экономии на повседневных вещах!",
   conditions = {
-    discount: "-25% / -25%",
-    term: "120 дней / 180 дней",
+    discount: [],
+    term: [],
     minCost: "20000",
     maxCost: "200000",
     minStatus: "M2",
   },
-  img = homeImg,
+  img,
   tab = true,
+  onClick,
+  button = true,
 }) => {
-  const normalizeCondition = {
-    discount: "Скидка",
-    term: "Срок",
-    minCost: "Мин. стоимость",
-    maxCost: "Макс. стоимость",
-    minStatus: "Мин. статус участника",
-  };
-  const condition = conditions ? Object.entries(conditions) : null;
   return (
     <div className={styles.slide}>
       <Row>
@@ -57,19 +53,64 @@ const PrioritySlide: React.FC<PrioritySlideProps> = ({
                     <div>{description}</div>
                     <div className={styles.separator} />
 
-                    {condition &&
-                      condition.map(([key, value]) => {
-                        return (
-                          <Row key={key}>
-                            <Col lg={6} className={styles.key}>
-                              {normalizeCondition[key]}
-                            </Col>
-                            <Col lg={6} className={styles.value}>
-                              {value}
-                            </Col>
-                          </Row>
-                        );
-                      })}
+                    <Row>
+                      <Col lg={6} className={styles.key}>
+                        Скидка
+                      </Col>
+                      <Col lg={6} className={styles.value}>
+                        {conditions.discount.map((item, i) => {
+                          return (
+                            <span key={item}>
+                              {" "}
+                              <span className={styles.color_red}>
+                                {item}%
+                              </span>{" "}
+                              {conditions.discount.length - 1 !== i && "/"}
+                            </span>
+                          );
+                        })}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg={6} className={styles.key}>
+                        Срок
+                      </Col>
+                      <Col lg={6} className={styles.value}>
+                        {conditions.term.map((item, i) => {
+                          return (
+                            <span key={item}>
+                              {" "}
+                              {item} дней{" "}
+                              {conditions.term.length - 1 !== i && "/"}
+                            </span>
+                          );
+                        })}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg={6} className={styles.key}>
+                        Мин. стоимость
+                      </Col>
+                      <Col lg={6} className={styles.value}>
+                        $ {getRuFormatNumbers(conditions.minCost)}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg={6} className={styles.key}>
+                        Макс. стоимость
+                      </Col>
+                      <Col lg={6} className={styles.value}>
+                        $ {getRuFormatNumbers(conditions.maxCost)}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col lg={6} className={styles.key}>
+                        Мин. статус участника
+                      </Col>
+                      <Col lg={6} className={styles.value}>
+                        {conditions.minStatus}
+                      </Col>
+                    </Row>
                     <Row>
                       <Col lg={12} className={styles.button_group}>
                         <Button className={cn(styles.button)}>
@@ -94,23 +135,68 @@ const PrioritySlide: React.FC<PrioritySlideProps> = ({
                 <div className={styles.typeText}>{type}</div>
                 <div>{description}</div>
                 <div className={styles.separator} />
-
-                {condition &&
-                  condition.map(([key, value]) => {
-                    return (
-                      <Row key={key}>
-                        <Col lg={6} className={styles.key}>
-                          {normalizeCondition[key]}
-                        </Col>
-                        <Col lg={6} className={styles.value}>
-                          {value}
-                        </Col>
-                      </Row>
-                    );
-                  })}
+                <Row>
+                  <Col lg={6} className={styles.key}>
+                    Скидка
+                  </Col>
+                  <Col lg={6} className={styles.value}>
+                    {conditions.discount.map((item, i) => {
+                      return (
+                        <span key={item}>
+                          {" "}
+                          <span className={styles.color_red}>{item}%</span>{" "}
+                          {conditions.discount.length - 1 !== i && "/"}
+                        </span>
+                      );
+                    })}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col lg={6} className={styles.key}>
+                    Срок
+                  </Col>
+                  <Col lg={6} className={styles.value}>
+                    {conditions.term.map((item, i) => {
+                      return (
+                        <span key={item}>
+                          {" "}
+                          {item} дней {conditions.term.length - 1 !== i && "/"}
+                        </span>
+                      );
+                    })}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col lg={6} className={styles.key}>
+                    Мин. стоимость
+                  </Col>
+                  <Col lg={6} className={styles.value}>
+                    $ {getRuFormatNumbers(conditions.minCost)}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col lg={6} className={styles.key}>
+                    Макс. стоимость
+                  </Col>
+                  <Col lg={6} className={styles.value}>
+                    $ {getRuFormatNumbers(conditions.maxCost)}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col lg={6} className={styles.key}>
+                    Мин. статус участника
+                  </Col>
+                  <Col lg={6} className={styles.value}>
+                    {conditions.minStatus}
+                  </Col>
+                </Row>
                 <Row>
                   <Col lg={12} className={styles.button_group}>
-                    <Button className={cn(styles.button)}>Участвовать</Button>
+                    {button && (
+                      <Button onClick={onClick} className={cn(styles.button)}>
+                        Участвовать
+                      </Button>
+                    )}
                     {tab && (
                       <LinkContainer to={`${RoutePath.priority}/${name}`}>
                         <Button className={styles.whiteButton}>Детали</Button>

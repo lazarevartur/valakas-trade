@@ -98,11 +98,13 @@ export interface IOptionalData {
 }
 
 export interface IPriorityConditions {
-  discount?: number[];
-  term?: number[];
+  discount?: [number];
+  term?: [number];
+  insurance?: [number];
   minCost?: number;
   maxCost?: number;
   minStatus?: string;
+  activateProgram: number;
 }
 
 export interface IPriorityData {

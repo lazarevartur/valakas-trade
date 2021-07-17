@@ -1,50 +1,55 @@
 import React, { Suspense } from "react";
 import { Container } from "react-bootstrap";
-import diamondsSvg from "../../assets/svg/diamonds.svg";
 import { Loader } from "../../component/uiKit/loader";
 import { Benefits } from "../../component/homePageLandingGroup/benefits";
 import { BecomePartner } from "../../component/homePageLandingGroup/becomePartner";
 import styles from "./Community.module.scss";
+import LoyaltyPng from "../../assets/png/community/Loyalty.png";
+import ManufacturabilityPng from "../../assets/png/community/Manufacturability.png";
+import OpennessPng from "../../assets/png/community/Openness.png";
+import StabilityPng from "../../assets/png/community/Stability.png";
+import SuccessPng from "../../assets/png/community/Success.png";
+import UnityPng from "../../assets/png/community/Unity.png";
 const JumbotronCustom = React.lazy(
   () => import("../../component/uiKit/JumbotronCustom/JumbotronCustom")
 );
 
 const BenefitsData = [
   {
-    title: "Concept",
+    title: "Объединенность",
     text:
-      "Exercitationem rerum nesciunt dicta voluptatem eligendi laudantium temporibus voluptatibus pariatur. Numquam veritatis dolorem et. Tenetur omnis qui omnis minus. Omnis sit eaque doloremque ullam quae eaque qui iste ut. ",
-    icon: diamondsSvg,
+      "Мы живем ярко, достигаем наших целей, проводим мероприятия и строим вместе команды",
+    icon: UnityPng,
   },
   {
-    title: "Research",
+    title: "Лояльность",
     text:
-      "Exercitationem rerum nesciunt dicta voluptatem eligendi laudantium temporibus voluptatibus pariatur. Numquam veritatis dolorem et. Tenetur omnis qui omnis minus. Omnis sit eaque doloremque ullam quae eaque qui iste ut. ",
-    icon: diamondsSvg,
+      "Мы взаимодействуем, поддерживаем и относимся друг к другу с уважением",
+    icon: LoyaltyPng,
   },
   {
-    title: "Marketing",
+    title: "Открытость",
     text:
-      "Exercitationem rerum nesciunt dicta voluptatem eligendi laudantium temporibus voluptatibus pariatur. Numquam veritatis dolorem et. Tenetur omnis qui omnis minus. Omnis sit eaque doloremque ullam quae eaque qui iste ut. ",
-    icon: diamondsSvg,
+      "Наше сообщество открыто для каждого – вы можете связаться с нами в любой момент и всегда получите помощь",
+    icon: OpennessPng,
   },
   {
-    title: "Concept",
+    title: "Технологичность",
     text:
-      "Exercitationem rerum nesciunt dicta voluptatem eligendi laudantium temporibus voluptatibus pariatur. Numquam veritatis dolorem et. Tenetur omnis qui omnis minus. Omnis sit eaque doloremque ullam quae eaque qui iste ut. ",
-    icon: diamondsSvg,
+      "Мы следим за тенденциями в мире, и выбираем наиболее прибыльные проекты для сотрудничества",
+    icon: ManufacturabilityPng,
   },
   {
-    title: "Research",
+    title: "Успех",
     text:
-      "Exercitationem rerum nesciunt dicta voluptatem eligendi laudantium temporibus voluptatibus pariatur. Numquam veritatis dolorem et. Tenetur omnis qui omnis minus. Omnis sit eaque doloremque ullam quae eaque qui iste ut. ",
-    icon: diamondsSvg,
+      "Мы не только закрываем свои базовые потребности, но и получаем дополнительную награду за активность",
+    icon: SuccessPng,
   },
   {
-    title: "Marketing",
+    title: "Стабильность",
     text:
-      "Exercitationem rerum nesciunt dicta voluptatem eligendi laudantium temporibus voluptatibus pariatur. Numquam veritatis dolorem et. Tenetur omnis qui omnis minus. Omnis sit eaque doloremque ullam quae eaque qui iste ut. ",
-    icon: diamondsSvg,
+      "Резиденты Mirax всегда знают дату, когда получат выплату по программе ",
+    icon: StabilityPng,
   },
 ];
 

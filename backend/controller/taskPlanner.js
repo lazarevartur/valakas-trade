@@ -90,22 +90,24 @@ export const dailyUpdate = asyncHandler(async (req, res) => {
   }
 });
 export const nextDay = asyncHandler(async () => {
-  await priorityPrograms.create({
-    name: `Early Repayment`,
-    type: "Рефинансирование кредита",
-    description: `Обретите свободу от долгов или проведите умные инвестиции, используя инструменты кредитования с 
-Priority Early Repayment`,
-    icon: "/static/media/dollar.9386238d.svg",
-    img: "/static/media/early_repayment.2f8b6077.jpg",
-    conditions: {
-      discount: [55],
-      term: [90],
-      minCost: 5000,
-      maxCost: 25000,
-      minStatus: "M2",
-    },
-  });
+  // await priorityPrograms.create({
+  //   conditions: {
+  //     discount: [40],
+  //     term: [90],
+  //     insurance: [2.5],
+  //     minCost: 5000,
+  //     maxCost: 25000,
+  //     minStatus: "M2",
+  //   },
+  //   name: "Early Repayment",
+  //   type: "Рефинансирование кредита",
+  //   description:
+  //     "Обретите свободу от долгов или проведите умные инвестиции, используя инструменты кредитования с \nPriority Early Repayment",
+  //   icon: "/public/icons/dollar.svg",
+  //   img: "/public/Repayment.jpg",
+  // });
   //await activateOptional(3);
   await chekCurrentOptionalProgram();
   return true;
 });
+// insurance: [2, 3.5, 5],

@@ -4,6 +4,7 @@ import {
   repleWallet,
   buyMrxProgram,
   buyOptionalProgram,
+  buyPriorityProgram,
 } from "../controller/walletCtrl.js";
 import { payPartners } from "../middleware/payment/payPartners.js";
 import { checkUserStartAccount } from "../middleware/payment/checkUserStartAccount.js";
@@ -16,5 +17,9 @@ router
 router
   .route("/buy-optional")
   .post([jwtGuard(), payPartners], buyOptionalProgram);
+
+router
+  .route("/buy-priority")
+  .post([jwtGuard(), checkUserStartAccount, payPartners], buyPriorityProgram);
 
 export default router;

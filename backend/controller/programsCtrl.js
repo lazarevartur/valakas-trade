@@ -108,9 +108,9 @@ export const getPriorityPrograms = asyncHandler(async (req, res) => {
 export const getPriorityProgramByName = asyncHandler(async (req, res) => {
   const name = req.params.name;
   let program;
-  try {
-    program = await priorityPrograms.find({ name });
 
+  try {
+    [program] = await priorityPrograms.find({ name });
     if (!program) {
       return res.status(404).json({
         message: "Программа не найдена",
@@ -119,7 +119,22 @@ export const getPriorityProgramByName = asyncHandler(async (req, res) => {
   } catch (e) {
     return res.status(500).json({ message: "Попробуйте позже" });
   }
+
   return res.json(program);
+});
+
+export const getPurchasedPriorityPrograms = asyncHandler(async (req, res) => {
+  console.log("==========getActivePriorityPrograms===========");
+  const userId = req.user;
+  let userAllPriority;
+  try {
+    userAllPriority = await User.findById(userId).select("programs.priority");
+    const resp = userAllPriority.programs.priority;
+    return res.status(200).json(resp);
+  } catch (e) {
+    console.log(e);
+    return res.send("Programs not found");
+  }
 });
 
 function findBiggestPriceInArray(arr, map) {

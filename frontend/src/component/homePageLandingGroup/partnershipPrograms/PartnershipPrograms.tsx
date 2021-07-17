@@ -8,6 +8,8 @@ import { ExternalLinkIcon } from "@modulz/radix-icons";
 import Backpack from "../../../assets/svg/Backpack";
 import Rocket from "../../../assets/svg/Rocket";
 import Clock from "../../../assets/svg/Clock";
+import { RoutePath, routesConfig } from "../../../routes/routesConfig";
+import { Link } from "react-router-dom";
 
 interface PartnershipProgramsProps extends defaultComponentProps {}
 
@@ -62,20 +64,22 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                       <Row>
                         <Col className={styles.description}>
                           <h4>
-                            Программа <strong>Token Profit Team</strong>{" "}
+                            Программа <strong>MRX-invest</strong>{" "}
                             <a href="#" className={styles.link}>
                               <ExternalLinkIcon
                                 height={24}
                                 width={24}
                                 className={styles.link_icon}
                               />
-                              catalysts.finance
+                              <Link to={RoutePath.binarProfitTeam}>
+                                MRX-invest
+                              </Link>
                             </a>
                           </h4>
                           <p>
-                            Продвижение компании <strong>Catalyst</strong>, в
-                            котором используется
-                            <br /> бинарный маркетинг-план
+                            Продвижение компании в блок-чейн индустрии.
+                            <br /> В <strong>MRX-invest</strong> используется
+                            линейный маркетинговый план.
                           </p>
                           <div className={styles.description_tab}>
                             <Row>
@@ -85,7 +89,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                               <Col lg={11}>
                                 <h5>Объём инвестиционных пакетов</h5>
                                 <p>
-                                  от 100 до 300 000 (15 инвестиционных пакетов)
+                                  от 100 до 10 000 (9 инвестиционных пакетов)
                                 </p>
                               </Col>
                             </Row>
@@ -111,7 +115,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                               </Col>
                               <Col lg={11}>
                                 <h5>Срок работы</h5>
-                                <p>200-300 календарных дней</p>
+                                <p>210-260 календарных дней</p>
                               </Col>
                             </Row>
                           </div>
@@ -122,20 +126,20 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                       <Row>
                         <Col className={styles.description}>
                           <h4>
-                            Программа <strong>Coin Profit Team</strong>{" "}
+                            Программа <strong>Option</strong>{" "}
                             <a href="#" className={styles.link}>
                               <ExternalLinkIcon
                                 height={24}
                                 width={24}
                                 className={styles.link_icon}
                               />
-                              catalysts.finance
+                              <Link to={RoutePath.optional}>Optional</Link>
                             </a>
                           </h4>
                           <p>
-                            Продвижение компании <strong>Catalyst</strong>, в
+                            Продвижение компании <strong>Placebo</strong>, в
                             котором используется
-                            <br /> бинарный маркетинг-план
+                            <br /> линейный маркетинговый план.
                           </p>
                           <div className={styles.description_tab}>
                             <Row>
@@ -144,7 +148,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                               </Col>
                               <Col lg={11}>
                                 <h5>Срок работы</h5>
-                                <p>200-300 календарных дней</p>
+                                <p>60-300 календарных дней</p>
                               </Col>
                             </Row>
                           </div>
@@ -155,9 +159,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                               </Col>
                               <Col lg={11}>
                                 <h5>Объём инвестиционных пакетов</h5>
-                                <p>
-                                  от 100 до 300 000 (15 инвестиционных пакетов)
-                                </p>
+                                <p>от 100$ (10 раундов)</p>
                               </Col>
                             </Row>
                           </div>{" "}
@@ -169,8 +171,12 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                               <Col lg={8}>
                                 <h5>Доходность</h5>
                                 <p>
-                                  Плавающая, до 2% в сутки, без выходных, и
-                                  зависит от объёма инвестиционного пакета
+                                  Разовая выплата при запуске продаж до 50% в
+                                  зависимости от раунда в котором были
+                                  приобритенны опционы.
+                                  <br />
+                                  Дивиденты до 50% в месяц. Все последуйщее
+                                  время пока вы являетесь держателем опционов.
                                 </p>
                               </Col>
                             </Row>
@@ -182,20 +188,19 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                       <Row>
                         <Col className={styles.description}>
                           <h4>
-                            Программа <strong>Synergy Profit Team</strong>{" "}
+                            Программа <strong>Priority</strong>{" "}
                             <a href="#" className={styles.link}>
                               <ExternalLinkIcon
                                 height={24}
                                 width={24}
                                 className={styles.link_icon}
                               />
-                              catalysts.finance
+                              <Link to={RoutePath.priority}>Priority</Link>
                             </a>
                           </h4>
                           <p>
-                            Продвижение компании <strong>Catalyst</strong>, в
-                            котором используется
-                            <br /> бинарный маркетинг-план
+                            Возможность приобрести продукты за 30-50% от их
+                            стоимости
                           </p>
                           <div className={styles.description_tab}>
                             <Row>
@@ -204,10 +209,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                               </Col>
                               <Col lg={8}>
                                 <h5>Доходность</h5>
-                                <p>
-                                  Плавающая, до 2% в сутки, без выходных, и
-                                  зависит от объёма инвестиционного пакета
-                                </p>
+                                <p>100-300%</p>
                               </Col>
                             </Row>
                           </div>{" "}
@@ -219,7 +221,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                               <Col lg={11}>
                                 <h5>Объём инвестиционных пакетов</h5>
                                 <p>
-                                  от 100 до 300 000 (15 инвестиционных пакетов)
+                                  от 300$ до 200 000$ (7 инвестиционных пакетов)
                                 </p>
                               </Col>
                             </Row>
@@ -231,7 +233,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                               </Col>
                               <Col lg={11}>
                                 <h5>Срок работы</h5>
-                                <p>200-300 календарных дней</p>
+                                <p>21-120 календарных дней</p>
                               </Col>
                             </Row>
                           </div>

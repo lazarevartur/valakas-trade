@@ -87,7 +87,6 @@ export const buyMrxProgram = asyncHandler(async (req, res) => {
 export const buyOptionalProgram = asyncHandler(async (req, res) => {
   console.log("=============buyOptionalProgram===============");
   const { program_id, amount } = req.body;
-  console.log(amount);
   const user_id = req.user;
   let program;
   let user;
@@ -133,6 +132,30 @@ export const buyOptionalProgram = asyncHandler(async (req, res) => {
     }
   }
   return res.status(404).json({ message: "Не верные данные" });
+});
+
+export const buyPriorityProgram = asyncHandler(async (req, res) => {
+  console.log("=============buyPriorityProgram===============");
+  const user_id = req.user;
+  const body = req.body;
+  let user;
+  try {
+    user = await User.findById(user_id);
+    user.wallets.start_account -= body.amount;
+    user.programs_wallets.priority += body.amount;
+    user.programs.priority.push(body);
+
+    user.save();
+    return res.json({
+      message: "Программа успешно купленна",
+      status: "ok",
+    });
+  } catch (e) {
+    console.log(error);
+    return res
+      .status(404)
+      .json({ message: "Программа или пользователь не найден" });
+  }
 });
 
 function findOptional(userOptionals, currentOptionalId) {

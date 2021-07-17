@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import User from "../models/userModel.js";
+
 export const getPartnet = async (userId, cb = () => null, selectQuery = "") => {
   if (!mongoose.isValidObjectId(userId)) {
     throw new Error("Партнер не найден");

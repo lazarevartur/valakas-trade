@@ -25,7 +25,9 @@ const PrioritySelector: React.FC<PrioritySelectorProps> = () => {
 
   const dispatch = useDispatchTyped();
   React.useEffect(() => {
-    dispatch(getPriorityPrograms());
+    if (!priorityPrograms.length) {
+      dispatch(getPriorityPrograms());
+    }
   }, []);
   if (isLoading) {
     return <Loader />;
