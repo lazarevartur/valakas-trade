@@ -24,6 +24,7 @@ import { numberDays } from "../../../../utils/utils";
 import { Plug } from "../../../uiKit/plug";
 import { useLocation } from "react-router-dom";
 import { getCurrentUser } from "../../../../store/action/dashboardAction";
+import { ProgramType } from "../../../../const/popup";
 
 interface MrxProgramProps {}
 
@@ -72,6 +73,10 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
   const linearPremium = userDashboard.programs?.activeMrx.linear_premium || 0;
 
   const chartData = [
+    {
+      name: "Сумма депозита",
+      value: deposit,
+    },
     {
       name: "Начисления по инвестиционному пакету",
       value: investmentPackage,
@@ -124,7 +129,9 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
             <span>{account_active}</span>
           </Col>
         </Row>
-        <LinkContainer to={`${RoutePath.buyPrograms}&program=mrx`}>
+        <LinkContainer
+          to={`${RoutePath.buyPrograms}&program=${ProgramType.mrx}`}
+        >
           <Button>
             {deposit > 0 ? "Улучшить программу" : "Купить программу"}
           </Button>
@@ -176,13 +183,16 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
           <Col lg={5}>
             <ListGroup className={styles.list_group}>
               <ListGroup.Item className={styles.first}>
+                Сумма депозита <span>{deposit}$</span>
+              </ListGroup.Item>
+              <ListGroup.Item className={styles.second}>
                 Начисления по инвестиционному пакету{" "}
                 <span>{investmentPackage}$</span>
               </ListGroup.Item>
-              <ListGroup.Item className={styles.second}>
+              <ListGroup.Item className={styles.third}>
                 Дивиденты <span>{dividends}$</span>
               </ListGroup.Item>
-              <ListGroup.Item className={styles.third}>
+              <ListGroup.Item className={styles.fourth}>
                 Выплаты по реферальной программе <span>{linearPremium}$</span>
               </ListGroup.Item>
             </ListGroup>

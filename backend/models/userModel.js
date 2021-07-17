@@ -88,9 +88,24 @@ const userSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "optionalPrograms",
           },
-          quantity: { type: Number, default: 0 },
           cost: { type: Number, default: 0 },
+          quantity: { type: Number, default: 0 },
           round_number: { type: Number, default: 0 },
+          profitability: { type: Number, default: 0 },
+        },
+      ],
+      priority: [
+        {
+          amount: { type: Number },
+          conditions: {
+            discount: { type: Number },
+            insurance: { type: Number },
+            term: { type: Number },
+          },
+          dateCompletion: { type: Number },
+          originalAmount: { type: Number },
+          marketingAssistance: { type: Boolean },
+          programType: { type: String },
         },
       ],
     },
@@ -204,6 +219,7 @@ const userSchema = new mongoose.Schema(
       },
       avangard_id: {
         type: String,
+        default: "",
       },
     },
     contact_details: {
@@ -258,18 +274,20 @@ userSchema.virtual("count_line").get(function () {
 });
 userSchema.virtual("current_optional_program").get(async function () {
   let activeOptional;
+
   try {
     [activeOptional] = await optionalProgram.find({ status: "active" }).lean();
   } catch (e) {
     console.log(e);
-    return { message: "ошибка сервера" };
+    return void 0;
   }
   if (!activeOptional) {
-    return { message: "нету активной программы" };
+    return void 0;
   }
-
+  console.log(this.programs.optional);
   return this.programs.optional.find((item) => {
     //return activeOptional._id.equals(item.program) ? item : null;
+
     return String(activeOptional._id) === String(item.program);
   });
 });

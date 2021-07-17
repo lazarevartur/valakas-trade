@@ -25,6 +25,7 @@ const ProfitabilityTableLanding: React.FC<ProfitabilityTableLandingProps> = ({
             <thead className={styles.thead}>
               <tr>
                 <th>Программа</th>
+                <th>Депозит</th>
                 <th>Сроки</th>
                 <th>Доход</th>
                 <th>Окупаемость</th>
@@ -32,34 +33,46 @@ const ProfitabilityTableLanding: React.FC<ProfitabilityTableLandingProps> = ({
             </thead>
             <tbody>
               <tr>
-                <td>Profit Team </td>
-                <td>8 month</td>
-                <td>179%</td>
-                <td>@123456</td>
+                <td>MRX-invest </td>
+                <td>100$</td>
+                <td>200 дней</td>
+                <td>260%</td>
+                <td>~ 75 дней</td>
               </tr>
               <tr>
-                <td>Profit Team </td>
-                <td>8 month</td>
-                <td>179%</td>
-                <td>@123456</td>
+                <td>MRX-invest </td>
+                <td>5000$</td>
+                <td>240 дней</td>
+                <td>312%</td>
+                <td>~ 76 дней</td>
               </tr>
               <tr>
-                <td>Profit Team </td>
-                <td>8 month</td>
-                <td>179%</td>
-                <td>@123456</td>
+                <td>Optional </td>
+                <td>3000$</td>
+                <td>220 дней</td>
+                <td>90%</td>
+                <td>~ 220 дней</td>
               </tr>
               <tr>
-                <td>Profit Team </td>
-                <td>8 month</td>
-                <td>179%</td>
-                <td>@123456</td>
+                <td>Optional </td>
+                <td>1000$</td>
+                <td>90 дней</td>
+                <td>95%</td>
+                <td>~ 97 дней</td>
               </tr>
               <tr>
-                <td>Profit Team </td>
-                <td>8 month</td>
-                <td>179%</td>
-                <td>@123456</td>
+                <td>Priority </td>
+                <td>4000$</td>
+                <td>70 дней</td>
+                <td>130%</td>
+                <td>~ 60 дней</td>
+              </tr>
+              <tr>
+                <td>Priority </td>
+                <td>15000$</td>
+                <td>90 дней</td>
+                <td>150%</td>
+                <td>~ 60 дней</td>
               </tr>
             </tbody>
           </Table>

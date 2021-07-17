@@ -1,9 +1,9 @@
 import { AppDispatch } from "../store";
 import {
-  MRX_WALLETS_SUCCESS,
-  MRX_WALLETS_REQUEST,
-  MRX_WALLETS_FAIL,
-  MRX_WALLETS_RESET,
+  WALLETS_SUCCESS,
+  WALLETS_REQUEST,
+  WALLETS_FAIL,
+  WALLETS_RESET,
 } from "../slice/walletsSlice";
 import { WalletsApi } from "../../services/walletsApi";
 
@@ -17,13 +17,13 @@ export const balanceReplenishment = ({ amount }) => async (
     },
   } = getState();
   try {
-    dispatch(MRX_WALLETS_REQUEST());
+    dispatch(WALLETS_REQUEST());
     const data = await WalletsApi.balanceReplenishment(token, amount);
     setTimeout(() => {
-      dispatch(MRX_WALLETS_SUCCESS());
+      dispatch(WALLETS_SUCCESS());
     }, 500);
   } catch (e) {
-    dispatch(MRX_WALLETS_FAIL(e));
+    dispatch(WALLETS_FAIL(e));
   }
 };
 
@@ -37,16 +37,36 @@ export const buyMrxProgram = (req: any) => async (
     },
   } = getState();
   try {
-    dispatch(MRX_WALLETS_REQUEST());
+    dispatch(WALLETS_REQUEST());
     const data = await WalletsApi.buyMrxProgram(token, req);
     setTimeout(() => {
-      dispatch(MRX_WALLETS_SUCCESS());
+      dispatch(WALLETS_SUCCESS());
     }, 500);
   } catch (e) {
-    dispatch(MRX_WALLETS_FAIL(e));
+    dispatch(WALLETS_FAIL(e));
+  }
+};
+
+export const buyOptionalProgram = (req: any) => async (
+  dispatch: AppDispatch,
+  getState?: any
+) => {
+  const {
+    authentication: {
+      userData: { token },
+    },
+  } = getState();
+  try {
+    dispatch(WALLETS_REQUEST());
+    const data = await WalletsApi.buyOptionalProgram(token, req);
+    setTimeout(() => {
+      dispatch(WALLETS_SUCCESS());
+    }, 500);
+  } catch (e) {
+    dispatch(WALLETS_FAIL(e));
   }
 };
 
 export const resetWallet = () => async (dispatch: AppDispatch) => {
-  dispatch(MRX_WALLETS_RESET());
+  dispatch(WALLETS_RESET());
 };

@@ -6,6 +6,7 @@ import {
   chekCurrentOptionalProgram,
   resetPrograms,
 } from "../services/programsService.js";
+import priorityPrograms from "../models/priorityProgramModel.js";
 
 export const dailyUpdate = asyncHandler(async (req, res) => {
   const dailyInterest = req.body.dailyInterest || 0.02;
@@ -20,7 +21,6 @@ export const dailyUpdate = asyncHandler(async (req, res) => {
       path:
         "partners.first partners.second partners.third partners.fourth partners.fifth metaData.partners",
     });
-    console.log(allUsers);
     const userIncomeMap = {};
     // Каждый день капает от 0.1-2% от MRX  ( линейный доход )
     const stageOne = allUsers.map((user) => {
@@ -90,7 +90,24 @@ export const dailyUpdate = asyncHandler(async (req, res) => {
   }
 });
 export const nextDay = asyncHandler(async () => {
-  //await activateOptional(2);
+  // await priorityPrograms.create({
+  //   conditions: {
+  //     discount: [40],
+  //     term: [90],
+  //     insurance: [2.5],
+  //     minCost: 5000,
+  //     maxCost: 25000,
+  //     minStatus: "M2",
+  //   },
+  //   name: "Early Repayment",
+  //   type: "Рефинансирование кредита",
+  //   description:
+  //     "Обретите свободу от долгов или проведите умные инвестиции, используя инструменты кредитования с \nPriority Early Repayment",
+  //   icon: "/public/icons/dollar.svg",
+  //   img: "/public/Repayment.jpg",
+  // });
+  //await activateOptional(3);
   await chekCurrentOptionalProgram();
   return true;
 });
+// insurance: [2, 3.5, 5],

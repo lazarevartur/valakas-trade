@@ -9,8 +9,11 @@ export const me = asyncHandler(async (req, res) => {
   try {
     user = await User.findById(userId);
     const mrx = await user.active_mrx_program;
-    const optional = await user.current_optional_program;
-    console.log(optional);
+    const current_optional_program = await user.current_optional_program;
+    const optional = current_optional_program
+      ? current_optional_program.toObject()
+      : {};
+
     const response = {
       name: user.contact_details.name,
       email: user.email,
@@ -24,6 +27,7 @@ export const me = asyncHandler(async (req, res) => {
       linear_premium: user.metaData.linear_premium,
       dividends: user.metaData.dividends,
       investment_package: user.metaData.investment_package,
+      status: user.status,
       programs: {
         activeMrx: {
           ...mrx,
@@ -34,8 +38,9 @@ export const me = asyncHandler(async (req, res) => {
         },
         optional: {
           deposit: user.programs_wallets.options,
-          optional,
+          ...optional,
         },
+        priority: [...user.programs.priority],
       },
     };
     return res.json(response);

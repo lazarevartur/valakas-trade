@@ -1,7 +1,59 @@
+@import "src/assets/globalStyles/style";
 .bgGrey {
   background: #f9f9f9;
   padding-bottom: 50px;
 }
 .BecomePartner {
   background: #fff;
+}
+.main_padding {
+  padding: 50px 0;
+}
+
+.title {
+  text-align: left;
+  font-size: 50px;
+}
+.title_center {
+  @extend .title;
+  text-align: center;
+}
+.list {
+  li {
+    padding: 5px 0;
+    list-style-type: none;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: -20px;
+      height: 10px;
+      width: 10px;
+      background: #fec825;
+      border-radius: 50%;
+    }
+  }
+}
+.title_fullwidth {
+  font-size: 50px;
+  text-align: justify;
+  font-weight: 500;
+}
+.ruleOpen {
+  .title {
+    font-size: 40px;
+    line-height: 1.5;
+  }
+}
+.text_center {
+  text-align: center;
+}
+.table {
+  @extend .table;
+
+  thead tr,
+  td {
+    text-align: center;
+  }
 }

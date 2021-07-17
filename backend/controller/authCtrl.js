@@ -11,15 +11,17 @@ import mrxPrograms from "../models/programModel.js";
 // @desc Register new user
 // @route POST /api/auth/
 // @access Public
+
 export const regUser = asyncHandler(async (req, res) => {
-  const { email, password, name, referralId } = req.body;
+  console.log("===============regUser==================");
+  const { email, password, name, referralId, avangard } = req.body;
+  console.log(email, password, name, referralId, avangard);
   const userExists = await User.findOne({ email });
   if (userExists) {
     return res.status(400).json({
       message: "User already exists",
     });
   }
-  console.log(name);
   const user = await User.create({
     email,
     password,
@@ -28,21 +30,32 @@ export const regUser = asyncHandler(async (req, res) => {
   if (referralId) {
     const firstLine = await User.findById(referralId);
     if (firstLine) {
-      console.log(firstLine);
+      console.log("firstLine");
       firstLine.partners.first.push(user._id);
       //присваеваем id пригласителя
       user.Inviting_id = firstLine._id;
-      // увеличиваем у пригласителя счетчик на 1
-      firstLine.referral_link_counter += 1;
+      user.Inviting_avangard_id =
+        firstLine.metaData.avangard_id || firstLine.Inviting_avangard_id;
+      firstLine.referral_link_counter += 1; // увеличиваем у пригласителя счетчик на 1
       firstLine.save();
       if (firstLine.Inviting_id) {
+        console.log("secondLine");
         const secondLine = await User.findById(firstLine.Inviting_id);
         secondLine.partners.second.push(user._id);
         secondLine.save();
         if (secondLine.Inviting_id) {
+          console.log("thirdLine");
           const thirdLine = await User.findById(secondLine.Inviting_id);
           thirdLine.partners.third.push(user._id);
           thirdLine.save();
+          if (thirdLine.Inviting_id) {
+            console.log("fourLine");
+            const fourLine = await User.findById(thirdLine.Inviting_id);
+            if (fourLine.configUser.additional_lines) {
+              fourLine.partners.fourth.push(user._id);
+              fourLine.save();
+            }
+          }
         }
       }
     }

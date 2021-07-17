@@ -34,6 +34,21 @@ export const WalletsApi = {
     const { data } = await axios.post(`${this.rootUrl}/buy-mrx`, req, config);
     return data;
   },
+
+  async buyOptionalProgram(token: string, req: any): Promise<ResponseApi> {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const { data } = await axios.post(
+      `${this.rootUrl}/buy-optional`,
+      req,
+      config
+    );
+    return data;
+  },
   // async getTeam(token: string): Promise<ResponseApi> {
   //     const config = {
   //         headers: {

@@ -96,3 +96,15 @@ export function getRuDate(date) {
     day: "numeric",
   });
 }
+
+export function getRuFormatNumbers(number) {
+  return new Intl.NumberFormat("ru-RU").format(number);
+}
+
+export const getFirstAndLast = (arr) => {
+  if (arr.length === 1) {
+    return arr;
+  }
+  return [arr[0], arr[arr.length - 1]];
+};
+export const getDayinMm = (day) => 24 * 60 * 60 * 1000 * day;

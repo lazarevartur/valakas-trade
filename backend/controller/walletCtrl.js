@@ -90,6 +90,7 @@ export const buyOptionalProgram = asyncHandler(async (req, res) => {
   const user_id = req.user;
   let program;
   let user;
+
   if (mongoose.isValidObjectId(program_id)) {
     try {
       program = await optionalPrograms.findById(program_id);
@@ -105,15 +106,16 @@ export const buyOptionalProgram = asyncHandler(async (req, res) => {
             quantity: amount,
             round_number: program.round_number,
             cost: program.cost,
+            profitability: program.profitability,
           });
         } else {
-          userOption.quantity += amount;
+          userOption.quantity += +amount;
         }
 
         user.wallets.start_account -= optionalToMany;
         user.programs_wallets.options += optionalToMany;
-        program.quantity -= amount;
-        program.collected += amount;
+        program.quantity -= +amount;
+        program.collected += +optionalToMany;
 
         user.save();
         program.save();
@@ -130,6 +132,30 @@ export const buyOptionalProgram = asyncHandler(async (req, res) => {
     }
   }
   return res.status(404).json({ message: "Не верные данные" });
+});
+
+export const buyPriorityProgram = asyncHandler(async (req, res) => {
+  console.log("=============buyPriorityProgram===============");
+  const user_id = req.user;
+  const body = req.body;
+  let user;
+  try {
+    user = await User.findById(user_id);
+    user.wallets.start_account -= body.amount;
+    user.programs_wallets.priority += body.amount;
+    user.programs.priority.push(body);
+
+    user.save();
+    return res.json({
+      message: "Программа успешно купленна",
+      status: "ok",
+    });
+  } catch (e) {
+    console.log(error);
+    return res
+      .status(404)
+      .json({ message: "Программа или пользователь не найден" });
+  }
 });
 
 function findOptional(userOptionals, currentOptionalId) {

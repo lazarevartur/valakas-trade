@@ -84,26 +84,56 @@ export interface IMrxData {
 }
 
 export interface IOptionalData {
-  cost: number;
-  quantity: number;
-  profitability: number;
-  purpose: number;
-  round_term: number;
-  round_number: string;
-  status: optionalStatus;
-  start_round: number;
-  end_round: number;
+  cost?: number;
+  collected?: number;
+  quantity?: number;
+  profitability?: number;
+  purpose?: number;
+  round_term?: number;
+  round_number?: string;
+  status?: optionalStatus;
+  start_round?: number;
+  end_round?: number;
+  _id?: string;
 }
+
+export interface IPriorityConditions {
+  discount?: [number];
+  term?: [number];
+  insurance?: [number];
+  minCost?: number;
+  maxCost?: number;
+  minStatus?: string;
+  activateProgram: number;
+}
+
+export interface IPriorityData {
+  name?: string;
+  type?: string;
+  description?: string;
+  icon?: string;
+  img?: string;
+  conditions?: IPriorityConditions;
+}
+
+export interface IPriorityProgramsState {
+  isLoading: boolean;
+  readonly priorityPrograms: IPriorityData[];
+  readonly priorityProgram: IPriorityData;
+  error?: {};
+}
+
 export interface IMrxProgramsState {
   isLoading: boolean;
   readonly mrxPrograms: IMrxData[];
   readonly mrxProgram: IMrxData | any;
   error?: {};
 }
+
 export interface IOptionalProgramsState {
   isLoading: boolean;
   readonly optionalPrograms: IOptionalData[];
-  readonly optionalProgram: IOptionalData | any;
+  readonly optionalProgram: IOptionalData;
   error?: {};
 }
 export interface IUserTeamState {
@@ -118,6 +148,7 @@ export interface rootState {
   team: IUserTeamState;
   mrx: IMrxProgramsState;
   optional: IOptionalProgramsState;
+  priority: IPriorityProgramsState;
   wallets: IWalletsState;
 }
 // {

@@ -11,6 +11,7 @@ import svg4 from "../../assets/svg/flight.svg";
 import png1 from "../../assets/png/priorityImg.png";
 import cn from "classnames";
 import { PrioritySelector } from "../../component/prioritySelector";
+import { useLocation } from "react-router-dom";
 
 const dataBenefist = [
   {
@@ -42,6 +43,15 @@ const dataBenefist = [
 interface PriorityProps {}
 
 const Priority: React.FC<PriorityProps> = () => {
+  const location = useLocation();
+  const $startOffer = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    if ($startOffer.current) {
+      $startOffer.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  }, [location.pathname]);
   return (
     <>
       <JumbotronCustom
@@ -91,7 +101,7 @@ const Priority: React.FC<PriorityProps> = () => {
               <p>программ, позволяющих совершать выгодные покупки</p>
             </Col>
           </Row>
-          <Row>
+          <Row ref={$startOffer}>
             <Col lg={12}>
               <PrioritySelector />
             </Col>

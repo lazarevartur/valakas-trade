@@ -38,9 +38,11 @@ const SubMenu = () => {
                 </NavDropdown.Item>
               </LinkContainer>
 
-              {/*<NavDropdown.Item eventKey="3">*/}
-              {/*  Открытие индивидуального <br /> консультационного центра*/}
-              {/*</NavDropdown.Item>*/}
+              <LinkContainer to={RoutePath.centerOpening}>
+                <NavDropdown.Item eventKey="3">
+                  Открытие индивидуального <br /> консультационного центра
+                </NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
             <NavDropdown title="Контент" id="nav-dropdown">
               <NavDropdown.Item eventKey="4.11">Новости</NavDropdown.Item>

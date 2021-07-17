@@ -12,7 +12,11 @@ import { PrivacyPolicy } from "../pages/privacyPolicy";
 import TermsUse from "../pages/TermsUse/TermsUse";
 import { Community } from "../pages/сommunity";
 import { PriorityDescription } from "../pages/PriorityDescription";
+
 const AboutPage = React.lazy(() => import("../pages/about/AboutPage"));
+const CenterOpening = React.lazy(
+  () => import("../pages/centerOpening/СenterOpening")
+);
 const mrxInvest = React.lazy(() => import("../pages/mrxInvest/MrxInvest"));
 const Optional = React.lazy(() => import("../pages/optional/Optional"));
 const Priority = React.lazy(() => import("../pages/priority/Priority"));
@@ -28,6 +32,7 @@ export enum RoutePath {
   home = "/",
   about = "/about",
   howToMakeMoneyHere = "/howToMakeMoneyHere",
+  centerOpening = "/center-opening",
   binarProfitTeam = "/mrx-invest",
   optional = "/optional",
   priority = "/priority",
@@ -62,6 +67,12 @@ const routesConfig: route[] = [
     path: RoutePath.about,
     exact: true,
     component: AboutPage,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.centerOpening,
+    exact: true,
+    component: CenterOpening,
     access: AccessRouts.all,
   },
   {

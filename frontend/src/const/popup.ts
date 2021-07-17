@@ -18,6 +18,7 @@ export enum ModalType {
 }
 export enum ProgramType {
   mrx = "mrx",
+  optional = "optional",
 }
 export enum AuthTypeEnum {
   signIn = "sign-in",

@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler";
 import mrxPrograms from "../models/programModel.js";
 import optionalProgram from "../models/optionalProgramModel.js";
 import User from "../models/userModel.js";
+import priorityPrograms from "../models/priorityProgramModel.js";
 
 //export const exemple = asyncHandler(async (req, res) => {});
 export const getMrxPrograms = asyncHandler(async (req, res) => {
@@ -64,7 +65,6 @@ export const getOptionalPrograms = asyncHandler(async (req, res) => {
 });
 
 export const getActiveOptionalProgram = asyncHandler(async (req, res) => {
-  console.log("asdasdas");
   let activeProgram;
   try {
     [activeProgram] = await optionalProgram.find({ status: "active" });
@@ -78,6 +78,65 @@ export const getActiveOptionalProgram = asyncHandler(async (req, res) => {
   return res.json(activeProgram);
 });
 
+export const getPurchasedOptions = asyncHandler(async (req, res) => {
+  const userId = req.user;
+  let user;
+
+  try {
+    user = await User.findById(userId).select("programs.optional");
+    const resp = user.programs.optional;
+    return res.status(200).json(resp);
+  } catch (e) {
+    console.log(e);
+    return res.status(404).json({ message: "пользватель не найден" });
+  }
+});
+
+export const getPriorityPrograms = asyncHandler(async (req, res) => {
+  let allPrograms;
+
+  try {
+    allPrograms = await priorityPrograms.find({});
+  } catch (e) {
+    console.log(e);
+    return res.send("Programs not found");
+  }
+
+  return res.json(allPrograms);
+});
+
+export const getPriorityProgramByName = asyncHandler(async (req, res) => {
+  const name = req.params.name;
+  let program;
+
+  try {
+    [program] = await priorityPrograms.find({ name });
+    if (!program) {
+      return res.status(404).json({
+        message: "Программа не найдена",
+      });
+    }
+  } catch (e) {
+    return res.status(500).json({ message: "Попробуйте позже" });
+  }
+
+  return res.json(program);
+});
+
+export const getPurchasedPriorityPrograms = asyncHandler(async (req, res) => {
+  console.log("==========getActivePriorityPrograms===========");
+  const userId = req.user;
+  let userAllPriority;
+  try {
+    userAllPriority = await User.findById(userId).select("programs.priority");
+    const resp = userAllPriority.programs.priority;
+    return res.status(200).json(resp);
+  } catch (e) {
+    console.log(e);
+    return res.send("Programs not found");
+  }
+});
+
 function findBiggestPriceInArray(arr, map) {
   let bigPrice = 0;
   arr.forEach((item) => {
@@ -85,7 +144,6 @@ function findBiggestPriceInArray(arr, map) {
   });
   return bigPrice;
 }
-
 function transformArr(arr) {
   const map = {};
   arr.forEach((item) => {

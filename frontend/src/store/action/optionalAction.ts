@@ -49,6 +49,26 @@ export const getOptionalProgram = () => async (
   }
 };
 
+export const getPurchasedOptions = () => async (
+  dispatch: AppDispatch,
+  getState?: any
+) => {
+  const {
+    authentication: {
+      userData: { token },
+    },
+  } = getState();
+  try {
+    dispatch(OPTIONAL_PROGRAMS_REQUEST());
+    const data = await ProgramsApi.getPurchasedOptions(token);
+    setTimeout(() => {
+      dispatch(OPTIONAL_PROGRAMS_SUCCESS(data));
+    }, 500);
+  } catch (e) {
+    dispatch(OPTIONAL_PROGRAMS_FAIL(e));
+  }
+};
+
 export const getAvailableOptionalPrograms = () => async (
   dispatch: AppDispatch,
   getState?: any
