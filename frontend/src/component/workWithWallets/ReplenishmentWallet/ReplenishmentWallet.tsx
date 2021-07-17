@@ -7,17 +7,10 @@ import {
   Modal,
   Button,
   Form,
-  CardDeck,
-  Card,
-  Tabs,
   Tab,
   Nav,
   Image,
 } from "react-bootstrap";
-import useWalletData from "../../../hooks/useWalletData";
-import { Loader } from "../../uiKit/loader";
-import useGetParameter from "../../../hooks/useGetParameter";
-import { GET_PARAMS, ProgramType } from "../../../const/popup";
 import { useForm } from "react-hook-form";
 import {
   useDispatchTyped,
@@ -57,7 +50,7 @@ const wallets = [
     img: iconWalletQiwi,
     info: {
       description: `Пополни свой Qiwi кошелек через банковский терминал оплаты и после совершите перевод без комисии`,
-      requisites: `123wdascsdgwqer3212312ewd`,
+      requisites: `<iframe src="https://widget.qiwi.com/widgets/big-widget-728x200?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPpTYa4fKdU5uJHx2uh8SB2CmKvWqyExtLjtqazDomu3D2e3R62SifzqMptpKmJCm1AYSd6H9RB4wrvZnQvhMpKeadJmteiMvonE8HQJBqR&noCache=true" width="728" height="200"allowTransparency="true" scrolling="no" frameBorder="0"></iframe>`,
     },
   },
   {

@@ -4,8 +4,11 @@ import { Button, Col, Image, Row, Tab } from "react-bootstrap";
 import cn from "classnames";
 import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../../routes/routesConfig";
-import { IPriorityData } from "../../../types/types";
-import { getFirstAndLast, getRuFormatNumbers } from "../../../utils/utils";
+import { IPriorityData, rootState } from "../../../types/types";
+import { getRuFormatNumbers } from "../../../utils/utils";
+import useIsAuth from "../../../hooks/useIsAuth";
+import { useSelectorTyped } from "../../../hooks/useTypedRedux";
+import { DashboardRoute } from "../../../routes/dashboard";
 
 interface conditions {
   discount?: string;
@@ -36,6 +39,12 @@ const PrioritySlide: React.FC<PrioritySlideProps> = ({
   onClick,
   button = true,
 }) => {
+  const { isAuth } = useIsAuth();
+
+  const { userDashboard } = useSelectorTyped(
+    (state: rootState) => state.dashboard
+  );
+  const status = userDashboard.status;
   return (
     <div className={styles.slide}>
       <Row>
@@ -113,9 +122,6 @@ const PrioritySlide: React.FC<PrioritySlideProps> = ({
                     </Row>
                     <Row>
                       <Col lg={12} className={styles.button_group}>
-                        <Button className={cn(styles.button)}>
-                          Участвовать
-                        </Button>
                         <LinkContainer to={`${RoutePath.priority}/${name}`}>
                           <Button className={styles.whiteButton}>Детали</Button>
                         </LinkContainer>
@@ -193,9 +199,13 @@ const PrioritySlide: React.FC<PrioritySlideProps> = ({
                 <Row>
                   <Col lg={12} className={styles.button_group}>
                     {button && (
-                      <Button onClick={onClick} className={cn(styles.button)}>
-                        Участвовать
-                      </Button>
+                      <LinkContainer
+                        to={isAuth ? DashboardRoute.priority : RoutePath.login}
+                      >
+                        <Button onClick={onClick} className={cn(styles.button)}>
+                          Участвовать
+                        </Button>
+                      </LinkContainer>
                     )}
                     {tab && (
                       <LinkContainer to={`${RoutePath.priority}/${name}`}>

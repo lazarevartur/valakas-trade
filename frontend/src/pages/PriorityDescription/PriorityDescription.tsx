@@ -25,6 +25,7 @@ import _ from "lodash";
 import { Loader } from "../../component/uiKit/loader";
 import { RoutePath } from "../../routes/routesConfig";
 import { getDayinMm, getRuDate, percentageOfAmount } from "../../utils/utils";
+import useIsAuth from "../../hooks/useIsAuth";
 
 interface PriorityDescriptionProps extends IPriorityData {
   match: any;
@@ -69,6 +70,7 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({ match }) => {
     isLoading,
     error,
   } = useSelectorTyped((state: rootState) => state.priority);
+
   const dispatch = useDispatchTyped();
   const [typeProgram, setTypeProgram] = React.useState(id);
   const [activeIdxConditions, setActiveIdxConditions] = React.useState(0);
@@ -93,6 +95,15 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({ match }) => {
       history.push(`${RoutePath.priority}/${typeProgram}`);
     }
   }, [typeProgram]);
+
+  const $startOffer = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    if ($startOffer.current) {
+      $startOffer.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  }, [location.pathname]);
 
   if (!_.isEmpty(error)) {
     return <Page404 />;
@@ -152,10 +163,11 @@ const PriorityDescription: React.FC<PriorityDescriptionProps> = ({ match }) => {
   };
   return (
     <div className={styles.PriorityDescription}>
-      <Container className={styles.container}>
-        <a className={styles.goBack} onClick={() => history.goBack()}>
-          {id}
-        </a>
+      <Container className={styles.container} ref={$startOffer}>
+        <Link to={RoutePath.priority}>
+          {" "}
+          <a className={styles.goBack}>{id}</a>
+        </Link>
         <div className={styles.PrioritySlide}>
           <PrioritySlide tab={false} {...priorityProgram} onClick={sendData} />
         </div>

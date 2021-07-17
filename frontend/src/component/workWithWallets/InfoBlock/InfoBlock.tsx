@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./InfoBlock.module.scss";
 import iconWalletBitcoin from "../../../assets/iconWallets/800px-Bitcoin_logo.svg.png";
 import { Form } from "react-bootstrap";
@@ -14,6 +14,7 @@ const InfoBlock: React.FC<InfoBlockProps> = ({ info, amount, reff, name }) => {
   const paymentLink = info?.paymentLink || "";
   const paymentName = info?.paymentName || "";
   const requisites = info?.requisites || "";
+
   return (
     <div>
       {amount && (
@@ -25,7 +26,17 @@ const InfoBlock: React.FC<InfoBlockProps> = ({ info, amount, reff, name }) => {
             </a>
           )}
           <p>
-            Реквезиты: <strong>{requisites}</strong>
+            Реквезиты:{" "}
+            <strong>
+              <iframe
+                width="728"
+                height="200"
+                src="https://widget.qiwi.com/widgets/big-widget-728x200?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPpTYa4fKdU5uJHx2uh8SB2CmKvWqyExtLjtqazDomu3D2e3R62SifzqMptpKmJCm1AYSd6H9RB4wrvZnQvhMpKeadJmteiMvonE8HQJBqR"
+                allowTransparency
+                scrolling="no"
+                frameBorder="0"
+              />
+            </strong>
           </p>
           <p>
             Сумма пополнения: <strong>{amount}</strong>

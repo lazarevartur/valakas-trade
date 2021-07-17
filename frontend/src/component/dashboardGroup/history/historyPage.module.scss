@@ -1,0 +1,17 @@
+.content {
+  padding: 30px 0;
+}
+.table thead th {
+  border-top: none;
+  border-bottom: 2px solid #fec825;
+}
+.table td {
+  padding: 1.1rem;
+}
+
+.table tbody tr:nth-of-type(odd) {
+  background-color: #fff;
+}
+.table tbody tr:nth-of-type(even) {
+  background-color: #f9f9f9;
+}
