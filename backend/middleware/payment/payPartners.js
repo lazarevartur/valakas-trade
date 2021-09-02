@@ -20,12 +20,12 @@ export const payPartners = asyncHandler(async (req, res, next) => {
 
   try {
     userLinearPremium = await User.findById(currentUser).select(
-      "configUser.linear_premium partners"
+      "configUser.linear_premium partners metaData"
     );
   } catch (error) {
     console.log(error);
   }
-
+  //console.log(userLinearPremium, "userLinearPremium");
   const {
     configUser: { linear_premium },
   } = userLinearPremium;
@@ -34,7 +34,7 @@ export const payPartners = asyncHandler(async (req, res, next) => {
     const userPremiumArray = Object.values(linear_premium).filter(
       (i) => typeof i === "number"
     );
-    console.log(userPremiumArray, "linear_premium");
+    //console.log(userPremiumArray, "linear_premium");
     for (let i = 0; i <= userPremiumArray.length; i++) {
       if (currentUser) {
         const value = userPremiumArray[i];
@@ -50,6 +50,12 @@ export const payPartners = asyncHandler(async (req, res, next) => {
             partner.referral_income_of_partners += income;
             partner.metaData.partners[mapLines[i]] += income;
             partner.metaData.linear_premium += income;
+            const profit = partner.metaData.profit_referral_program_for_week;
+            const profitLength = profit.length;
+            profit.set(
+              [profitLength - 1],
+              (profit[[profitLength - 1]] += income)
+            );
           },
           `Inviting_id wallets configUser.additional_lines referral_income_of_partners
          metaData`

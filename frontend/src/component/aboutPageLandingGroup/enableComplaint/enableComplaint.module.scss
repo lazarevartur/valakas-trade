@@ -1,3 +1,5 @@
+@import "src/assets/globalStyles/style";
+@import "src/assets/globalStyles/variables";
 .EnableComplaint {
   background-color: #fec825;
   padding: 100px;
@@ -7,26 +9,44 @@
     line-height: 64px;
     color: #333333;
   }
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.button {
-  width: 350px;
-  height: 70px;
-  border: 1px solid #000;
-  background-color: #fec825;
-  font-size: 22px;
-  &:hover {
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .button {
+    width: 350px;
+    height: 70px;
     border: 1px solid #000;
+    background-color: #fec825;
+    font-size: 22px;
+    &:hover {
+      border: 1px solid #000;
+    }
+  }
+  .bg_svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.3;
+  }
+  .button {
+    padding: 20px;
+    height: auto;
+  }
+  @media (max-width: 768px) {
+    padding: 100px 0;
+    h2 {
+      padding-bottom: 30px;
+    }
+    .title {
+      font-size: 35px;
+      line-height: 40px;
+    }
+    .img {
+      width: 100%;
+      object-fit: cover;
+    }
   }
 }
-.bg_svg {
-  position: absolute;
-  top: 0;
-  right: 0;
-  opacity: 0.3;
-}
+

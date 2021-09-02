@@ -8,6 +8,10 @@ import { HistoryPage } from "../component/dashboardGroup/history";
 import { MrxProgram } from "../component/dashboardGroup/programs/mrxProgram";
 import { OptionalProgram } from "../component/dashboardGroup/programs/optionalProgram";
 import { PriorityProgram } from "../component/dashboardGroup/programs/priorityProgram";
+import AdmPayment from "../pages/adm/admPayment/AdmPayment";
+import AdmEditUser from "../pages/adm/admEditUser/AdmEditUser";
+import AdmSetings from "../pages/adm/admSetings/AdmSetings";
+import AdmMedia from "../pages/adm/admNews/AdmMedia";
 
 export interface routeDashboard {
   path: DashboardRoute;
@@ -25,6 +29,10 @@ export enum DashboardRoute {
   mrx_invest = "/dashboard/MRX-Invest",
   optional = "/dashboard/optional",
   priority = "/dashboard/priority",
+  adminPayment = "/dashboard/adm/payment",
+  adminEditUser = "/dashboard/adm/edit/user",
+  adminSettings = "/dashboard/adm/settings",
+  adminMedia = "/dashboard/adm/media",
   page404 = "*",
 }
 
@@ -76,5 +84,29 @@ export const dashboardRouteConfig: routeDashboard[] = [
     exact: true,
     component: PriorityProgram,
     access: AccessRouts.user,
+  },
+  {
+    path: DashboardRoute.adminPayment,
+    exact: true,
+    component: AdmPayment,
+    access: AccessRouts.admin,
+  },
+  {
+    path: DashboardRoute.adminEditUser,
+    exact: true,
+    component: AdmEditUser,
+    access: AccessRouts.admin,
+  },
+  {
+    path: DashboardRoute.adminSettings,
+    exact: true,
+    component: AdmSetings,
+    access: AccessRouts.admin,
+  },
+  {
+    path: DashboardRoute.adminMedia,
+    exact: true,
+    component: AdmMedia,
+    access: AccessRouts.admin,
   },
 ];

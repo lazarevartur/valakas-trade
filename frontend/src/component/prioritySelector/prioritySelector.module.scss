@@ -19,6 +19,9 @@
       box-shadow: 0 0 30px rgba(136, 136, 136, 0.25);
     }
   }
+  @media (max-width: 768px) {
+    .icon {padding: 10px}
+  }
 }
 .tab {
   .active {

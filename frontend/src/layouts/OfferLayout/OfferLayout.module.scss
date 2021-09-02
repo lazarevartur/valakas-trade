@@ -14,4 +14,7 @@
 .title {
   font-weight: 500;
   font-size: 40px;
+  @media (max-width: 768px) {
+    font-size: 25px;
+  }
 }

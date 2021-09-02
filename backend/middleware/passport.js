@@ -12,7 +12,7 @@ export const JwtPassport = (passport) => {
   passport.use(
     new jwtPkg.Strategy(option, async (payload, done) => {
       try {
-        const user = await await User.findById(payload.id);
+        const user = await User.findById(payload.data.id);
         if (user) {
           done(null, user._id);
         } else {

@@ -8,7 +8,7 @@ import { DashboardRoute, dashboardRouteConfig } from "../../routes/dashboard";
 import { RoutePath } from "../../routes/routesConfig";
 import cn from "classnames";
 import { SideBar } from "../../component/mainBlocks/sideBar";
-import { useDispatchTyped, useSelectorTyped } from "../../hooks/useTypedRedux";
+import { useDispatchTyped } from "../../hooks/useTypedRedux";
 import { Balance } from "../../component/workWithWallets/Balance";
 import { getCurrentUser } from "../../store/action/dashboardAction";
 

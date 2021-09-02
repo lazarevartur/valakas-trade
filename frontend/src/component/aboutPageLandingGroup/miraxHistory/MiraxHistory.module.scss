@@ -23,4 +23,13 @@
   .bg_grey {
     background-color: #f9f9f9;
   }
+  @media (max-width: 768px) {
+    .title {
+      font-size: 35px;
+      line-height: 40px;
+    }
+    .block, .bg_grey {
+        text-align: center;
+    }
+  }
 }

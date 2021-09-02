@@ -1,5 +1,4 @@
-import React from "react";
-import { VideoBlock } from "../../component/homePageLandingGroup/videoBlock";
+import React, { Suspense } from "react";
 import { MainRow } from "../../layouts/mainRow";
 import { FullWidthRow } from "../../layouts/fullWidthRow";
 import { Benefits } from "../../component/homePageLandingGroup/benefits";
@@ -15,37 +14,39 @@ import { JumbotronCustom } from "../../component/uiKit/JumbotronCustom";
 import mountainsSvg from "../../assets/svg/mountains.svg";
 import circlesSvg from "../../assets/svg/circles.svg";
 import diamondsSvg from "../../assets/svg/diamonds.svg";
+import { VideoBlock } from "../../component/homePageLandingGroup/videoBlock";
+import { useTranslation } from "react-i18next";
 
 const HomePage: React.FC = () => {
   useRefferalLink();
+  const { t } = useTranslation();
+  const root = "HomePage";
   const dataBenefits = [
     {
-      title: "Доходность __% годовых ",
-      text:
-        "Выбор из представленных тарифных пакетов с высокой окупаемостью до __% годовых. Гарантированный доход уже через день",
+      title: t(`${root}.benefitsBlock.firstBlock.title`),
+      text: t(`${root}.benefitsBlock.firstBlock.text`),
       icon: mountainsSvg,
     },
     {
-      title: "Прибыльная бизнес-модель  ",
-      text:
-        "Возможность построить собственную структуру благодаря интегрированным реферальным системам, получая дополнительный доход, бонусы и премии за активность ",
+      title: t(`${root}.benefitsBlock.secondBlock.title`),
+      text: t(`${root}.benefitsBlock.secondBlock.text`),
       icon: circlesSvg,
     },
     {
-      title: "Отсутствие рисков  ",
-      text:
-        "Никаких нелегальных проектов, торговли на биржах, сделок на повышение или понижение, несущих риск",
+      title: t(`${root}.benefitsBlock.thirdBlock.title`),
+      text: t(`${root}.benefitsBlock.thirdBlock.text`),
       icon: diamondsSvg,
     },
   ];
+
   return (
     <>
       <FullWidthRow>
         <JumbotronCustom
           img={JumbotronImg}
           bgPos={"center top"}
-          title={"Готовые инвестиционные решения с ежедневным доходом"}
-          text={`Платформа Mirax предоставляет широкие инвестиционные предложения в проекты блокчейн-индустрии для создания активного и пассивного доходов с помощью модели партнерских программ`}
+          title={t("HomePage.title")}
+          text={t("HomePage.text")}
           lg={8}
         />
       </FullWidthRow>
@@ -53,7 +54,10 @@ const HomePage: React.FC = () => {
         <VideoBlock />
       </FullWidthRow>
       <MainRow>
-        <Benefits data={dataBenefits} />
+        <Benefits
+          data={dataBenefits}
+          title={t(`${root}.benefitsBlock.title`)}
+        />
       </MainRow>
       <FullWidthRow>
         <PartnershipPrograms />
@@ -68,12 +72,7 @@ const HomePage: React.FC = () => {
         <News />
       </FullWidthRow>
       <FullWidthRow>
-        <BecomePartner
-          img={img}
-          title={
-            "Станьте партнером Mirax и сделайте ваш бизнес высокодоходным с первого дня"
-          }
-        />
+        <BecomePartner img={img} title={t(`${root}.BecomePartner.title`)} />
       </FullWidthRow>
     </>
   );

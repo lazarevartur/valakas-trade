@@ -5,6 +5,7 @@ const initialState: IPriorityProgramsState = {
   isLoading: false,
   priorityPrograms: [],
   priorityProgram: {},
+  priorityData: {},
   error: {},
 };
 
@@ -38,6 +39,16 @@ export const priorityProgram = createSlice({
       state.priorityProgram = {};
       state.error = action.payload;
     },
+    PRIORITY_DATA_SET: (state,action) => {
+      state.isLoading = false
+      state.priorityData = action.payload
+      state.error = {}
+    },
+    PRIORITY_DATA_RESET: (state) => {
+      state.isLoading = false
+      state.priorityData = {}
+      state.error = {}
+    }
   },
 });
 
@@ -48,6 +59,8 @@ export const {
   PRIORITY_PROGRAM_REQUEST,
   PRIORITY_PROGRAM_SUCCESS,
   PRIORITY_PROGRAM_FAIL,
+  PRIORITY_DATA_SET,
+  PRIORITY_DATA_RESET
 } = priorityProgram.actions;
 
 export default priorityProgram.reducer;

@@ -10,9 +10,12 @@ import { CompanyInterest } from "../../component/aboutPageLandingGroup/companyIn
 import { EnableComplaint } from "../../component/aboutPageLandingGroup/enableComplaint";
 import { JumbotronCustom } from "../../component/uiKit/JumbotronCustom";
 import aboutUsImg from "../../assets/img/aboutPage.jpg";
+import { Trans, useTranslation } from "react-i18next";
+
 interface AboutProps extends defaultComponentProps {}
 
 const AboutPage: React.FC<AboutProps> = ({ className = "" }) => {
+  const { t } = useTranslation();
   return (
     <>
       <FullWidthRow>
@@ -20,27 +23,21 @@ const AboutPage: React.FC<AboutProps> = ({ className = "" }) => {
       </FullWidthRow>
       <FullWidthRow>
         <JumbotronCustom
+          bgPos={"top"}
           img={aboutUsImg}
           title={
             <h3 className={styles.block2_title}>
-              Руководствуйтесь балансом между возможными рисками и потенциальной
-              доходностью
+              {t("AboutPage.descriptionBLock.title")}
             </h3>
           }
           text={
             <>
               <p className={styles.block2_p}>
-                На современном рынке финансовые инструменты работают в одном
-                направлении, ограничивая возможности инвесторов и увеличивая
-                риски.
+                {t("AboutPage.descriptionBLock.block.text1")}
               </p>
               <p className={styles.block2_p}>
-                <span style={{ color: "#FEC825" }}>Mirax</span> расширяет
-                возможности заработка для своих партнеров, объединяя самые
-                прибыльные и перспективные направления: блокчейн-проекты,
-                майнинговые компании, цифровые продукты, сетевые компании и
-                стартапы. Откройте для себя возможность получения финансовой
-                свободы без рисков!{" "}
+                <span style={{ color: "#FEC825" }}>Mirax</span>{" "}
+                {t("AboutPage.descriptionBLock.block.text2")}
               </p>
             </>
           }

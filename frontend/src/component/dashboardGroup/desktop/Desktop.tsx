@@ -16,19 +16,22 @@ import {
 import { rootState } from "../../../types/types";
 import { Loader } from "../../uiKit/loader";
 import { RoutePath } from "../../../routes/routesConfig";
-import userIcon from "../../../assets/svg/icon/userIcon.svg";
+import userIcon from "../../../assets/svg/icon/userIcon.jpg";
+import { useTranslation } from "react-i18next";
 
 interface DesktopProps {}
 
 const Desktop: React.FC<DesktopProps> = () => {
+  const { t } = useTranslation();
   const { userDashboard, isLoading } = useSelectorTyped(
     (state: rootState) => state.dashboard
   );
   const dispatch = useDispatchTyped();
   const tableData = {
     linear_premium: userDashboard.linear_premium,
-    totalEarned: userDashboard.wallets?.operating_account,
+    investment_package: userDashboard.investment_package,
     dividends: userDashboard.dividends,
+    mentor_prime: userDashboard.mentor_prime,
   };
   const location = useLocation();
   React.useEffect(() => {
@@ -39,7 +42,7 @@ const Desktop: React.FC<DesktopProps> = () => {
       dispatch(getCurrentUser());
     }
   }, [location]);
-
+  const srcAvatar = userDashboard.contact_details?.avatarImg || userIcon;
   return (
     <Container className={cn(styles.Desktop)}>
       {isLoading ? (
@@ -48,10 +51,10 @@ const Desktop: React.FC<DesktopProps> = () => {
         </div>
       ) : (
         <>
-          <DashboardTitleBlock title={"Ваш профиль"} />
+          <DashboardTitleBlock title={t("Desktop.title.profile")} />
           <Row className={styles.row_info_block}>
             <Col lg={3} className={styles.img_block}>
-              <Image src={userIcon} className={styles.img} />
+              <Image src={srcAvatar} className={styles.img} />
             </Col>
             <Col lg={9}>
               <div className={styles.info_block}>
@@ -69,11 +72,11 @@ const Desktop: React.FC<DesktopProps> = () => {
               </div>
             </Col>
           </Row>
-          <DashboardTitleBlock title={"Рабочий стол"} />
+          <DashboardTitleBlock title={t("Desktop.title.desktop")} />
           <div className={styles.desktop_info}>
             <Row>
               <Col lg={6} className={styles.text}>
-                Общая сумма инвестиций
+                {t("Desktop.totalInvestment")}
               </Col>
               <Col lg={6} className={styles.count}>
                 $ {userDashboard.totalInvestment}
@@ -81,7 +84,7 @@ const Desktop: React.FC<DesktopProps> = () => {
             </Row>
             <Row>
               <Col lg={6} className={styles.text}>
-                Операционных кошельков
+                {t("Desktop.wallets")}
               </Col>
               <Col lg={6} className={styles.count}>
                 3
@@ -89,7 +92,7 @@ const Desktop: React.FC<DesktopProps> = () => {
             </Row>
             <Row>
               <Col lg={6} className={styles.text}>
-                Реферальные с дохода партёров
+                {t("Desktop.referralIncomeOfPartners")}
               </Col>
               <Col lg={6} className={styles.count}>
                 $ {userDashboard.referralIncomeOfPartners?.toFixed(2)}
@@ -99,37 +102,46 @@ const Desktop: React.FC<DesktopProps> = () => {
               <Col lg={7}>
                 <ReferralLink
                   link={userDashboard.id}
-                  count={userDashboard.depositAccount}
+                  isBuyProgram={userDashboard.isBuyProgram}
                 />
               </Col>
             </Row>
           </div>
-          <DashboardTitleBlock title={"Мои счета"} />
+          <DashboardTitleBlock title={t("Desktop.title.wallets")} />
           <div className={styles.wallets}>
             <CardDeck>
               <Wallet
-                title={"Стартовый счет"}
-                count={userDashboard.depositAccount?.toFixed()}
+                title={t("Desktop.WalletTitle.depositAccount")}
+                count={userDashboard.depositAccount?.toFixed(1)}
                 to={RoutePath.replenishmentWallet}
+                name={t("Desktop.WalletName.top_up_balance")}
               />
               <Wallet
-                title={"Бонусный счет"}
-                count={userDashboard.wallets?.bonus_account?.toFixed()}
-                name={"Вывести средства"}
-                to={RoutePath.withdrawWallet}
-              />
-              <Wallet
-                title={"Операционный счет"}
-                count={userDashboard.wallets?.operating_account?.toFixed()}
-                name={"Перевести средства"}
+                title={t("Desktop.WalletTitle.bonus_account")}
+                count={userDashboard.wallets?.bonus_account?.toFixed(1)}
+                name={t("Desktop.WalletName.transfer")}
                 to={RoutePath.transferWallet}
+              />
+              <Wallet
+                title={t("Desktop.WalletTitle.operating_account")}
+                count={userDashboard.wallets?.operating_account?.toFixed(1)}
+                name={t("Desktop.WalletName.transfer")}
+                to={RoutePath.transferWalletWithOperating}
+              />
+            </CardDeck>
+            <CardDeck className={cn(styles.withdrawWallet, "pt-4")}>
+              <Wallet
+                title={t("Desktop.WalletTitle.withdrawWallet")}
+                name={t("Desktop.WalletName.withdraw")}
+                count={userDashboard.depositAccount?.toFixed(1)}
+                to={RoutePath.withdrawWallet}
               />
             </CardDeck>
           </div>
-          <DashboardTitleBlock title={"Таблица вашей доходности"} />
+          <DashboardTitleBlock title={t("Desktop.title.wallets")} />
           <div>
             <ProfitabilityTable
-              totalEarned={userDashboard.totalEarned?.toFixed()}
+              totalEarned={userDashboard.totalEarned}
               data={tableData}
             />
           </div>

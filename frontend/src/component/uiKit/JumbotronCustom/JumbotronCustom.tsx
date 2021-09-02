@@ -4,6 +4,8 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import hands from "../../../assets/img/hands.jpg";
 import { RoutePath } from "../../../routes/routesConfig";
 import { LinkContainer } from "react-router-bootstrap";
+import cn from "classnames";
+import { useTranslation } from "react-i18next";
 
 interface JumbotronCustomProps {
   img?: string;
@@ -13,6 +15,8 @@ interface JumbotronCustomProps {
   title?: JSX.Element | string;
   text?: JSX.Element | string;
   lg?: number;
+  button?: boolean;
+  className?: string;
 }
 
 const JumbotronCustom: React.FC<JumbotronCustomProps> = ({
@@ -25,10 +29,13 @@ const JumbotronCustom: React.FC<JumbotronCustomProps> = ({
               если он работает в команде. Для развития творческого и живого
               общения среди партнёров мы создали сообщество Mirax.`,
   lg = 6,
+  button = true,
+  className = "",
 }) => {
+  const { t } = useTranslation();
   return (
     <div
-      className={styles.JumbotronCustom}
+      className={cn(styles.JumbotronCustom, { [className]: className })}
       style={{
         backgroundImage: `url(${img})`,
         backgroundPosition: `${bgPos}`,
@@ -41,13 +48,21 @@ const JumbotronCustom: React.FC<JumbotronCustomProps> = ({
             lg={contentPosRight ? { offset: 6 } : lg}
             className={styles.content}
           >
-            <h1 className={"pb-4"}>{title}</h1>
-            <p className={"pb-4"}>{text}</p>
-            <LinkContainer to={RoutePath.login}>
-              <Button size={"lg"}>Присоединиться</Button>
-            </LinkContainer>
+            <h1 className={cn("pb-4", styles.title)}>{title}</h1>
           </Col>
         </Row>
+        {text && (
+          <Row>
+            <Col lg={6}>
+              <p className={"pb-4"}>{text}</p>
+              {button && (
+                <LinkContainer to={RoutePath.login}>
+                  <Button size={"lg"}>{t("ui.JumbotronCustom_button")}</Button>
+                </LinkContainer>
+              )}
+            </Col>
+          </Row>
+        )}
       </Container>
     </div>
   );

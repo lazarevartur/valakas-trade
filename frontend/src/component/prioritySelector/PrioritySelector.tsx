@@ -7,6 +7,7 @@ import { getPriorityPrograms } from "../../store/action/priorityAction";
 import { useDispatchTyped, useSelectorTyped } from "../../hooks/useTypedRedux";
 import { rootState } from "../../types/types";
 import { Loader } from "../uiKit/loader";
+import { useTranslation } from "react-i18next";
 
 interface data {
   icon: string;
@@ -19,6 +20,7 @@ interface data {
 interface PrioritySelectorProps {}
 
 const PrioritySelector: React.FC<PrioritySelectorProps> = () => {
+  const { t } = useTranslation();
   const { priorityPrograms, isLoading } = useSelectorTyped(
     (state: rootState) => state.priority
   );
@@ -59,6 +61,11 @@ const PrioritySelector: React.FC<PrioritySelectorProps> = () => {
       </Row>
       <div className={styles.PrioritySlide}>
         {priorityPrograms.map(({ icon, ...item }) => {
+          console.log(item);
+          item.description = t(
+            `PriorityPrograms.${item.name.toLowerCase()}.description`
+          );
+          item.type = t(`PriorityPrograms.${item.name.toLowerCase()}.type`);
           return <PrioritySlide {...item} key={icon} />;
         })}
       </div>

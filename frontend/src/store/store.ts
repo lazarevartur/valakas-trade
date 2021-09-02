@@ -4,11 +4,14 @@ import { userAuthentication } from "./slice/authSlice";
 import { userDashboard } from "./slice/userDashboardSlice";
 import { userTeam } from "./slice/teamSlice";
 import { wallets } from "./slice/walletsSlice";
+import { historyUser } from "./slice/historySlice";
 
 import { logout } from "./action/authAction";
 import { mrxProgram } from "./slice/mrxProgramsSlice";
 import { optionalProgram } from "./slice/optionalProgram";
 import { priorityProgram } from "./slice/prioritySlice";
+import { users } from "./slice/usersSlice";
+import { news } from "./slice/newsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +22,9 @@ export const store = configureStore({
     optional: optionalProgram.reducer,
     priority: priorityProgram.reducer,
     wallets: wallets.reducer,
+    history: historyUser.reducer,
+    users: users.reducer,
+    news: news.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

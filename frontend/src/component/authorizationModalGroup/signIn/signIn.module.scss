@@ -12,6 +12,11 @@
     margin-bottom: 35px;
     font-weight: 500;
   }
+  @media (max-width: 768px) {
+    h5 {
+      font-size: 20px;
+    }
+  }
 }
 .singUp,
 .registration {
@@ -27,6 +32,9 @@
   flex-direction: column;
   p {
     text-align: center;
+  }
+  @media (max-width: 768px) {
+    padding-bottom: 10px;
   }
 }
 .button {

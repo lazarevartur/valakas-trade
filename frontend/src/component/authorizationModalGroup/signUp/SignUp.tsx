@@ -21,10 +21,12 @@ import { register as registerAction } from "../../../store/action/authAction";
 import { Loader } from "../../uiKit/loader";
 import { CustomInput } from "../../uiKit/customInput";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface SignUpProps extends defaultModalComponentProps {}
 
 const SignUp: React.FC<SignUpProps> = ({ url }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatchTyped();
 
   const { isLoading, userData, refLink } = useSelectorTyped(
@@ -35,8 +37,10 @@ const SignUp: React.FC<SignUpProps> = ({ url }) => {
       referralId: refLink,
     },
   });
+  const validators = {
+    required: "Не может быть пустым",
+  };
   const onSubmit = (data: IUserRegistration) => {
-    console.log(data);
     dispatch(registerAction(data));
   };
 
@@ -51,22 +55,34 @@ const SignUp: React.FC<SignUpProps> = ({ url }) => {
             ) : (
               <>
                 <Col lg={6} className={cn(styles.singUp)}>
-                  <h5>Регистрация</h5>
+                  <h5>{t("SignUp.singUp.title")}</h5>
                   <Form.Group controlId="formEmail">
                     <CustomInput
                       type="email"
                       placeholder="Email"
                       name="email"
                       value={watch("email")}
-                      reff={register}
+                      reff={register({
+                        ...validators,
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          message: t("SignUp.singUp.email_error"),
+                        },
+                      })}
                     />
+                    <small>
+                      {
+                        // @ts-ignore
+                        errors.email && errors.email.message
+                      }
+                    </small>
                   </Form.Group>
                   <Row>
                     <Col lg={6}>
                       <Form.Group controlId="formName">
                         <CustomInput
                           type="text"
-                          placeholder="Имя"
+                          placeholder={t("SignUp.singUp.input_name")}
                           name="name"
                           value={watch("name")}
                           reff={register}
@@ -76,11 +92,11 @@ const SignUp: React.FC<SignUpProps> = ({ url }) => {
                     <Col lg={6}>
                       <Form.Group controlId="formCountry">
                         <Form.Control as="select" ref={register}>
-                          <option>Выбирите страну</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
+                          <option>{t("SignUp.formCountry.option1")}</option>
+                          <option>{t("SignUp.formCountry.option2")}</option>
+                          <option>{t("SignUp.formCountry.option3")}</option>
+                          <option>{t("SignUp.formCountry.option4")}</option>
+                          <option>{t("SignUp.formCountry.option5")}</option>
                         </Form.Control>
                       </Form.Group>
                     </Col>
@@ -89,16 +105,28 @@ const SignUp: React.FC<SignUpProps> = ({ url }) => {
                   <Form.Group controlId="formPassword">
                     <CustomInput
                       type="password"
-                      placeholder="Пароль"
+                      placeholder={t("SignUp.password")}
                       name="password"
                       value={watch("password")}
-                      reff={register}
+                      reff={register({
+                        ...validators,
+                        pattern: {
+                          value: /^[A-Z0-9_-]{8,12}$/i,
+                          message: t("SignUp.password_error"),
+                        },
+                      })}
                     />
+                    <small>
+                      {
+                        // @ts-ignore
+                        errors.password && errors.password.message
+                      }
+                    </small>
                   </Form.Group>
                   <Form.Group controlId="formRPassword">
                     <CustomInput
                       type="password"
-                      placeholder="Пароль"
+                      placeholder={t("SignUp.password")}
                       name="rPassword"
                       value={watch("rPassword")}
                       reff={register}
@@ -109,7 +137,7 @@ const SignUp: React.FC<SignUpProps> = ({ url }) => {
                       <CustomInput
                         type="text"
                         readOnly
-                        placeholder="ID/ email пригласителя"
+                        placeholder={t("SignUp.ReferralId")}
                         name="referralId"
                         value={refLink}
                         reff={register}
@@ -130,13 +158,13 @@ const SignUp: React.FC<SignUpProps> = ({ url }) => {
                       type="checkbox"
                       label={
                         <span>
-                          Я принимаю{" "}
+                          {t("SignUp.chekBox.line1")}{" "}
                           <Link to={RoutePath.termsUse}>
-                            условия использования
+                            {t("SignUp.chekBox.line2")}
                           </Link>{" "}
-                          и соглашаюсь с{" "}
+                          {t("SignUp.chekBox.line3")}{" "}
                           <Link to={RoutePath.privacyPolicy}>
-                            политикой конфиденциальности
+                            {t("SignUp.chekBox.line4")}
                           </Link>
                         </span>
                       }
@@ -145,19 +173,17 @@ const SignUp: React.FC<SignUpProps> = ({ url }) => {
                   </Form.Group>
                   <div className={cn(styles.button_group)}>
                     <Button type="submit" className={cn(styles.button)}>
-                      Зарегистрироваться
+                      {t("SignUp.buttons.signUp")}
                     </Button>
                   </div>
                 </Col>
                 <Col lg={6} className={cn(styles.registration)}>
-                  <h5>Уже зарегистрированы?</h5>
+                  <h5>{t("SignUp.buttons.enter")}</h5>
                   <div className={cn(styles.button_group)}>
-                    <p>
-                      Exercitationem rerum nesciunt dicta voluptatem eligendi
-                      laudantium temporibus
-                    </p>
                     <LinkContainer to={`${url}${RoutePath.login}`}>
-                      <Button className={cn(styles.button)}>Вход</Button>
+                      <Button className={cn(styles.button)}>
+                        {t("SignUp.buttons.login")}
+                      </Button>
                     </LinkContainer>
                   </div>
                 </Col>

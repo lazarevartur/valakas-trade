@@ -36,7 +36,7 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
     (state: rootState) => state.dashboard
   );
 
-  const isPaid = userDashboard.wallets?.start_account || 0;
+  const isPaid = userDashboard.totalInvestment || 0;
   const quantity = userDashboard.programs?.optional?.quantity || 0;
   const cost = userDashboard.programs?.optional?.cost || 0;
   const activeRound = optionalProgram.round_number || 1;
@@ -57,7 +57,7 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
   }
 
   if (!isPaid) {
-    return <Plug />;
+    return <Plug text={'Для приобретения программы необходимо пополнить счет!'} />;
   }
 
   return (

@@ -37,4 +37,28 @@
 
     border-image-slice: 1;
   }
+  .nav {
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: start;
+      .nav_item {
+        display: flex;
+        .nav_link {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-size: 12px;
+          width: 74px;
+          i {
+            padding-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
 }

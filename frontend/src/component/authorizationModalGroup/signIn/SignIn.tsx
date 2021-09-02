@@ -19,10 +19,12 @@ import {
   useSelectorTyped,
 } from "../../../hooks/useTypedRedux";
 import { Loader } from "../../uiKit/loader";
+import { useTranslation } from "react-i18next";
 
 interface SignInProps extends defaultModalComponentProps {}
 
 const SignIn: React.FC<SignInProps> = ({ isOpened = false, url = "" }) => {
+  const { t } = useTranslation();
   const { register, handleSubmit, errors, watch } = useForm();
   const dispatch = useDispatchTyped();
   const { isLoading } = useSelectorTyped(
@@ -43,19 +45,18 @@ const SignIn: React.FC<SignInProps> = ({ isOpened = false, url = "" }) => {
             ) : (
               <>
                 <Col lg={6} className={cn(styles.registration)}>
-                  <h5>У вас еще нет аккаунта?</h5>
+                  <h5>{t("SignIn.registration.title")}</h5>
                   <div className={cn(styles.button_group)}>
-                    <p>
-                      Exercitationem rerum nesciunt dicta voluptatem eligendi
-                      laudantium temporibus
-                    </p>
+                    <p>{t("SignIn.registration.text")}</p>
                     <LinkContainer to={`${url}${RoutePath.registration}`}>
-                      <Button className={cn(styles.button)}>Регистрация</Button>
+                      <Button className={cn(styles.button)}>
+                        {t("SignIn.registration.button")}
+                      </Button>
                     </LinkContainer>
                   </div>
                 </Col>
                 <Col lg={6} className={cn(styles.singIn)}>
-                  <h5>Вход в личный кабинет</h5>
+                  <h5>{t("SignIn.singIn_Input.title")}</h5>
                   <Form.Group controlId="formEmail">
                     <CustomInput
                       type="email"
@@ -68,21 +69,24 @@ const SignIn: React.FC<SignInProps> = ({ isOpened = false, url = "" }) => {
                   <Form.Group controlId="formPassword">
                     <CustomInput
                       type="password"
-                      placeholder="Пароль"
+                      placeholder={t("SignIn.singIn_Input.password")}
                       name="password"
                       value={watch("password")}
                       reff={register}
                     />
                   </Form.Group>
                   <Form.Group controlId="formCheckbox">
-                    <Form.Check type="checkbox" label="Запомнить меня" />
+                    <Form.Check
+                      type="checkbox"
+                      label={t("SignIn.remember_me")}
+                    />
                   </Form.Group>
                   <div className={cn(styles.button_group)}>
                     <Button type="submit" className={cn(styles.button)}>
-                      Войти
+                      {t("SignIn.login")}
                     </Button>
                     <Link to={`${url}${RoutePath.resetPassword}`}>
-                      Забыли пароль?
+                      {t("SignIn.forgot")}
                     </Link>
                   </div>
                 </Col>

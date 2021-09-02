@@ -11,6 +11,8 @@ interface CustomInputProps extends FormControlProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   reff?: any;
   readOnly?: boolean;
+  accept?: any;
+  key?: any;
 }
 
 const CustomInput: React.FC<CustomInputProps> = ({
@@ -22,10 +24,12 @@ const CustomInput: React.FC<CustomInputProps> = ({
   onChange = () => null,
   reff,
   readOnly = false,
+  accept,
+  key = 1,
   ...props
 }) => {
   return (
-    <div className={styles.customInput}>
+    <div className={styles.customInput} key={key}>
       <span className={cn({ [styles.to_top]: !!value.length })}>
         {placeholder}
       </span>
@@ -36,6 +40,8 @@ const CustomInput: React.FC<CustomInputProps> = ({
         ref={reff}
         readOnly={readOnly}
         {...props}
+        onChange={onChange}
+        accept={accept}
       />
     </div>
   );

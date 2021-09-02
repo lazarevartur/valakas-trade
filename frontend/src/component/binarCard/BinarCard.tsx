@@ -4,6 +4,7 @@ import { defaultComponentProps } from "../../types/types";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import cn from "classnames";
 import { LinkContainer } from "react-router-bootstrap";
+import { useTranslation } from "react-i18next";
 
 interface BinarCardProps extends defaultComponentProps {
   name?: string;
@@ -23,24 +24,25 @@ const BinarCard: React.FC<BinarCardProps> = ({
   _id = "1",
   linkTo = "/lol",
 }) => {
+  const { t } = useTranslation();
   return (
     <Card className={styles.BinarCard}>
       <Card.Header className={cn(styles.card_header)}>${name}</Card.Header>
       <Card.Body>
         <Card.Title className={cn(styles.card_title)}>
-          Инвестиционный пакет
+          {t("MrxInvest.BinarCard.card_title")}
         </Card.Title>
         <Row>
           <Col lg={7} className={cn(styles.left_col)}>
-            Срок работы инвестиционного пакета
+            {t("MrxInvest.BinarCard.deskBlock1.text1")}
           </Col>
           <Col lg={5} className={cn(styles.right_col)}>
-            {validity} дней
+            {validity} {t("MrxInvest.BinarCard.deskBlock1.text2")}
           </Col>
         </Row>
         <Row>
           <Col lg={8} className={cn(styles.left_col)}>
-            Надбавка к суточной доходности
+            {t("MrxInvest.BinarCard.deskBlock2.text1")}
           </Col>
           <Col lg={4} className={cn(styles.right_col)}>
             0.2%
@@ -48,7 +50,7 @@ const BinarCard: React.FC<BinarCardProps> = ({
         </Row>
         <Row>
           <Col lg={8} className={cn(styles.left_col)}>
-            Количество уровней по линейной премии
+            {t("MrxInvest.BinarCard.deskBlock3.text1")}
           </Col>
           <Col lg={4} className={cn(styles.right_col)}>
             {line_count}
@@ -58,7 +60,7 @@ const BinarCard: React.FC<BinarCardProps> = ({
       <Card.Footer className={styles.card_footer}>
         <Row>
           <Col lg={6} className={cn(styles.left_col)}>
-            Стоимость
+            {t("MrxInvest.BinarCard.footer.text1")}
           </Col>
           <Col lg={6} className={cn(styles.right_col, styles.accent)}>
             ${price}
@@ -66,7 +68,9 @@ const BinarCard: React.FC<BinarCardProps> = ({
         </Row>
         <div className={styles.dFlex}>
           <LinkContainer to={linkTo}>
-            <Button className={styles.button}>Купить</Button>
+            <Button className={styles.button}>
+              {t("MrxInvest.BinarCard.footer.text2")}
+            </Button>
           </LinkContainer>
         </div>
       </Card.Footer>

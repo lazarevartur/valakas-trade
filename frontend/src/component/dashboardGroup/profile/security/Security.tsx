@@ -70,7 +70,7 @@ const Security: React.FC<SecurityProps> = () => {
                 <Form.Group id="formGridCheckbox">
                   <Form.Check
                     type="checkbox"
-                    label=" О вашей покупке инвестиционного пакета"
+                    label="О вашей покупке инвестиционного пакета"
                     custom
                     id={`custom`}
                   />
@@ -78,54 +78,30 @@ const Security: React.FC<SecurityProps> = () => {
                 <Form.Group id="formGridCheckbox">
                   <Form.Check
                     type="checkbox"
-                    label=" О вашей покупке инвестиционного пакета"
+                    label="О пополнение и выводе средств"
                     custom
                     id={`custom`}
                   />
                 </Form.Group>
-                <Form.Group id="formGridCheckbox">
-                  <Form.Check
-                    type="checkbox"
-                    label=" О вашей покупке инвестиционного пакета"
-                    custom
-                    id={`custom`}
-                  />
-                </Form.Group>
-                <Form.Group id="formGridCheckbox">
-                  <Form.Check
-                    type="checkbox"
-                    label=" О вашей покупке инвестиционного пакета"
-                    custom
-                    id={`custom`}
-                  />
-                </Form.Group>
+
               </Col>
               <Col lg={6}>
                 <Form.Group id="formGridCheckbox">
-                  <Form.Check
+                <Form.Check
                     type="checkbox"
-                    label=" О вашей покупке инвестиционного пакета"
+                    label="О входе с нового устройства"
                     custom
                     id={`custom`}
-                  />
-                </Form.Group>
+                />
+              </Form.Group>
                 <Form.Group id="formGridCheckbox">
                   <Form.Check
-                    type="checkbox"
-                    label=" О вашей покупке инвестиционного пакета"
-                    custom
-                    id={`custom`}
+                      type="checkbox"
+                      label="О завершении программы"
+                      custom
+                      id={`custom`}
                   />
-                </Form.Group>
-                <Form.Group id="formGridCheckbox">
-                  <Form.Check
-                    type="checkbox"
-                    label=" О вашей покупке инвестиционного пакета"
-                    custom
-                    id={`custom`}
-                  />
-                </Form.Group>
-              </Col>
+                </Form.Group></Col>
             </Row>
             <Button variant="primary" type="submit">
               Сохранить

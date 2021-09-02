@@ -27,7 +27,14 @@ $mainMargin: 55px;
       height: 150px;
       border-radius: 10px;
     }
+    @media (max-width: 768px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 20px;
+    }
   }
+
 }
 
 .info_block {
@@ -118,4 +125,8 @@ $mainMargin: 55px;
   align-items: center;
   justify-content: center;
   height: 800px;
+}
+.withdrawWallet {
+  width: 287px;
+  @media (max-width: 768px) { width: 100% }
 }

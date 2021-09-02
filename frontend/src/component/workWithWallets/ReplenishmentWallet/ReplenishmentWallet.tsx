@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "./ReplenishmentWallet.module.scss";
 import {
-  Container,
-  Row,
-  Col,
-  Modal,
   Button,
+  Col,
+  Container,
   Form,
-  Tab,
-  Nav,
   Image,
+  Modal,
+  Nav,
+  Row,
+  Tab,
 } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import {
@@ -17,7 +17,8 @@ import {
   useSelectorTyped,
 } from "../../../hooks/useTypedRedux";
 import {
-  balanceReplenishment,
+  getBills,
+  replenishmentRequest,
   resetWallet,
 } from "../../../store/action/walletsAction";
 import { rootState } from "../../../types/types";
@@ -27,74 +28,69 @@ import { CustomInput } from "../../uiKit/customInput";
 import iconWalletBitcoin from "../../../assets/iconWallets/800px-Bitcoin_logo.svg.png";
 import iconWalletPayeer from "../../../assets/iconWallets/800x400_498c39b77920903439940e87cf8aa83f___jpg____4_8cae8b31.png";
 import iconWalletEthereum from "../../../assets/iconWallets/ethirum.png";
-import iconWalletQiwi from "../../../assets/iconWallets/Qiwi.png";
-import iconWalletVisa_mast_mir from "../../../assets/iconWallets/logoVisa_Mast_Mir.png";
 import iconWalletUsdtether from "../../../assets/iconWallets/usd-tether.png";
+import iconWalletQiwi from "../../../assets/iconWallets/Qiwi.png";
+import iconWalletPw from "../../../assets/iconWallets/pw.png";
 import { getChunks } from "../../../utils/utils";
-import { InfoBlock } from "../InfoBlock";
 import SweetAlert from "react-bootstrap-sweetalert";
+import Bitcoin from "./walletType/Bitcoin";
+import Ethereum from "./walletType/Ethereum";
+import Usdtether from "./walletType/Usdtether";
+import Qiwi from "./walletType/Qiwi";
+import Payeer from "./walletType/Payeer";
+import { ReplenishmentRequest } from "../../../services/walletsApi";
+import { walletType } from "../../../config";
+import { Loader } from "../../uiKit/loader";
+import Bill from "./walletType/Bill";
 
-const wallets = [
+const walletsComponent = {
+  bitcoin: Bitcoin,
+  ethereum: Ethereum,
+  usdtether: Usdtether,
+  qiwi: Qiwi,
+  payeer: Payeer,
+};
+
+const walletsType = [
   {
-    name: "visa_mast_mir",
-    img: iconWalletVisa_mast_mir,
-    info: {
-      paymentName: "Тинькоф",
-      paymentLink: "https://www.tinkoff.ru/cardtocard/",
-      description: `Для оплаты банковской карты мы используем платежную систему "Payeer", вы так же можете совершить перевод без комисии со своего кошелька Payeer, если таков имееться`,
-      requisites: "4896 4414 5536 8889",
-    },
-  },
-  {
-    name: "Qiwi",
+    name: walletType.qiwi,
     img: iconWalletQiwi,
-    info: {
-      description: `Пополни свой Qiwi кошелек через банковский терминал оплаты и после совершите перевод без комисии`,
-      requisites: `<iframe src="https://widget.qiwi.com/widgets/big-widget-728x200?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPpTYa4fKdU5uJHx2uh8SB2CmKvWqyExtLjtqazDomu3D2e3R62SifzqMptpKmJCm1AYSd6H9RB4wrvZnQvhMpKeadJmteiMvonE8HQJBqR&noCache=true" width="728" height="200"allowTransparency="true" scrolling="no" frameBorder="0"></iframe>`,
-    },
   },
   {
-    name: "payeer",
+    name: walletType.payeer,
     img: iconWalletPayeer,
-    info: {
-      description: `Для совершения платежа совершите перевод на payeer кошелек:`,
-      requisites: `1BQ9qza7fn9snSCyJQB3ZcN46biBtkt4ee`,
-    },
   },
   {
-    name: "bitcoin",
+    name: walletType.perfect_money,
+    img: iconWalletPw,
+  },
+  {
+    name: walletType.bitcoin,
     img: iconWalletBitcoin,
-    info: {
-      description: `Совершите платеж со своего криптокошелька используя реквезиты ниже, после выполнения операции напишите нам "Я оплатил". После подтверждения ваш баланс будет пополнен.`,
-      requisites: `1BQ9qza7fn9snSCyJQB3ZcN46biBtkt4ee`,
-    },
   },
 
   {
-    name: "ethereum",
+    name: walletType.ethereum,
     img: iconWalletEthereum,
-    info: {
-      description: `Совершите платеж со своего криптокошелька используя реквезиты ниже, после выполнения операции напишите нам "Я оплатил". После подтверждения ваш баланс будет пополнен`,
-      requisites: `12321wsfsdvdr234213wfsgrtyru656987poikj`,
-    },
   },
   {
-    name: "usdtether",
+    name: walletType.usdtether,
     img: iconWalletUsdtether,
-    info: {
-      description: `Совершите платеж со своего криптокошелька используя реквезиты ниже, после выполнения операции напишите нам "Я оплатил". После подтверждения ваш баланс будет пополнен`,
-      requisites: `1BQ9qza7fn9snSCyJQB3ZcN46biBtkt4ee`,
-    },
   },
 ];
-const walletsChunk = getChunks(wallets);
+const walletsChunk = getChunks(walletsType);
 
 interface ReplenishmentWalletProps {}
 
 const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
   const dispatch = useDispatchTyped();
   const history = useHistory();
-  const { success } = useSelectorTyped((state: rootState) => state.wallets);
+  const {
+    success,
+    payeerUrl = "",
+    isLoading,
+    bills,
+  } = useSelectorTyped((state: rootState) => state.wallets);
   const { register, handleSubmit, errors, watch } = useForm({
     mode: "onChange",
   });
@@ -102,11 +98,22 @@ const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
   const [SweetAlertState, setSweetAlertState] = React.useState(false);
   const [redirect, setRedirect] = React.useState(false);
 
+  const isActiveComponent = watch("amount") && activeWallet;
+
+  const requisites = bills[activeWallet]?.requisites || "";
+
   React.useEffect(() => {
+    dispatch(getBills());
     return () => {
       dispatch(resetWallet());
     };
   }, []);
+
+  React.useEffect(() => {
+    if (payeerUrl) {
+      window.open(payeerUrl);
+    }
+  }, [payeerUrl]);
 
   React.useEffect(() => {
     let timeOut;
@@ -128,12 +135,13 @@ const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
 
   const onSubmit = (data) => {
     const message = data[activeWallet];
-    const req = {
+    const req: ReplenishmentRequest = {
       amount: data.amount,
-      activeWallet,
+      from_where_payment: activeWallet,
       message,
+      bill: requisites,
     };
-    dispatch(balanceReplenishment(req));
+    dispatch(replenishmentRequest(req));
   };
 
   const swalClose = () => {
@@ -157,81 +165,98 @@ const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
             Заявка на пополнение счета отправленна!
           </SweetAlert>
         )}
-        <Row>
-          <Col lg={12}>
-            <Modal.Header closeButton>
-              <Modal.Title className={styles.modal_title}>
-                Пополнение баланса
-              </Modal.Title>
-            </Modal.Header>
-          </Col>
-        </Row>
-        <Row>
-          <Col lg={{ offset: 2, span: 8 }}>
-            <Form.Group controlId="exampleForm.SelectCustom">
-              <CustomInput
-                reff={register()}
-                type="text"
-                placeholder={"Сумма пополнения"}
-                value={watch("amount")}
-                name={"amount"}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-        <Row className={styles.wallets}>
-          <Col lg={{ offset: 2, span: 8 }}>
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+        <>
+          {isLoading ? (
+            <div className={styles.fakeBg}>
+              <Loader />
+            </div>
+          ) : (
+            <>
               <Row>
-                <Col sm={12}>
-                  <Nav variant="pills" bsPrefix={"Wallets"}>
-                    {walletsChunk.map((wallet, i) => {
-                      return (
-                        <div key={i} className={"walletsDesk"}>
-                          {wallet.map(({ name, img }) => {
+                <Col lg={12}>
+                  <Modal.Header closeButton>
+                    <Modal.Title className={styles.modal_title}>
+                      Пополнение баланса
+                    </Modal.Title>
+                  </Modal.Header>
+                </Col>
+              </Row>
+              <Row>
+                <Col lg={{ offset: 2, span: 8 }}>
+                  <Form.Group controlId="exampleForm.SelectCustom">
+                    <CustomInput
+                      reff={register()}
+                      type="number"
+                      placeholder={"Сумма пополнения в долларах"}
+                      value={watch("amount")}
+                      name={"amount"}
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row className={styles.wallets}>
+                <Col lg={{ offset: 2, span: 8 }}>
+                  <Tab.Container
+                    id="left-tabs-example"
+                    defaultActiveKey="first"
+                  >
+                    <Row>
+                      <Col sm={12}>
+                        <Nav variant="pills" bsPrefix={"Wallets"}>
+                          {walletsChunk.map((wallet, i) => {
                             return (
-                              <Nav.Item key={name}>
-                                <Nav.Link
-                                  eventKey={name}
-                                  onClick={() => setActiveWallet(name)}
-                                >
-                                  <Image src={img} />
-                                </Nav.Link>
-                              </Nav.Item>
+                              <div key={i} className={"walletsDesk"}>
+                                {wallet.map(({ name, img }) => {
+                                  return (
+                                    <Nav.Item
+                                      key={name}
+                                      className={!name && styles.dspNone}
+                                    >
+                                      <Nav.Link
+                                        eventKey={name}
+                                        onClick={() => setActiveWallet(name)}
+                                      >
+                                        <Image src={img} />
+                                      </Nav.Link>
+                                    </Nav.Item>
+                                  );
+                                })}
+                              </div>
                             );
                           })}
-                        </div>
-                      );
-                    })}
-                  </Nav>
+                        </Nav>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col sm={12}>
+                        {isActiveComponent && (
+                          <Bill
+                            amount={watch("amount")}
+                            name={activeWallet}
+                            reff={register}
+                            loading={isLoading}
+                            requisites={requisites}
+                            errors={errors}
+                          />
+                        )}
+                      </Col>
+                    </Row>
+                  </Tab.Container>
                 </Col>
               </Row>
               <Row>
-                <Col sm={12}>
-                  <Tab.Content>
-                    {wallets.map(({ name, info }) => {
-                      return (
-                        <Tab.Pane key={name} eventKey={name}>
-                          <InfoBlock
-                            info={info}
-                            amount={watch("amount")}
-                            reff={register}
-                            name={name}
-                          />
-                        </Tab.Pane>
-                      );
-                    })}
-                  </Tab.Content>
-                </Col>
+                {isActiveComponent && (
+                  <Col
+                    lg={{ offset: 2, span: 8 }}
+                    className={styles.button_block}
+                  >
+                    <Button type="submit">Пополнить</Button>
+                  </Col>
+                )}
               </Row>
-            </Tab.Container>
-          </Col>
-        </Row>
-        <Row>
-          <Col lg={{ offset: 2, span: 8 }} className={styles.button_block}>
-            <Button type="submit">Отправить заявку</Button>
-          </Col>
-        </Row>
+            </>
+          )}
+        </>
       </Container>
     </Form>
   );

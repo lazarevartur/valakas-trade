@@ -108,7 +108,6 @@ export const ProgramsApi = {
         Authorization: `Bearer ${token}`,
       },
     };
-    console.log(name);
     const { data } = await axios.get(
       `${this.rootUrl}/priority/${name}`,
       config

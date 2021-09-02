@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import mongooseLeanVirtuals from "mongoose-lean-virtuals";
 import mrxPrograms from "./programModel.js";
 import optionalProgram from "./optionalProgramModel.js";
+import { roles } from "../config/role.js";
 
 const userSchema = new mongoose.Schema(
   {
@@ -19,7 +20,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       country: "",
     },
-    status: { type: String, default: "М1" },
+    status: {
+      type: String,
+      enum: ["M1", "M2", "M3", "M4", "M5"],
+      default: "M1",
+    },
     Inviting_id: {
       type: String,
       default: "",
@@ -61,25 +66,59 @@ const userSchema = new mongoose.Schema(
           ref: "User",
         },
       ],
-    },
-    programs: {
-      mrx: [
+      fifth: [
         {
-          _id: false,
-          start_time: {
-            type: Date,
-            default: Date.now(),
-          },
-          ending_time: {
-            type: Date,
-            required: true,
-          },
-          program: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "mrxPrograms",
-          },
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
         },
       ],
+      sixth: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+      ],
+      seventh: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+      ],
+      eighth: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+      ],
+      ninth: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+      ],
+      tenth: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+      ],
+    },
+    programs: {
+      mrx: {
+        start_time: {
+          type: Date,
+        },
+        ending_time: {
+          type: Date,
+        },
+        validity: { type: Number },
+        price: { type: Number },
+
+        program: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "mrxPrograms",
+        },
+      },
       //Количество, ценна, доходность, раунд
       optional: [
         {
@@ -189,6 +228,8 @@ const userSchema = new mongoose.Schema(
           type: [Number],
         },
       },
+      profit_investment_for_week: [{ type: Number }],
+      profit_referral_program_for_week: [{ type: Number }],
       linear_premium: {
         type: Number,
         default: 0,
@@ -244,14 +285,11 @@ const userSchema = new mongoose.Schema(
         type: String,
         default: "",
       },
-      WhatsApp: {
+      whatsApp: {
         type: String,
         default: "",
       },
-      other: {
-        type: String,
-        default: "",
-      },
+      avatarImg: { type: String, default: "" },
     },
     deposit_account: {
       type: Number,
@@ -262,6 +300,7 @@ const userSchema = new mongoose.Schema(
         );
       },
     },
+    access: { type: Number, default: roles.user },
   },
   {
     timestamps: true,
@@ -272,6 +311,33 @@ userSchema.plugin(mongooseLeanVirtuals);
 userSchema.virtual("count_line").get(function () {
   return Object.keys(this.partners).length;
 });
+
+userSchema.virtual("is_buy_program").get(function () {
+  return !!(this.programs_wallets.mrx || this.programs_wallets.options);
+});
+
+userSchema.virtual("personal_team_turnover").get(async function () {
+  let user;
+  user = await User.findById(this._id)
+    .select("partners")
+    .populate(`partners.first partners.second partners.third partners.fourth`)
+    .lean();
+  const objToArr = Object.entries(user.partners);
+  return objToArr.reduce((acc, [lineName, partners]) => {
+    partners.forEach((partner) => {
+      if (!partner) {
+        return 0;
+      }
+      let totalSum = 0;
+      Object.values(partner.programs_wallets).forEach((value) => {
+        totalSum += value;
+      });
+      acc += totalSum;
+    });
+    return acc;
+  }, 0);
+});
+
 userSchema.virtual("current_optional_program").get(async function () {
   let activeOptional;
 
@@ -284,13 +350,13 @@ userSchema.virtual("current_optional_program").get(async function () {
   if (!activeOptional) {
     return void 0;
   }
-  console.log(this.programs.optional);
   return this.programs.optional.find((item) => {
     //return activeOptional._id.equals(item.program) ? item : null;
 
     return String(activeOptional._id) === String(item.program);
   });
 });
+
 userSchema.virtual("active_mrx_program").get(async function () {
   let maxProgram = { _id: "", price: 0 };
   for (const item of this.programs.mrx) {
@@ -314,9 +380,8 @@ userSchema.virtual("income_partner_for_week").get(function () {
   const [initMongo, ...list] = Object.entries(
     this.metaData.partners_profit_for_week
   );
-
   const week = list[0][1].length;
-  if (week <= 7) {
+  if (week <= 6) {
     return [];
   }
 
@@ -331,6 +396,36 @@ userSchema.virtual("income_partner_for_week").get(function () {
     acc.push([nameLine, totalSum]);
     return acc;
   }, []);
+});
+
+userSchema.virtual("income_investment_for_week").get(function () {
+  const profitForWeek = this.metaData.profit_investment_for_week;
+  const week = profitForWeek.length;
+  if (week <= 6) {
+    return 0;
+  }
+
+  return profitForWeek.reduce((acc, value, i) => {
+    if (i < 7) {
+      acc += value;
+    }
+    return acc;
+  }, 0);
+});
+
+userSchema.virtual("income_referral_program_for_week").get(function () {
+  const profitForWeek = this.metaData.profit_referral_program_for_week;
+  const week = profitForWeek.length;
+  if (week <= 6) {
+    return 0;
+  }
+
+  return profitForWeek.reduce((acc, value, i) => {
+    if (i < 7) {
+      acc += value;
+    }
+    return acc;
+  }, 0);
 });
 
 userSchema.virtual("quantity_for_each_line").get(function () {
@@ -357,12 +452,23 @@ userSchema.virtual("total_earned").get(function () {
   return 0;
 });
 
+userSchema.virtual("total_earned_all_time").get(function () {
+  let total_earned_all_time = 0;
+  total_earned_all_time =
+    this.metaData.investment_package +
+    this.metaData.dividends +
+    this.metaData.linear_premium +
+    this.metaData.mentor_prime;
+  return total_earned_all_time;
+});
+
 userSchema.methods.matchPassword = async function (plainPassword) {
   //TODO УБРАТЬ КОМЕНТАРИЙ
 
   // return await bcrypt.compare(plainPassword, this.password);
   return plainPassword === this.password;
 };
+
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();

@@ -1,4 +1,7 @@
 @import "src/assets/globalStyles/style";
+.fakeBg {
+  max-height: 416px;
+}
 .wallets {
   margin-bottom: 30px;
 }
@@ -33,4 +36,7 @@
   button {
     width: 200px;
   }
+}
+.dspNone {
+  visibility: hidden;
 }

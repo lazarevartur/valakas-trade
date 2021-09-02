@@ -6,12 +6,19 @@
 }
 .title {
   margin-bottom: 50px ;
+  @media (max-width: 768px) {
+    font-size: 30px;
+    text-align: center;
+    }
 }
 .text {
   text-align: center;
   font-size: 16px;
   line-height: 160%;
   margin-bottom: 50px ;
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
 }
 .bg {
   padding-top: 80px;
@@ -22,4 +29,12 @@
   position: absolute;
   top: 0;
   right: 0;
+}
+.iframe {
+  width:800px;
+  height:450px;
+  @media (max-width: 768px) {
+    width:400px;
+    height:450px;
+  }
 }

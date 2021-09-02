@@ -38,39 +38,38 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
   );
   const location = useLocation();
   const dispatch = useDispatchTyped();
-  const isPaid = userDashboard.wallets?.start_account || 0;
+  const isPaid = userDashboard.totalInvestment || 0;
   React.useEffect(() => {
     if (Object.keys(userDashboard).length) {
-      dispatch(getMrxProgramById(userDashboard.programs?.activeMrx._id));
+      dispatch(getCurrentUser());
+      dispatch(getMrxProgramById(userDashboard.programs?.mrx.program));
     }
-  }, [userDashboard]);
+  }, []);
 
   React.useEffect(() => {
     if (location.state) {
-      dispatch(getMrxProgramById(userDashboard.programs?.activeMrx._id));
+      dispatch(getMrxProgramById(userDashboard.programs?.mrx.program));
       dispatch(getCurrentUser());
     }
   }, [location]);
 
-  const activeDays = numberDays(userDashboard.programs?.activeMrx.start_time);
-  const deposit = userDashboard.programs?.activeMrx.deposit || 0;
-  const investmentPackage =
-    userDashboard.programs?.activeMrx.investment_package || 0;
-  const dividends = userDashboard.programs?.activeMrx.dividends || 0;
-  const account_active = userDashboard.programs?.activeMrx.ending_time
-    ? new Date(userDashboard.programs?.activeMrx.ending_time).toLocaleString(
-        "ru",
-        {
-          timeZone: "UTC",
-          year: "numeric",
-          month: "numeric",
-          day: "numeric",
-        }
-      )
+  const activeDays = numberDays(userDashboard.programs?.mrx.start_time);
+  const deposit = userDashboard.programs?.mrx.price || 0;
+  const investmentPackage = userDashboard.programs?.mrx.investment_package.toFixed(1) || 0;
+  const dividends = userDashboard.dividends.toFixed(1) || 0;
+  const mrxPercent = userDashboard.programs?.mrx.mrxPercent || 0;
+  const account_active = userDashboard.programs?.mrx.ending_time
+    ? new Date(userDashboard.programs?.mrx.ending_time).toLocaleString("ru", {
+        timeZone: "UTC",
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+      })
     : 0;
   const lineCount = mrxProgram.line_count || 3;
 
-  const linearPremium = userDashboard.programs?.activeMrx.linear_premium || 0;
+  const linearPremium = userDashboard.programs?.mrx.linear_premium.toFixed(1) || 0;
+
 
   const chartData = [
     {
@@ -79,10 +78,10 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
     },
     {
       name: "Начисления по инвестиционному пакету",
-      value: investmentPackage,
+      value: +investmentPackage,
     },
-    { name: "Дивиденты", value: dividends },
-    { name: "Выплаты по реферальной программе", value: linearPremium },
+    { name: "Дивиденты", value: +dividends },
+    { name: "Выплаты по реферальной программе", value: +linearPremium },
   ];
 
   if (isLoading) {
@@ -93,8 +92,11 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
     );
   }
   if (!isPaid) {
-    return <Plug />;
+    return (
+      <Plug text={"Для приобретения программы необходимо пополнить счет!"} />
+    );
   }
+
   return (
     <Container>
       <DashboardTitleBlock title={"Доходность"} />
@@ -112,9 +114,9 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Текущая базоваая ставка доходности:</Col>
+          <Col lg={5}>Текущая базовая ставка доходности:</Col>
           <Col lg={4}>
-            <span className={styles.accent}>2%</span>
+            <span className={styles.accent}>{mrxPercent}%</span>
           </Col>
         </Row>
         <Row>
@@ -190,7 +192,7 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
                 <span>{investmentPackage}$</span>
               </ListGroup.Item>
               <ListGroup.Item className={styles.third}>
-                Дивиденты <span>{dividends}$</span>
+                Дивиденды <span>{dividends}$</span>
               </ListGroup.Item>
               <ListGroup.Item className={styles.fourth}>
                 Выплаты по реферальной программе <span>{linearPremium}$</span>

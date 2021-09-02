@@ -8,6 +8,7 @@ import { ReplenishmentWallet } from "../ReplenishmentWallet";
 import { TransferWallet } from "../TransferWallet";
 import { WithdrawWallet } from "../WithdrawWallet";
 import BuyPrograms from "./buyPrograms/BuyPrograms";
+import {BuyPriority} from "./buyPriority";
 
 interface BalanceProps extends ModalProps {}
 
@@ -16,6 +17,7 @@ const popups = {
   [WalletTypeEnum.withdraw]: WithdrawWallet,
   [WalletTypeEnum.transfer]: TransferWallet,
   [WalletTypeEnum.buyProgram]: BuyPrograms,
+  [WalletTypeEnum.buyPriority]: BuyPriority,
 };
 
 const Balance: React.FC<BalanceProps> = () => {

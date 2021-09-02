@@ -104,3 +104,19 @@ header {
     display: none;
   }
 }
+.visible_desktop {
+  @media (max-width: 576px) { display: none }
+  @media (max-width: 768px) { display: none }
+}
+.visible_mobile {
+  .logout {
+
+  }
+  .main_menu {
+    align-items: flex-end;
+  .button {
+    font-size: 14px;
+    padding: 5px;
+  }
+  }
+}

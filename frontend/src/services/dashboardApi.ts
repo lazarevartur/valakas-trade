@@ -26,4 +26,16 @@ export const DashboardApi = {
     const { data } = await axios.get(`${this.rootUrl}/team`, config);
     return data;
   },
+
+  async setProfile(token: string,req: any): Promise<ResponseApi> {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const { data } = await axios.patch(`${this.rootUrl}/me`,req, config);
+    return data;
+  },
+
 };

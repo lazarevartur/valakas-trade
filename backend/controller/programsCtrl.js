@@ -13,7 +13,8 @@ export const getMrxPrograms = asyncHandler(async (req, res) => {
     console.log(e);
     return res.send("Programs not found");
   }
-  return res.json(allPrograms);
+  const ask = allPrograms.sort(aksSortMrx)
+  return res.json(ask);
 });
 
 export const getAvailableMrxPrograms = asyncHandler(async (req, res) => {
@@ -21,22 +22,28 @@ export const getAvailableMrxPrograms = asyncHandler(async (req, res) => {
   let allPrograms;
   let user;
   try {
-    allPrograms = await mrxPrograms.find({});
+    allPrograms = await mrxPrograms.find({}).lean();
     user = await User.findById(userId);
   } catch (e) {
     console.log(e);
     return res.send("Programs not found");
   }
-  const priceWithId = transformArr(allPrograms);
-  const biggetstPrice = findBiggestPriceInArray(user.programs.mrx, priceWithId);
-  const availablePrice = avaibleMrxProgram(allPrograms, biggetstPrice);
-  console.log(biggetstPrice);
+  const {price = 0} = user.programs.mrx
+  const availablePrograms = allPrograms.filter((item) => {
+    return item.price > price
+  }).map((item) => {
+  const diffPrice = item.price - price
+    return {...item, price: diffPrice}
+  })
+  const ask = availablePrograms.sort(aksSortMrx)
 
-  return res.json(availablePrice);
+
+  return res.json(ask);
 });
 
 export const getMrxProgram = asyncHandler(async (req, res) => {
   const programId = req.body.program_id;
+  console.log(programId)
   let program;
   try {
     program = await mrxPrograms.findById(programId);
@@ -61,7 +68,8 @@ export const getOptionalPrograms = asyncHandler(async (req, res) => {
     return res.send("Programs not found");
   }
 
-  return res.json(allPrograms);
+  const ask = allPrograms.sort(aksSortOptional)
+  return res.json(ask);
 });
 
 export const getActiveOptionalProgram = asyncHandler(async (req, res) => {
@@ -102,7 +110,9 @@ export const getPriorityPrograms = asyncHandler(async (req, res) => {
     return res.send("Programs not found");
   }
 
-  return res.json(allPrograms);
+  const ask = allPrograms.sort(aksSortPriority)
+
+  return res.json(ask);
 });
 
 export const getPriorityProgramByName = asyncHandler(async (req, res) => {
@@ -137,22 +147,12 @@ export const getPurchasedPriorityPrograms = asyncHandler(async (req, res) => {
   }
 });
 
-function findBiggestPriceInArray(arr, map) {
-  let bigPrice = 0;
-  arr.forEach((item) => {
-    bigPrice = map[item.program] > bigPrice ? map[item.program] : bigPrice;
-  });
-  return bigPrice;
+function aksSortOptional (a ,b) {
+  return a.round_number - b.round_number
 }
-function transformArr(arr) {
-  const map = {};
-  arr.forEach((item) => {
-    map[item._id] = item.price;
-  });
-  return map;
+function aksSortMrx (a ,b) {
+  return a.price - b.price
 }
-function avaibleMrxProgram(arr, price) {
-  return arr.filter((item) => {
-    return item.price > price;
-  });
+function aksSortPriority (a ,b) {
+  return a.createdAt - b.createdAt
 }

@@ -6,6 +6,7 @@ import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { RoutePath } from "../../../routes/routesConfig";
 import images from "../../../assets/img/CommunityImg.jpg";
+import { useTranslation } from "react-i18next";
 
 interface BecomePartnerProps extends defaultComponentProps {
   img?: string;
@@ -19,6 +20,7 @@ const BecomePartner: React.FC<BecomePartnerProps> = ({
   title = "Станьте партнером Mirax",
   regButton = true,
 }) => {
+  const { t } = useTranslation();
   return (
     <div className={cn(styles.BecomePartner, { [className]: className })}>
       <Container>
@@ -28,7 +30,9 @@ const BecomePartner: React.FC<BecomePartnerProps> = ({
               <div className={cn(styles.title)}>{title}</div>
               {regButton ? (
                 <LinkContainer to={RoutePath.registration}>
-                  <Button className={cn(styles.button)}>СТАТЬ ПАРТНЕРОМ</Button>
+                  <Button className={cn(styles.button)}>
+                    {t("ui.become_partner")}
+                  </Button>
                 </LinkContainer>
               ) : null}
             </Container>
