@@ -22,36 +22,34 @@ import {
 
 const loadingTime = 700;
 
-export const register = (candidate: IUserRegistration) => async (
-  dispatch: AppDispatch
-) => {
-  try {
-    dispatch(USER_REGISTER_REQUEST());
-    const data = await AuthApi.register(candidate);
-    setTimeout(() => {
-      dispatch(USER_REGISTER_SUCCESS(data));
-      Storage.set(StoregeKey.USER, data);
-    }, loadingTime);
-  } catch (e) {
-    dispatch(USER_REGISTER_FAIL(e));
-  }
-};
+export const register =
+  (candidate: IUserRegistration) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(USER_REGISTER_REQUEST());
+      const data = await AuthApi.register(candidate);
+      setTimeout(() => {
+        dispatch(USER_REGISTER_SUCCESS(data));
+        Storage.set(StoregeKey.USER, data);
+      }, loadingTime);
+    } catch (e) {
+      dispatch(USER_REGISTER_FAIL(e));
+    }
+  };
 
-export const login = (emailAndPassword: userLogin) => async (
-  dispatch: AppDispatch
-) => {
-  try {
-    dispatch(USER_LOGIN_REQUEST());
-    const data = await AuthApi.login(emailAndPassword);
-    setTimeout(() => {
-      dispatch(USER_LOGIN_SUCCESS(data));
-      setToken(data.token);
-      Storage.set(StoregeKey.USER, data);
-    }, loadingTime);
-  } catch (e) {
-    dispatch(USER_LOGIN_FAIL(e));
-  }
-};
+export const login =
+  (emailAndPassword: userLogin) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(USER_LOGIN_REQUEST());
+      const data = await AuthApi.login(emailAndPassword);
+      setTimeout(() => {
+        dispatch(USER_LOGIN_SUCCESS(data));
+        setToken(data.token);
+        Storage.set(StoregeKey.USER, data);
+      }, loadingTime);
+    } catch (e) {
+      dispatch(USER_LOGIN_FAIL(e));
+    }
+  };
 
 export const chekAuth = () => async (dispatch: AppDispatch, getState?: any) => {
   const {
@@ -61,7 +59,7 @@ export const chekAuth = () => async (dispatch: AppDispatch, getState?: any) => {
   } = getState();
   try {
     dispatch(USER_DASHBOARD_REQUEST());
-    const { data } = await AuthApi.chekAuth(token);
+    await AuthApi.chekAuth(token);
     dispatch(USER_DASHBOARD_CHEK_AUTH());
   } catch (e) {
     dispatch(USER_DASHBOARD_FAIL(e));

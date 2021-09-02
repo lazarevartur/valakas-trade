@@ -8,6 +8,17 @@
     line-height: 130%;
     color: #333333;
   }
+  @media (max-width: 768px) {
+    .title {
+      font-size: 35px;
+      line-height: 40px;
+    }
+    .img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
 }
 .container {
   background-color: #fff;

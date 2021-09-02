@@ -1,9 +1,8 @@
 import React, { ReactNode } from "react";
-import { Redirect, Route, useLocation } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { AccessRouts } from "../config";
-import { useSelectorTyped } from "../hooks/useTypedRedux";
-import { rootState } from "../types/types";
 import { RoutePath } from "./routesConfig";
+import useJwtAuth from "../hooks/useJwtAuth";
 
 interface ProtectedRouteProps {
   children?: ReactNode;
@@ -18,9 +17,8 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   access = AccessRouts.all,
   ...rest
 }) => {
-  const {
-    userData: { access: userRole = AccessRouts.all },
-  } = useSelectorTyped((state: rootState) => state.authentication);
+  // @ts-ignore
+  const { access: userRole } = useJwtAuth();
   return (
     <Route
       {...rest}

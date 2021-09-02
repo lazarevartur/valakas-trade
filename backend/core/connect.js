@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const conectDB = async () => {
   try {
@@ -6,11 +6,12 @@ const conectDB = async () => {
       useUnifiedTopology: true,
       useNewUrlParser: true,
       useCreateIndex: true,
-    })
-    console.log(`mongoDB connected: ${conn.connection.host}`.cyan.underline)
+      useFindAndModify: true,
+    });
+    console.log(`mongoDB connected: ${conn.connection.host}`.cyan.underline);
   } catch (error) {
-    console.error(`Error: ${error.message}`.red.bold)
-    process.exit(1)
+    console.error(`Error: ${error.message}`.red.bold);
+    process.exit(1);
   }
-}
-export default conectDB
+};
+export default conectDB;

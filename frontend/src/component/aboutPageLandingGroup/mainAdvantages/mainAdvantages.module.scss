@@ -1,61 +1,74 @@
-.title {
-  font-weight: 600;
-  font-size: 54px;
-  line-height: 64px;
-  text-align: center;
-  color: #333333;
-}
 .MainAdvantages {
   padding: 80px 0;
   min-height: 950px;
   margin-bottom: 80px;
   background: #f9f9f9;
-}
-.bg_svg {
-  position: absolute;
-  top: 50px;
-  right: 0;
-}
-.big_number {
-  /* Trade bitcoins, EDC */
-
-  position: absolute;
-  left: 9.03%;
-  right: 73.82%;
-  top: 21.54%;
-  bottom: 60.67%;
-  pointer-events: none;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 178px;
-  line-height: 150%;
-  /* or 267px */
-  display: flex;
-  align-items: center;
-
-  /* Acs/1 */
-  color: #fec825;
-
-  opacity: 0.2;
-}
-.advantage {
-  position: relative;
-  margin-top: 200px;
-  p {
-    color: #333333;
-    position: absolute;
-    left: 29%;
-    top: 5px;
-    font-weight: 400;
-    font-size: 15px;
-  }
-  strong {
-    color: #333333;
+  .title {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 54px;
+    line-height: 64px;
+    text-align: center;
+    color: #333333;
   }
-}
-.sub_title {
-  text-align: center;
+  .bg_svg {
+    position: absolute;
+    top: 50px;
+    right: 0;
+  }
+  .big_number {
+    /* Trade bitcoins, EDC */
+
+    position: absolute;
+    left: 9.03%;
+    right: 73.82%;
+    top: 21.54%;
+    bottom: 60.67%;
+    pointer-events: none;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 178px;
+    line-height: 150%;
+    /* or 267px */
+    display: flex;
+    align-items: center;
+
+    /* Acs/1 */
+    color: #fec825;
+
+    opacity: 0.2;
+  }
+  .advantage {
+    position: relative;
+    margin-top: 200px;
+    p {
+      color: #333333;
+      position: absolute;
+      left: 29%;
+      top: 5px;
+      font-weight: 400;
+      font-size: 15px;
+    }
+    strong {
+      color: #333333;
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+  .sub_title {
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    .advantage {
+      position: static;
+     p {
+       left: 0;
+       top: 30%
+     }
+    }
+    .title {
+      font-size: 35px;
+      line-height: 40px;
+    }
+  }
 }

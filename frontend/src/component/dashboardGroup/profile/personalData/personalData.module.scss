@@ -23,5 +23,16 @@
   }
   .red {
     color: #eb5757;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+.file_button {
+  .input {
+    display: none;
+  }
+  span {
+    color: #2f80ed;
+    cursor: pointer;
   }
 }

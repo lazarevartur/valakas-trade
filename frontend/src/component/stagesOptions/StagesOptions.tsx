@@ -9,7 +9,8 @@ import optionImg4 from "../../assets/svg/system-uicons_target.svg";
 import optionImg5 from "../../assets/svg/Calendar.svg";
 import optionImg6 from "../../assets/svg/Clock.svg";
 import { IOptionalData, optionalStatus } from "../../types/types";
-import { getRuDate, ruDays } from "../../utils/utils";
+import { getRuDate, getRuFormatNumbers, ruDays } from "../../utils/utils";
+import { useTranslation } from "react-i18next";
 
 // const data = [
 //   {
@@ -69,11 +70,14 @@ interface StagesOptionsProps {
 }
 
 const StagesOptions: React.FC<StagesOptionsProps> = ({ rounds }) => {
+  const { t } = useTranslation();
   return (
     <>
       <Row>
         <Col lg={12}>
-          <h2 className={cn(styles.title)}>Этапы опционов</h2>
+          <h2 className={cn(styles.title)}>
+            {t("Optional.StagesOptions.title")}
+          </h2>
         </Col>
       </Row>
       <Tabs
@@ -86,11 +90,15 @@ const StagesOptions: React.FC<StagesOptionsProps> = ({ rounds }) => {
           const diff = item.end_round - Date.now();
           const days = new Date(diff).getDate();
           const toEnd = `${days} ${ruDays(days)}`;
+          const profit = (item.profitability * 100).toFixed(1) || 0;
           return (
             <Tab
               key={i}
               eventKey={item.round_number}
-              title={`${item.round_number} раунд`}
+              title={`${item.round_number}  ${t(
+                "Optional.StagesOptions.round"
+              )}`}
+              className={styles.optional_stage}
             >
               <div className={"pt-5 pb-5"}>
                 <Row className={"pb-5"}>
@@ -98,7 +106,7 @@ const StagesOptions: React.FC<StagesOptionsProps> = ({ rounds }) => {
                     <div className={styles.description}>
                       <Image src={optionImg1} alt="" />
                       <div className={styles.textBlock}>
-                        <span>Цена опциона</span>
+                        <span>{t("Optional.StagesOptions.tab_title1")}</span>
                         <strong>{item.cost} $</strong>
                       </div>
                     </div>
@@ -107,8 +115,8 @@ const StagesOptions: React.FC<StagesOptionsProps> = ({ rounds }) => {
                     <div className={styles.description}>
                       <Image src={optionImg2} />
                       <div className={styles.textBlock}>
-                        <span>ВЫДЕЛЕНО ОПЦИОНОВ</span>
-                        <strong>{item.quantity}</strong>
+                        <span>{t("Optional.StagesOptions.tab_title2")}</span>
+                        <strong>{getRuFormatNumbers(item.quantity)}</strong>
                       </div>
                     </div>
                   </Col>
@@ -116,8 +124,8 @@ const StagesOptions: React.FC<StagesOptionsProps> = ({ rounds }) => {
                     <div className={styles.description}>
                       <Image src={optionImg3} />
                       <div className={styles.textBlock}>
-                        <span>ДОХОДНОСТЬ НА ВЛОЖЕННЫЙ КАПИТАЛ</span>
-                        <strong>{item.profitability} %</strong>
+                        <span>{t("Optional.StagesOptions.tab_title3")}</span>
+                        <strong>{profit} %</strong>
                       </div>
                     </div>
                   </Col>
@@ -127,8 +135,8 @@ const StagesOptions: React.FC<StagesOptionsProps> = ({ rounds }) => {
                     <div className={styles.description}>
                       <Image src={optionImg4} />
                       <div className={styles.textBlock}>
-                        <span>ЦЕЛЬ СБОРА / СОБРАНО</span>
-                        <strong>{item.purpose} $</strong>
+                        <span>{t("Optional.StagesOptions.tab_title4")}</span>
+                        <strong>{getRuFormatNumbers(item.purpose)} $</strong>
                       </div>
                     </div>
                   </Col>
@@ -136,7 +144,7 @@ const StagesOptions: React.FC<StagesOptionsProps> = ({ rounds }) => {
                     <div className={styles.description}>
                       <Image src={optionImg5} />
                       <div className={styles.textBlock}>
-                        <span>НАЧАЛО РАУНДА / ЗАВЕРШЕНИЕ РАУНДА</span>
+                        <span>{t("Optional.StagesOptions.tab_title5")}</span>
                         <strong>{`${startRound} / ${endRound}`}</strong>
                       </div>
                     </div>
@@ -145,12 +153,13 @@ const StagesOptions: React.FC<StagesOptionsProps> = ({ rounds }) => {
                     <div className={styles.description}>
                       <Image src={optionImg6} />
                       <div className={styles.textBlock}>
-                        <span>ОСТАЛОСЬ ДО ЗАВЕРШЕНИЯ РАУНДА</span>
+                        <span>{t("Optional.StagesOptions.tab_title6")}</span>
                         <strong className={styles.accent}>
                           {item.status === optionalStatus.active && toEnd}
                           {item.status === optionalStatus.passed &&
-                            "Раунд завершен"}
-                          {item.status === optionalStatus.future && "Ожидание"}
+                            t("Optional.StagesOptions.end_round")}
+                          {item.status === optionalStatus.future &&
+                            t("Optional.StagesOptions.pending")}
                         </strong>
                       </div>
                     </div>

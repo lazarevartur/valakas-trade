@@ -1,0 +1,40 @@
+@import "./src/assets/globalStyles/style";
+@import "./src/assets/globalStyles/variables";
+
+.faq {
+  h2 {
+    padding-bottom: 10px;
+    font-size: 40px;
+    font-weight: 500;
+  }
+  padding: 60px 0;
+  .card_Header {
+    background: #fff;
+    border-bottom: none;
+    button {
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+  .card {
+    margin-bottom: 20px;
+  }
+}
+.title_accordion {
+  cursor: pointer;
+  position: relative;
+  font-size: 18px;
+  line-height: 16px;
+  color: #333333;
+  padding: 10px 30px;
+  span {
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    top: 2px;
+  }
+}
+.card_body {
+  color: #686868;
+}

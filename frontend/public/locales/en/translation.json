@@ -1,0 +1,651 @@
+{
+  "HomePage": {
+    "title": "Ready investment solutions with daily income",
+    "text": "Mirax platform provides broad investment proposals in blockchain industry projects to create active and passive income through an affiliate program model",
+    "videoBlock" : {
+      "title" : "Hurry up to become a partner",
+      "text" : "With Mirax, asset management strategies are focused on results"
+    },
+    "benefitsBlock" : {
+      "title" : "Why invest now",
+      "firstBlock" : {
+        "title": "Profitability 22% per month",
+        "text": "Choose from the presented tariff packages with a high payback of up to 300% per annum. Guaranteed income in a day"
+      },
+      "secondBlock" : {
+        "title": "Profitable business model",
+        "text": "The ability to build your own structure thanks to integrated referral systems, receiving additional income, bonuses and bonuses for activity"
+      },
+      "thirdBlock" : {
+        "title": "Lack of risks",
+        "text": "No illegal projects, trading on stock exchanges, raising or lowering transactions that carry risk"
+      }
+    },
+    "wantMore" : {
+      "title" : "For those who want more",
+      "text": "Choose any program in a comfortable environment.",
+      "MRX-invest": {
+        "title": "Program",
+        "description": "Promotion of the company in the blockchain industry <strong>MRX-invest</strong> <br /> uses a linear marketing plan.",
+        "1block": {
+          "title": "Volume of investment packages",
+          "text": "from 100 to 10,000 (6 investment packages)"
+        },
+        "2block": {
+          "title": "Profitability",
+          "text": "Floating, up to 2% per day, seven days a week, and depends on the volume of the investment package"
+        },
+        "3block": {
+          "title": "Term of the work",
+          "text": "210-260 calendar days"
+        }
+      }
+    },
+    "PTL": {
+      "title": "Profitability table",
+      "trTh1": "Program",
+      "trTh2": "Deposit ",
+      "trTh3": "Terms ",
+      "trTh4": "Income ",
+      "trTh5": "Payback",
+      "days": "days"
+    },
+    "PC": {
+      "title": "Profit calculator",
+      "ui": {
+        "Invest_plan": "Invest plan",
+        "Sum": "Sum",
+        "select_program": "Select a program",
+        "daily" : " daily",
+        "at_the_end": " at the end of the rounds",
+        "accrual": "ACCRUAL",
+        "In_day": "In a day",
+        "total_profit" : "TOTAL PROFIT",
+        "total_period": "For the entire period",
+        "1des": "Please note that the average income is indicated",
+        "2des": "Period \"for the entire period\" means 250 days, for more details on the terms of the packages you can find on the page of the MRX-invest program.\n",
+        "3des": "Return on Optional program is specified without dividends. Dividends will be accrued every month after the project is completed. For more information, go to the Optional program page\n"
+      }
+    },
+    "news": {
+      "title": "News",
+      "all_news": "All news"
+    },
+    "BecomePartner" : {
+      "title" : "Become a Mirax partner and make your business highly profitable from the first day"
+    }
+  },
+  "AboutPage": {
+    "HighQualityPrototype": {
+      "title": "Solve these problems forever",
+      "row1": "How to increase your capital?",
+      "row2": "Where to invest so as not to burn out(fail)?",
+      "row3": "How do I get income that will cover my expenses?"
+    },
+    "descriptionBLock": {
+      "title": "Be guided by a balance between possible risks and potential returns",
+      "block.text1": "In the modern market, financial instruments work in one direction, limiting the opportunities for investors and increasing risks.",
+      "block.text2": " expands earning opportunities for its partners, combining the most profitable and promising areas: blockchain projects, mining companies, digital products, network companies and startups. Discover risk-free financial freedom"
+    },
+    "MainAdvantages": {
+      "title": "A quick start is - the best result",
+      "sub_title": "Get started now so your funds start working for you",
+      "advantage_block1": {
+        "title": "Sign up for free.",
+        "text": "Registration takes no more than three minutes. You will be able to manage and control your funds right in your personal account."
+      },
+      "advantage_block2": {
+        "title": "Select a program.",
+        "text": "Top up your balance and choose the program with the most suitable conditions."
+      },
+      "advantage_block3": {
+        "title": "Earn money.",
+        "text": "Start earning from day one! You can withdraw funds at the end of the program period or participate in a new program to earn more!"
+      }
+    },
+    "MiraxHistory":{
+      "title": "Mirax Story: Ideas, Innovation and Growth",
+      "text": "Over the past 12 years, Mirax has grown from an 8-person startup to a global company trusted by over 1,500 private and corporate investors to manage the assets. Our clients receive investment products, technologies and tools that can meet current spending needs, accumulate income and develop.",
+      "text2": "Look at the way we have come.",
+      "line1": "Establishment of the Mirax company and commencement of securities management activities, brokerage and dealer activities.",
+      "line2": "With the development of cryptocurrencies, Mirax, together with individual partners and contractors, begins to invest in mining",
+      "line3": "Creation of the first mining farms in China. Providing services for the development and implementation of a mining project at the request of investors, including the supply of devices from China, installation and configuration of mining. Thanks to this, investors own their equipment, independently control the project implementation process at every stage, and receive rewards. Mirax gains the necessary experience in the field of mining investment",
+      "line4": "Entering the US market. The Mirax business unit is part of IBM. Investments in hardware and software, provision of consulting services in the field of IT",
+      "line5": "The division was acquired by Western Digital, a computer electronics manufacturer.",
+      "line6": "Attracting large American investors. Active development in the US market. Creation of a group of investment solutions, providing portfolio solutions to meet the needs of clients with a yield of about 80% per annum",
+      "line7": "Launching a managed volatility strategy, providing clients with a new risk management tool to achieve high returns with less volatility. Creation of an anti-crisis program",
+      "line8": "Entering the Russian market. Strengthening Fundamental Capital Growth and Active Fixed Income Teams Using an Affiliate Program Model"
+    },
+    "CompanyInterest": {
+      "title": "Mutually beneficial cooperation with Mirax",
+      "text": "Each user has the opportunity to grow within the framework of the affiliate program. You can increase your profits without restrictions, and in addition, receive bonuses for participating in the development of the platform. As an intermediary platform, Mirax earns a percentage of the profits. Thus, not only the investor but also the company grows"
+    },
+    "EnableComplaint": {
+      "title": "Leave a request for a free consultation",
+      "button": "Send a request"
+    }
+  },
+  "HowToMakeMoneyHere": {
+    "title": "How to start making money with Mirax\n",
+    "row1": {
+      "title": "A new approach to making money\n",
+      "text1": "Why does the majority do not have their own savings, but have an outstanding loan, live paycheck to paycheck and know about vacations in warm countries only from the Internet? The most significant problem is that people are shy, afraid, or simply do not know what to do, how to make money.\n",
+      "text2": "They live with a negative attitude that money is not given just like that, it is hard to earn it, and for this you need to spin like a squirrel in a wheel. The result of such thinking is mere pennies for hard daily work. If you ask such a person if he wants to be rich, he will certainly answer yes. But if you ask how much money he needs per month, he probably won't be able to give a clear answer. This is the problem. You must clearly know what you want to achieve and go towards your goal, using every opportunity."
+    },
+    "row2": {
+      "title": "Think outside the box",
+      "text1": "As a child, we heard: money is not happiness. As a result, we do not allow ourselves to be happy, we refuse interesting offers and hesitate to make a decision, losing our profit. Of course, money is not happiness itself, but it opens up new opportunities, makes our life complete and enhances the state of happiness.",
+      "text2": "To get a decent income, it is important to choose a suitable earning strategy. And also - get rid of the misconceptions that prevent you from effectively managing money and earning a lot."
+    },
+    "row3": {
+      "title": "From dream to result",
+      "text1": "Investing in blockchain industry projects is one of the ways to increase your capital and provide yourself with income. But without experience and knowledge, it is quite difficult to conquer this niche. You need to spend a lot of time to study the subject of your investment, but this does not guarantee a stable income yet."
+    },
+    "row4": {
+      "text1": "Investors of the Mirax platform are given the opportunity to earn regular rewards from investments in several projects at once - from mining cryptocurrency using mining farms to DeFi platforms, staking and BNB Vault. So, you get several options for the flow of funds, which, when combined with each other, can represent a significant amount. At the same time, you do not need to have in-depth knowledge of the subject of investment - Mirax carefully selects recommended projects and conducts a detailed audit before presenting them to the investor."
+    },
+    "row5": {
+      "title": "Life satisfaction grows with wealth",
+      "text1": "Our mission is to build a global network for our investors, in which you decide when and in which project to invest, manage your own money and provide yourself with a high income without any risks. You can take advantage of the diverse investment offer of Mirax, designed for different investors with different deposits."
+    },
+    "row6": {
+      "title": "Do you want to change your life?",
+      "text1": " Do it with Mirax now",
+      "text2": "Become a partner"
+    }
+  },
+  "MrxInvest": {
+    "MrxInvestBenefitsData": {
+      "title": "Benefits with MRX-invest",
+      "1block": {
+        "text": "Earnings from deposits in several areas at the same time: cryptocurrency mining, deposits, Launchpool, DeFi-staking"
+      },
+      "2block": {
+        "text": "Daily payments up to 2% seven days a week"
+      },
+      "3block": {
+        "text": "The opportunity to participate in an affiliate program with a yield of up to 40% per month"
+      },
+      "4block": {
+        "text": "Simple linear marketing plan without restrictions on the development of the structure in width"
+      }
+    },
+    "JumbotronCustom": {
+      "text": "The MRX-invest investment program allows partners to receive income at a floating rate of up to 2% per day, depending on the contribution. It is based on classic marketing\n"
+    },
+    "InvestmentPackages": {
+      "title": "Investment packages",
+      "text": "Choose any package from the below and get profitability on the following conditions",
+      "description1": {
+        "text1": "up to",
+        "text2": "floating rate"
+      },
+      "description2": {
+        "text1": "days",
+        "text2": "calendar days"
+      },
+      "description3": {
+        "text1": "time of setting the yield"
+      },
+      "desk": "A partner has the right to purchase no more than one investment package. To increase the investment package, upgrade to the next package with a volume larger than the previous one"
+    },
+    "BinarCard": {
+      "card_title": "Investment package",
+      "deskBlock1": {
+        "text1": "The term of the investment package",
+        "text2": "days"
+      },
+      "deskBlock2": {
+        "text1": "Surcharge to daily rate of return"
+      },
+      "deskBlock3": {
+        "text1": "Linear premium levels"
+      },
+      "footer": {
+        "text1": "Price",
+        "text2": "Buy"
+      }
+    }
+  },
+  "Optional": {
+    "button_buy": "Buy",
+    "dataBenefist": {
+      "title": "Benefits with Optional",
+      "1block": "Dividends up to 50% on the invested capital monthly",
+      "2block": "The ability to exchange options for company shares after the launch of the program in July 2022",
+      "3block": "Affiliate program with payments to the network up to 50%",
+      "4block": "Terms of program implementation - less than 1 year"
+    },
+    "JumbotronCustom" : {
+      "title": "The Optional program uses an equity crowdfunding model. Partners become co-owners of the company and participate in the distribution of profits by purchasing options"
+    },
+    "description": {
+      "title1": "What you are getting",
+      "title2": "How does growth happen?",
+      "text1": "Using experience in assembling and supplying digital equipment in China, Mirax will launch Placebo antivirus program. This tool will increase the protection of user funds stored in gadgets. This project is being scaled according to the crowdfunding model. The \"Placebo\" development phase includes 10 rounds for 300 days, in each of which you can purchase options at a fixed price.",
+      "text2": "After the implementation of the anti-virus program in retail outlets around the world and the expansion of the functionality, \"Placebo\" becomes an official partner of leading manufacturers of equipment and is introduced into electronic devices at the production stage. Due to geographic scaling and increased sales of the program, the value and profit of the company increases and, accordingly, the profit of partners"
+    },
+    "StagesOptions": {
+      "title": "Options stages",
+      "round": "round",
+      "tab_title1": "Option price",
+      "tab_title2": "HIGHLIGHTED OPTIONS",
+      "tab_title3": "RETURN ON INVESTMENT CAPITAL",
+      "tab_title4": "PURPOSE OF COLLECTION / COLLECTED",
+      "tab_title5": "START OF ROUND / END OF ROUND",
+      "tab_title6": "REMAINING UNTIL THE ROUND IS COMPLETED",
+      "end_round": "Round is over",
+      "pending": "pending"
+    },
+    "Satisfied": {
+      "title": "Dividends on invested capital",
+      "text1": "You can receive monthly dividends from the contribution immediately after the launch of the \"Placebo\" program",
+      "text2": "Investments in the <strong>1st round</strong> bring the option holder a yield of <strong>50%</strong>, in the <strong>10th round - 15%</strong>",
+      "text3": "For example, you buy 20,000 options in 1 round for $ 1,200 ($ 0.06 x 20,000). Your passive income will be $ 600 per month (50% of the deposit). If you invest the same amount in the last round, your monthly income is $ 180. Thus, the earlier you buy options, the higher the percentage of your profitability.",
+      "desk_date_start": "Program launch date",
+      "date_start": "July 15, 2022"
+    }
+  },
+  "Priority" : {
+    "dataBenefist": {
+      "title": "Priority benefits",
+      "block1": "The opportunity to realize your dream: buy an apartment, a car, gadgets or organize a wedding or travel for only 30-60% of the cost\n",
+      "block2": "Selection of investment programs tied to certain goods and services",
+      "block3": "100% protection of your investment by concluding a targeted loan agreement between you and Mirax",
+      "block4": "The opportunity to participate in an affiliate program with linear marketing up to 10 levels deep for Priority members"
+    },
+    "JumbotronCustom": "Under the Priority program, each member can purchase any goods and services with a discount of up to 60% and earn extra money using the affiliate compensation program",
+    "Benefits": {
+      "title":"Investment programs",
+      "block1": {
+        "text1": "discount for a product or service"
+      },
+      "block2": {
+        "text1": "term of the work",
+        "text2": "days"
+      },
+      "block3": {
+        "text1": "programs that allow you to make profitable purchases"
+      }
+    },
+    "quote" : "\"Our goal is to create a new socio-economic model of earnings and help people meet material needs and become successful.\"",
+    "desk": {
+      "title": "Make a dream come true\n",
+      "li1": "Select a program and click 'Participate'",
+      "li2": "Follow simple conditions",
+      "li3": "Upon completion of the program, you will receive bonuses on your deposit",
+      "li4": "Become the proud owner of the product you dreamed of",
+      "small": "The purchase amount must be greater than or equal to the amount of bonuses"
+    }
+  },
+  "PriorityPrograms": {
+    "home": {
+      "type": "Home",
+      "description": "Own apartment under construction - no loans, installments and no savings on everyday things!"
+    },
+    "auto": {
+      "type": "Auto",
+      "description": "Get your dream car for just a fraction of the cost"
+    },
+    "moto": {
+      "type": "Moto",
+      "description": "Do you like speed or are you tired of traffic jams? Priority Moto is what you need!"
+    },
+    "device": {
+      "type": "Device",
+      "description": "With the new gadget, participation in Mirax Priority is even easier!"
+    },
+    "travel": {
+      "type": "Travel",
+      "description": "Travel the world and save 2 times on trips!"
+    },
+    "wedding": {
+      "type": "Wedding",
+      "description": "Do you want a chic but economical wedding? With Priority Wedding, this is possible in 3 months!"
+    },
+    "repayment": {
+      "type": "Repayment",
+      "description": "Get free from debt or make smart investments with lending tools with Priority Early Repayment"
+    }
+  },
+  "PrioritySlides": {
+    "discount": "Discount",
+    "term": "Term",
+    "days": "days",
+    "min_coast": "Min. price",
+    "max_coast": "Max. price",
+    "status": "Min. member status\n",
+    "button_text" : "Details",
+    "button_text2" : "Participate"
+  },
+  "PriorityDescription": {
+    "calculator": {
+      "title": "Calculator",
+      "desk": "Preliminary calculation of the deposit and the term of the deposit. Pay attention to the terms of marketing assistance",
+      "choseProgram": "Select a program",
+      "specify": "Specify the installment and term",
+      "amount": "Enter the amount",
+      "waiting_period": "Waiting period",
+      "program_contribution": "Program contribution\n",
+      "activation_program": "Activating the program",
+      "ma": "Marketing Assistance",
+      "your_benefit": "Your benefit will be",
+      "deadline": "Waiting period",
+      "program_fee": "Program contribution",
+      "days": "days",
+      "insurance": "Insurance \"AXA\"",
+      "Date_completion": "Date of completion",
+      "contributions_program": "The amount of contributions for the program",
+      "Activating_program": "Activating the program",
+      "marketing_assistance": "I agree with marketing assistance (+ 20% if refused)\n",
+      "contribution": "installment",
+      "days_waiting": "days of waiting",
+      "date_completion": "Date of completion"
+
+    },
+    "table": {
+      "title": "Table of dependence of the cost of insurance on the type of program",
+      "th1": "Initial payment,% / duration of the program, days",
+      "th2": "Cost of the insurance program \"AXA\" in% of the total cost of goods or services"
+    }
+  },
+  "Community": {
+    "BenefitsData": {
+      "title": "Community Principles",
+      "block1": {
+        "title": "Unity",
+        "text": "We live brightly, achieve our goals, hold events and build teams together\n"
+      },
+      "block2": {
+        "title": "Loyalty",
+        "text": "We interact, support and treat each other with respect"
+      },
+      "block3": {
+        "title": "Openness",
+        "text": "Our community is open to everyone - you can contact us at any time and always get help"
+      },
+      "block4": {
+        "title": "Manufacturability",
+        "text": "We follow the trends in the world and choose the most profitable projects for cooperation"
+      },
+      "block5": {
+        "title": "Success",
+        "text": "We not only cover our basic needs, but also receive an additional reward for activity"
+      },
+      "block6": {
+        "title": "Stability",
+        "text": "Mirax residents always know the date when they will receive the program payment\nStart earning money today\n"
+      }
+    },
+    "JumbotronCustom": {
+      "title": "What is the Mirax community",
+      "text": "We are convinced that everyone is able to become more productive if they work in a team. To develop creative and lively communication among partners, we have created the Mirax community.\n"
+    },
+    "BecomePartner": "Start earning income today"
+  },
+  "CenterOpening": {
+    "benData": {
+      "title": "Recommendations for choosing a room",
+      "block1": "Sizes from 35-40 sq.m (from 20 people)",
+      "block2": "Comfortable rental conditions",
+      "block3": "Fast and continuous WiFi",
+      "block4": "Place with a large number of people (halls based on hotels, hotels, business centers)",
+      "block5": "Convenient location",
+      "block6": "Serviceable hardware: demo screen (chalk board, PC / laptop)"
+    },
+    "benData2": {
+      "title": "Individual representation is your best investment",
+      "block1": {
+        "title": "Availability",
+        "text": "Open an office in any region of Russia and earn with partners"
+      },
+      "block2": {
+        "title": "Motivation",
+        "text": "Unleash the potential of your team and get rewarded for the activity of the members of the lower structure"
+      },
+      "block3": {
+        "title": "Reliability",
+        "text": "Forget about the risk of losing bonuses due to failure to complete complex qualifications thanks to a simple office program"
+      }
+    },
+    "JumbotronCustom": {
+      "title": "Opening of individual dealerships and expansion of business opportunities",
+      "text": "You can share your knowledge and experience with partners and train them, thereby increasing your capital. Open a Mirax individual dealership for this and build a team of successful investors\n"
+    },
+    "block_info": {
+      "title": "Business scaling by opening a Mirax",
+      "accent": "representative office",
+      "text1": "Scaling makes a business more successful, since the capitalization of the entire network is higher than that of its individual elements. Due to the increase in the number of investors, Mirax is expanding its network of branches together with partners. Our mission is to help you open a personal advisory office to prepare successful investors and build teams in your region.",
+      "text2": "To create an effective team, it is necessary to involve people who are able to go beyond their potential in the interaction. A key role in this is played by the Mirax Individual Representative, who organizes the team's activities and implements the business model. Teamwork allows you to unleash the potential of everyone and start earning more."
+    },
+    "candidate": {
+      "title": "Who is our ideal candidate",
+      "text": "To create an effective team, it is necessary to involve people who are able to go beyond their potential in the interaction. The head of the Mirax Individual Representative Office plays a key role in this. Our ideal candidate:",
+      "li1": "Builds a competent system of motivating partners",
+      "li2": "Regularly interacts with partners",
+      "li3": "Constantly learns",
+      "li4": "Develops individual offers for partners and investors",
+      "li5": "Conducts events aimed at increasing investor loyalty"
+    },
+    "ruleOpen": {
+      "title_accent": "Conditions for opening an individual",
+      "title": "representative office",
+      "text": "A Mirax partner who has fulfilled these conditions can open an individual representative office and receive additional remuneration under the office program\n",
+      "li1": "You need to reach the M4 level in any of the Mirax affiliate programs",
+      "li2": "The region in which you open a representative office must match your region of residence",
+      "li3": "In the first line, you need to have at least two partners with M3 level, also living in your area"
+    },
+    "quote": "Our goal is to create the conditions to support your growth.",
+    "table_profit": {
+      "title": "Office Program Rewards",
+      "small": "Get additional rewards from the top-up amount of the invited partner",
+      "th1": "Depth",
+      "th2": "Reward",
+      "line": "line"
+    }
+  },
+  "faq": {
+    "block1": {
+      "title": "How can I earn with Mirax?\n",
+      "content" : "You need to register a personal account for free, in which you can choose a suitable program, investment package and start earning. No bureaucracy and no time wasted!"
+    },
+    "block2": {
+      "title": "What guarantees do I get?",
+      "content" : "We finance only promising business projects that have passed multi-stage expertise. To assess the investment attractiveness of a project, we use various methods and approaches (coefficient analysis, factor assessment, statistical, financial, comparative analysis), which allow you to earn passively. We control payments, the progress of the project, and also promptly resolve all current issues - as a result, you receive passive income without delays and without risk. The high percentage of profitability that Mirax offers to its partners is due to the fact that the cryptocurrency industry itself is highly profitable. At the same time, the company uses a unique model of referral systems, which increases the possibility of receiving rewards and allows you to develop"
+    },
+    "block3": {
+      "title": "How do I make a deposit?",
+      "content" : "You can replenish your account through any available payment system in your personal account. After crediting funds to your account, you can receive passive income by participating in affiliate programs."
+    },
+    "block4": {
+      "title": "Can I participate in several programs at once?",
+      "content" : "To increase rewards for our partners, we made it available to participate in several programs at once, without waiting for the expiration of one of them."
+    },
+    "block5": {
+      "title": "If the rates in the affiliate program are changed, will the amount of my charges also change?",
+      "content" : "All deposits that were opened at the current rate will be completed on the same terms. You receive payments in accordance with the terms of the program, established at the time of opening the deposit, until the end of its term. If the terms of the program have changed, your new contribution will be subject to the new terms."
+    },
+    "block6": {
+      "title": "How do I know how much I will earn?",
+      "content" : "There is a profit calculator on the affiliate program page, with which you can calculate the daily and total income from the selected package. "
+    },
+    "block7": {
+      "title": "Can I reinvest the money I earned?",
+      "content" : "Oh sure. You can reinvest your profits right in your account. After the end of the program and the accrual of the earned funds to your balance, select again any available program and purchase an investment package."
+    },
+    "block8": {
+      "title": "How to withdraw profit?",
+      "content" : "Make a request to withdraw funds in your personal account, select a payment system and specify the amount. The duration of the transfer depends on the workload of the payment gateways and takes from 10 minutes."
+    },
+    "block9": {
+      "title": "Can I earn by inviting my partners to the platform?",
+      "content" : "Yes, you can invite new partners to register using your personal link available in your personal account. As a reward, you receive a one-time bonus of 5% of the amount of your partner's contribution. Your bonus is credited immediately after the purchase of the investment package by your partner."
+    },
+    "block10": {
+      "title": "I forgot my password / an error occurs when entering my personal account",
+      "content" : "If you cannot enter your personal account, first make sure that you have entered the correct data. You can try changing your browser or using incognito mode in your browser. If you have forgotten your password or username, send a recovery request in the login window. If these steps did not help, please contact us in the \"Contacts\" section, and we will promptly help solve your problem."
+    },
+    "block11": {
+      "title": "How do I join the Mirax community?",
+      "content" : "Mirax is a global ecosystem with its own community that brings together investors, business owners, blockchain project participants, cryptocurrency supporters and startup founders. Our community is located in different countries and is growing daily. You can share and get new experience with the platform, participate in discussions and find out the latest news on Mirax social networks."
+    },
+    "block12": {
+      "title": "I didn't find the answer to my question in this list?",
+      "content" : "Ask us your question by writing to us by email mirax.88@mail.ru, or send a message by filling out the contact form in the \"Contacts\" section."
+    }
+
+  },
+  "Contacts": {
+    "email_block": "Company mail for official inquiries, claims and suggestions",
+    "social_list": "Official social networks",
+    "m_assistance": "Company documents",
+    "card_name1": "Certificate",
+    "card_name2": "Presentation of the company",
+    "contact_form_block": " Would you like to know the formula for success with",
+    "small": "Ask your question and you will receive an answer within 2 hours",
+    "input": {
+      "name": "Your name",
+      "question": "Your question",
+      "chekBox1": "I accept",
+      "chekBox2": "the terms of use",
+      "chekBox3": "and agree to",
+      "chekBox4": "the privacy policy"
+    },
+    "isDisable": "Available in 1 minute",
+    "button": "Send"
+  },
+  "SignIn": {
+    "registration": {
+      "title": "Don't have an account yet?",
+      "text": "Create an account for free and get passive income from day one",
+      "button": "Registration"
+    },
+    "singIn_Input": {
+      "title": "Login to your personal account",
+      "password": "Password "
+    },
+    "remember_me": "Remember me",
+    "login": "Login ",
+    "forgot": "forgot your password?"
+  },
+  "SignUp": {
+    "singUp": {
+      "title": "Registration",
+      "email_error": "Invalid email address",
+      "input_name": "Name"
+    },
+    "formCountry" : {
+      "option1": "Choose a country",
+      "option2": "Russia",
+      "option3": "Ukraine",
+      "option4": "Belarus",
+      "option5": "Kazakhstan"
+    },
+    "password": "Password",
+    "password_error": "8 to 12 characters: Latin",
+    "ReferralId": "Inviter ID / email",
+    "chekBox": {
+      "line1": "I accept",
+      "line2": "Terms of Use",
+      "line3": "and agree with",
+      "line4": "privacy policy"
+    },
+    "buttons": {
+      "signUp": "Register now",
+      "enter": "Already registered?",
+      "login": "Login"
+    }
+  },
+  "PasswordReset": {
+    "text1": "Don't have an account yet?",
+    "text2": "Create an account for free and get passive income from day one?",
+    "text3": "Registration",
+    "text4": "Password recovery",
+    "text5": "Login",
+    "text6": "Login to your personal account"
+  },
+  "SideBar": {
+    "desktop": "Desktop",
+    "profit": "Profitability",
+    "team": "Team",
+    "history": "History",
+    "profile": "Personal data"
+  },
+  "Desktop": {
+    "title": {
+      "profile": "Your profile",
+      "desktop": "Desktop",
+      "wallets": "My accounts",
+      "ProfitabilityTable": "Your profitability table"
+    },
+    "WalletTitle": {
+      "depositAccount": "Start account",
+      "bonus_account": "Bonus account",
+      "operating_account": "Operating account",
+      "withdrawWallet": "Available for withdrawal"
+    },
+    "WalletName": {
+      "transfer": "Transfer",
+      "withdraw": "Withdraw",
+      "top_up_balance": "Top up balance"
+    },
+    "totalInvestment": "Total investment",
+    "wallets": "Operational wallets",
+    "referralIncomeOfPartners": "Referral payments"
+  },
+  "ReferralLink": {
+    "referral_link": "Your referral link:",
+    "link": "The referral link will appear only after purchasing one of our products"
+  },
+  "ProfitabilityTable": {
+    "total_earned": "Total earned:",
+    "thead": {
+      "th1": "Name",
+      "th2": "Amount received",
+      "th3": "% of the total amount"
+    },
+    "tbody": {
+      "investment_package": "Investment package accruals",
+      "dividends": "Dividends",
+      "linear_premium": "Linear premium",
+      "mentor_prime": "Mentoring award"
+    }
+  },
+  "ui" : {
+    "JumbotronCustom_button": "join",
+    "sign-in_sign_up": "Sign in / Sign up",
+    "personalArea": "Personal Area",
+    "become_partner": "BECOME A PARTNER"
+},
+  "menuHeader" : {
+    "about": "About Us",
+    "How_money_here": "How to make money here?",
+    "Partnership_programs": "Partnership programs",
+    "Partnership_with_Mirax": "Partnership with Mirax",
+    "Content": "Content",
+    "Videos": "Videos",
+    "activity": "Activity",
+    "Community": "Community Mirax",
+    "openCenter": "Opening of an individual <br/> consultation center",
+    "news": "News",
+    "exit": "Exit"
+  },
+  "footer": {
+    "title": "Global distributor of investment programs for partners of all levels",
+    "about_company": "ABOUT COMPANY",
+    "about_us" : "About Us",
+    "Contacts" : "Contacts",
+    "How_make_money" : "How to make money here?",
+    "PARTNERSHIP_PROGRAMS" : "PARTNERSHIP PROGRAMS",
+    "PARTNERSHIP_MIRAX" : "PARTNERSHIP WITH MIRAX",
+    "Mirax_Community" : "Mirax Community",
+    "open_center" : "Opening of an individual consultation center",
+    "News": "News",
+    "Videos": "Videos",
+    "Events": "Events",
+    "CONTENT": "CONTENT",
+    "reserved": "All rights reserved © 2021 Mirax",
+    "Terms": "Terms of use",
+    "Privacy": "Privacy Policy\n"
+  }
+}

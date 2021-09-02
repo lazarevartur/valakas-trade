@@ -15,10 +15,8 @@ import {
   buyOptionalProgram,
   resetWallet,
 } from "../../../../store/action/walletsAction";
-import { Button, Card, CardDeck, Col, Container, Row } from "react-bootstrap";
-import { Form } from "react-bootstrap";
+import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { Loader } from "../../../uiKit/loader";
-import { Modal } from "react-bootstrap";
 import { DashboardRoute } from "../../../../routes/dashboard";
 import { CustomInput } from "../../../uiKit/customInput";
 import { getRuDate, getRuFormatNumbers } from "../../../../utils/utils";
@@ -50,7 +48,7 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
       history.push(DashboardRoute.mrx_invest, { success });
     }
   }, [success]);
-
+  console.log(errors);
   const {
     start_round,
     end_round,
@@ -64,7 +62,6 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
   } = optionalProgram;
   const profit = (profitability * 100).toFixed();
   const price = (+amount * cost).toFixed(3);
-
   const onSubmit = (data) => {
     switch (typeWallet) {
       case ProgramType.mrx:
@@ -87,7 +84,9 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
           <Col lg={12}>
             <Modal.Header closeButton>
               <Modal.Title className={styles.modal_title}>
-                Пополнение баланса
+                {typeWallet === "optional" && "Покупка опционов"}
+                {typeWallet === "mrx" && "Покупка пакета"}
+                {typeWallet === "" && "Пополнение баланса"}
               </Modal.Title>
             </Modal.Header>
           </Col>
@@ -119,15 +118,19 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
                 <Col lg={{ offset: 2, span: 8 }}>
                   <Form.Group controlId="exampleForm.SelectCustom">
                     <Form.Label>Инвестиционные пакеты</Form.Label>
-                    <Form.Control as="select" ref={register} name={"id"}>
-                      {mrxPrograms.map(({ name, _id }) => {
-                        return (
-                          <option key={name} value={_id}>
-                            $ {name}
-                          </option>
-                        );
-                      })}
-                    </Form.Control>
+                    {mrxPrograms.length ? (
+                      <Form.Control as="select" ref={register} name={"id"}>
+                        {mrxPrograms.map(({ name, _id, price }) => {
+                          return (
+                            <option key={name} value={_id}>
+                              {name} | Цена {price}$
+                            </option>
+                          );
+                        })}
+                      </Form.Control>
+                    ) : (
+                      <p>Активированна максимальная программа</p>
+                    )}
                   </Form.Group>
                 </Col>
               </Row>
@@ -175,12 +178,24 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
                     <Row className={styles.input}>
                       <Col sm={12}>
                         <CustomInput
-                          reff={register()}
-                          type="text"
+                          reff={register({
+                            min: {
+                              value: 1000,
+                              message:
+                                "Минимальное количество для покупки 1000 опционов",
+                            },
+                          })}
+                          type="number"
                           placeholder={"Количество опционов"}
                           value={watch("amount")}
                           name={"amount"}
                         />
+                        <small>
+                          {
+                            // @ts-ignore
+                            errors.amount && errors.amount.message
+                          }
+                        </small>
                       </Col>
                     </Row>
                     {amount && (
@@ -197,7 +212,10 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
         )}
         <Row>
           <Col lg={{ offset: 2, span: 8 }} className={styles.button_block}>
-            <Button type="submit">Пополнить</Button>
+            <Button type="submit">
+              {typeWallet === "optional" && "Купить"}
+              {typeWallet === "mrx" && "Купить"}
+            </Button>
           </Col>
         </Row>
       </Container>

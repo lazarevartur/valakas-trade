@@ -11,26 +11,39 @@
   .cardGroup {
     margin: 100px 0;
   }
+  .title {
+    font-size: 50px;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 768px) {
+  .title {
+    font-size: 30px;
+    line-height: 40pxж
+  }
 }
-.title {
-  font-size: 50px;
-  margin-bottom: 30px;
+
 }
+
 
 .description {
   text-align: center;
+
   .accent {
     font-size: 30px;
     color: #fec825;
   }
+
   span {
     font-size: 56px;
     font-weight: 600;
     color: #fec825;
   }
+
   p {
     margin-bottom: 0;
   }
+
+
 }
 .desk {
   padding: 30px;

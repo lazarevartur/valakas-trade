@@ -108,3 +108,30 @@ export const getFirstAndLast = (arr) => {
   return [arr[0], arr[arr.length - 1]];
 };
 export const getDayinMm = (day) => 24 * 60 * 60 * 1000 * day;
+
+export const calculateDeviceInfo = (width) => {
+  if (width <= 576) {
+    return {
+      isMobile: true,
+      isTablet: false,
+      isDesktop: false,
+      device: "mobile",
+    };
+  }
+
+  if (width <= 800) {
+    return {
+      isMobile: false,
+      isTablet: true,
+      isDesktop: false,
+      device: "tablet",
+    };
+  }
+
+  return {
+    isMobile: false,
+    isTablet: false,
+    isDesktop: true,
+    device: "desktop",
+  };
+};

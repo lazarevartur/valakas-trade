@@ -38,6 +38,7 @@ const PriorityProgram: React.FC<PriorityProgramProps> = () => {
     return total;
   }, 0);
   const totalProfit = totalOriginalAmount - totalInvest;
+
   if (userMentorStatus.m1 == userDashboard.status) {
     return (
       <p>
@@ -49,6 +50,12 @@ const PriorityProgram: React.FC<PriorityProgramProps> = () => {
       </p>
     );
   }
+
+  // return <Plug
+  //     text={"Для работы нужен статус ментора М2"}
+  //     link={DashboardRoute.team}
+  //     buttonText={"Посмотреть статус"}
+  // />
 
   return (
     <Container>
@@ -67,15 +74,15 @@ const PriorityProgram: React.FC<PriorityProgramProps> = () => {
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Общая сумма инвестицей составит</Col>
+          <Col lg={5}>Общая сумма инвестиций составит</Col>
           <Col lg={4}>
-            <span>$ {totalInvest}</span>
+            <span>$ {totalInvest.toFixed(1)}</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Общая выгода выгода составит</Col>
+          <Col lg={5}>Общая выгода составит</Col>
           <Col lg={4}>
-            <span>$ {totalProfit}</span>
+            <span>$ {totalProfit.toFixed(1)}</span>
           </Col>
         </Row>
         <LinkContainer to={`${RoutePath.priority}`}>

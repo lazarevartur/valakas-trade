@@ -28,14 +28,14 @@ const InfoBlock: React.FC<InfoBlockProps> = ({ info, amount, reff, name }) => {
           <p>
             Реквезиты:{" "}
             <strong>
-              <iframe
-                width="728"
-                height="200"
-                src="https://widget.qiwi.com/widgets/big-widget-728x200?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPpTYa4fKdU5uJHx2uh8SB2CmKvWqyExtLjtqazDomu3D2e3R62SifzqMptpKmJCm1AYSd6H9RB4wrvZnQvhMpKeadJmteiMvonE8HQJBqR"
-                allowTransparency
-                scrolling="no"
-                frameBorder="0"
-              />
+              {/*<iframe*/}
+              {/*  width="728"*/}
+              {/*  height="200"*/}
+              {/*  src="https://widget.qiwi.com/widgets/big-widget-728x200?publicKey=48e7qUxn9T7RyYE1MVZswX1FRSbE6iyCj2gCRwwF3Dnh5XrasNTx3BGPiMsyXQFNKQhvukniQG8RTVhYm3iPpTYa4fKdU5uJHx2uh8SB2CmKvWqyExtLjtqazDomu3D2e3R62SifzqMptpKmJCm1AYSd6H9RB4wrvZnQvhMpKeadJmteiMvonE8HQJBqR"*/}
+              {/*  allowTransparency*/}
+              {/*  scrolling="no"*/}
+              {/*  frameBorder="0"*/}
+              {/*/>*/}
             </strong>
           </p>
           <p>

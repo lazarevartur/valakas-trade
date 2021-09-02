@@ -1,65 +1,86 @@
-.title {
-  padding-top: 40px;
-  font-weight: 600;
-  font-size: 50px;
-  line-height: 64px;
-  text-align: center;
-  color: #333333;
-}
-.bg {
-  padding-top: 80px;
-  background: #f9f9f9;
-  padding-bottom: 60px;
-}
-.bg_svg {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.text {
-  text-align: center;
-  font-size: 16px;
-  line-height: 160%;
-  margin-bottom: 50px;
-  margin-top: 30px;
-}
-.link {
-  font-size: 16px;
-  line-height: 160%;
-  padding-left: 10px;
-  color: #daa400;
-  &:hover {
-    color: #f1c40f;
-  }
-}
-.link_icon {
-  padding-right: 5px;
-}
-
-.description {
-  p {
+.PartnershipPrograms {
+  .title {
+    padding-top: 40px;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 64px;
+    text-align: center;
     color: #333333;
   }
-}
-
-.description_tab {
-  margin-top: 30px;
-  h5 {
-    font-size: 18px;
-    line-height: 160%;
-    color: #4f4f4f;
-    font-weight: 500;
-    margin-bottom: 0;
+  .bg {
+    padding-top: 80px;
+    background: #f9f9f9;
+    padding-bottom: 60px;
   }
-
-  p {
-    color: #4f4f4f;
+  .bg_svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .text {
+    text-align: center;
     font-size: 16px;
     line-height: 160%;
-    font-weight: 400;
+    margin-bottom: 50px;
+    margin-top: 30px;
+  }
+  .link {
+    font-size: 16px;
+    line-height: 160%;
+    padding-left: 10px;
+    color: #daa400;
+    &:hover {
+      color: #f1c40f;
+    }
+  }
+  .link_icon {
+    padding-right: 5px;
   }
 
-  .icon {
-    margin-top: 10px;
+  .description {
+    p {
+      color: #333333;
+    }
+  }
+
+  .description_tab {
+    margin-top: 30px;
+    h5 {
+      font-size: 18px;
+      line-height: 160%;
+      color: #4f4f4f;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    p {
+      color: #4f4f4f;
+      font-size: 16px;
+      line-height: 160%;
+      font-weight: 400;
+    }
+
+    .icon {
+      margin-top: 10px;
+    }
+  }
+  @media (max-width: 768px) {
+    .title{
+      font-size: 35px;
+      line-height: 50px;
+    }
+    .link {
+      padding-left: 0;
+    }
+    .list_group {
+      padding-bottom: 20px;
+    }
+    .description_tab{
+      .icon {
+        margin-bottom: 15px;
+      }
+
+    }
   }
 }
+

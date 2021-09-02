@@ -1,0 +1,42 @@
+@import "src/assets/globalStyles/style";
+@import "src/assets/globalStyles/variables";
+$padding-top: 30px;
+$grey: #767676;
+.NewsMore {
+  padding: 40px 0;
+  .container {
+    background-color: #fff;
+    padding: 50px 100px;
+    .img {
+      padding-top: $padding-top;
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      object-position: top;
+    }
+    .title {
+      padding-top: $padding-top;
+      text-align: left;
+      font-size: 34px;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+    small {
+      color: $grey;
+    }
+    .content {
+      padding-top: $padding-top;
+      font-size: 18px;
+      line-height: 25px;
+      white-space: pre-line
+
+    }
+    @media (max-width: 768px) {
+      padding: 50px 10px;
+      .title {
+        font-size: 30px;
+        line-height: 40px;
+      }
+    }
+  }
+}

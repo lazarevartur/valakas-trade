@@ -7,17 +7,19 @@ import { ProtectedRoute } from "../routes/ProtectedRoute";
 import { Footer } from "../component/mainBlocks/footer";
 import { FullScreenLoader } from "../component/uiKit/FullScreenLoader";
 import { useDispatchTyped } from "../hooks/useTypedRedux";
-import { chekAuth } from "../store/action/authAction";
+import "./i18n";
+import { useTranslation } from "react-i18next";
 
 function App() {
   const dispatch = useDispatchTyped();
   React.useEffect(() => {
     // dispatch(chekAuth());
   }, []);
+
   return (
     <>
-      <Header />
       <Suspense fallback={<FullScreenLoader />}>
+        <Header />
         <Switch>
           {routesConfig.map((route) => (
             <ProtectedRoute
@@ -29,9 +31,8 @@ function App() {
             />
           ))}
         </Switch>
+        <Footer />
       </Suspense>
-
-      <Footer />
     </>
   );
 }

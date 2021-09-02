@@ -15,7 +15,7 @@ import mrxPrograms from "../models/programModel.js";
 export const regUser = asyncHandler(async (req, res) => {
   console.log("===============regUser==================");
   const { email, password, name, referralId, avangard } = req.body;
-  console.log(email, password, name, referralId, avangard);
+
   const userExists = await User.findOne({ email });
   if (userExists) {
     return res.status(400).json({
@@ -63,9 +63,10 @@ export const regUser = asyncHandler(async (req, res) => {
 
   user.referralLink = user._id;
   user.contact_details.name = name;
+  user.metaData.profit_referral_program_for_week.push(0);
   user.save();
   if (user) {
-    res.json(getUserWithToken(user));
+    res.json(getUserWithToken(user, user.access));
   } else {
     res.status(400);
     throw new Error("Invalid user data");
@@ -87,35 +88,12 @@ export const login = asyncHandler(async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-
-  // const endingTime = (day) => Number(24 * 60 * 60 * 1000 * day);
-  // console.log(Date.now() + endingTime(200));
-  // const result = {
-  //     referralLinkCounter: 0,
-  // };
-
-  // const partners = user.partners;
-  // for (const u in partners) {
-  //     if (user.partners.hasOwnProperty(u)) {
-  //         if (Array.isArray(user.partners[u])) {
-  //             user.partners[u].forEach((t) => {
-  //                 result.referralLinkCounter += t.referralLinkCounter
-  //                     ? t.referralLinkCounter
-  //                     : 0;
-  //             });
-  //         }
-  //     }
-  // }
-
-  // console.log(result);
-  // console.log(program);
-  // проверяем есть ли пользователь и если есть проверяем его пароль
-
   if (user && (await user.matchPassword(password))) {
-    return res.json(getUserWithToken(user));
+    return res.json(getUserWithToken(user, user.access));
   } else {
-    res.status(401);
-    throw new Error("Invalid email or password");
+    return res
+      .status(401)
+      .json({ message: "Email или пароль введен не верное" });
   }
 });
 
@@ -183,13 +161,9 @@ export const chekAuth = asyncHandler(async (req, res) => {
 export const exemple = asyncHandler(async (req, res) => {});
 
 //Exemple
-const getUserWithToken = (user) => {
+const getUserWithToken = (user, access) => {
   return {
-    _id: user._id,
-    name: user.name,
-    email: user.email,
-    token: generateToken(user._id),
-    access: roles.user,
+    token: generateToken({ id: user._id, access }),
   };
 };
 

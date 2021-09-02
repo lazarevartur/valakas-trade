@@ -1,20 +1,22 @@
 import React from "react";
 import styles from "./referralLink.module.scss";
+import { useTranslation } from "react-i18next";
 
 interface ReferralLinkProps {
   link?: string;
-  count?: number;
+  isBuyProgram?: boolean;
 }
 
 const ReferralLink: React.FC<ReferralLinkProps> = ({
-  link = "https://antares.trade/personal/?signup=UA918470928",
-  count = 0,
+  link = "https://personal/?signup=UA918470928",
+  isBuyProgram = false,
 }) => {
+  const { t } = useTranslation();
   const originUrl = window.location.origin;
   return (
     <div className={styles.referral_link}>
-      <span>Ваша реферальная ссылка:</span>
-      {count ? (
+      <span>{t("ReferralLink.referral_link")}</span>
+      {isBuyProgram ? (
         <>
           <span className={styles.link}>
             {`${originUrl}/r/${link}`} <i className="far fa-copy" />
@@ -22,10 +24,7 @@ const ReferralLink: React.FC<ReferralLinkProps> = ({
         </>
       ) : (
         <>
-          <span className={styles.link}>
-            Реферальная ссылка появиться только после покупки одно из наших
-            продуктов
-          </span>
+          <span className={styles.link}>{t("ReferralLink.link")}</span>
         </>
       )}
     </div>

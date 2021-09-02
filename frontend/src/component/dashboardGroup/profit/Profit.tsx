@@ -24,25 +24,30 @@ const Profit: React.FC<ProfitProps> = () => {
     (state: rootState) => state.dashboard
   );
   const dispatch = useDispatchTyped();
+  const investmentPackage =
+    userDashboard.programs?.mrx.investment_package.toFixed(1) || 0;
+  const linearPremium =
+    userDashboard.programs?.mrx.linear_premium.toFixed(1) || 0;
+  const dividends = userDashboard.dividends.toFixed(1) || 0;
   const chartData = [
     {
       name: "Начисления по инвестиционному пакету",
-      value: userDashboard.wallets?.operating_account,
+      value: +investmentPackage,
     },
-    { name: "Дивиденты", value: +userDashboard.dividends?.toFixed(2) },
-    { name: "Линейная премия", value: userDashboard.linear_premium },
-    { name: "Менторская премия", value: 0 },
+    { name: "Дивиденды", value: +dividends },
+    { name: "Линейная премия", value: +linearPremium },
+    { name: "Менторская премия", value: userDashboard.mentor_prime },
   ];
   const tableData = {
     linear_premium: userDashboard.linear_premium,
-    totalEarned: userDashboard.wallets?.operating_account,
+    investment_package: userDashboard.investment_package,
     dividends: userDashboard.dividends,
+    mentor_prime: userDashboard.mentor_prime,
   };
 
   React.useEffect(() => {
     dispatch(getCurrentUser());
   }, []);
-  console.log(isLoading);
   return (
     <Container>
       {isLoading ? (
@@ -57,23 +62,25 @@ const Profit: React.FC<ProfitProps> = () => {
             <Row className={styles.row}>
               <Col lg={6}>
                 <p>
-                  Общий показатель доходности по инвестийциям за{" "}
+                  Общий показатель доходности по инвестициям за{" "}
                   <span>всё время</span>
                 </p>
               </Col>
               <Col lg={6}>
-                <span>$ {tableData.totalEarned || 0}</span>
+                <span>$ {tableData.investment_package.toFixed(1) || 0}</span>
               </Col>
             </Row>
             <Row className={styles.row}>
               <Col lg={6}>
                 <p>
-                  Общий показатель доходности по инвестийциям за{" "}
+                  Общий показатель доходности по инвестициям за{" "}
                   <span>последню неделю</span>
                 </p>
               </Col>
               <Col lg={6}>
-                <span>$ 0</span>
+                <span>
+                  $ {userDashboard.income_investment_for_week?.toFixed(1) || 0}
+                </span>
               </Col>
             </Row>
             <Row className={styles.row}>
@@ -85,7 +92,7 @@ const Profit: React.FC<ProfitProps> = () => {
               </Col>
               <Col lg={6}>
                 <span>
-                  $ {userDashboard.referralIncomeOfPartners?.toFixed(2)}
+                  $ {userDashboard.referralIncomeOfPartners?.toFixed(1) || 0}
                 </span>
               </Col>
             </Row>
@@ -97,7 +104,11 @@ const Profit: React.FC<ProfitProps> = () => {
                 </p>
               </Col>
               <Col lg={6}>
-                <span>$ 0</span>
+                <span>
+                  ${" "}
+                  {userDashboard.income_referral_program_for_week?.toFixed(1) ||
+                    0}
+                </span>
               </Col>
             </Row>
             <Row>
@@ -118,18 +129,17 @@ const Profit: React.FC<ProfitProps> = () => {
                 <ListGroup className={styles.list_group}>
                   <ListGroup.Item className={styles.first}>
                     Начисления по инвестиционному пакету{" "}
-                    <span>{tableData.totalEarned || 0}$</span>
+                    <span>{investmentPackage}$</span>
                   </ListGroup.Item>
                   <ListGroup.Item className={styles.second}>
-                    Дивиденты{" "}
-                    <span>{tableData.dividends?.toFixed() || 0}$</span>
+                    Дивиденды <span>{dividends}$</span>
                   </ListGroup.Item>
                   <ListGroup.Item className={styles.third}>
-                    Линейная премия{" "}
-                    <span>{tableData.linear_premium || 0}$</span>
+                    Линейная премия <span>{linearPremium || 0}$</span>
                   </ListGroup.Item>
                   <ListGroup.Item className={styles.fourth}>
-                    Менторская премия <span>0$</span>
+                    Менторская премия{" "}
+                    <span>{tableData.mentor_prime || 0}$</span>
                   </ListGroup.Item>
                 </ListGroup>
               </Col>
@@ -137,7 +147,7 @@ const Profit: React.FC<ProfitProps> = () => {
           </div>
           <DashboardTitleBlock title={"Таблица вашей доходности"} />
           <ProfitabilityTable
-            totalEarned={userDashboard.totalEarned?.toFixed()}
+            totalEarned={userDashboard.totalEarned}
             data={tableData}
           />
         </>

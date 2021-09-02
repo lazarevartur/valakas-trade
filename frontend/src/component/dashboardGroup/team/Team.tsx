@@ -13,10 +13,20 @@ import { Loader } from "../../uiKit/loader";
 
 interface TeamProps {}
 
+const defaultData = [
+  ["first", 0, 0],
+  ["second", 0, 0],
+  ["third", 0, 0],
+  ["fourth", 0, 0],
+];
+
 const Team: React.FC<TeamProps> = () => {
   const dispatch = useDispatchTyped();
   const { isLoading, userTeam } = useSelectorTyped(
     (state: rootState) => state.team
+  );
+  const { userDashboard } = useSelectorTyped(
+    (state: rootState) => state.dashboard
   );
 
   const {
@@ -24,16 +34,19 @@ const Team: React.FC<TeamProps> = () => {
     quantity_for_each_line,
     deposit_account,
     meta,
-    income_partner_for_week,
+    income_partner_for_week = [],
+    team_turnover,
   } = userTeam;
   React.useEffect(() => {
     dispatch(getTeam());
   }, []);
   let linesList: any[] = meta ? Object.entries(meta.partners) : [];
-  linesList = mergeArr(linesList, income_partner_for_week);
-
+  linesList = income_partner_for_week.length
+    ? mergeArr(linesList, income_partner_for_week)
+    : defaultData;
+  const turnover = team_turnover?.toFixed() || 0;
   function mergeArr(arr1, arr2) {
-    if (!arr1 || arr2) {
+    if (!arr1.length || !arr2.length) {
       return [];
     }
     return arr1.map(([lineName, value], i) => {
@@ -70,8 +83,17 @@ const Team: React.FC<TeamProps> = () => {
               </Col>
             </Row>
             <Row className={styles.row}>
+              <Col lg={7}>Оборот личной команды:</Col>
+              <Col lg={5}>
+                <span className={styles.accent}>{turnover} $</span>
+              </Col>
+            </Row>
+            <Row className={styles.row}>
               <Col lg={7}>
-                <ReferralLink link={userTeam.id} count={deposit_account} />{" "}
+                <ReferralLink
+                  link={userTeam.id}
+                  isBuyProgram={userDashboard.isBuyProgram}
+                />{" "}
               </Col>
             </Row>
           </div>
@@ -79,7 +101,7 @@ const Team: React.FC<TeamProps> = () => {
             title={"Таблица доходности по реферальной программе"}
           />
           <div className={styles.profit_table}>
-            <Table striped className={styles.table_striped}>
+            <Table striped className={styles.table_striped} responsive="sm">
               <thead>
                 <tr>
                   <th />
@@ -90,6 +112,7 @@ const Team: React.FC<TeamProps> = () => {
               <tbody>
                 {linesList
                   ? linesList.map(([nameLine, value, valueForWeek], i) => {
+                      if (i > 4) return null;
                       return (
                         <tr key={nameLine}>
                           <td className={styles.lines}>{i + 1}-я линия</td>
@@ -106,7 +129,12 @@ const Team: React.FC<TeamProps> = () => {
           <div className={styles.our_partners}>
             <Row>
               <Col lg={6}>
-                <Table striped size="sm" className={styles.table_striped_sm}>
+                <Table
+                  striped
+                  size="sm"
+                  className={styles.table_striped_sm}
+                  responsive="sm"
+                >
                   <tbody>
                     <tr>
                       <td>Общеее колличество</td>
@@ -129,7 +157,11 @@ const Team: React.FC<TeamProps> = () => {
           </div>
           <DashboardTitleBlock title={"Статусы ментора"} />
           <div className={styles.status_mentora}>
-            <Table striped className={styles.table_striped_status}>
+            <Table
+              striped
+              className={styles.table_striped_status}
+              responsive="sm"
+            >
               <thead>
                 <tr>
                   <th className={styles.width}>Уровень ментора</th>
@@ -188,7 +220,11 @@ const Team: React.FC<TeamProps> = () => {
             title={"Линейная премия / Дивиденды партнеров"}
           />
           <div className={styles.status_mentora}>
-            <Table striped className={styles.table_striped_status}>
+            <Table
+              striped
+              className={styles.table_striped_status}
+              responsive="sm"
+            >
               <thead>
                 <tr>
                   <th className={styles.width}>Уровень линии</th>

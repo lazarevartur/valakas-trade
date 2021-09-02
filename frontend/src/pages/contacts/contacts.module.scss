@@ -1,0 +1,101 @@
+@import "./src/assets/globalStyles/style";
+@import "./src/assets/globalStyles/variables";
+.contacts {
+  @media (max-width: 768px) {
+    padding: 10px;
+    .img {
+      width: 100%;
+    }
+    .email {
+      padding-bottom: 10px;
+    }
+  }
+  .socialBloc {
+    padding: 10px;
+  }
+}
+.separator {
+  border-color: #fec825;
+  width: 50%;
+  opacity: 0.8;
+}
+.social_block {
+  padding: 60px 0;
+  .social_list {
+    p {
+      font-weight: 500;
+      font-size: 20px;
+      color: #828282;
+    }
+    a {
+      padding-left: 10px;
+      color: #daa400;
+    }
+  }
+}
+.email_block {
+  p {
+    font-weight: 500;
+    font-size: 20px;
+    color: #828282;
+  }
+  .email {
+    a {
+      padding-left: 10px;
+      color: #daa400;
+    }
+  }
+}
+.contact_form_block {
+  text-align: center;
+  padding: 60px 0;
+  .accent {
+    color: #ff9f12;
+  }
+  Form {
+    padding: 50px 0;
+  }
+}
+.chekBox {
+  text-align: left;
+}
+.m_assistance {
+  padding: 60px 0;
+  .card_block {
+    padding: 25px 0;
+  }
+  .link {
+    text-decoration: none;
+    color: #000;
+  }
+  .card {
+    box-shadow: 0px 0px 10px rgba(160, 160, 160, 0.25);
+    border-radius: 16px;
+    width: 200px;
+    height: 120px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid #fec825;
+      box-shadow: 0 0 30px rgba(136, 136, 136, 0.25);
+    }
+    p {
+      div {
+        color: #828282;
+        font-size: 13px;
+      }
+    }
+    .card_type {
+      display: flex;
+      font-weight: 600;
+      font-size: 10px;
+      background-color: #fec825;
+      color: #ffffff;
+      align-items: center;
+      justify-content: center;
+      width: 65px;
+      height: 24px;
+      border-radius: 5px;
+    }
+  }
+}

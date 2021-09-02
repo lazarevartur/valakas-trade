@@ -17,21 +17,31 @@
 }
 .stages_options {
   padding: $padding;
-  .title {
-    text-align: center;
-    padding-bottom: 30px;
-    font-size: 50px;
-    font-weight: 600;
-    line-height: 64px;
-    color: #4f4f4f;
-  }
 }
 .Satisfied {
   .title {
     font-size: 48px;
   }
+  @media (max-width: 768px) {
+    .title {
+      font-size: 30px;
+      line-height: 40px;
+    }
+  }
   .accentBig {
     font-size: 20px;
     font-weight: 500;
+  }
+
+}
+.optinonal_Jumbotron {
+  @extend .mobile_jimbotron
+}
+.Optional {
+
+  @media (max-width: 768px) {
+    .img {
+      width: 100%;
+    }
   }
 }

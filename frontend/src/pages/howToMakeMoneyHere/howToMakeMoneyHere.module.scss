@@ -23,6 +23,7 @@
 .become_partner {
   background: #f9f9f9;
   padding: 90px 0;
+
 }
 .become_partner_flex {
   display: flex;
@@ -62,4 +63,30 @@
 }
 .thinkOutside {
   padding: 90px 0;
+}
+.bgSize {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+}
+.HowToMakeMoneyHere {
+  @media (max-width: 768px) {
+    .img {
+      width: 100%;
+      height: 100%;
+    }
+    .title,{
+      font-size: 35px;
+      line-height: 40px;
+      padding-top: 20px;
+    }
+    .Satisfied_title, .become_partner_title {
+      font-size: 25px;
+    }
+  }
+  .Dreams {
+    .text_right {
+      margin-top: 0;
+    }
+  }
 }

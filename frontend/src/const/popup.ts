@@ -30,4 +30,5 @@ export enum WalletTypeEnum {
   withdraw = "withdraw", // вывод денег
   transfer = "transfer", // перевод между кошельками
   buyProgram = "buy-programs", // перевод между кошельками
+  buyPriority = 'buy-programs-priority'
 }

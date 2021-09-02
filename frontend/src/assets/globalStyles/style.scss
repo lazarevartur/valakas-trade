@@ -1,3 +1,4 @@
+@import "src/assets/globalStyles/variables";
 .title {
   font-weight: 600;
   font-size: 54px;
@@ -73,4 +74,34 @@
 }
 .table tbody tr:nth-of-type(even) {
   background-color: #f9f9f9;
+}
+
+.mobile_jimbotron {
+  min-height: 100%;
+  background-position: 35% 1% !important;
+  font-weight: 500;
+}
+.goBack {
+  cursor: pointer;
+  position: relative;
+  color: $mainColor;
+  padding-left: 20px;
+  font-size: 22px;
+  &:after {
+    position: absolute;
+    top: 7px;
+    left: 2px;
+    content: "";
+    width: 13px;
+    height: 13px;
+    transform: rotate(-45deg);
+    border-left: 2px solid $mainColor;
+    border-top: 2px solid $mainColor;
+  }
+}
+@media (max-width: 768px) {
+  .title {
+    font-size: 30px;
+    line-height: 40px;
+  }
 }

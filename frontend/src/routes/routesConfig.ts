@@ -12,7 +12,6 @@ import { PrivacyPolicy } from "../pages/privacyPolicy";
 import TermsUse from "../pages/TermsUse/TermsUse";
 import { Community } from "../pages/сommunity";
 import { PriorityDescription } from "../pages/PriorityDescription";
-
 const AboutPage = React.lazy(() => import("../pages/about/AboutPage"));
 const CenterOpening = React.lazy(
   () => import("../pages/centerOpening/СenterOpening")
@@ -20,6 +19,10 @@ const CenterOpening = React.lazy(
 const mrxInvest = React.lazy(() => import("../pages/mrxInvest/MrxInvest"));
 const Optional = React.lazy(() => import("../pages/optional/Optional"));
 const Priority = React.lazy(() => import("../pages/priority/Priority"));
+const News = React.lazy(() => import("../pages/news/News"));
+const NewsMore = React.lazy(() => import("../pages/news/newsMore/NewsMore"));
+const Contacts = React.lazy(() => import("../pages/contacts/Contacts"));
+const Faq = React.lazy(() => import("../pages/faq/Faq"));
 
 export interface route {
   path: RoutePath;
@@ -40,19 +43,25 @@ export enum RoutePath {
   authWithRef = "/r/:id",
   personal = "/personal",
   income = "/income",
+  faq = "/faq",
+  news = "/news",
+  newsMore = "/news/:id",
   community = "/community",
   profile = "/profile",
   dashboard = "/dashboard",
   team = "/team",
   privacyPolicy = "/privacy-policy",
   termsUse = "/terms-of-use",
+  contacts = "/contacts",
   login = "?auth=sign-in",
   registration = "?auth=sign-up",
   resetPassword = "?auth=reset-password",
   replenishmentWallet = `?wallet=replenishment`,
   withdrawWallet = `?wallet=withdraw`,
-  transferWallet = `?wallet=transfer`,
+  transferWallet = `?wallet=transfer&transfers=bonus_account`,
+  transferWalletWithOperating = `?wallet=transfer&transfers=operating_account`,
   buyPrograms = `?wallet=buy-programs`,
+  buyPriority = `?wallet=buy-programs-priority`,
   page404 = "*",
 }
 
@@ -67,6 +76,30 @@ const routesConfig: route[] = [
     path: RoutePath.about,
     exact: true,
     component: AboutPage,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.contacts,
+    exact: true,
+    component: Contacts,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.faq,
+    exact: true,
+    component: Faq,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.news,
+    exact: true,
+    component: News,
+    access: AccessRouts.all,
+  },
+  {
+    path: RoutePath.newsMore,
+    exact: true,
+    component: NewsMore,
     access: AccessRouts.all,
   },
   {

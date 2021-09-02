@@ -12,37 +12,34 @@ import png1 from "../../assets/png/priorityImg.png";
 import cn from "classnames";
 import { PrioritySelector } from "../../component/prioritySelector";
 import { useLocation } from "react-router-dom";
-
-const dataBenefist = [
-  {
-    title: "",
-    text:
-      "Возможность реализовать свою мечту: приобрести квартиру, авто, гаджеты или организовать свадьбу или путешествие всего за 30-60% от стоимости",
-    icon: svg4,
-  },
-  {
-    title: "",
-    text:
-      "Выбор инвестиционных программ, привязанных к определенным товарам и услугам ",
-    icon: svg2,
-  },
-  {
-    title: "",
-    text:
-      "100% защита ваших инвестиций путем заключения договора целевого займа между вами и компанией Mirax%",
-    icon: svg3,
-  },
-  {
-    title: "",
-    text:
-      "Возможность участия в партнерской программе с линейным маркетингом до 10 уровней в глубину для участников Priority ",
-    icon: svg1,
-  },
-];
+import { useTranslation } from "react-i18next";
 
 interface PriorityProps {}
 
 const Priority: React.FC<PriorityProps> = () => {
+  const { t } = useTranslation();
+  const dataBenefist = [
+    {
+      title: "",
+      text: t("Priority.dataBenefist.block1"),
+      icon: svg4,
+    },
+    {
+      title: "",
+      text: t("Priority.dataBenefist.block2"),
+      icon: svg2,
+    },
+    {
+      title: "",
+      text: t("Priority.dataBenefist.block3"),
+      icon: svg3,
+    },
+    {
+      title: "",
+      text: t("Priority.dataBenefist.block4"),
+      icon: svg1,
+    },
+  ];
   const location = useLocation();
   const $startOffer = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
@@ -57,27 +54,26 @@ const Priority: React.FC<PriorityProps> = () => {
       <JumbotronCustom
         img={optionalImg}
         title={"Priority"}
-        text={
-          "По программе Priority каждый участник может приобретать любые товары и услуги со скидкой до 60% и зарабатывать дополнительно с помощью партнерской компенсационной программы"
-        }
+        text={t("Priority.JumbotronCustom")}
+        className={styles.mobile_jimbotron}
       />
       <Container>
         <Row>
           <Col lg={12}>
             {" "}
             <Benefits
-              title={"Преимущества с Optional"}
+              title={t("Priority.dataBenefist.title")}
               data={dataBenefist}
               fourElement
             />
           </Col>
         </Row>
       </Container>
-      <div className={cn("p-5", styles.bgf9)}>
+      <div className={cn(styles.bgf9)}>
         <Container>
           <Row>
             <Col lg={12}>
-              <h2 className={styles.title}>Инвестиционные программы</h2>
+              <h2 className={styles.title}>{t("Priority.Benefits.title")}</h2>
             </Col>
           </Row>
           <Row className={cn(styles.description)}>
@@ -85,20 +81,20 @@ const Priority: React.FC<PriorityProps> = () => {
               <p className={cn(styles.accent)}>
                 <span>30-60%</span>
               </p>
-              <p>скидка на товар или услугу</p>
+              <p>{t("Priority.Benefits.block1.text1")}</p>
             </Col>
             <Col lg={5}>
               <p className={cn(styles.accent)}>
-                <span>60-300 дней</span>
+                <span>60-300 {t("Priority.Benefits.block2.text2")}</span>
               </p>
-              <p>срок работы</p>
+              <p>{t("Priority.Benefits.block2.text1")}</p>
             </Col>
             <Col lg={3}>
               {" "}
               <p className={cn(styles.accent)}>
                 <span>7</span>
               </p>
-              <p>программ, позволяющих совершать выгодные покупки</p>
+              <p>{t("Priority.Benefits.block3.text1")}</p>
             </Col>
           </Row>
           <Row ref={$startOffer}>
@@ -109,27 +105,22 @@ const Priority: React.FC<PriorityProps> = () => {
         </Container>
       </div>
       <Container>
-        <div className={styles.quote}>
-          "Наша цель – создать новую социально-экономическую модель заработка и
-          помочь людям удовлетворять материальные потребности и стать успешными"
-        </div>
+        <div className={styles.quote}>{t("Priority.quote")}</div>
       </Container>
       <Row className={styles.desc}>
         <Col lg={5}>
           <Image src={png1} />
         </Col>
         <Col lg={6}>
-          <div>
-            <h2 className={styles.title}>Превратите мечту в реальность </h2>
+          <div className={styles.desc2}>
+            <h2 className={styles.title}>{t("Priority.desk.title")} </h2>
             <ol>
-              <li>Выберите программу и нажмите “Участвовать</li>
-              <li>Следуйте простым условиям</li>
-              <li>По завершению программы получите бонусы на ваш депозит </li>
-              <li>Станьте счастливым обладателем товара, о котором мечтали</li>
+              <li>{t("Priority.desk.li1")}</li>
+              <li>{t("Priority.desk.li2")}</li>
+              <li>{t("Priority.desk.li3")}</li>
+              <li>{t("Priority.desk.li4")}</li>
             </ol>
-            <small>
-              *Сумма приобретения должна быть больше или равна сумме бонусов
-            </small>
+            <small>*{t("Priority.desk.small")}</small>
           </div>
         </Col>
       </Row>

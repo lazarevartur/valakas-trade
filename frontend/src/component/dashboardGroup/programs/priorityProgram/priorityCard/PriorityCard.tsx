@@ -36,7 +36,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
           <Row>
             <Col lg={5}>
               <Image
-                src={`/public/${programType}.jpg`}
+                src={`/public/${programType.toLowerCase()}.jpg`}
                 className={styles.img}
               />
             </Col>
@@ -64,7 +64,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
                   Итоговая ценна
                 </Col>
                 <Col lg={6} className={styles.value}>
-                  $ {amount}
+                  $ {amount.toFixed(1)}
                 </Col>
               </Row>
               <Row>
@@ -72,7 +72,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
                   Цена без скидок
                 </Col>
                 <Col lg={6} className={styles.value}>
-                  $ {originalAmount}
+                  $ {originalAmount.toFixed(1)}
                 </Col>
               </Row>
               <Row>

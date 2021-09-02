@@ -8,28 +8,33 @@ import { ExternalLinkIcon } from "@modulz/radix-icons";
 import Backpack from "../../../assets/svg/Backpack";
 import Rocket from "../../../assets/svg/Rocket";
 import Clock from "../../../assets/svg/Clock";
-import { RoutePath, routesConfig } from "../../../routes/routesConfig";
+import { RoutePath } from "../../../routes/routesConfig";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
 
 interface PartnershipProgramsProps extends defaultComponentProps {}
 
 const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
   className = "",
 }) => {
+  const { t } = useTranslation();
   return (
-    <div className={cn(styles.bg, { [className]: className })}>
+    <div
+      className={cn(styles.bg, styles.PartnershipPrograms, {
+        [className]: className,
+      })}
+    >
       <HomeBg className={styles.bg_svg} />
       <Container>
         <Row>
           <Col lg={12}>
             <h1 className={styles.title}>
-              <strong>Для тех, кто хочет большего</strong>
+              <strong>{t("HomePage.wantMore.title")}</strong>
             </h1>
             <Row>
               <Col lg={{ offset: 3, span: 6 }}>
-                <p className={styles.text}>
-                  Выберите любую программу на комфортных условиях.
-                </p>
+                <p className={styles.text}>{t("HomePage.wantMore.text")}</p>
               </Col>
             </Row>
           </Col>
@@ -64,7 +69,9 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                       <Row>
                         <Col className={styles.description}>
                           <h4>
-                            Программа <strong>MRX-invest</strong>{" "}
+                            {t("HomePage.wantMore.MRX-invest.title")}{" "}
+                            <strong>MRX-invest</strong>{" "}
+                            <br className={"d-lg-none"} />
                             <a href="#" className={styles.link}>
                               <ExternalLinkIcon
                                 height={24}
@@ -77,19 +84,29 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                             </a>
                           </h4>
                           <p>
-                            Продвижение компании в блок-чейн индустрии.
-                            <br /> В <strong>MRX-invest</strong> используется
-                            линейный маркетинговый план.
+                            <Trans
+                              i18nKey={
+                                "HomePage.wantMore.MRX-invest.description"
+                              }
+                            >
+                              {t("HomePage.wantMore.MRX-invest.description")}
+                            </Trans>
                           </p>
                           <div className={styles.description_tab}>
-                            <Row>
+                            <Row className={styles.row}>
                               <Col lg={1} className={styles.icon}>
                                 <Backpack />
                               </Col>
                               <Col lg={11}>
-                                <h5>Объём инвестиционных пакетов</h5>
+                                <h5>
+                                  {t(
+                                    "HomePage.wantMore.MRX-invest.1block.title"
+                                  )}
+                                </h5>
                                 <p>
-                                  от 100 до 10 000 (9 инвестиционных пакетов)
+                                  {t(
+                                    "HomePage.wantMore.MRX-invest.1block.text"
+                                  )}
                                 </p>
                               </Col>
                             </Row>
@@ -100,10 +117,15 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                                 <Rocket />
                               </Col>
                               <Col lg={8}>
-                                <h5>Доходность</h5>
+                                <h5>
+                                  {t(
+                                    "HomePage.wantMore.MRX-invest.2block.title"
+                                  )}
+                                </h5>
                                 <p>
-                                  Плавающая, до 2% в сутки, без выходных, и
-                                  зависит от объёма инвестиционного пакета
+                                  {t(
+                                    "HomePage.wantMore.MRX-invest.2block.text"
+                                  )}
                                 </p>
                               </Col>
                             </Row>
@@ -114,8 +136,16 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                                 <Clock />
                               </Col>
                               <Col lg={11}>
-                                <h5>Срок работы</h5>
-                                <p>210-260 календарных дней</p>
+                                <h5>
+                                  {t(
+                                    "HomePage.wantMore.MRX-invest.3block.title"
+                                  )}
+                                </h5>
+                                <p>
+                                  {t(
+                                    "HomePage.wantMore.MRX-invest.3block.text"
+                                  )}
+                                </p>
                               </Col>
                             </Row>
                           </div>
@@ -126,7 +156,8 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                       <Row>
                         <Col className={styles.description}>
                           <h4>
-                            Программа <strong>Option</strong>{" "}
+                            Программа <strong>Optional</strong>{" "}
+                            <br className={"d-lg-none"} />
                             <a href="#" className={styles.link}>
                               <ExternalLinkIcon
                                 height={24}
@@ -189,6 +220,7 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                         <Col className={styles.description}>
                           <h4>
                             Программа <strong>Priority</strong>{" "}
+                            <br className={"d-lg-none"} />
                             <a href="#" className={styles.link}>
                               <ExternalLinkIcon
                                 height={24}

@@ -1,5 +1,5 @@
 import React from "react";
-import { BinarProfitTeamMain } from "../../component/BinarProfitTeamGroup/binarProfitTeamMain";
+import styles from "./MrxInvest.module.scss";
 import { MainRow } from "../../layouts/mainRow";
 import { FullWidthRow } from "../../layouts/fullWidthRow";
 import { InvestmentPackages } from "../../component/BinarProfitTeamGroup/InvestmentPackages";
@@ -11,53 +11,47 @@ import mrx1 from "../../assets/svg/mrx1.svg";
 import mrx2 from "../../assets/svg/mrx2.svg";
 import mrx3 from "../../assets/svg/mrx3.svg";
 import mrx4 from "../../assets/svg/mrx4.svg";
-import { useLocation } from "react-router-dom";
-import { useHistory } from "react-router";
+import { useTranslation } from "react-i18next";
 
-interface MrxInvest {}
+interface MrxInvestProps {}
 
-const MrxInvestBenefitsData = [
-  {
-    title: "",
-    text:
-      "Заработок от вкладов по нескольким направлениям одновременно: майнинг криптовалют, депозиты, Launchpool, DeFi-стейкинг",
-    icon: mrx1,
-  },
-  {
-    title: "",
-    text: "Ежедневные выплаты до 2% без выходных",
-    icon: mrx2,
-  },
-  {
-    title: "",
-    text:
-      "Возможность участия в партнерской программе с доходностью до 40% в месяц",
-    icon: mrx3,
-  },
-  {
-    title: "",
-    text:
-      "Простой линейный маркетинг-план без ограничений по развитию структуры в ширину",
-    icon: mrx4,
-  },
-];
-
-const MrxInvest: React.FC<MrxInvest> = () => {
+const MrxInvest: React.FC<MrxInvestProps> = () => {
+  const { t } = useTranslation();
+  const MrxInvestBenefitsData = [
+    {
+      title: "",
+      text: t("MrxInvest.MrxInvestBenefitsData.1block.text"),
+      icon: mrx1,
+    },
+    {
+      title: "",
+      text: t("MrxInvest.MrxInvestBenefitsData.2block.text"),
+      icon: mrx2,
+    },
+    {
+      title: "",
+      text: t("MrxInvest.MrxInvestBenefitsData.3block.text"),
+      icon: mrx3,
+    },
+    {
+      title: "",
+      text: t("MrxInvest.MrxInvestBenefitsData.4block.text"),
+      icon: mrx4,
+    },
+  ];
   return (
     <div>
-      <FullWidthRow>
-        <JumbotronCustom
-          img={MrxInvestImg}
-          title={"MRX-invest"}
-          text={
-            "Инвестиционная программа MRX-invest позволяет партнерам получать доход с плавающей ставкой до 2% в день в зависимости от вклада. В основе лежит классический маркетинг"
-          }
-          lg={5}
-        />
-      </FullWidthRow>
+      <JumbotronCustom
+        img={MrxInvestImg}
+        title={"MRX-invest"}
+        text={t("MrxInvest.JumbotronCustom.text")}
+        lg={6}
+        className={styles.MrxInvest}
+      />
+
       <MainRow>
         <Benefits
-          title={"Преимущества с MRX-invest"}
+          title={t("MrxInvest.MrxInvestBenefitsData.title")}
           data={MrxInvestBenefitsData}
           fourElement={true}
         />
