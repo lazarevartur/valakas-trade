@@ -7,11 +7,13 @@ import userIcon from "../../../../assets/svg/icon/userIcon.jpg";
 import { useForm } from "react-hook-form";
 import { useDispatchTyped } from "../../../../hooks/useTypedRedux";
 import { setProfile } from "../../../../store/action/dashboardAction";
+import { useTranslation } from "react-i18next";
 
 interface PersonalDataProps {
   profile: any;
 }
 const PersonalData: React.FC<PersonalDataProps> = ({ profile }) => {
+  const { t } = useTranslation();
   const {
     name,
     middle_name,
@@ -41,7 +43,6 @@ const PersonalData: React.FC<PersonalDataProps> = ({ profile }) => {
   );
 
   const onSubmit = (data) => {
-    console.log(data);
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("middle_name", data.middle_name);
@@ -79,7 +80,6 @@ const PersonalData: React.FC<PersonalDataProps> = ({ profile }) => {
     }
 
     const objectUrl = URL.createObjectURL(selectedFile);
-    console.log(objectUrl);
     setPreview(objectUrl);
 
     return () => URL.revokeObjectURL(objectUrl);
@@ -96,7 +96,7 @@ const PersonalData: React.FC<PersonalDataProps> = ({ profile }) => {
             <Row>
               <Col className={styles.control_buttons}>
                 <label className={styles.file_button}>
-                  <span>Загрузить</span>
+                  <span>{t("Profile.PersonalData.download")}</span>
                   <CustomInput
                     type="file"
                     value={watch("file")}
@@ -114,7 +114,7 @@ const PersonalData: React.FC<PersonalDataProps> = ({ profile }) => {
                     setDeleteAvatar(true);
                   }}
                 >
-                  Удалить
+                  {t("Profile.PersonalData.delete")}
                 </a>
               </Col>
             </Row>
@@ -123,7 +123,7 @@ const PersonalData: React.FC<PersonalDataProps> = ({ profile }) => {
             <Form.Group controlId="formName">
               <CustomInput
                 type="text"
-                placeholder="Ваше имя"
+                placeholder={t("Profile.PersonalData.form.name")}
                 value={watch("name")}
                 name={"name"}
                 reff={register()}
@@ -132,7 +132,7 @@ const PersonalData: React.FC<PersonalDataProps> = ({ profile }) => {
             <Form.Group controlId="formSubName">
               <CustomInput
                 type="text"
-                placeholder="Ваше отчество (если оно есть)"
+                placeholder={t("Profile.PersonalData.form.surname")}
                 value={watch("surname")}
                 name={"surname"}
                 reff={register()}
@@ -141,7 +141,7 @@ const PersonalData: React.FC<PersonalDataProps> = ({ profile }) => {
             <Form.Group controlId="formSecondName">
               <CustomInput
                 type="text"
-                placeholder="Ваша фамилия"
+                placeholder={t("Profile.PersonalData.form.middle_name")}
                 value={watch("middle_name")}
                 name={"middle_name"}
                 reff={register()}
@@ -150,20 +150,20 @@ const PersonalData: React.FC<PersonalDataProps> = ({ profile }) => {
             <Form.Group controlId="formRegion">
               <CustomInput
                 type="text"
-                placeholder="Ваша страна"
+                placeholder={t("Profile.PersonalData.form.city")}
                 value={watch("city")}
                 name={"city"}
                 reff={register()}
               />
             </Form.Group>
             <DashboardTitleBlock
-              title={"Контактные данные"}
+              title={t("Profile.PersonalData.title")}
               withOutBottomLine
             />
             <Form.Group controlId="formPhoneNumber">
               <CustomInput
                 type="text"
-                placeholder="Ваш телефон"
+                placeholder={t("Profile.PersonalData.form.phone_number")}
                 value={watch("phone_number")}
                 name={"phone_number"}
                 reff={register()}
@@ -189,7 +189,7 @@ const PersonalData: React.FC<PersonalDataProps> = ({ profile }) => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Сохранить
+              {t("Profile.PersonalData.form.button")}
             </Button>
           </Col>
         </Row>

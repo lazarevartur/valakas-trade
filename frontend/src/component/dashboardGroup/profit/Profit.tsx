@@ -14,12 +14,14 @@ import {
 import { rootState } from "../../../types/types";
 import { getCurrentUser } from "../../../store/action/dashboardAction";
 import { Loader } from "../../uiKit/loader";
+import { useTranslation, Trans } from "react-i18next";
 
 interface ProfitProps {
   totalEarned?: boolean;
 }
 
 const Profit: React.FC<ProfitProps> = () => {
+  const { t } = useTranslation();
   const { userDashboard, isLoading } = useSelectorTyped(
     (state: rootState) => state.dashboard
   );
@@ -31,12 +33,15 @@ const Profit: React.FC<ProfitProps> = () => {
   const dividends = userDashboard.dividends.toFixed(1) || 0;
   const chartData = [
     {
-      name: "Начисления по инвестиционному пакету",
+      name: t("Profit.chartData.investmentPackage"),
       value: +investmentPackage,
     },
-    { name: "Дивиденды", value: +dividends },
-    { name: "Линейная премия", value: +linearPremium },
-    { name: "Менторская премия", value: userDashboard.mentor_prime },
+    { name: t("Profit.chartData.dividends"), value: +dividends },
+    { name: t("Profit.chartData.linearPremium"), value: +linearPremium },
+    {
+      name: t("Profit.chartData.mentor_prime"),
+      value: userDashboard.mentor_prime,
+    },
   ];
   const tableData = {
     linear_premium: userDashboard.linear_premium,
@@ -57,13 +62,13 @@ const Profit: React.FC<ProfitProps> = () => {
       ) : (
         <>
           {" "}
-          <DashboardTitleBlock title={"Доходность"} />
+          <DashboardTitleBlock title={t("Profit.blockTitle.profit")} />
           <div className={styles.profit}>
             <Row className={styles.row}>
               <Col lg={6}>
                 <p>
-                  Общий показатель доходности по инвестициям за{" "}
-                  <span>всё время</span>
+                  {t("Profit.total.investment_package")}{" "}
+                  <span>{t("Profit.all_time")}</span>
                 </p>
               </Col>
               <Col lg={6}>
@@ -73,8 +78,8 @@ const Profit: React.FC<ProfitProps> = () => {
             <Row className={styles.row}>
               <Col lg={6}>
                 <p>
-                  Общий показатель доходности по инвестициям за{" "}
-                  <span>последню неделю</span>
+                  {t("Profit.total.income_investment_for_week")}{" "}
+                  <span>{t("Profit.last_week")}</span>
                 </p>
               </Col>
               <Col lg={6}>
@@ -86,8 +91,8 @@ const Profit: React.FC<ProfitProps> = () => {
             <Row className={styles.row}>
               <Col lg={6}>
                 <p>
-                  Общий показатель доходности по реферальной программе за{" "}
-                  <span>всё время</span>
+                  {t("Profit.total.referralIncomeOfPartners")}
+                  <span>{t("Profit.all_time")}</span>
                 </p>
               </Col>
               <Col lg={6}>
@@ -99,8 +104,8 @@ const Profit: React.FC<ProfitProps> = () => {
             <Row className={styles.row}>
               <Col lg={6}>
                 <p>
-                  Общий показатель доходности по реферальной программе за{" "}
-                  <span>последню неделю</span>
+                  {t("Profit.total.income_referral_program_for_week")}
+                  <span>{t("Profit.last_week")}</span>
                 </p>
               </Col>
               <Col lg={6}>
@@ -114,12 +119,15 @@ const Profit: React.FC<ProfitProps> = () => {
             <Row>
               <Col lg={12}>
                 <LinkContainer to={RoutePath.replenishmentWallet}>
-                  <Button className={styles.button}>Пополнить</Button>
+                  <Button className={styles.button}>
+                    {" "}
+                    {t("Profit.buttonText")}
+                  </Button>
                 </LinkContainer>
               </Col>
             </Row>
           </div>
-          <DashboardTitleBlock title={"Статистика"} />
+          <DashboardTitleBlock title={t("Profit.blockTitle.statistics")} />
           <div className={styles.statistics}>
             <Row>
               <Col lg={6}>
@@ -128,24 +136,25 @@ const Profit: React.FC<ProfitProps> = () => {
               <Col lg={5}>
                 <ListGroup className={styles.list_group}>
                   <ListGroup.Item className={styles.first}>
-                    Начисления по инвестиционному пакету{" "}
+                    {t("Profit.chartData.investmentPackage")}
                     <span>{investmentPackage}$</span>
                   </ListGroup.Item>
                   <ListGroup.Item className={styles.second}>
-                    Дивиденды <span>{dividends}$</span>
+                    {t("Profit.chartData.dividends")} <span>{dividends}$</span>
                   </ListGroup.Item>
                   <ListGroup.Item className={styles.third}>
-                    Линейная премия <span>{linearPremium || 0}$</span>
+                    {t("Profit.chartData.linearPremium")}{" "}
+                    <span>{linearPremium || 0}$</span>
                   </ListGroup.Item>
                   <ListGroup.Item className={styles.fourth}>
-                    Менторская премия{" "}
+                    {t("Profit.chartData.mentor_prime")}{" "}
                     <span>{tableData.mentor_prime || 0}$</span>
                   </ListGroup.Item>
                 </ListGroup>
               </Col>
             </Row>
           </div>
-          <DashboardTitleBlock title={"Таблица вашей доходности"} />
+          <DashboardTitleBlock title={t("Profit.blockTitle.table")} />
           <ProfitabilityTable
             totalEarned={userDashboard.totalEarned}
             data={tableData}

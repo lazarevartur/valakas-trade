@@ -156,7 +156,8 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                       <Row>
                         <Col className={styles.description}>
                           <h4>
-                            Программа <strong>Optional</strong>{" "}
+                            {t("HomePage.wantMore.optional.title")}{" "}
+                            <strong>Optional</strong>{" "}
                             <br className={"d-lg-none"} />
                             <a href="#" className={styles.link}>
                               <ExternalLinkIcon
@@ -168,9 +169,9 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                             </a>
                           </h4>
                           <p>
-                            Продвижение компании <strong>Placebo</strong>, в
-                            котором используется
-                            <br /> линейный маркетинговый план.
+                            <Trans>
+                              {t("HomePage.wantMore.optional.description")}
+                            </Trans>
                           </p>
                           <div className={styles.description_tab}>
                             <Row>
@@ -178,8 +179,12 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                                 <Clock />
                               </Col>
                               <Col lg={11}>
-                                <h5>Срок работы</h5>
-                                <p>60-300 календарных дней</p>
+                                <h5>
+                                  {t("HomePage.wantMore.optional.1block.title")}
+                                </h5>
+                                <p>
+                                  {t("HomePage.wantMore.optional.1block.text")}
+                                </p>
                               </Col>
                             </Row>
                           </div>
@@ -189,8 +194,12 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                                 <Backpack />
                               </Col>
                               <Col lg={11}>
-                                <h5>Объём инвестиционных пакетов</h5>
-                                <p>от 100$ (10 раундов)</p>
+                                <h5>
+                                  {t("HomePage.wantMore.optional.2block.title")}
+                                </h5>
+                                <p>
+                                  {t("HomePage.wantMore.optional.2block.text")}
+                                </p>
                               </Col>
                             </Row>
                           </div>{" "}
@@ -200,14 +209,15 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                                 <Rocket />
                               </Col>
                               <Col lg={8}>
-                                <h5>Доходность</h5>
+                                <h5>
+                                  {t("HomePage.wantMore.optional.3block.title")}
+                                </h5>
                                 <p>
-                                  Разовая выплата при запуске продаж до 50% в
-                                  зависимости от раунда в котором были
-                                  приобритенны опционы.
-                                  <br />
-                                  Дивиденты до 50% в месяц. Все последуйщее
-                                  время пока вы являетесь держателем опционов.
+                                  <Trans>
+                                    {t(
+                                      "HomePage.wantMore.optional.3block.text"
+                                    )}
+                                  </Trans>
                                 </p>
                               </Col>
                             </Row>
@@ -219,7 +229,8 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                       <Row>
                         <Col className={styles.description}>
                           <h4>
-                            Программа <strong>Priority</strong>{" "}
+                            {t("HomePage.wantMore.priority.title")}{" "}
+                            <strong>Priority</strong>{" "}
                             <br className={"d-lg-none"} />
                             <a href="#" className={styles.link}>
                               <ExternalLinkIcon
@@ -230,18 +241,19 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                               <Link to={RoutePath.priority}>Priority</Link>
                             </a>
                           </h4>
-                          <p>
-                            Возможность приобрести продукты за 30-50% от их
-                            стоимости
-                          </p>
+                          <p>{t("HomePage.wantMore.priority.description")}</p>
                           <div className={styles.description_tab}>
                             <Row>
                               <Col lg={1} className={styles.icon}>
                                 <Rocket />
                               </Col>
                               <Col lg={8}>
-                                <h5>Доходность</h5>
-                                <p>100-300%</p>
+                                <h5>
+                                  {t("HomePage.wantMore.priority.1block.title")}
+                                </h5>
+                                <p>
+                                  {t("HomePage.wantMore.priority.1block.text")}
+                                </p>
                               </Col>
                             </Row>
                           </div>{" "}
@@ -251,9 +263,11 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                                 <Backpack />
                               </Col>
                               <Col lg={11}>
-                                <h5>Объём инвестиционных пакетов</h5>
+                                <h5>
+                                  {t("HomePage.wantMore.priority.2block.title")}
+                                </h5>
                                 <p>
-                                  от 300$ до 200 000$ (7 инвестиционных пакетов)
+                                  {t("HomePage.wantMore.priority.2block.text")}
                                 </p>
                               </Col>
                             </Row>
@@ -264,8 +278,12 @@ const PartnershipPrograms: React.FC<PartnershipProgramsProps> = ({
                                 <Clock />
                               </Col>
                               <Col lg={11}>
-                                <h5>Срок работы</h5>
-                                <p>21-120 календарных дней</p>
+                                <h5>
+                                  {t("HomePage.wantMore.priority.3block.title")}
+                                </h5>
+                                <p>
+                                  {t("HomePage.wantMore.priority.3block.text")}
+                                </p>
                               </Col>
                             </Row>
                           </div>

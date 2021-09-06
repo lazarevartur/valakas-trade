@@ -4,64 +4,75 @@ import { DashboardTitleBlock } from "../../../../layouts/dashboardTitleBlock";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { CustomInput } from "../../../uiKit/customInput";
 import { CustomCheckBox } from "../../../uiKit/customCheckBox";
+import { useTranslation } from "react-i18next";
 
 interface SecurityProps {
   verifRef?: any;
 }
 
 const Security: React.FC<SecurityProps> = () => {
+  const { t } = useTranslation();
   return (
     <div className={styles.security}>
       <Container>
         <DashboardTitleBlock
-          title={"Изменение пароля от учётнной записи"}
+          title={t("Profile.Security.titleBlock.change_password")}
           withOutBottomLine
         />
         <Row className={styles.change_password}>
           <Col lg={6}>
             <Form>
               <Form.Group controlId="formName">
-                <CustomInput type="text" placeholder="Текущий пароль" />
+                <CustomInput
+                  type="text"
+                  placeholder={t("Profile.Security.change_password.c_pass")}
+                />
               </Form.Group>
               <Form.Group controlId="formName">
-                <CustomInput type="text" placeholder="Новый пароль" />
+                <CustomInput
+                  type="text"
+                  placeholder={t("Profile.Security.change_password.n_pass")}
+                />
               </Form.Group>
               <Form.Group controlId="formName">
-                <CustomInput type="text" placeholder="Повторить пароль" />
+                <CustomInput
+                  type="text"
+                  placeholder={t("Profile.Security.change_password.r_pass")}
+                />
               </Form.Group>
               <Button variant="primary" type="submit">
-                Изменить
+                {t("Profile.Security.change_password.button")}
               </Button>
             </Form>
           </Col>
         </Row>
 
-        <div className={styles.authentication}>
-          <DashboardTitleBlock
-            title={"Двухфакторная аутентификация"}
-            withOutBottomLine
-            info={<span className={styles.info_disable}>выключена</span>}
-          />
-          <Row>
-            <Col lg={8}>
-              <p>
-                Двухэтапное подтверждение обеспечивает дополнительную защиту
-                посредством запроса кода подтверждения при выполнении входа на
-                новом устройстве.
-              </p>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Button variant="primary" type="submit">
-                Изменить
-              </Button>
-            </Col>
-          </Row>
-        </div>
+        {/*<div className={styles.authentication}>*/}
+        {/*  <DashboardTitleBlock*/}
+        {/*    title={"Двухфакторная аутентификация"}*/}
+        {/*    withOutBottomLine*/}
+        {/*    info={<span className={styles.info_disable}>выключена</span>}*/}
+        {/*  />*/}
+        {/*  <Row>*/}
+        {/*    <Col lg={8}>*/}
+        {/*      <p>*/}
+        {/*        Двухэтапное подтверждение обеспечивает дополнительную защиту*/}
+        {/*        посредством запроса кода подтверждения при выполнении входа на*/}
+        {/*        новом устройстве.*/}
+        {/*      </p>*/}
+        {/*    </Col>*/}
+        {/*  </Row>*/}
+        {/*  <Row>*/}
+        {/*    <Col>*/}
+        {/*      <Button variant="primary" type="submit">*/}
+        {/*        Изменить*/}
+        {/*      </Button>*/}
+        {/*    </Col>*/}
+        {/*  </Row>*/}
+        {/*</div>*/}
         <div className={styles.connect_email_notifications}>
           <DashboardTitleBlock
-            title={"Подключить Email уведомления"}
+            title={t("Profile.Security.titleBlock.email_notifications")}
             withOutBottomLine
           />
           <Form>
@@ -70,7 +81,7 @@ const Security: React.FC<SecurityProps> = () => {
                 <Form.Group id="formGridCheckbox">
                   <Form.Check
                     type="checkbox"
-                    label="О вашей покупке инвестиционного пакета"
+                    label={t("Profile.Security.email_notifications.purchase")}
                     custom
                     id={`custom`}
                   />
@@ -78,59 +89,54 @@ const Security: React.FC<SecurityProps> = () => {
                 <Form.Group id="formGridCheckbox">
                   <Form.Check
                     type="checkbox"
-                    label="О пополнение и выводе средств"
+                    label={t("Profile.Security.email_notifications.deposits")}
                     custom
                     id={`custom`}
                   />
                 </Form.Group>
-
               </Col>
               <Col lg={6}>
                 <Form.Group id="formGridCheckbox">
-                <Form.Check
+                  <Form.Check
                     type="checkbox"
-                    label="О входе с нового устройства"
+                    label={t("Profile.Security.email_notifications.signing")}
                     custom
                     id={`custom`}
-                />
-              </Form.Group>
+                  />
+                </Form.Group>
                 <Form.Group id="formGridCheckbox">
                   <Form.Check
-                      type="checkbox"
-                      label="О завершении программы"
-                      custom
-                      id={`custom`}
+                    type="checkbox"
+                    label={t("Profile.Security.email_notifications.end")}
+                    custom
+                    id={`custom`}
                   />
-                </Form.Group></Col>
+                </Form.Group>
+              </Col>
             </Row>
             <Button variant="primary" type="submit">
-              Сохранить
+              {t("Profile.Security.email_notifications.button")}
             </Button>
           </Form>
         </div>
         <div className={styles.sms}>
           <DashboardTitleBlock
-            title={"Подключить СМС-уведомления"}
+            title={t("Profile.Security.titleBlock.sms")}
             withOutBottomLine
           />
           <Row>
             <Col lg={6}>
-              <CustomInput placeholder={"Ваш телефон"} />
+              <CustomInput placeholder={t("Profile.Security.sms.telephone")} />
             </Col>
             <Col lg={6}>
               <Button variant="primary" type="submit">
-                Получить код
+                {t("Profile.Security.sms.button")}
               </Button>
             </Col>
           </Row>
           <Row>
             <Col lg={9}>
-              <p>
-                СМС-уведомления — это дополнительное средство защиты ваших
-                средств. Данные СМС-уведомления будут запрашиваться при выводах
-                и переводах средств с вашего аккаунта, а также для
-                предоставления информации.
-              </p>
+              <p>{t("Profile.Security.sms.text")}</p>
             </Col>
           </Row>
         </div>
@@ -148,7 +154,7 @@ const Security: React.FC<SecurityProps> = () => {
           <Row className={styles.success}>
             <Col>
               <a href="#" className={styles.success_button}>
-                Верифицированы
+                {t("Profile.Security.verification.success_button")}
               </a>
             </Col>
           </Row>

@@ -120,3 +120,19 @@ header {
   }
   }
 }
+.switchLeng {
+  position: absolute;
+  bottom: -4%;
+  right: 28%;
+  label {
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+  }
+  select {
+    height: 35px;
+  }
+}
+.switchLeng_logout {
+  right: 18%;
+}
