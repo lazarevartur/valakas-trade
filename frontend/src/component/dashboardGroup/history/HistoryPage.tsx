@@ -17,10 +17,12 @@ import {
   ruWalletsName,
 } from "../../../const/normalName";
 import { getRuDate } from "../../../utils/utils";
+import { useTranslation } from "react-i18next";
 
 interface HistoryProps {}
 
 const HistoryPage: React.FC<HistoryProps> = () => {
+  const { t } = useTranslation();
   const { historyPending, historyCompleted, error, isLoading } =
     useSelectorTyped((state: rootState) => state.history);
   const dispatch = useDispatchTyped();
@@ -43,10 +45,14 @@ const HistoryPage: React.FC<HistoryProps> = () => {
           <Col sm={12}>
             <Nav variant="tabs" className={styles.tabs}>
               <Nav.Item>
-                <Nav.Link eventKey="active">Активные заявки</Nav.Link>
+                <Nav.Link eventKey="active">
+                  {t("HistoryPage.tabs.active")}
+                </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="done">Завершенные заявки</Nav.Link>
+                <Nav.Link eventKey="done">
+                  {t("HistoryPage.tabs.done")}
+                </Nav.Link>
               </Nav.Item>
             </Nav>
           </Col>
@@ -65,11 +71,11 @@ const HistoryPage: React.FC<HistoryProps> = () => {
                   >
                     <thead className={styles.thead}>
                       <tr>
-                        <th>Номер заявки</th>
-                        <th>Сумма ввода/вывода</th>
-                        <th>Тип ввода/вывода</th>
-                        <th>Вид заявки</th>
-                        <th>Дата </th>
+                        <th>{t("HistoryPage.table_active.th1")}</th>
+                        <th>{t("HistoryPage.table_active.th2")}</th>
+                        <th>{t("HistoryPage.table_active.th3")}</th>
+                        <th>{t("HistoryPage.table_active.th4")}</th>
+                        <th>{t("HistoryPage.table_active.th5")}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -105,11 +111,11 @@ const HistoryPage: React.FC<HistoryProps> = () => {
                   >
                     <thead>
                       <tr className={styles.thead}>
-                        <th>Номер заявки</th>
-                        <th>Сумма ввода/вывода</th>
-                        <th>Статус</th>
-                        <th>Реквезиты</th>
-                        <th>Дата подтверждения </th>
+                        <th>{t("HistoryPage.table_done.th1")}</th>
+                        <th>{t("HistoryPage.table_done.th2")}</th>
+                        <th>{t("HistoryPage.table_done.th3")}</th>
+                        <th>{t("HistoryPage.table_done.th4")}</th>
+                        <th>{t("HistoryPage.table_done.th5")}</th>
                       </tr>
                     </thead>
                     <tbody>

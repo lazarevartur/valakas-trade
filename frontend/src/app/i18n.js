@@ -12,8 +12,8 @@ i18n
   .use(initReactI18next)
   .init({
     // Стандартный язык
-    fallbackLng: "en",
-    debug: true,
+    fallbackLng: "ru",
+    debug: false,
     // Распознавание и кэширование языковых кук
     detection: {
       order: ["queryString", "cookie"],

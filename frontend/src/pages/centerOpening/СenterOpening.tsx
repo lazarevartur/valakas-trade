@@ -9,6 +9,7 @@ import miraxMot from "../../assets/img/Motivation.jpg";
 import miraxReliability from "../../assets/img/Reliability.jpg";
 import miraxMap from "../../assets/img/miraxMap.jpg";
 import deskLine from "../../assets/png/deskLine.png";
+import deskLine_en from "../../assets/png/deskLine_en.png";
 import png1 from "../../assets/png/recomendate/1.png";
 import png2 from "../../assets/png/recomendate/2.png";
 import png3 from "../../assets/png/recomendate/3.png";
@@ -20,11 +21,12 @@ import { JumbotronCustom } from "../../component/uiKit/JumbotronCustom";
 import { Loader } from "../../component/uiKit/loader";
 import { Benefits } from "../../component/homePageLandingGroup/benefits";
 import cn from "classnames";
-import { useTranslation } from "react-i18next";
+import { useTranslation, getI18n } from "react-i18next";
 
 interface CenterOpeningProps {}
 
 const CenterOpening: React.FC<CenterOpeningProps> = () => {
+  const activeLang = getI18n().language;
   const { t } = useTranslation();
   const benData = [
     {
@@ -151,7 +153,7 @@ const CenterOpening: React.FC<CenterOpeningProps> = () => {
           <Container className={cn(styles.ruleOpen, styles.main_padding)}>
             <Row>
               <Col lg={6}>
-                <Image src={deskLine} />
+                <Image src={activeLang === "ru" ? deskLine : deskLine_en} />
               </Col>
               <Col lg={6}>
                 <h2 className={styles.title}>

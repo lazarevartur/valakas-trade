@@ -9,14 +9,16 @@ import svg2 from "../../assets/svg/bage.svg";
 import svg3 from "../../assets/svg/shield.svg";
 import svg4 from "../../assets/svg/flight.svg";
 import png1 from "../../assets/png/priorityImg.png";
+import png1_en from "../../assets/png/priorityImg_en.png";
 import cn from "classnames";
 import { PrioritySelector } from "../../component/prioritySelector";
 import { useLocation } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { useTranslation, getI18n } from "react-i18next";
 
 interface PriorityProps {}
 
 const Priority: React.FC<PriorityProps> = () => {
+  const activeLang = getI18n().language;
   const { t } = useTranslation();
   const dataBenefist = [
     {
@@ -109,7 +111,7 @@ const Priority: React.FC<PriorityProps> = () => {
       </Container>
       <Row className={styles.desc}>
         <Col lg={5}>
-          <Image src={png1} />
+          <Image src={activeLang === "ru" ? png1 : png1_en} />
         </Col>
         <Col lg={6}>
           <div className={styles.desc2}>

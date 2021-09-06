@@ -23,6 +23,7 @@ import { ExitIcon, PersonIcon } from "@modulz/radix-icons";
 import { calculateDeviceInfo } from "../../utils/utils";
 import { useTranslation } from "react-i18next";
 import { FullWidthRow } from "../../layouts/fullWidthRow";
+import { Form } from "react-bootstrap";
 const Header = () => {
   const location = useLocation();
   const dispatch = useDispatchTyped();
@@ -161,6 +162,21 @@ const Header = () => {
             </Navbar.Brand>
             {isAuth ? (
               <Nav activeKey navbar={true}>
+                <Nav.Item className={styles.switchLeng}>
+                  <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label>{t("menuHeader.change_leng")}</Form.Label>
+                    <Form.Control
+                      size="sm"
+                      as="select"
+                      onChange={(e) => {
+                        changeLanguage(e.target.value);
+                      }}
+                    >
+                      <option value={"ru"}>Русский</option>
+                      <option value={"en"}>English</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Nav.Item>
                 <Nav.Item>
                   <LinkContainer to={RoutePath.dashboard}>
                     <Nav.Link className={styles.nav_item}>
@@ -180,16 +196,31 @@ const Header = () => {
                 </Nav.Item>
               </Nav>
             ) : (
-              <LinkContainer to={`${location.pathname}${RoutePath.login}`}>
-                <Button>{t("ui.sign-in_sign_up")}</Button>
-              </LinkContainer>
+              <>
+                <LinkContainer to={`${location.pathname}${RoutePath.login}`}>
+                  <Button>{t("ui.sign-in_sign_up")}</Button>
+                </LinkContainer>
+                <Nav.Item
+                  className={cn(styles.switchLeng, styles.switchLeng_logout)}
+                >
+                  <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label>{t("menuHeader.change_leng")}</Form.Label>
+                    <Form.Control
+                      size="sm"
+                      as="select"
+                      onChange={(e) => {
+                        changeLanguage(e.target.value);
+                      }}
+                    >
+                      <option value={"ru"}>Русский</option>
+                      <option value={"en"}>English</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Nav.Item>
+              </>
             )}
           </Navbar>
           <SubMenu />
-          <div style={{ position: "fixed", zIndex: 10000 }}>
-            <button onClick={() => changeLanguage("en")}>EN</button>
-            <button onClick={() => changeLanguage("ru")}>RU</button>
-          </div>
         </header>
       )}
     </>

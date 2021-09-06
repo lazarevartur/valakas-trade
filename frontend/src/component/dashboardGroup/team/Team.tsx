@@ -10,6 +10,7 @@ import {
 import { getTeam } from "../../../store/action/dashboardAction";
 import { rootState } from "../../../types/types";
 import { Loader } from "../../uiKit/loader";
+import { useTranslation } from "react-i18next";
 
 interface TeamProps {}
 
@@ -21,6 +22,7 @@ const defaultData = [
 ];
 
 const Team: React.FC<TeamProps> = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatchTyped();
   const { isLoading, userTeam } = useSelectorTyped(
     (state: rootState) => state.team
@@ -66,16 +68,16 @@ const Team: React.FC<TeamProps> = () => {
       ) : (
         <>
           {" "}
-          <DashboardTitleBlock title={"Информация"} />
+          <DashboardTitleBlock title={t("Team.block_title.information")} />
           <div className={styles.information}>
             <Row className={styles.row}>
-              <Col lg={7}>Ваш статус ментора:</Col>
+              <Col lg={7}>{t("Team.information.status")}</Col>
               <Col lg={5}>
                 <span className={styles.accent}>{userTeam.status}</span>
               </Col>
             </Row>
             <Row className={styles.row}>
-              <Col lg={7}>Суммарная прибыль по партнерской программе:</Col>
+              <Col lg={7}>{t("Team.information.referralIncomeOfPartners")}</Col>
               <Col lg={5}>
                 <span className={styles.accent}>
                   {userTeam.referralIncomeOfPartners?.toFixed()} $
@@ -83,7 +85,7 @@ const Team: React.FC<TeamProps> = () => {
               </Col>
             </Row>
             <Row className={styles.row}>
-              <Col lg={7}>Оборот личной команды:</Col>
+              <Col lg={7}>{t("Team.information.turnover")}</Col>
               <Col lg={5}>
                 <span className={styles.accent}>{turnover} $</span>
               </Col>
@@ -97,16 +99,14 @@ const Team: React.FC<TeamProps> = () => {
               </Col>
             </Row>
           </div>
-          <DashboardTitleBlock
-            title={"Таблица доходности по реферальной программе"}
-          />
+          <DashboardTitleBlock title={t("Team.block_title.profit_table")} />
           <div className={styles.profit_table}>
             <Table striped className={styles.table_striped} responsive="sm">
               <thead>
                 <tr>
                   <th />
-                  <th>За неделю</th>
-                  <th>За всё время</th>
+                  <th>{t("Team.profit_table.th1")}</th>
+                  <th>{t("Team.profit_table.th2")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -115,7 +115,10 @@ const Team: React.FC<TeamProps> = () => {
                       if (i > 4) return null;
                       return (
                         <tr key={nameLine}>
-                          <td className={styles.lines}>{i + 1}-я линия</td>
+                          <td className={styles.lines}>
+                            {i + 1}
+                            {t("Team.lines")}
+                          </td>
                           <td>{valueForWeek.toFixed(2)} $</td>
                           <td>{value.toFixed(2)} $</td>
                         </tr>
@@ -125,7 +128,7 @@ const Team: React.FC<TeamProps> = () => {
               </tbody>
             </Table>
           </div>
-          <DashboardTitleBlock title={"Ваши партнеры"} />
+          <DashboardTitleBlock title={t("Team.block_title.our_partners")} />
           <div className={styles.our_partners}>
             <Row>
               <Col lg={6}>
@@ -137,14 +140,17 @@ const Team: React.FC<TeamProps> = () => {
                 >
                   <tbody>
                     <tr>
-                      <td>Общеее колличество</td>
+                      <td>{t("Team.our_partners.td")}</td>
                       <td>{total_number_partners || 0}</td>
                     </tr>
                     {quantity_for_each_line
                       ? quantity_for_each_line.map((count, index) => {
                           return (
                             <tr key={index}>
-                              <td>{index + 1}-я линия</td>
+                              <td>
+                                {index + 1}
+                                {t("Team.lines")}
+                              </td>
                               <td>{count}</td>
                             </tr>
                           );
@@ -155,7 +161,7 @@ const Team: React.FC<TeamProps> = () => {
               </Col>
             </Row>
           </div>
-          <DashboardTitleBlock title={"Статусы ментора"} />
+          <DashboardTitleBlock title={t("Team.block_title.status_mentora")} />
           <div className={styles.status_mentora}>
             <Table
               striped
@@ -164,12 +170,14 @@ const Team: React.FC<TeamProps> = () => {
             >
               <thead>
                 <tr>
-                  <th className={styles.width}>Уровень ментора</th>
-                  <th>Требуемое кол-во приглашенных</th>
-                  <th>Оборот личной команды</th>
-                  <th>Требуемые статусы партнеров </th>
-                  <th>Кол-во линий </th>
-                  <th>Премия </th>
+                  <th className={styles.width}>
+                    {t("Team.status_mentora.th1")}
+                  </th>
+                  <th>{t("Team.status_mentora.th2")}</th>
+                  <th>{t("Team.status_mentora.th3")}</th>
+                  <th>{t("Team.status_mentora.th4")} </th>
+                  <th>{t("Team.status_mentora.th5")} </th>
+                  <th>{t("Team.status_mentora.th6")} </th>
                 </tr>
               </thead>
               <tbody>
@@ -216,9 +224,7 @@ const Team: React.FC<TeamProps> = () => {
               </tbody>
             </Table>
           </div>
-          <DashboardTitleBlock
-            title={"Линейная премия / Дивиденды партнеров"}
-          />
+          <DashboardTitleBlock title={t("Team.block_title.status_mentora2")} />
           <div className={styles.status_mentora}>
             <Table
               striped
@@ -227,36 +233,35 @@ const Team: React.FC<TeamProps> = () => {
             >
               <thead>
                 <tr>
-                  <th className={styles.width}>Уровень линии</th>
-                  <th>Линейная премия ⃰ для “Options” и “MRX-invest”</th>
-                  <th>
-                    Начисления от дивиденов партнеров для “Options” и
-                    “MRX-invest”
+                  <th className={styles.width}>
+                    {t("Team.status_mentora2.th1")}
                   </th>
-                  <th>Линейная премия для “Priority” </th>
+                  <th>{t("Team.status_mentora2.th1")}</th>
+                  <th>{t("Team.status_mentora2.th1")}</th>
+                  <th>{t("Team.status_mentora2.th1")}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>1-я линия</td>
+                  <td>1{t("Team.lines")}</td>
                   <td>4%</td>
                   <td>5%</td>
                   <td>1,5%</td>
                 </tr>
                 <tr>
-                  <td>2-я линия</td>
+                  <td>2{t("Team.lines")}</td>
                   <td>3%</td>
                   <td>4%</td>
                   <td>1%</td>
                 </tr>
                 <tr>
-                  <td>3-я линия</td>
+                  <td>3{t("Team.lines")}</td>
                   <td>2%</td>
                   <td>3%</td>
                   <td>0,5%</td>
                 </tr>
                 <tr>
-                  <td>4-я линия</td>
+                  <td>4{t("Team.lines")}</td>
                   <td>1%</td>
                   <td>2%</td>
                   <td>-</td>

@@ -39,6 +39,38 @@
           "title": "Term of the work",
           "text": "210-260 calendar days"
         }
+      },
+      "optional": {
+        "title": "Program",
+        "description": "Promotion of a <strong> Placebo </strong> company that uses a <br /> linear marketing plan.",
+        "1block": {
+          "title": "Term of the work",
+          "text": "60-300 calendar days"
+        },
+        "2block": {
+          "title": "Volume of investment packages",
+          "text": "from $ 100 (10 rounds)"
+        },
+        "3block": {
+          "title": "Profitability",
+          "text": "A one-time payment at the start of sales up to 50%, depending on the round in which the options were purchased. <br /> Dividends up to 50% per month. All subsequent time while you are the holder of options."
+        }
+      },
+      "priority": {
+        "title": "Program",
+        "description": "The ability to purchase products for 30-50% of their cost",
+        "1block": {
+          "title": "Profitability",
+          "text": "100-300%"
+        },
+        "2block": {
+          "title": "Volume of investment packages",
+          "text": "from $ 300 to $ 200,000 (7 investment packages)"
+        },
+        "3block": {
+          "title": "Term of the work",
+          "text": "21-120 calendar days"
+        }
       }
     },
     "PTL": {
@@ -171,7 +203,7 @@
       }
     },
     "JumbotronCustom": {
-      "text": "The MRX-invest investment program allows partners to receive income at a floating rate of up to 2% per day, depending on the contribution. It is based on classic marketing\n"
+      "text": "The MRX-invest investment program allows partners to receive income at a floating rate of from 0.5% to 2% per day, depending on the contribution. It is based on classic marketing\n"
     },
     "InvestmentPackages": {
       "title": "Investment packages",
@@ -593,6 +625,261 @@
     "wallets": "Operational wallets",
     "referralIncomeOfPartners": "Referral payments"
   },
+  "Profit": {
+    "chartData" : {
+      "investmentPackage": "Investment package accruals",
+      "dividends": "Dividends",
+      "linearPremium": "Linear premium",
+      "mentor_prime": "Mentor Prize"
+    },
+    "blockTitle": {
+      "profit": "Profitability",
+      "table": "Your profitability table",
+      "statistics": "Statistics"
+    },
+    "total": {
+      "income_investment_for_week": "The overall rate of return on investment for",
+      "investment_package": "The overall rate of return on investment for",
+      "referralIncomeOfPartners": "The total profitability indicator for the referral program for ",
+      "income_referral_program_for_week": "The total profitability indicator for the referral program fo "
+    },
+    "all_time": "all the time",
+    "last_week": "last week",
+    "buttonText": "Top up"
+  },
+  "Team": {
+    "block_title": {
+      "information": "Information",
+      "profit_table": "Referral program profitability table",
+      "status_mentora": "Mentor statuses",
+      "status_mentora2": "Linear Premium / Partner Dividends",
+      "our_partners": "Your partners"
+    },
+    "information" : {
+      "status": "Your mentor status:",
+      "referralIncomeOfPartners": "Total profit for the affiliate program:",
+      "turnover": "Personal team turnover:"
+    },
+    "profit_table": {
+      "th1": "During the week",
+      "th2": "For all the time"
+    },
+    "our_partners": {
+      "td": "Total amount"
+    },
+    "status_mentora": {
+      "th1": "Mentor level\n",
+      "th2": "Требуемое кол-во приглашенных",
+      "th3": "Required number of invitees",
+      "th4": "Required partner statuses",
+      "th5": "Number of lines",
+      "th6": "Award"
+    },
+    "status_mentora2": {
+      "th1": "Line level",
+      "th2": "Linear premium ⃰ for “Options” and “MRX-invest”",
+      "th3": "Accruals from dividend partners for “Options” and “MRX-invest”",
+      "th4": "Linear premium for \"Priority\""
+    },
+    "lines": "-th line"
+  },
+  "HistoryPage": {
+    "tabs" : {
+      "active": "Active orders",
+      "done": "Completed applications"
+    },
+    "table_active": {
+      "th1": "Application number",
+      "th2": "Input / output amount",
+      "th3": "I/O type",
+      "th4": "Application type",
+      "th5": "Date"
+    },
+    "table_done": {
+      "th1": "Application number",
+      "th2": "Input / output amount",
+      "th3": "Status",
+      "th4": "Requisites",
+      "th5": "Confirmation date"
+    }
+  },
+  "Profile": {
+    "tabs": {
+      "PersonalData": "Personal data",
+      "Security": "Security"
+    },
+    "PersonalData": {
+      "title": "Contact details",
+      "download": "Download",
+      "delete": "Delete",
+      "form": {
+        "name": "Your name",
+        "surname": "Your middle name (if any)",
+        "middle_name": "Your surname",
+        "city": "Your country",
+        "phone_number": "Phone number",
+        "button": "Save"
+      }
+    },
+    "Security": {
+      "titleBlock": {
+        "change_password": "Change password for an account",
+        "email_notifications": "Connect Email Notifications",
+        "sms": "Connect SMS notifications",
+        "verification": "Data verification"
+      },
+      "change_password": {
+        "c_pass" : "Current password",
+        "n_pass" : "New Password",
+        "r_pass" : "Repeat password",
+        "button": "Change"
+      },
+      "authentication": {
+        "info_disable": "off"
+      },
+      "email_notifications": {
+        "purchase": "About your purchase of an investment package",
+        "deposits": "About deposits and withdrawals",
+        "signing": "About signing in from a new device",
+        "end": "About the end of the program",
+        "button": "Save"
+      },
+      "sms": {
+        "telephone": "Your phone number",
+        "button": "to get the code",
+        "text": "SMS notifications are an additional means of protecting your funds. These SMS notifications will be requested when withdrawing and transferring funds from your account, as well as to provide information."
+      },
+      "verification": {
+        "success_button": "Verified"
+      }
+    }
+
+  },
+  "TermsUse": {
+    "title": "Terms of use",
+    "text": "These terms and conditions (“Agreement” or “User Agreement”) set out the terms of the agreement between you as a Mirax user and the Mirax Platform. In the following, the Mirax Platform may be referred to as “we”, “us” and “us”. Platform means a website operated by the name Mirax. Your use of our Platform is subject to your agreement to these terms. If you do not agree to these terms, you should immediately stop using our Platform.",
+    "strong1": "Basic Provisions",
+    "text1": "This Agreement is a binding agreement between you and us, and it sets out your and our rights and obligations in relation to your use of the Platform. You understand and accept this Agreement and confirm that you will abide by all of its terms.",
+    "text2": "The use of the Platform is governed by the norms of the current legislation of the Russian Federation.",
+    "text3": "By registering on the Platform, the User is considered to have acceded to this Agreement.",
+    "text4": "The User of the Platform (previously and hereinafter referred to as the “User”) is an individual who has reached the age allowed in accordance with the legislation of the Russian Federation.",
+    "text5": "The Platform does not provide you with any advice (investment, legal, tax or any other) in relation to transactions carried out on / through the Platform. Each Investor (meaning any User wishing to invest on / through the Platform) confirms that he or she participates in any investment solely based on his or her own assessment of the risks and their consequences.",
+    "text6": "If you use the Platform, you will have the opportunity to invest in some or all of the projects available from time to time on the Platform. There may be additional terms that apply to specific investments that you will be notified of in writing or that will be available on the Platform.",
+    "text7": "This Agreement enters into force from the moment the User expresses consent to its terms, which is confirmed by clicking the “Register” button on the site by the User. From the moment the User expresses consent to the terms of this Agreement through the above method, the User confirms that he has provided his or her written consent to the terms of the User Agreement, and also confirms the Platform's right to use his or her personal data and guarantees that by giving such consent, he or she acts of his or her own will and in their own interests.",
+    "strong2": "Ownership",
+    "text21": "All rights to the Site, design and materials of this site, and to use the network address (domain name) belong to the Platform and its affiliates; they are protected by copyright, trademarks and other proprietary rights;",
+    "text22": "When working with the Site, the User is not granted intellectual property rights either to the Site itself or to the content associated with it;",
+    "text23": "The content of the site is available for viewing and use for your personal use. Otherwise, the submitted materials may not be used for any purpose without the prior written consent of Mirax.",
+    "strong3": "Rights and obligations of the Platform",
+    "text31": "The Platform provides the User with Services in accordance with the terms of the Service Agreement, which are included in this Agreement.",
+    "text32": "The Platform hereby grants the User a non-transferable, non-exclusive license to access and use the Platform and its services based on the data specified in the Service Agreement in accordance with these Terms. The User agrees to use the Data solely for the internal business purposes of the User.",
+    "text33": "The Platform will exercise all reasonable care in collecting information that constitutes any part of the Services.",
+    "text34": "The Platform reserves complete editorial freedom with respect to the form and content of the Services;",
+    "text35": "The platform has the right to send informational messages to its Users, including advertising messages. The user is also in accordance with Part 1 of Art. 18 of the Federal Law “On Advertising” gives his consent to receive advertising messages at all e-mail addresses and phone numbers specified in the User's profile.",
+    "text36": "The platform has the right at any time to unilaterally change the terms of this Agreement without prior notice to the User. Such changes take effect from the date of publication on the site. If the User disagrees with the changes made, he or she is obliged to refuse access to the Site and stop using the Platform and its services.",
+    "text37": "The Platform has the right at any time to unilaterally establish restrictions on the provision of materials, services and services of the Platform for all Users or for certain categories of Users. The platform can at any time unilaterally prohibit Users (both individually and in their entirety) from automatic access to their services, materials and services, and also stop receiving any information.",
+    "text38": "The platform is not responsible for violation by the User of this Agreement.",
+    "text39": "Under no circumstances will the Mirax Platform or its representatives or affiliates be liable to the User or to any third parties for any indirect, accidental or unintentional damage, including lost profits, caused in connection with the use of the Site, materials, services and / or services of the Platform. to which the User or other persons gained access using the Platform, even if the Platform warned or indicated the possibility of such harm.",
+    "text310": "The Platform also has the right to: a) temporarily block, in whole or in part, the possibility of using the materials, services and / or services of the Site by the User, or delete the User's account in case of violation of the terms of this Agreement and / or the requirements of the legislation of the Russian Federation; b) use the User's personal data on the terms of this Agreement; c) change the composition and cost of materials, services and / or services of the Site available to the User; d) to moderate the messages of the User; e) enter a fee for the use of materials, services and / or services of the Platform; f) not be liable for technical failures in the process of providing the Services that arose through no fault of ours; g) not be liable for non-fulfillment or improper fulfillment of their obligations as a result of preventive measures on their website.",
+    "strong4": "User's rights and obligations",
+    "text41": "The user is obliged to comply with the provisions of the current legislation of the Russian Federation and this Agreement;",
+    "text42": "The User is obliged to fully familiarize himself with this Agreement before registering on the Platform. By registering on the Platform, the User confirms that he is an adult, has read, understood and undertakes to comply with all the terms of this Agreement, that is, expresses full and unconditional acceptance of the terms of this Agreement in accordance with Article 438 of the Civil Code of the Russian Federation.",
+    "text43": "In order for the User to use the materials, services and services of the Platform, as well as to fulfill this Agreement, the User, by agreeing to registration, provides the Platform with consent to processing (any action or set of actions performed using automation tools or without using such tools with personal data, including collection, recording, systematization, automated processing, accumulation, storage, clarification (update, change), extraction, use, transfer (distribution, provision, access, cross-border transfer), depersonalization, blocking, deletion, destruction).",
+    "text433": "Also, the user undertakes: (a) Not to sell, disclose or distribute the Data provided by the Platform for any monetary or other remuneration without the prior written consent of the Platform; (b) use reasonable efforts to comply with any terms and conditions attached to any section of the Agreement set forth in this document; (c) the User should not make any attempt to (d) alter, modify, improve, interfere with, disassemble or decompile the Data and / or hosting of the Platform Services through which the Data is delivered; or (e) provide a sub-license or transfer to third parties any of the User's rights under this Agreement, unless otherwise provided by this Agreement; (e) Pay the fees on time.",
+    "text44": "When using the Site, the User is prohibited from registering as a User on behalf of or instead of another person (“Fake Account”);",
+    "text45": "The user is responsible for his own actions in connection with the creation and posting of information in his own account in accordance with the current legislation of the Russian Federation.",
+    "text46": "The user gets the right to use the materials to which he was given access, solely for informational and educational purposes; The User is not entitled to reproduce and distribute in whole or in part the content of any content on the Platform or Data to which the Platform has provided access to the User; The user does not have the right to use the information received for commercial purposes.",
+    "strong5": "Limitation of Liability",
+    "text51": "User acknowledges that Mirax has set its prices and entered into this Agreement relying on the limitations of liability and disclaimer of warranties and damages set forth in this document, and that they form the essential basis of the Agreement between you and us.",
+    "strong6": "Dispute Resolution",
+    "text61": "Before going to court with a claim for disputes arising from the relationship between the Company and the Client, it is mandatory to submit a claim (a written proposal for a voluntary settlement of the dispute);",
+    "text62": "The recipient of the claim within 30 calendar days from the date of receipt of the claim, notifies the applicant of the claim in writing about the results of the consideration of the claim;",
+    "text63": "If an agreement is not reached, the dispute will be referred to a judicial authority in accordance with the current legislation of the Russian Federation;",
+    "text64": "Neither Party shall be liable to the other Party for claims brought by a Party more than two years after the date of termination of this Agreement.",
+    "strong7": "Termination",
+    "text71": "Without prejudice to any rights under this Agreement, Mirax may immediately suspend all or any part of the provision of the Services if the User fails to pay any Fees by the due date.",
+    "text72": "The Service Agreement may be terminated by either Party immediately with written notice to the other Party if the other Party commits a material violation of any term of the Agreement and (in the case of a recoverable violation) cannot eliminate the violation within thirty days",
+    "text73": "Any termination of the Agreement for any reason does not affect the rights or obligations arising from any of the Parties and which may have existed prior to its termination.",
+    "text74": "Upon termination of the Service Agreement for any reason a) the provision of the Services terminates automatically; b) The User must immediately pay to Mirax all unpaid Commissions; c) Mirax shall pay the User any amount of the User that relates to any period after the termination of the Agreement, minus the amount of outstanding Commissions.",
+    "strong8": "Force Majeure",
+    "text81": "Neither Party shall be liable to the other party for a decrease in Payments, delay or failure to fulfill its obligations under this Agreement for any reason or reasons beyond its reasonable control (“Force Majeure”), including but not limited to: a) flooding , storm or other natural disaster; b) any war, hostilities, revolution, riot or civil disturbance; c) any destruction, breakdown (permanent or temporary), malfunction or damage to any premises, installations, equipment or materials (including any computer hardware or software or any records) owned by Mirax; d) introduction or modification of any law or regulation, or any modification of its interpretation or application by any authority; e) any action taken by a government or public authority or any agency of the Russian Federation, including refusal or delay in granting consent, release or permission; f) any breach of contract, default or insolvency of a third party, with the exception of an agent or subcontractor of the Party relying on compensation and a company in the same group as the Party relying on compensation to which this clause may be provided; or g) any failure of the Data Provider to provide contractual data, if such data is part of the Data, for more than 3 (three) consecutive working days.",
+    "text82": "The Party relying on Force Majeure must: a) send written notice of Force Majeure to the other Party as soon as possible, indicating the beginning and extent of the Force Majeure, its cause and its expected duration; b) take all reasonable measures to mitigate the consequences of Force Majeure to fulfill its obligations under this Agreement; d) resume the fulfillment of their obligations as soon as possible after the termination of the Force Majeure.",
+    "version": "May 20, 2021 version"
+  },
+  "PrivacyPolicy": {
+    "title": "Privacy Policy",
+    "text1": "This Privacy Policy (hereinafter - the \"Policy\") governs the policy and procedural aspects of the collection, use and dissemination of personal data through the Site (site name) (\"Site\") and other services, applications, platforms, software and social media associated with Mirax (“Company”, “Mirax”, “Company Mirax”).",
+    "text2": "This policy applies to persons (hereinafter referred to as the “Client”) who provide their personal data to Mirax or visit / use Mirax websites, other services, applications, platforms, software and social media. By using the Site, the Client agrees to this Privacy Policy.",
+    "strong1": "General Provisions",
+    "text11": "By registering and using an account on the Site, the Client allows the collection, use and dissemination of his personal data in accordance with this Privacy Policy and applicable law. In case of disagreement with the Policy, the Client must immediately leave / stop using the Mirax Site.",
+    "text12": "This Policy applies to all information that the Company may receive about the Client while using this Site.",
+    "text13": "The Company does not control and is not responsible for the information of third parties, access to which the Client can obtain by clicking on the links on the Site.",
+    "text14": "The Company does not verify the accuracy of the personal information provided by the Client. The Company believes that the information transmitted by it from the Client is reliable.",
+    "strong2": "What data do we collect",
+    "text21": "Mirax collects and processes your personal data. They may include the following information:",
+    "text211": "Personal data provided by the Client by registering an account or filling out special forms on the Site (for example, your name, email address, phone number, date of birth, investment goals, etc.).",
+    "text22": "Personal data obtained as a result of transactions carried out by you through the Mirax system, or related to the services offered by Mirax;",
+    "text23": "Information about the Client's mobile device (model, operating system version, unique device identifiers, data on the mobile network, etc.);",
+    "text24": "Information of logs (log files) containing information about using the Site or viewing information on the Site;",
+    "text25": "Personal data obtained through cookies on the Internet.",
+    "strong3": "Purpose of collecting personal information of the Client",
+    "text31": "The Company may use the Client's personal data for the following purposes:",
+    "text32": "Client identification on the website;",
+    "text33": "Establishing feedback with the Client, including sending notifications, requests regarding the use of the Site, the provision of services, processing requests and applications from the Client;",
+    "text34": "Determining the location of the Client to ensure security, prevent fraud;",
+    "text35": "Confirmation of the accuracy and completeness of the personal data provided by the Client;",
+    "text36": "Client notifications according to the terms of cooperation;",
+    "text37": "Providing the Client with effective customer and technical support in case of problems related to the use of the Site;",
+    "text38": "Providing the Client, with his consent, of updates, special offers, information and newsletters, as well as other information on behalf of the site or on behalf of the partners of the site;",
+    "text39": "Carrying out advertising activities with the consent of the Client;",
+    "text310": "Providing the Client with access to the sites or services of partners in order to receive products, updates and services;",
+    "text311": "To diagnose the functioning of the Site, analyze the behavior and assess the interest of Clients shown in relation to various sections of the Site, as well as to ensure a high quality of service for Clients;",
+    "text312": "For administrative purposes, including internal investigations of violations of this Privacy Policy.",
+    "strong4": "Dissemination and disclosure of information",
+    "text41": "The Company reserves the right to share personal information and personal data of Clients with the founders and managers of the Company, as well as with all branches, representative offices and other companies related to the Company, but undertakes to require everyone who gains access to this information to comply with the terms of this Privacy Policy ;",
+    "text42": "The company may disclose personal data, in good faith believing that it is authorized to do so, or that such behavior is justifiably necessary or justified to comply with the law, or legal process, or the requirements of public authorities; in response to any complaints, or to protect the rights, property or safety of the Company, its Clients, employees or society, including, but not limited to, from fraud, abuse, misuse or illegal use of the Site;",
+    "text43": "The Company may disclose, upon an official request from state authorities, the personal data of the Client necessary for an official investigation.",
+    "strong5": "Obligations of the parties",
+    "text51": "The client is obliged:",
+    "text52": "Provide information about personal data necessary to use the Site;",
+    "text53": "Update, supplement the provided information about personal data in case of changes in this information.",
+    "text54": "The company is obliged to:",
+    "text55": "Use the information received solely for the purposes specified in clause 3 of this Privacy Policy;",
+    "text56": "Take precautions to protect the confidentiality of the Client's personal data in accordance with the procedure usually used to protect this kind of information in existing business transactions. ",
+    "strong6": "Disclaimer",
+    "text61": "Mirax (including officers, directors, shareholders, employees, agents and other representatives), to the extent permitted by applicable law, is not liable to the Client for any damage and direct, incidental, consequential or similar losses (including lost profits ) arising in connection with the access / use of this Site, services, applications, platforms, software and social media related to the Company, investments, inoperability, error, omission, interruption, defect, downtime or delay in transmission, computer virus or system failure;",
+    "text62": "The Company is not responsible for illegal actions of third parties, hackers, intruders and other violators of applicable law who may violate the terms of this Privacy Policy and try to take possession of all or part of personal information and personal data of Clients, as well as use it for personal purposes;",
+    "text63": "The Company does not assume responsibility for the actions of persons or organizations, directly or otherwise carried out on the basis of information available on the Site or received through it, either provided by the Company or by third parties;",
+    "text64": "The Site and its content are provided on an “as is” basis, and the Company does not make any representations or warranties regarding the Site and its content, including, but not limited to:",
+    "text65": "in relation to the timeliness, relevance, accuracy, completeness, reliability, availability or suitability for any specific purpose of the Site and the Content;",
+    "text66": "that when using the Site there will be no errors, it will be safe and uninterrupted;",
+    "text67": "that the Company will correct any errors or that there will be no viruses or other malicious codes on the Site;",
+    "text68": "that the Site and its contents do not violate the rights of third parties. To the extent possible in accordance with applicable law, the Company disclaims any representations and warranties, the provision of which may otherwise be implied.",
+    "text69": "In case of loss or disclosure of the Client's personal data, the Company is not responsible if this information:",
+    "text610": "Became public domain prior to its loss or disclosure;",
+    "text611": "Was received from a third party prior to its receipt by the Company;",
+    "text612": "Was disclosed with the consent of the Client;",
+    "text613": "Access and use of the Site, services, applications, platforms, software and social media associated with the Company are carried out solely at your discretion and at your risk.",
+    "strong7": "Cookies policy",
+    "text71": "This document defines the conditions for the use of cookies on this site, explains the purpose of using cookies and defines the rights of users to change and define the rules for the provision of cookies at their own discretion.",
+    "text72": "Cookies are necessary in order to provide and improve the quality of the online services of this site, as well as to ensure the confidentiality of information provided by the user and its processing in an appropriate manner. We take all necessary security measures to prevent unauthorized access, disclosure, modification or unauthorized deletion of information provided by customers through cookies.",
+    "text73": "What are cookies?",
+    "text74": "A cookie is a small text file that is stored on your computer or other device used when you visit a website. The text file contains information that is used to provide a better service to website visitors.",
+    "text75": "Какие файлы cookies используются на данном сайте?",
+    "text76": "What cookies are used on this website?",
+    "text77": "Required. These cookies are essential for the website to function. These include, for example, cookies that allow you to log into secure areas of the site and use the basic functionality of the site.",
+    "text78": "Analytical / service. These cookies provide information about how and how often this site is used, what user groups are, what search tools are used. Cookie statistics may also be obtained from third parties.",
+    "text79": "Targeted. These cookies remember your visits to this site, which pages you visited, which links you clicked on. We use this information to make this site and the information on it more relevant to your interests.",
+    "text710": "How do I disable cookies?",
+    "text711": "If you do not want cookies to be used on your devices, you can change the security settings of your browser. Please note that security settings may vary and must be configured separately for each browser. If you block all cookies in your browser (including mandatory ones), the entire site or part of it may not be available to you.",
+    "strong8": "Additional terms",
+    "text81": "The Company has the right to make changes to this Privacy Policy without the consent of the Client;",
+    "text82": "The new Privacy Policy comes into force from the moment it is posted on the Site, unless otherwise provided;",
+    "text83": "The materials on this site are not intended for individuals residing in jurisdictions where the provision of such information would violate legal and regulatory requirements.",
+    "strong9": "Feedback",
+    "text91": "Any suggestions or questions about this Privacy Policy should be reported to miraxtrade@mail.com",
+    "version": "May 20, 2021 version"
+  },
   "ReferralLink": {
     "referral_link": "Your referral link:",
     "link": "The referral link will appear only after purchasing one of our products"
@@ -612,7 +899,7 @@
     }
   },
   "ui" : {
-    "JumbotronCustom_button": "join",
+    "JumbotronCustom_button": "Join us",
     "sign-in_sign_up": "Sign in / Sign up",
     "personalArea": "Personal Area",
     "become_partner": "BECOME A PARTNER"
@@ -628,7 +915,8 @@
     "Community": "Community Mirax",
     "openCenter": "Opening of an individual <br/> consultation center",
     "news": "News",
-    "exit": "Exit"
+    "exit": "Exit",
+    "change_leng": "Change language"
   },
   "footer": {
     "title": "Global distributor of investment programs for partners of all levels",

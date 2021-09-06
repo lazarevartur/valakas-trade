@@ -26,10 +26,10 @@ export const store = configureStore({
     users: users.reducer,
     news: news.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }).concat(jwtMiddleware),
+  // middleware: (getDefaultMiddleware) =>
+  //   getDefaultMiddleware({
+  //     serializableCheck: false,
+  //   }).concat(jwtMiddleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
