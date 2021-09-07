@@ -4,6 +4,7 @@ import { Form, ListGroup } from "react-bootstrap";
 import { urlBills, urlBillsWithOutHttps } from "../../../../const/url";
 import styles from "./bill.module.scss";
 import cn from "classnames";
+import { useTranslation, Trans } from "react-i18next";
 
 interface BillProps {
   amount?: number;
@@ -22,6 +23,7 @@ const Bill: React.FC<BillProps> = ({
   requisites,
   errors,
 }) => {
+  const { t } = useTranslation();
   const course = 74;
   const isQiwi = name === "qiwi";
   const isBit = name === "bitcoin";
@@ -30,7 +32,7 @@ const Bill: React.FC<BillProps> = ({
   const isCripto = isBit || isEther || isUsdt;
   const amountWithQiwi = isQiwi ? amount * course : amount;
   const validators = {
-    required: "Заполните поле",
+    required: t("Bill.required"),
   };
   const error = errors[name] && errors[name].message;
   return (
@@ -39,10 +41,10 @@ const Bill: React.FC<BillProps> = ({
       <ListGroup bsPrefix={"repelType"}>
         <ListGroup.Item>
           {isCripto ? (
-            <>1. Заходим в свой криптокошелек</>
+            <>1. {t("Bill.isCripto")}</>
           ) : (
             <>
-              1. Заходим в свой кошелёк на сайте{" "}
+              1. {t("Bill.wallet")}{" "}
               <a href={urlBills[name]} target={"_blank"}>
                 {urlBillsWithOutHttps[name]}
               </a>
@@ -50,33 +52,32 @@ const Bill: React.FC<BillProps> = ({
           )}
         </ListGroup.Item>
         <ListGroup.Item>
-          2. Выбираем раздел <strong>"Перевести"</strong>
+          <Trans>2. {t("Bill.choose")}</Trans>
         </ListGroup.Item>
         <ListGroup.Item>
-          3. В поле "Номер счета, email или телефон" вписываем кошелек:{" "}
+          3. {t("Bill.account_number")}{" "}
           <strong className={cn(requisites?.length > 15 && styles.textSmall)}>
             {requisites}
           </strong>
         </ListGroup.Item>
         <ListGroup.Item>
-          4. Вводим сумму пополнения в поле "Сумма" -{" "}
+          4. {t("Bill.sum")} -{" "}
           <strong>
             {amountWithQiwi} {isQiwi ? "₽" : "$"}
           </strong>
         </ListGroup.Item>
         <ListGroup.Item>
-          5. Жмем кнопку <strong>"Перевести"</strong>
+          5. <Trans>{t("Bill.trans")}</Trans>
         </ListGroup.Item>
         <ListGroup.Item>
-          6. Копируем номер транзакции, вставляем в поле{" "}
-          <strong>Введите номер транзакции</strong> (например: 23114674)
+          <Trans>{t("Bill.copy")}</Trans>
         </ListGroup.Item>
         <ListGroup.Item>
-          7. Жмем кнопку <strong>"Пополнить"</strong>
+          <Trans>{t("Bill.push")}</Trans>
         </ListGroup.Item>
       </ListGroup>
       <p>
-        Сумма пополнения:{" "}
+        {t("Bill.Top_up_amount")}{" "}
         <strong>
           {" "}
           {amountWithQiwi} {isQiwi ? "₽" : "$"}
@@ -85,9 +86,9 @@ const Bill: React.FC<BillProps> = ({
       <Form.Group controlId="exampleForm.ControlTextarea1">
         <Form.Label>
           {error ? (
-            <span style={{ color: "red" }}>Введите номер транзакции</span>
+            <span style={{ color: "red" }}>{t("Bill.transaction")}</span>
           ) : (
-            "Введите номер транзакции"
+            t("Bill.transaction")
           )}
         </Form.Label>
         <Form.Control
@@ -95,7 +96,7 @@ const Bill: React.FC<BillProps> = ({
           rows={3}
           ref={reff({
             ...validators,
-            minLength: { value: 5, message: "От 5 до 30 символов" },
+            minLength: { value: 5, message: t("Bill.min") },
           })}
           name={name}
         />

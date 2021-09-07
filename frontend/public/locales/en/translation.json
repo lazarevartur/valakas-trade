@@ -898,11 +898,152 @@
       "mentor_prime": "Mentoring award"
     }
   },
+  "MrxProgram": {
+    "titleBlock": {
+      "information": "Profitability",
+      "accounts": "My accounts",
+      "statistics": "Profitability statistics for the MRX-invest program"
+    },
+    "chartData": {
+      "deposit": "Deposit amount",
+      "investmentPackage": "Investment package accruals",
+      "dividends": "Dividends",
+      "linearPremium": "Referral program payments"
+    },
+    "program": "Program",
+    "wit_us": "You are with us:",
+    "mrxPercent": "Current base rate of return:",
+    "lineCount": "Number of lines:",
+    "account_active": "The account is active until:",
+    "button_update": "Improve the program",
+    "button_buy": "Buy the program"
+  },
+  "OptionalProgram": {
+    "TitleBlock": {
+      "Profitability": "Profitability",
+      "accounts": "My current round score"
+    },
+    "accounts": {
+      "deposit": "Deposit amount",
+      "quantity": "Number of options",
+      "cost": "Option price",
+      "profitability": "Current base rate of return"
+    },
+    "Program": "Program",
+    "with_us": "You are with us",
+    "profitability": "Current base rate of return:",
+    "activeRound": "Current round:",
+    "endRound": "Completion of the last round",
+    "button": "Buy options",
+    "Check": "Check",
+    "rounds": "-st round"
+  },
+  "PriorityProgram": {
+    "TitleBlock": {
+      "Profitability": "Profitability",
+      "PriorityCard": "Number of connected program №"
+    },
+    "Program": "Program:",
+    "countAllPrograms": "Number of purchased programs",
+    "totalInvest": "The total investment amount will be",
+    "totalProfit": "The total benefit will be",
+    "Button": "Buy Priority"
+  },
+  "BuyPrograms": {
+    "buy_options": "Buying options",
+    "buy_package": "Buying a package",
+    "balance": "Balance replenishment",
+    "program": "Program",
+    "select": "Select a program",
+    "investment": "Investment packages",
+    "price": "Price",
+    "maximum": "Maximum program activated",
+    "options": "Options",
+    "round_number": "Round",
+    "start_round": "Round start",
+    "end_round": "End of the round",
+    "cost": "Option price",
+    "profit": "Return on capital employed",
+    "quantity": "Highlighted options",
+    "purpose": "Purpose of collection",
+    "collected": "Collected",
+    "minOptions": "The minimum purchase amount is 1000 options",
+    "amount": "Number of options",
+    "price_optional": "Options cost",
+    "buy": "Buy"
+
+  },
+  "BuyPriority": {
+    "modal_title": "Your Priority",
+    "accrual": "Expected amount of accrual",
+    "originalAmount": "Ваша выгода составит:",
+    "discount": "Your benefit will be",
+    "term": "Deposit term",
+    "insurance": "Insurance \"AXA\"",
+    "marketingAssistance": "Marketing Assistance",
+    "marketingAssistanceChose": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "dateCompletion": "Date of completion",
+    "amount_pay": "Amount to pay",
+    "checkout": "Checkout",
+    "days": "days"
+
+  },
+  "ReplenishmentWallet": {
+    "success_title": "Successful payment",
+    "application": "Application for account replenishment has been sent!",
+    "modal_title": "Balance replenishment",
+    "amount_placeholder": "Top-up amount in dollars",
+    "up": "Top up"
+  },
+  "Bill": {
+    "required": "Fill in the field",
+    "isCripto": "Go to your crypto wallet",
+    "wallet": "Go to your wallet on the site",
+    "choose": "We select the section <strong> \"Translate\" </strong>",
+    "account_number": "field  \"Account number, email or phone enter the wallet: \"",
+    "sum": "Enter the replenishment amount in the \"Amount\" field",
+    "trans": "We press the button <strong> \"Translate\" </strong>",
+    "copy": "Copy the transaction number, paste it into the field        <strong> Enter the transaction number </strong> (example: 23114674)",
+    "push": " We press the button <strong> \"Replenish\" </strong>",
+    "Top_up_amount": "Top-up amount",
+    "transaction": "Enter the transaction number",
+    "min": "5 to 30 characters"
+  },
+  "TransferWallet": {
+    "success_title": "Successful translation!",
+    "success_text": "Translation completed successfully!",
+    "modal_title": "Internal transfers",
+    "placeholder_amount": "Enter the amount",
+    "account": "Enrollment account",
+    "start": "Start account",
+    "button_block": "Translate",
+    "text": "Withdrawals are available at any time, but no more than 10 times a month. Application processing takes up to 48 hours after its creation. The minimum withdrawal amount is 10."
+  },
+  "WithdrawWallet": {
+    "success_title": "Successful request",
+    "success_text": "Withdrawal request has been successfully created!",
+    "modal_title": "Withdraw funds",
+    "Output_type": "Output type",
+    "amount": "Withdrawal amount",
+    "min_amount": "Minimum withdrawal amount 10 $",
+    "wallet": "Your wallet",
+    "button": "Output",
+    "text": "Withdrawals are available at any time, but no more than 10 times per  month. Application processing takes up to 48 hours after its creation.   The minimum withdrawal amount is $ 10."
+
+  },
   "ui" : {
     "JumbotronCustom_button": "Join us",
     "sign-in_sign_up": "Sign in / Sign up",
     "personalArea": "Personal Area",
-    "become_partner": "BECOME A PARTNER"
+    "become_partner": "BECOME A PARTNER",
+    "Plug": {
+      "reppelWallet": "To purchase the program, you need to top up your account",
+      "status_mentor": "To work, you need M2 mentor status",
+      "buttonText": "View status"
+    }
 },
   "menuHeader" : {
     "about": "About Us",
@@ -915,7 +1056,7 @@
     "Community": "Community Mirax",
     "openCenter": "Opening of an individual <br/> consultation center",
     "news": "News",
-    "exit": "Exit",
+    "exit": "Logout",
     "change_leng": "Change language"
   },
   "footer": {

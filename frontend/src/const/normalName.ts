@@ -4,7 +4,7 @@ export const ruWalletsName = {
   payeer: "Payeer",
   bitcoin: "Bitcoin",
   ethereum: "Ethereum",
-  usdtether: "USDT",
+  usdtether: "USDT - TRC 20",
   perfect_money: "Perfect Money",
 };
 

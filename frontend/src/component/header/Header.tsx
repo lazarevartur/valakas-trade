@@ -164,7 +164,6 @@ const Header = () => {
               <Nav activeKey navbar={true}>
                 <Nav.Item className={styles.switchLeng}>
                   <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>{t("menuHeader.change_leng")}</Form.Label>
                     <Form.Control
                       size="sm"
                       as="select"
@@ -191,7 +190,7 @@ const Header = () => {
                     className={styles.nav_item}
                   >
                     <ExitIcon width={24} height={24} />
-                    <span>Выход</span>
+                    <span>{t("menuHeader.exit")}</span>
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
@@ -204,7 +203,6 @@ const Header = () => {
                   className={cn(styles.switchLeng, styles.switchLeng_logout)}
                 >
                   <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label>{t("menuHeader.change_leng")}</Form.Label>
                     <Form.Control
                       size="sm"
                       as="select"

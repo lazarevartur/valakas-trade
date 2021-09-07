@@ -84,6 +84,28 @@ export function numberDays(date) {
   return 0;
 }
 
+export function numberDays_en(date) {
+  const dateNow = new Date();
+  if (date) {
+    const lastDate = new Date(date);
+    const diff = dateNow.getTime() - lastDate.getTime();
+    const milliseconds = diff;
+
+    const seconds = milliseconds / 1000;
+
+    const minutes = seconds / 60;
+
+    const hours = minutes / 60;
+
+    const days = hours / 24;
+
+    const noun = "days";
+    return `${days.toFixed()} ${noun}`;
+  }
+
+  return 0;
+}
+
 export const ruDays = (days) => {
   return getNoun(days.toFixed(), "день", "дня", "дней");
 };

@@ -19,10 +19,12 @@ import { CustomInput } from "../../../uiKit/customInput";
 import useGetParameter from "../../../../hooks/useGetParameter";
 import { useHistory } from "react-router";
 import { DashboardRoute } from "../../../../routes/dashboard";
+import { useTranslation } from "react-i18next";
 
 interface BuyPriorityProps {}
 
 const BuyPriority: React.FC<BuyPriorityProps> = () => {
+  const { t } = useTranslation();
   const { success } = useSelectorTyped((state: rootState) => state.wallets);
   const { priorityData } = useSelectorTyped(
     (state: rootState) => state.priority
@@ -57,7 +59,7 @@ const BuyPriority: React.FC<BuyPriorityProps> = () => {
           <Col lg={12}>
             <Modal.Header closeButton>
               <Modal.Title className={styles.modal_title}>
-                Ваш Priority {programType}
+                {t("BuyPriority.modal_title")} {programType}
               </Modal.Title>
             </Modal.Header>
           </Col>
@@ -67,36 +69,42 @@ const BuyPriority: React.FC<BuyPriorityProps> = () => {
           <Col lg={{ offset: 2, span: 8 }}>
             <Form.Group controlId="optionsWallet" className={styles.options}>
               <Row className={styles.parameter}>
-                <Col sm={7}>Ожидаемая сумма начисления</Col>
+                <Col sm={7}>{t("BuyPriority.accrual")}</Col>
                 <Col sm={5}>{getRuFormatNumbers(originalAmount)}$</Col>
               </Row>
               <Row className={styles.parameter}>
-                <Col sm={7}>Ваша выгода составит:</Col>
+                <Col sm={7}>{t("BuyPriority.originalAmount")}</Col>
                 <Col sm={5}>{getRuFormatNumbers(originalAmount - amount)}$</Col>
               </Row>
               <Row className={styles.parameter}>
-                <Col sm={7}>Скидка</Col>
+                <Col sm={7}>{t("BuyPriority.discount")}</Col>
                 <Col sm={5}>{conditions?.discount || 0}%</Col>
               </Row>
               <Row className={styles.parameter}>
-                <Col sm={7}>Срок депозита</Col>
-                <Col sm={5}>{conditions?.term || 0} дней</Col>
+                <Col sm={7}>{t("BuyPriority.term")}</Col>
+                <Col sm={5}>
+                  {conditions?.term || 0} {t("BuyPriority.days")}
+                </Col>
               </Row>
               <Row className={styles.parameter}>
-                <Col sm={7}>Страхование "AXA"</Col>
+                <Col sm={7}>{t("BuyPriority.insurance")}</Col>
                 <Col sm={5}>{conditions?.insurance || 0}%</Col>
               </Row>
               <Row className={styles.parameter}>
-                <Col sm={7}>Маркетинговое содействие</Col>
-                <Col sm={5}>{marketingAssistance ? "Да" : "Нет"}</Col>
+                <Col sm={7}>{t("BuyPriority.marketingAssistance")}</Col>
+                <Col sm={5}>
+                  {marketingAssistance
+                    ? t("BuyPriority.marketingAssistanceChose.yse")
+                    : t("BuyPriority.marketingAssistanceChose.no")}
+                </Col>
               </Row>
               <Row className={styles.parameter}>
-                <Col sm={7}>Дата завершения</Col>
+                <Col sm={7}>{t("BuyPriority.dateCompletion")}</Col>
                 <Col sm={5}>{getRuDate(dateCompletion || Date.now())}</Col>
               </Row>
               <Row className={styles.parameter}>
                 <Col sm={7}>
-                  <strong>Сумма к оплате</strong>
+                  <strong>{t("BuyPriority.amount_pay")}</strong>
                 </Col>
                 <Col sm={5}>{getRuFormatNumbers(amount.toFixed(1))}$</Col>
               </Row>
@@ -106,7 +114,9 @@ const BuyPriority: React.FC<BuyPriorityProps> = () => {
 
         <Row>
           <Col lg={{ offset: 2, span: 8 }} className={styles.button_block}>
-            {amount > 0 && <Button type="submit">Оформить</Button>}
+            {amount > 0 && (
+              <Button type="submit">{t("BuyPriority.checkout")}</Button>
+            )}
           </Col>
         </Row>
       </Container>
