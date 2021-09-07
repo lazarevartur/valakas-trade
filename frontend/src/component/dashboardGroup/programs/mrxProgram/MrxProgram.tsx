@@ -20,15 +20,18 @@ import {
 } from "../../../../hooks/useTypedRedux";
 import { rootState } from "../../../../types/types";
 import { Loader } from "../../../uiKit/loader";
-import { numberDays } from "../../../../utils/utils";
+import { numberDays, numberDays_en } from "../../../../utils/utils";
 import { Plug } from "../../../uiKit/plug";
 import { useLocation } from "react-router-dom";
 import { getCurrentUser } from "../../../../store/action/dashboardAction";
 import { ProgramType } from "../../../../const/popup";
+import { useTranslation, getI18n } from "react-i18next";
 
 interface MrxProgramProps {}
 
 const MrxProgram: React.FC<MrxProgramProps> = () => {
+  const { t } = useTranslation();
+  const activeLang = getI18n().language;
   const { mrxProgram, isLoading } = useSelectorTyped(
     (state: rootState) => state.mrx
   );
@@ -53,9 +56,13 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
     }
   }, [location]);
 
-  const activeDays = numberDays(userDashboard.programs?.mrx.start_time);
+  const activeDays =
+    activeLang === "ru"
+      ? numberDays(userDashboard.programs?.mrx.start_time)
+      : numberDays_en(userDashboard.programs?.mrx.start_time);
   const deposit = userDashboard.programs?.mrx.price || 0;
-  const investmentPackage = userDashboard.programs?.mrx.investment_package.toFixed(1) || 0;
+  const investmentPackage =
+    userDashboard.programs?.mrx.investment_package.toFixed(1) || 0;
   const dividends = userDashboard.dividends.toFixed(1) || 0;
   const mrxPercent = userDashboard.programs?.mrx.mrxPercent || 0;
   const account_active = userDashboard.programs?.mrx.ending_time
@@ -68,20 +75,20 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
     : 0;
   const lineCount = mrxProgram.line_count || 3;
 
-  const linearPremium = userDashboard.programs?.mrx.linear_premium.toFixed(1) || 0;
-
+  const linearPremium =
+    userDashboard.programs?.mrx.linear_premium.toFixed(1) || 0;
 
   const chartData = [
     {
-      name: "Сумма депозита",
+      name: t("MrxProgram.chartData.deposit"),
       value: deposit,
     },
     {
-      name: "Начисления по инвестиционному пакету",
+      name: t("MrxProgram.chartData.investmentPackage"),
       value: +investmentPackage,
     },
-    { name: "Дивиденты", value: +dividends },
-    { name: "Выплаты по реферальной программе", value: +linearPremium },
+    { name: t("MrxProgram.chartData.dividends"), value: +dividends },
+    { name: t("MrxProgram.chartData.linearPremium"), value: +linearPremium },
   ];
 
   if (isLoading) {
@@ -92,41 +99,39 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
     );
   }
   if (!isPaid) {
-    return (
-      <Plug text={"Для приобретения программы необходимо пополнить счет!"} />
-    );
+    return <Plug text={t("ui.Plug.reppelWallet")} />;
   }
 
   return (
     <Container>
-      <DashboardTitleBlock title={"Доходность"} />
+      <DashboardTitleBlock title={t("MrxProgram.titleBlock.information")} />
       <div className={styles.information}>
         <Row>
-          <Col lg={5}>Программа:</Col>
+          <Col lg={5}>{t("MrxProgram.program")}</Col>
           <Col lg={4}>
             <span>MRX-invest</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Вы с нами:</Col>
+          <Col lg={5}>{t("MrxProgram.wit_us")}</Col>
           <Col lg={4}>
             <span>{activeDays}</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Текущая базовая ставка доходности:</Col>
+          <Col lg={5}>{t("MrxProgram.mrxPercent")}</Col>
           <Col lg={4}>
             <span className={styles.accent}>{mrxPercent}%</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Количество линий:</Col>
+          <Col lg={5}>{t("MrxProgram.lineCount")}</Col>
           <Col lg={4}>
             <span className={styles.accent}>{lineCount}</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Счет активен до:</Col>
+          <Col lg={5}>{t("MrxProgram.account_active")}</Col>
           <Col lg={4}>
             <span>{account_active}</span>
           </Col>
@@ -135,17 +140,19 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
           to={`${RoutePath.buyPrograms}&program=${ProgramType.mrx}`}
         >
           <Button>
-            {deposit > 0 ? "Улучшить программу" : "Купить программу"}
+            {deposit > 0
+              ? t("MrxProgram.button_update")
+              : t("MrxProgram.button_buy")}
           </Button>
         </LinkContainer>
       </div>
       <div className={styles.accounts}>
-        <DashboardTitleBlock title={"Мои счета"} />
+        <DashboardTitleBlock title={t("MrxProgram.titleBlock.accounts")} />
         <CardDeck>
           <Card className={styles.account}>
             <Card.Body>
               <Card.Title className={styles.card_title}>
-                Сумма депозита
+                {t("MrxProgram.chartData.deposit")}
               </Card.Title>
               <Card.Text>{deposit} $</Card.Text>
             </Card.Body>
@@ -153,21 +160,23 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
           <Card className={styles.account}>
             <Card.Body>
               <Card.Title className={styles.card_title}>
-                Начисления по инвестиционному пакету
+                {t("MrxProgram.chartData.investmentPackage")}
               </Card.Title>
               <Card.Text>{investmentPackage} $</Card.Text>
             </Card.Body>
           </Card>
           <Card className={styles.account}>
             <Card.Body>
-              <Card.Title className={styles.card_title}>Дивиденды</Card.Title>
+              <Card.Title className={styles.card_title}>
+                {t("MrxProgram.chartData.dividends")}
+              </Card.Title>
               <Card.Text>{dividends} $</Card.Text>
             </Card.Body>
           </Card>
           <Card className={styles.account}>
             <Card.Body>
               <Card.Title className={styles.card_title}>
-                Выплаты по реферальной программе
+                {t("MrxProgram.chartData.linearPremium")}
               </Card.Title>
               <Card.Text>{linearPremium} $</Card.Text>
             </Card.Body>
@@ -175,9 +184,7 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
         </CardDeck>
       </div>
       <div>
-        <DashboardTitleBlock
-          title={"Статистика доходности по программе MRX-invest"}
-        />
+        <DashboardTitleBlock title={t("MrxProgram.titleBlock.statistics")} />
         <Row className={styles.statistics}>
           <Col lg={5}>
             <Chart dataProps={chartData} />
@@ -185,17 +192,18 @@ const MrxProgram: React.FC<MrxProgramProps> = () => {
           <Col lg={5}>
             <ListGroup className={styles.list_group}>
               <ListGroup.Item className={styles.first}>
-                Сумма депозита <span>{deposit}$</span>
+                {t("MrxProgram.chartData.deposit")} <span>{deposit}$</span>
               </ListGroup.Item>
               <ListGroup.Item className={styles.second}>
-                Начисления по инвестиционному пакету{" "}
+                {t("MrxProgram.chartData.investmentPackage")}
                 <span>{investmentPackage}$</span>
               </ListGroup.Item>
               <ListGroup.Item className={styles.third}>
-                Дивиденды <span>{dividends}$</span>
+                {t("MrxProgram.chartData.dividends")} <span>{dividends}$</span>
               </ListGroup.Item>
               <ListGroup.Item className={styles.fourth}>
-                Выплаты по реферальной программе <span>{linearPremium}$</span>
+                {t("MrxProgram.chartData.linearPremium")}{" "}
+                <span>{linearPremium}$</span>
               </ListGroup.Item>
             </ListGroup>
           </Col>

@@ -21,10 +21,12 @@ import {
 import { DashboardRoute } from "../../../routes/dashboard";
 import SweetAlert from "react-bootstrap-sweetalert";
 import { useHistory } from "react-router";
+import { useTranslation } from "react-i18next";
 
 interface TransferWalletProps {}
 
 const TransferWallet: React.FC<TransferWalletProps> = () => {
+  const { t } = useTranslation();
   const { register, handleSubmit, errors, watch } = useForm();
   const { success } = useSelectorTyped((state: rootState) => state.wallets);
   const history = useHistory();
@@ -84,11 +86,11 @@ const TransferWallet: React.FC<TransferWalletProps> = () => {
       {SweetAlertState && (
         <SweetAlert
           success
-          title="Успешный перевод!"
+          title={t("TransferWallet.success_title")}
           onConfirm={swalClose}
           onCancel={swalClose}
         >
-          Перевод успешно произведен!
+          {t("TransferWallet.success_text")}
         </SweetAlert>
       )}
       <Container>
@@ -96,7 +98,7 @@ const TransferWallet: React.FC<TransferWalletProps> = () => {
           <Col lg={12}>
             <Modal.Header closeButton>
               <Modal.Title className={styles.modal_title}>
-                Внутренние переводы
+                {t("TransferWallet.modal_title")}
               </Modal.Title>
             </Modal.Header>
           </Col>
@@ -106,32 +108,28 @@ const TransferWallet: React.FC<TransferWalletProps> = () => {
             <Form.Group controlId="withdrawal">
               <CustomInput
                 type="number"
-                placeholder="Укажите сумму"
+                placeholder={t("TransferWallet.placeholder_amount")}
                 name="amount"
                 value={watch("amount")}
                 reff={register}
               />
             </Form.Group>
             <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Label>Счет зачисления</Form.Label>
+              <Form.Label>{t("TransferWallet.account")}</Form.Label>
               <Form.Control as="select">
-                <option>Стартовый счет</option>
+                <option>{t("TransferWallet.start")}</option>
               </Form.Control>
             </Form.Group>
           </Col>
         </Row>
         <Row>
           <Col lg={{ offset: 2, span: 8 }} className={styles.button_block}>
-            <Button type={"submit"}>Сделать перевод</Button>
+            <Button type={"submit"}>{t("TransferWallet.button_block")}</Button>
           </Col>
         </Row>
         <Row>
           <Col lg={{ offset: 2, span: 8 }} className={styles.button_block}>
-            <p>
-              Вывод средств доступен в любое время, но не чаще чем 10 раз в
-              месяц. Обработка заявки занимает до 48 часов после её создания.
-              Минимальная сумма вывода 10.
-            </p>
+            <p>{t("TransferWallet.text")}</p>
           </Col>
         </Row>
       </Container>

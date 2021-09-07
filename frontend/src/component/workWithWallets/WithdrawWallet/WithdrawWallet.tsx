@@ -11,18 +11,12 @@ import {
 } from "../../../store/action/walletsAction";
 import { useSweetAlert } from "../../../hooks/useSweetAlert";
 import SweetAlert from "react-bootstrap-sweetalert";
+import { useTranslation } from "react-i18next";
 
 interface WithdrawWalletProps {}
 
-const typeWithdrawEnum = {
-  [walletType.bitcoin]: "Ваш кошелек",
-  [walletType.usdtether]: "Ваш кошелек",
-  [walletType.ethereum]: "Ваш кошелек",
-  [walletType.qiwi]: "Ваш кошелек",
-  [walletType.payeer]: "Ваш кошелек",
-};
-
 const WithdrawWallet: React.FC<WithdrawWalletProps> = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatchTyped();
   const { register, handleSubmit, errors, watch } = useForm();
   const [typeWithdraw, setTypeWithdraw] = React.useState(walletType.bitcoin);
@@ -46,11 +40,11 @@ const WithdrawWallet: React.FC<WithdrawWalletProps> = () => {
       {SweetAlertState && (
         <SweetAlert
           success
-          title="Успешный запрос!"
+          title={t("WithdrawWallet.success_title")}
           onConfirm={swalClose}
           onCancel={swalClose}
         >
-          Запрос на вывод средств успешно создан!
+          {t("WithdrawWallet.success_text")}
         </SweetAlert>
       )}
       <Container>
@@ -58,7 +52,7 @@ const WithdrawWallet: React.FC<WithdrawWalletProps> = () => {
           <Col lg={12}>
             <Modal.Header closeButton>
               <Modal.Title className={styles.modal_title}>
-                Вывести средства
+                {t("WithdrawWallet.modal_title")}
               </Modal.Title>
             </Modal.Header>
           </Col>
@@ -66,7 +60,7 @@ const WithdrawWallet: React.FC<WithdrawWalletProps> = () => {
         <Row>
           <Col lg={{ offset: 2, span: 8 }}>
             <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Label>Тип вывода</Form.Label>
+              <Form.Label>{t("WithdrawWallet.Output_type")}</Form.Label>
               <Form.Control
                 as="select"
                 onChange={(e) => {
@@ -88,11 +82,11 @@ const WithdrawWallet: React.FC<WithdrawWalletProps> = () => {
             <Form.Group controlId="withdrawal">
               <CustomInput
                 type="number"
-                placeholder="Сумма вывода"
+                placeholder={t("WithdrawWallet.amount")}
                 name="amount"
                 value={watch("amount")}
                 reff={register({
-                  min: { value: 10, message: "Минимальная сумма вывода 10$" },
+                  min: { value: 10, message: t("WithdrawWallet.min_amount") },
                 })}
               />
               <small>
@@ -105,7 +99,7 @@ const WithdrawWallet: React.FC<WithdrawWalletProps> = () => {
             <Form.Group controlId="withdrawal">
               <CustomInput
                 type="text"
-                placeholder={`${typeWithdrawEnum[typeWithdraw]}`}
+                placeholder={t("WithdrawWallet.wallet")}
                 name="requisites"
                 value={watch("requisites")}
                 reff={register}
@@ -115,16 +109,12 @@ const WithdrawWallet: React.FC<WithdrawWalletProps> = () => {
         </Row>
         <Row>
           <Col lg={{ offset: 2, span: 8 }} className={styles.button_block}>
-            <Button type={"submit"}>Вывод</Button>
+            <Button type={"submit"}>{t("WithdrawWallet.button")}</Button>
           </Col>
         </Row>
         <Row>
           <Col lg={{ offset: 2, span: 8 }} className={styles.button_block}>
-            <p>
-              Вывод средств доступен в любое время, но не чаще чем 10 раз в
-              месяц. Обработка заявки занимает до 48 часов после её создания.
-              Минимальная сумма вывода 10$.
-            </p>
+            <p>{t("WithdrawWallet.text")}</p>
           </Col>
         </Row>
       </Container>

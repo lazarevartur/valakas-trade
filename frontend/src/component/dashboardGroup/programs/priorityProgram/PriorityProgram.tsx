@@ -15,10 +15,12 @@ import { rootState } from "../../../../types/types";
 import { PriorityCard } from "./priorityCard";
 import { userMentorStatus } from "../../../../config";
 import { DashboardRoute } from "../../../../routes/dashboard";
+import { useTranslation } from "react-i18next";
 
 interface PriorityProgramProps {}
 
 const PriorityProgram: React.FC<PriorityProgramProps> = () => {
+  const { t } = useTranslation();
   const { userDashboard, isLoading } = useSelectorTyped(
     (state: rootState) => state.dashboard
   );
@@ -43,9 +45,9 @@ const PriorityProgram: React.FC<PriorityProgramProps> = () => {
     return (
       <p>
         <Plug
-          text={"Для работы нужен статус ментора М2"}
+          text={t("ui.Plug.status_mentor")}
           link={DashboardRoute.team}
-          buttonText={"Посмотреть статус"}
+          buttonText={t("ui.Plug.buttonText")}
         />
       </p>
     );
@@ -59,41 +61,43 @@ const PriorityProgram: React.FC<PriorityProgramProps> = () => {
 
   return (
     <Container>
-      <DashboardTitleBlock title={"Доходность"} />
+      <DashboardTitleBlock
+        title={t("PriorityProgram.TitleBlock.Profitability")}
+      />
       <div className={styles.information}>
         <Row>
-          <Col lg={5}>Программа:</Col>
+          <Col lg={5}>{t("PriorityProgram.Program")}</Col>
           <Col lg={4}>
             <span>Priority</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Количество купленных программ</Col>
+          <Col lg={5}>{t("PriorityProgram.countAllPrograms")}</Col>
           <Col lg={4}>
             <span>{countAllPrograms}</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Общая сумма инвестиций составит</Col>
+          <Col lg={5}>{t("PriorityProgram.totalInvest")}</Col>
           <Col lg={4}>
             <span>$ {totalInvest.toFixed(1)}</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Общая выгода составит</Col>
+          <Col lg={5}>{t("PriorityProgram.totalProfit")}</Col>
           <Col lg={4}>
             <span>$ {totalProfit.toFixed(1)}</span>
           </Col>
         </Row>
         <LinkContainer to={`${RoutePath.priority}`}>
-          <Button>Купить Priority</Button>
+          <Button>{t("PriorityProgram.Button")}</Button>
         </LinkContainer>
       </div>
       {priority.map((item, i) => {
         return (
           <div className={styles.accounts} key={i}>
             <DashboardTitleBlock
-              title={`Номер подключенной программы № ${i + 1}`}
+              title={`${t("PriorityProgram.TitleBlock.PriorityCard")} ${i + 1}`}
             />
             <PriorityCard {...item} index={i} />
           </div>

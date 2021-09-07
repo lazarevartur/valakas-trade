@@ -42,6 +42,7 @@ import { ReplenishmentRequest } from "../../../services/walletsApi";
 import { walletType } from "../../../config";
 import { Loader } from "../../uiKit/loader";
 import Bill from "./walletType/Bill";
+import { useTranslation } from "react-i18next";
 
 const walletsComponent = {
   bitcoin: Bitcoin,
@@ -83,6 +84,7 @@ const walletsChunk = getChunks(walletsType);
 interface ReplenishmentWalletProps {}
 
 const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatchTyped();
   const history = useHistory();
   const {
@@ -158,11 +160,11 @@ const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
         {SweetAlertState && (
           <SweetAlert
             success
-            title="Успешная оплата!"
+            title={t("ReplenishmentWallet.success_title")}
             onConfirm={swalClose}
             onCancel={swalClose}
           >
-            Заявка на пополнение счета отправленна!
+            {t("ReplenishmentWallet.application")}
           </SweetAlert>
         )}
         <>
@@ -176,7 +178,7 @@ const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
                 <Col lg={12}>
                   <Modal.Header closeButton>
                     <Modal.Title className={styles.modal_title}>
-                      Пополнение баланса
+                      {t("ReplenishmentWallet.modal_title")}
                     </Modal.Title>
                   </Modal.Header>
                 </Col>
@@ -187,7 +189,7 @@ const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
                     <CustomInput
                       reff={register()}
                       type="number"
-                      placeholder={"Сумма пополнения в долларах"}
+                      placeholder={t("ReplenishmentWallet.amount_placeholder")}
                       value={watch("amount")}
                       name={"amount"}
                     />
@@ -250,7 +252,7 @@ const ReplenishmentWallet: React.FC<ReplenishmentWalletProps> = () => {
                     lg={{ offset: 2, span: 8 }}
                     className={styles.button_block}
                   >
-                    <Button type="submit">Пополнить</Button>
+                    <Button type="submit">{t("ReplenishmentWallet.up")}</Button>
                   </Col>
                 )}
               </Row>

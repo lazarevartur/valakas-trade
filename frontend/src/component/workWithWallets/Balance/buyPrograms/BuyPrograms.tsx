@@ -20,10 +20,12 @@ import { Loader } from "../../../uiKit/loader";
 import { DashboardRoute } from "../../../../routes/dashboard";
 import { CustomInput } from "../../../uiKit/customInput";
 import { getRuDate, getRuFormatNumbers } from "../../../../utils/utils";
+import { useTranslation } from "react-i18next";
 
 interface BuyProgramsProps {}
 
 const BuyPrograms: React.FC<BuyProgramsProps> = () => {
+  const { t } = useTranslation();
   const { mrxPrograms, isLoading, optionalProgram } = useWalletData();
   const { register, handleSubmit, errors, watch } = useForm();
   const dispatch = useDispatchTyped();
@@ -48,7 +50,6 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
       history.push(DashboardRoute.mrx_invest, { success });
     }
   }, [success]);
-  console.log(errors);
   const {
     start_round,
     end_round,
@@ -84,9 +85,9 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
           <Col lg={12}>
             <Modal.Header closeButton>
               <Modal.Title className={styles.modal_title}>
-                {typeWallet === "optional" && "Покупка опционов"}
-                {typeWallet === "mrx" && "Покупка пакета"}
-                {typeWallet === "" && "Пополнение баланса"}
+                {typeWallet === "optional" && t("BuyPrograms.buy_options")}
+                {typeWallet === "mrx" && t("BuyPrograms.buy_package")}
+                {typeWallet === "" && t("BuyPrograms.balance")}
               </Modal.Title>
             </Modal.Header>
           </Col>
@@ -98,7 +99,7 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
             <Row>
               <Col lg={{ offset: 2, span: 8 }}>
                 <Form.Group controlId="exampleForm.SelectCustom">
-                  <Form.Label>Программа</Form.Label>
+                  <Form.Label>{t("BuyPrograms.program")}</Form.Label>
                   <Form.Control
                     as="select"
                     onChange={(e) => setTypeWallet(e.target.value)}
@@ -106,7 +107,7 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
                     name={"typeWallet"}
                     defaultValue={ProgramType[program]}
                   >
-                    <option value={""}>Выбирите программу</option>
+                    <option value={""}>{t("BuyPrograms.select")}</option>
                     <option value={ProgramType.mrx}>MRX</option>
                     <option value={ProgramType.optional}>OPTIONS</option>
                   </Form.Control>
@@ -117,19 +118,19 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
               <Row>
                 <Col lg={{ offset: 2, span: 8 }}>
                   <Form.Group controlId="exampleForm.SelectCustom">
-                    <Form.Label>Инвестиционные пакеты</Form.Label>
+                    <Form.Label>{t("BuyPrograms.investment")}</Form.Label>
                     {mrxPrograms.length ? (
                       <Form.Control as="select" ref={register} name={"id"}>
                         {mrxPrograms.map(({ name, _id, price }) => {
                           return (
                             <option key={name} value={_id}>
-                              {name} | Цена {price}$
+                              {name} | {t("BuyPrograms.price")} {price}$
                             </option>
                           );
                         })}
                       </Form.Control>
                     ) : (
-                      <p>Активированна максимальная программа</p>
+                      <p>{t("BuyPrograms.maximum")}</p>
                     )}
                   </Form.Group>
                 </Col>
@@ -142,37 +143,37 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
                     controlId="optionsWallet"
                     className={styles.options}
                   >
-                    <Form.Label>Опционы</Form.Label>
+                    <Form.Label>{t("BuyPrograms.options")}</Form.Label>
                     <Row className={styles.parameter}>
-                      <Col sm={7}>Раунд</Col>
+                      <Col sm={7}>{t("BuyPrograms.round_number")}</Col>
                       <Col sm={5}>{round_number}</Col>
                     </Row>
                     <Row className={styles.parameter}>
-                      <Col sm={7}>Начало раунда</Col>
+                      <Col sm={7}>{t("BuyPrograms.start_round")}</Col>
                       <Col sm={5}>{getRuDate(start_round)}</Col>
                     </Row>
                     <Row className={styles.parameter}>
-                      <Col sm={7}>Завершение раунда</Col>
+                      <Col sm={7}>{t("BuyPrograms.end_round")}</Col>
                       <Col sm={5}>{getRuDate(end_round)}</Col>
                     </Row>
                     <Row className={styles.parameter}>
-                      <Col sm={7}>Цена опциона</Col>
+                      <Col sm={7}>{t("BuyPrograms.cost")}</Col>
                       <Col sm={5}>{cost}$</Col>
                     </Row>
                     <Row className={styles.parameter}>
-                      <Col sm={7}>Доходность на вложенный капитал</Col>
+                      <Col sm={7}>{t("BuyPrograms.profit")}</Col>
                       <Col sm={5}>{profit}%</Col>
                     </Row>
                     <Row className={styles.parameter}>
-                      <Col sm={7}>Выделено опционов</Col>
+                      <Col sm={7}>{t("BuyPrograms.quantity")}</Col>
                       <Col sm={5}>{getRuFormatNumbers(quantity)}</Col>
                     </Row>
                     <Row className={styles.parameter}>
-                      <Col sm={7}>Цель сбора</Col>
+                      <Col sm={7}>{t("BuyPrograms.purpose")}</Col>
                       <Col sm={5}>{getRuFormatNumbers(purpose)}$</Col>
                     </Row>
                     <Row className={styles.parameter}>
-                      <Col sm={7}>Собранно</Col>
+                      <Col sm={7}>{t("BuyPrograms.collected")}</Col>
                       <Col sm={5}>{getRuFormatNumbers(collected)}$</Col>
                     </Row>
                     <Row className={styles.input}>
@@ -181,12 +182,11 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
                           reff={register({
                             min: {
                               value: 1000,
-                              message:
-                                "Минимальное количество для покупки 1000 опционов",
+                              message: t("BuyPrograms.minOptions"),
                             },
                           })}
                           type="number"
-                          placeholder={"Количество опционов"}
+                          placeholder={t("BuyPrograms.amount")}
                           value={watch("amount")}
                           name={"amount"}
                         />
@@ -200,7 +200,7 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
                     </Row>
                     {amount && (
                       <Row className={styles.parameter}>
-                        <Col sm={7}>Стоимость опционов</Col>
+                        <Col sm={7}>{t("BuyPrograms.price_optional")}</Col>
                         <Col sm={5}>{price}$</Col>
                       </Row>
                     )}
@@ -212,10 +212,9 @@ const BuyPrograms: React.FC<BuyProgramsProps> = () => {
         )}
         <Row>
           <Col lg={{ offset: 2, span: 8 }} className={styles.button_block}>
-            <Button type="submit">
-              {typeWallet === "optional" && "Купить"}
-              {typeWallet === "mrx" && "Купить"}
-            </Button>
+            {typeWallet && (
+              <Button type="submit">{t("BuyPrograms.buy")}</Button>
+            )}
           </Col>
         </Row>
       </Container>

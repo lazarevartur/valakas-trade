@@ -25,10 +25,12 @@ import {
 import { Loader } from "../../../uiKit/loader";
 import { Plug } from "../../../uiKit/plug";
 import { ProgramType } from "../../../../const/popup";
+import { useTranslation } from "react-i18next";
 
 interface OptionalProgramProps {}
 
 const OptionalProgram: React.FC<OptionalProgramProps> = () => {
+  const { t } = useTranslation();
   const { optionalProgram, optionalPrograms, isLoading } = useSelectorTyped(
     (state: rootState) => state.optional
   );
@@ -57,39 +59,41 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
   }
 
   if (!isPaid) {
-    return <Plug text={'Для приобретения программы необходимо пополнить счет!'} />;
+    return <Plug text={t("ui.Plug.reppelWallet")} />;
   }
 
   return (
     <Container>
-      <DashboardTitleBlock title={"Доходность"} />
+      <DashboardTitleBlock
+        title={t("OptionalProgram.TitleBlock.Profitability")}
+      />
       <div className={styles.information}>
         <Row>
-          <Col lg={5}>Программа:</Col>
+          <Col lg={5}>{t("OptionalProgram.Program")}</Col>
           <Col lg={4}>
             <span>Optional</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Вы с нами:</Col>
+          <Col lg={5}>{t("OptionalProgram.with_us")}</Col>
           <Col lg={4}>
             <span>0</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Текущая базоваая ставка доходности:</Col>
+          <Col lg={5}>{t("OptionalProgram.profitability")}</Col>
           <Col lg={4}>
             <span className={styles.accent}>{profitability}%</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Текущий раунд:</Col>
+          <Col lg={5}>{t("OptionalProgram.activeRound")}</Col>
           <Col lg={4}>
             <span className={styles.accent}>{activeRound}</span>
           </Col>
         </Row>
         <Row>
-          <Col lg={5}>Завершение последнего раунда</Col>
+          <Col lg={5}>{t("OptionalProgram.endRound")}</Col>
           <Col lg={4}>
             <span>17.08.2022</span>
           </Col>
@@ -97,16 +101,16 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
         <LinkContainer
           to={`${RoutePath.buyPrograms}&program=${ProgramType.optional}`}
         >
-          <Button>Купить опционы</Button>
+          <Button>{t("OptionalProgram.button")}</Button>
         </LinkContainer>
       </div>
       <div className={styles.accounts}>
-        <DashboardTitleBlock title={"Мой счет текущего раунда"} />
+        <DashboardTitleBlock title={t("OptionalProgram.TitleBlock.accounts")} />
         <CardDeck>
           <Card className={styles.account}>
             <Card.Body>
               <Card.Title className={styles.card_title}>
-                Сумма депозита
+                {t("OptionalProgram.accounts.deposit")}
               </Card.Title>
               <Card.Text>{deposit} $</Card.Text>
             </Card.Body>
@@ -114,7 +118,7 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
           <Card className={styles.account}>
             <Card.Body>
               <Card.Title className={styles.card_title}>
-                Количество опционов
+                {t("OptionalProgram.accounts.quantity")}
               </Card.Title>
               <Card.Text>{quantity}</Card.Text>
             </Card.Body>
@@ -122,7 +126,7 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
           <Card className={styles.account}>
             <Card.Body>
               <Card.Title className={styles.card_title}>
-                Цена опциона
+                {t("OptionalProgram.accounts.cost")}
               </Card.Title>
               <Card.Text>{cost} $</Card.Text>
             </Card.Body>
@@ -130,7 +134,7 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
           <Card className={styles.account}>
             <Card.Body>
               <Card.Title className={styles.card_title}>
-                Текущая базоваая ставка доходности
+                {t("OptionalProgram.accounts.profitability")}
               </Card.Title>
               <Card.Text>{profitability}% </Card.Text>
             </Card.Body>
@@ -144,14 +148,16 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
           return (
             <div className={styles.accounts} key={round_number}>
               <DashboardTitleBlock
-                title={`Счет ${round_number}-го раунда`}
+                title={`${t("OptionalProgram.Check")} ${round_number}${t(
+                  "OptionalProgram.rounds"
+                )}`}
                 className={styles.margin_none}
               />
               <CardDeck>
                 <Card className={styles.account}>
                   <Card.Body>
                     <Card.Title className={styles.card_title}>
-                      Сумма депозита
+                      {t("OptionalProgram.accounts.deposit")}
                     </Card.Title>
                     <Card.Text>{depositProgram} $</Card.Text>
                   </Card.Body>
@@ -159,7 +165,7 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
                 <Card className={styles.account}>
                   <Card.Body>
                     <Card.Title className={styles.card_title}>
-                      Количество опционов
+                      {t("OptionalProgram.accounts.quantity")}
                     </Card.Title>
                     <Card.Text>{quantity}</Card.Text>
                   </Card.Body>
@@ -167,7 +173,7 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
                 <Card className={styles.account}>
                   <Card.Body>
                     <Card.Title className={styles.card_title}>
-                      Цена опциона
+                      {t("OptionalProgram.accounts.cost")}
                     </Card.Title>
                     <Card.Text>{cost} $</Card.Text>
                   </Card.Body>
@@ -175,7 +181,7 @@ const OptionalProgram: React.FC<OptionalProgramProps> = () => {
                 <Card className={styles.account}>
                   <Card.Body>
                     <Card.Title className={styles.card_title}>
-                      Текущая базоваая ставка доходности
+                      {t("OptionalProgram.accounts.profitability")}
                     </Card.Title>
                     <Card.Text>{profit}% </Card.Text>
                   </Card.Body>
